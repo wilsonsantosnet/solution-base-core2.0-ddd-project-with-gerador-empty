@@ -25,7 +25,7 @@ namespace Seed.Gen
                 ResouceRepositoryName = "template-gerador-back-DDD",
                 ResourceUrlRepository = "https://github.com/wilsonsantosnet/template-gerador-back-DDD.git",
                 ResourceLocalPathFolderExecuteCloning = @"C:\Projetos\Outros\Repositorios",
-                ResourceLocalPathDestinationFolrderApplication = @"C:\Projetos\seed-core-ddd-project-with-gerador-empty\Gerador.Gen\Templates\Back"
+                ResourceLocalPathDestinationFolrderApplication = @"C:\Projetos\seed-core2.0-ddd-project-with-gerador-empty\Gerador.Gen\Templates\Back"
             };
 
         }
@@ -39,7 +39,7 @@ namespace Seed.Gen
                 ResouceRepositoryName = "framework-core-common",
                 ResourceUrlRepository = "https://github.com/wilsonsantosnet/framework-core-common.git",
                 ResourceLocalPathFolderExecuteCloning = @"C:\Projetos\Outros\Repositorios",
-                ResourceLocalPathDestinationFolrderApplication = @"C:\Projetos\seed-core-ddd-project-with-gerador-empty\"
+                ResourceLocalPathDestinationFolrderApplication = @"C:\Projetos\seed-core2.0-ddd-project-with-gerador-empty\"
             };
 
         }
@@ -70,7 +70,7 @@ namespace Seed.Gen
                 ResouceRepositoryName = "Seed-layout-front-bs4-angular2.0",
                 ResourceUrlRepository = "https://github.com/wilsonsantosnet/Seed-layout-front-bs4-angular2.0.git",
                 ResourceLocalPathFolderExecuteCloning = @"C:\Projetos\Outros\Repositorios",
-                ResourceLocalPathDestinationFolrderApplication = @"C:\Projetos\seed-core-ddd-project-with-gerador-empty\Seed.Spa.Ui"
+                ResourceLocalPathDestinationFolrderApplication = @"C:\Projetos\seed-core2.0-ddd-project-with-gerador-empty\Seed.Spa.Ui"
             };
 
         }
@@ -83,7 +83,7 @@ namespace Seed.Gen
                 ResouceRepositoryName = "Seed-layout-front-bs4-angular2.0",
                 ResourceUrlRepository = "https://github.com/wilsonsantosnet/Seed-layout-front-bs4-angular2.0.git",
                 ResourceLocalPathFolderExecuteCloning = @"C:\Projetos\Outros\Repositorios",
-                ResourceLocalPathDestinationFolrderApplication = @"C:\Projetos\seed-core-ddd-project-with-gerador-empty\Seed.Spa.Ui",
+                ResourceLocalPathDestinationFolrderApplication = @"C:\Projetos\seed-core2.0-ddd-project-with-gerador-empty\Seed.Spa.Ui",
                 OnlyThisFiles = new List<string> {
                     "package.json",
                     ".angular-cli.json",
@@ -118,7 +118,7 @@ namespace Seed.Gen
                 ResouceRepositoryName = "template-gerador-front-bs4-angular2.0",
                 ResourceUrlRepository = "https://github.com/wilsonsantosnet/template-gerador-front-bs4-angular2.0.git",
                 ResourceLocalPathFolderExecuteCloning = @"C:\Projetos\Outros\Repositorios",
-                ResourceLocalPathDestinationFolrderApplication = @"C:\Projetos\seed-core-ddd-project-with-gerador-empty\Gerador.Gen\Templates\Front",
+                ResourceLocalPathDestinationFolrderApplication = @"C:\Projetos\seed-core2.0-ddd-project-with-gerador-empty\Gerador.Gen\Templates\Front",
             };
 
         }
@@ -131,7 +131,7 @@ namespace Seed.Gen
                 ResouceRepositoryName = "framework-angular2.0-CRUD",
                 ResourceUrlRepository = "https://github.com/wilsonsantosnet/framework-angular2.0-CRUD.git",
                 ResourceLocalPathFolderExecuteCloning = @"C:\Projetos\Outros\Repositorios",
-                ResourceLocalPathDestinationFolrderApplication = @"C:\Projetos\seed-core-ddd-project-with-gerador-empty\Seed.Spa.Ui\src\app\common"
+                ResourceLocalPathDestinationFolrderApplication = @"C:\Projetos\seed-core2.0-ddd-project-with-gerador-empty\Seed.Spa.Ui\src\app\common"
             };
 
         }
@@ -147,7 +147,7 @@ namespace Seed.Gen
                 ResouceRepositoryName = "Seed-layout-front-bs4-angular6.0",
                 ResourceUrlRepository = "https://github.com/wilsonsantosnet/Seed-layout-front-bs4-angular6.0.git",
                 ResourceLocalPathFolderExecuteCloning = @"C:\Projetos\Outros\Repositorios",
-                ResourceLocalPathDestinationFolrderApplication = @"C:\Projetos\seed-core-ddd-project-with-gerador-empty\Seed.Spa.Ui"
+                ResourceLocalPathDestinationFolrderApplication = @"C:\Projetos\seed-core2.0-ddd-project-with-gerador-empty\Seed.Spa.Ui"
             };
 
         }
@@ -160,7 +160,7 @@ namespace Seed.Gen
                 ResouceRepositoryName = "Seed-layout-front-bs4-angular6.0",
                 ResourceUrlRepository = "https://github.com/wilsonsantosnet/Seed-layout-front-bs4-angular6.0.git",
                 ResourceLocalPathFolderExecuteCloning = @"C:\Projetos\Outros\Repositorios",
-                ResourceLocalPathDestinationFolrderApplication = @"C:\Projetos\seed-core-ddd-project-with-gerador-empty\Seed.Spa.Ui",
+                ResourceLocalPathDestinationFolrderApplication = @"C:\Projetos\seed-core2.0-ddd-project-with-gerador-empty\Seed.Spa.Ui",
                 OnlyThisFiles = new List<string> {
                     "package.json",
                     "Web.config",
@@ -194,7 +194,7 @@ namespace Seed.Gen
                 ResouceRepositoryName = "template-gerador-front-bs4-angular6.0",
                 ResourceUrlRepository = "https://github.com/wilsonsantosnet/template-gerador-front-bs4-angular6.0.git",
                 ResourceLocalPathFolderExecuteCloning = @"C:\Projetos\Outros\Repositorios",
-                ResourceLocalPathDestinationFolrderApplication = @"C:\Projetos\seed-core-ddd-project-with-gerador-empty\Gerador.Gen\Templates\Front",
+                ResourceLocalPathDestinationFolrderApplication = @"C:\Projetos\seed-core2.0-ddd-project-with-gerador-empty\Gerador.Gen\Templates\Front",
             };
 
         }
@@ -207,7 +207,7 @@ namespace Seed.Gen
                 ResouceRepositoryName = "framework-angular6.0-CRUD",
                 ResourceUrlRepository = "https://github.com/wilsonsantosnet/framework-angular6.0-CRUD.git",
                 ResourceLocalPathFolderExecuteCloning = @"C:\Projetos\Outros\Repositorios",
-                ResourceLocalPathDestinationFolrderApplication = @"C:\Projetos\seed-core-ddd-project-with-gerador-empty\Seed.Spa.Ui\src\app\common"
+                ResourceLocalPathDestinationFolrderApplication = @"C:\Projetos\seed-core2.0-ddd-project-with-gerador-empty\Seed.Spa.Ui\src\app\common"
             };
 
         }

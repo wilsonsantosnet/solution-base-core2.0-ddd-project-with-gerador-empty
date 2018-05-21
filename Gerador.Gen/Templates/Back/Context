@@ -1,0 +1,23 @@
+﻿using Microsoft.EntityFrameworkCore;
+using <#namespace#>.Data.Map;
+using <#namespace#>.Domain.Entitys;
+
+namespace <#namespace#>.Data.Context
+{
+    public class DbContext<#contextName#> : DbContext
+    {
+
+        public DbContext<#contextName#>(DbContextOptions<DbContext<#contextName#>> options)
+            : base(options)
+        {
+
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+<#mappers#>
+        }
+
+
+    }
+}

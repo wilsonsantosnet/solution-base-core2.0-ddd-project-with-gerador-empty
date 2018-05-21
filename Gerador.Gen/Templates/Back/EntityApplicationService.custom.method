@@ -1,0 +1,7 @@
+﻿		public virtual async Task<<#customMethodsDto#>> <#customMethodsSignatureAppTemplate#>
+		{
+			return await Task.Run(() =>
+				{
+					return <#customMethodsparameterReturn#>;
+				});
+		}

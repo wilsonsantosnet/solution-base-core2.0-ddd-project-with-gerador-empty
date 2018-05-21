@@ -1,0 +1,28 @@
+﻿using Common.Cache;
+using Common.Domain.Interfaces;
+using Common.Orm;
+using Microsoft.Extensions.DependencyInjection;
+using <#namespace#>.Application;
+using <#namespace#>.Application.Interfaces;
+using <#namespace#>.Data.Context;
+using <#namespace#>.Data.Repository;
+using <#namespace#>.Domain.Interfaces.Repository;
+using System;
+using System.Linq;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using <#namespace#>.Domain.Interfaces.Services;
+using <#namespace#>.Domain.Services;
+using Common.Domain.Model;
+
+namespace <#namespace#>.Api
+{
+    public static partial class ConfigContainer<#contextName#> 
+    {
+
+        public static void RegisterOtherComponents(IServiceCollection services)
+        {
+			services.AddScoped<CurrentUser>();
+        }
+    }
+}

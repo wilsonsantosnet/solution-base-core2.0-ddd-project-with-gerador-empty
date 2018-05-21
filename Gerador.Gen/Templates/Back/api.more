@@ -1,0 +1,122 @@
+﻿using System;
+using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Routing;
+using Microsoft.Extensions.Logging;
+using <#namespace#>.Application.Interfaces;
+using <#namespace#>.Domain.Filter;
+using <#namespace#>.Domain.Interfaces.Repository;
+using <#namespace#>.Dto;
+using Common.Domain.Enums;
+using Common.API;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+using <#namespace#>.CrossCuting;
+using <#namespace#>.Domain.Entitys;
+using Common.Domain.Base;
+
+namespace <#namespace#>.Api.Controllers
+{
+	[Authorize]
+    [Route("api/<#classNameLower#>/more")]
+    public class <#className#>MoreController : Controller
+    {
+
+        private readonly I<#className#>Repository _rep;
+        private readonly I<#className#>ApplicationService _app;
+		private readonly ILogger _logger;
+		private readonly EnviromentInfo _env;
+
+        public <#className#>MoreController(I<#className#>Repository rep, I<#className#>ApplicationService app, ILoggerFactory logger, EnviromentInfo env)
+        {
+            this._rep = rep;
+            this._app = app;
+			this._logger = logger.CreateLogger<<#className#>MoreController>();
+			this._env = env;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Get([FromQuery]<#className#>Filter filters)
+        {
+            var result = new HttpResult<dynamic>(this._logger);
+            try
+            {
+                if (filters.FilterBehavior == FilterBehavior.GetDataItem)
+                {
+                    var searchResult = await this._rep.GetDataItem(filters);
+                    return result.ReturnCustomResponse(searchResult, filters);
+                }
+
+                if (filters.FilterBehavior == FilterBehavior.GetDataCustom)
+                {
+                    var searchResult = await this._rep.GetDataCustom(filters);
+                    return result.ReturnCustomResponse(searchResult, filters);
+                }
+
+                if (filters.FilterBehavior == FilterBehavior.GetDataListCustom)
+                {
+                    var searchResult = await this._rep.GetDataListCustom(filters);
+                    return result.ReturnCustomResponse(searchResult, filters);
+                }
+
+				if (filters.FilterBehavior == FilterBehavior.GetDataListCustomPaging)
+                {
+                    var searchResult = await this._rep.GetDataListCustomPaging(filters);
+                    return result.ReturnCustomResponse(searchResult, filters);
+                }
+
+				
+				if (filters.FilterBehavior == FilterBehavior.Export)
+                {
+					var searchResult = await this._rep.GetDataListCustom(filters);
+                    var export = new ExportExcelCustom<dynamic>(filters);
+                    var file = export.ExportFile(this.Response, searchResult, "<#className#>", this._env.RootPath);
+                    return File(file, export.ContentTypeExcel(), export.GetFileName());
+                }
+
+                throw new InvalidOperationException("invalid FilterBehavior");
+
+            }
+            catch (Exception ex)
+            {
+                return result.ReturnCustomException(ex,"<#namespace#> - <#className#>", filters, new ErrorMapCustom());
+            }
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> Post([FromBody]IEnumerable<<#className#>DtoSpecialized> dtos)
+        {
+            var result = new HttpResult<<#className#>Dto>(this._logger);
+            try
+            {
+                var returnModels = await this._app.Save(dtos);
+                return result.ReturnCustomResponse(this._app, returnModels);
+
+            }
+            catch (Exception ex)
+            {
+                return result.ReturnCustomException(ex,"<#namespace#> - <#className#>", dtos, new ErrorMapCustom());
+            }
+
+        }
+
+		[HttpPut]
+        public async Task<IActionResult> Put([FromBody]IEnumerable<<#className#>DtoSpecialized> dtos)
+        {
+            var result = new HttpResult<<#className#>Dto>(this._logger);
+            try
+            {
+                var returnModels = await this._app.SavePartial(dtos);
+                return result.ReturnCustomResponse(this._app, returnModels);
+
+            }
+            catch (Exception ex)
+            {
+                return result.ReturnCustomException(ex, "<#namespace#> - <#className#>", dtos, new ErrorMapCustom());
+            }
+
+        }
+
+    }
+}

@@ -1,0 +1,14 @@
+﻿using Common.Validation;
+using <#namespace#>.Domain.Entitys;
+
+namespace <#namespace#>.Domain.Validations
+{
+    public class <#className#>EstaConsistenteValidation : ValidatorSpecification<<#className#>>
+    {
+        public <#className#>EstaConsistenteValidation()
+        {
+            //base.Add(Guid.NewGuid().ToString(), new Rule<<#className#>>(Instance of RuleClassName,"message for user"));
+        }
+
+    }
+}

@@ -1,0 +1,10 @@
+﻿namespace <#namespace#>.Application.Config
+{
+    public class DominioToDtoProfile<#contextName#>Custom : AutoMapper.Profile
+    {
+        public DominioToDtoProfile<#contextName#>Custom()
+        {
+
+        }
+    }
+}

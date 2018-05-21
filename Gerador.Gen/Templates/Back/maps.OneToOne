@@ -1,0 +1,4 @@
+﻿	type.HasKey(_ => _.Id);	
+
+    type.HasRequired(t => t.Person)
+    .WithOptional(t => t.Contributor);

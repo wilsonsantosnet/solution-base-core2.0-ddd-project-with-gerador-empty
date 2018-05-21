@@ -1,0 +1,12 @@
+﻿using Common.Domain.Interfaces;
+using <#namespace#>.Domain.Entitys;
+using <#namespace#>.Domain.Filter;
+
+namespace <#namespace#>.Domain.Interfaces.Services
+{
+    public interface I<#className#>Service : IServiceBase<<#className#>, <#className#>Filter>
+    {
+
+        
+    }
+}

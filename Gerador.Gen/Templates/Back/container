@@ -1,0 +1,28 @@
+﻿using Common.Cache;
+using Common.Domain.Interfaces;
+using Common.Orm;
+using Microsoft.Extensions.DependencyInjection;
+using <#namespace#>.Application;
+using <#namespace#>.Application.Interfaces;
+using <#namespace#>.Data.Context;
+using <#namespace#>.Data.Repository;
+using <#namespace#>.Domain.Interfaces.Repository;
+using <#namespace#>.Domain.Interfaces.Services;
+using <#namespace#>.Domain.Services;
+
+namespace <#namespace#>.Api
+{
+    public static partial class ConfigContainer<#contextName#>
+    {
+
+        public static void Config(IServiceCollection services)
+        {
+            services.AddScoped<ICache, RedisComponent>();
+            services.AddScoped<IUnitOfWork, UnitOfWork<DbContext<#contextName#>>>();
+            
+<#injections#>
+
+            RegisterOtherComponents(services);
+        }
+    }
+}

@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Common.Orm\Common.Orm.csproj" />
+    <ProjectReference Include="..\Seed.Domain\Seed.Domain.csproj" />
+    <ProjectReference Include="..\Seed.Enums\Seed.Enums.csproj" />
+  </ItemGroup>
+
+</Project>

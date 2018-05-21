@@ -1,0 +1,25 @@
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using <#namespace#>.Domain.Entitys;
+
+namespace <#namespace#>.Data.Map
+{
+    public abstract class <#className#>MapBase 
+    {
+        protected abstract void CustomConfig(EntityTypeBuilder<<#className#>> type);
+
+        public <#className#>MapBase(EntityTypeBuilder<<#className#>> type)
+        {
+            
+            type.ToTable("<#tablename#>");
+<#keyName#>           
+
+<#Mapper#>
+
+<#CompositeKey#>
+
+			CustomConfig(type);
+        }
+		
+    }
+}

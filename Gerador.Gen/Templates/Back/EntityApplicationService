@@ -1,0 +1,30 @@
+﻿using Common.Domain.Interfaces;
+using <#namespace#>.Application.Interfaces;
+using <#namespace#>.Domain.Entitys;
+using <#namespace#>.Domain.Filter;
+using <#namespace#>.Domain.Interfaces.Services;
+using <#namespace#>.Dto;
+using System.Linq;
+using System.Collections.Generic;
+using Common.Domain.Base;
+using Common.Domain.Model;
+
+namespace <#namespace#>.Application
+{
+    public class <#className#>ApplicationService : <#className#>ApplicationServiceBase
+    {
+
+        public <#className#>ApplicationService(I<#className#>Service service, IUnitOfWork uow, ICache cache, CurrentUser user) :
+            base(service, uow, cache, user)
+        {
+  
+        }
+
+        protected override System.Collections.Generic.IEnumerable<TDS> MapperDomainToResult<TDS>(FilterBase filter, PaginateResult<<#className#>> dataList)
+        {
+            return base.MapperDomainToResult<<#className#>DtoSpecializedResult>(filter, dataList) as IEnumerable<TDS>;
+        }
+
+
+    }
+}

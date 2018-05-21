@@ -1,0 +1,15 @@
+﻿using Common.Validation;
+using <#namespace#>.Domain.Entitys;
+using <#namespace#>.Domain.Interfaces.Repository;
+
+namespace <#namespace#>.Domain.Validations
+{
+    public class <#className#>AptoParaCadastroWarning : WarningSpecification<<#className#>>
+    {
+        public <#className#>AptoParaCadastroWarning(I<#className#>Repository rep)
+        {
+            //base.Add(Guid.NewGuid().ToString(), new Rule<<#className#>>(Instance of RuleClassName,"message for user"));
+        }
+
+    }
+}

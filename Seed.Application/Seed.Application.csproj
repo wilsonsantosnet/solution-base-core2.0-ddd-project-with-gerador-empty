@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Common.Dto\Common.Dto.csproj" />
+    <ProjectReference Include="..\Seed.CrossCuting\Seed.CrossCuting.csproj" />
+    <ProjectReference Include="..\Seed.Domain\Seed.Domain.csproj" />
+    <ProjectReference Include="..\Seed.Dto\Seed.Dto.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.ComponentModel.Annotations" Version="4.4.1" />
+  </ItemGroup>
+
+</Project>

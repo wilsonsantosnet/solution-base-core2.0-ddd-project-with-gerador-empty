@@ -1,0 +1,33 @@
+﻿@model LogoutViewModel
+
+<div class="logout-page">
+    <div class="page-header">
+        <img src="~/logo.png" class="icon-banner">
+    </div>
+    <div class="row">
+            <div class="col-sm-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Logout</h3>
+                    </div>
+                    <div class="panel-body">
+                        <p>Deseja sair do sistema?</p>
+                        <form asp-action="Logout">
+                            <input type="hidden" name="logoutId" value="@Model.LogoutId" />
+                            <input type="hidden" name="ReturnUrl" value="@Model.ReturnUrl" />
+                            <fieldset>
+                                <div class="form-group">
+                                    <button class="btn btn-primary">Sim</button>
+                                    <button class="btn btn-danger" id="logout-cancel">Não</button>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+@section scripts
+{
+    <script src="~/js/logout-back.js"></script>
+}

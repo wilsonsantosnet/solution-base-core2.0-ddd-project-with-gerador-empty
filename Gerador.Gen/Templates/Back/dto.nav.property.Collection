@@ -1,1 +1,0 @@
-﻿public IEnumerable<<#className#>Dto> Collection<#classNameNav#> { get; set;} 

@@ -1,1 +1,0 @@
-    { path: '<#classNameLower#>/print/:id',<#authGuard#> loadChildren: './main/<#classNameLowerAndSeparator#>/<#classNameLowerAndSeparator#>-print/<#classNameLowerAndSeparator#>-print.module#<#className#>PrintModule' },

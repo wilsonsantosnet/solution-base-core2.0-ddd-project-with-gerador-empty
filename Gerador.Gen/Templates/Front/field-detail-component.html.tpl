@@ -1,3 +1,0 @@
-﻿<dl>
-<#fieldItems#>
-</dl> 

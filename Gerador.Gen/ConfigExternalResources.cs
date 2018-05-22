@@ -16,6 +16,20 @@ namespace Seed.Gen
             this.Stack = "V2.0";
         }
 
+
+        private ExternalResource ConfigExternarResourcesTemplatesBackDDDCore20(bool replaceLocalFilesApplication)
+        {
+
+            return new ExternalResource
+            {
+                ReplaceLocalFilesApplication = true,
+                ResouceRepositoryName = "template-gerador-back-core2.0-DDD",
+                ResourceUrlRepository = "https://github.com/wilsonsantosnet/template-gerador-back-core2.0-DDD.git",
+                ResourceLocalPathFolderExecuteCloning = @"C:\Projetos\Outros\Repositorios",
+                ResourceLocalPathDestinationFolrderApplication = @"C:\Projetos\seed-core2.0-ddd-project-with-gerador-empty\Gerador.Gen\Templates\Back"
+            };
+
+        }
         private ExternalResource ConfigExternarResourcesTemplatesBackDDD(bool replaceLocalFilesApplication)
         {
 
@@ -29,6 +43,8 @@ namespace Seed.Gen
             };
 
         }
+
+
         private ExternalResource ConfigExternarResourcesFrameworkCommon(bool replaceLocalFilesApplication)
         {
 
@@ -43,7 +59,6 @@ namespace Seed.Gen
             };
 
         }
-
         private ExternalResource ConfigExternarResourcesFrameworkCommon20(bool replaceLocalFilesApplication)
         {
 
@@ -241,7 +256,7 @@ namespace Seed.Gen
             return new List<ExternalResource>
             {
 
-               ConfigExternarResourcesTemplatesBackDDD(replaceLocalFilesApplication),
+               ConfigExternarResourcesTemplatesBackDDDCore20(replaceLocalFilesApplication),
                ConfigExternarResourcesFrameworkCommon20(replaceLocalFilesApplication),
                ConfigExternarResourcesTemplatesFrontBs4Angular60(replaceLocalFilesApplication),
                ConfigExternarResourcesFrameworkAngula60Crud(replaceLocalFilesApplication),

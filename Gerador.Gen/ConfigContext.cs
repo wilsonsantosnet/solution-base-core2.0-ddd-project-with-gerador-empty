@@ -1,4 +1,4 @@
-﻿using Common.Gen;
+using Common.Gen;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -50,7 +50,13 @@ namespace Seed.Gen
                 TableInfo = new UniqueListTableInfo
                 {
 
-                   new TableInfo { TableName = "Sample", MakeDomain = true, MakeApp = true, MakeDto = true, MakeCrud = true, MakeApi= true, MakeSummary = true , MakeFront= true},
+                   new TableInfo { TableName = "Sample", MakeDomain = true, MakeApp = true, MakeDto = true, MakeCrud = true, MakeApi= true, MakeSummary = true , MakeFront= true , FieldsConfig =  new List<FieldConfig>{
+                       new FieldConfig
+                       {
+                           Name = "Valor",
+                           Attributes = new List<string>{ "[textMask]='{mask: vm.masks.maskMoney}'" }
+                       }
+                   } },
                    new TableInfo { TableName = "SampleType", MakeDomain = true, MakeApp = true, MakeDto = true, MakeCrud = true, MakeApi= true, MakeSummary = true , MakeFront= true},
                    new TableInfo { ClassName = "SampleDash", MakeFront = true, MakeFrontBasic = true , Scaffold = false, UsePathStrategyOnDefine = false },
 

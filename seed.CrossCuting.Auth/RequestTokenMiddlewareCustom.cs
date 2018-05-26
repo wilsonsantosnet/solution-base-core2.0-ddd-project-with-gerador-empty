@@ -1,4 +1,4 @@
-﻿using Common.API.Extensions;
+using Common.API.Extensions;
 using Common.Domain.Base;
 using Common.Domain.Model;
 using IdentityModel.Client;
@@ -29,6 +29,14 @@ namespace Seed.CrossCuting
         }
 
 
+    }
+
+    public static class RequestTokenMiddlewareExtensionCustom
+    {
+        public static IApplicationBuilder AddTokenMiddlewareCustom(this IApplicationBuilder app)
+        {
+            return app.UseMiddleware<RequestTokenMiddlewareCustom>();
+        }
     }
 
 }

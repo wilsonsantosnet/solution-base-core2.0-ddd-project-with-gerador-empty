@@ -24,6 +24,7 @@
     <ProjectReference Include="..\Common.Orm\Common.Orm.csproj" />
     <ProjectReference Include="..\Seed.Application\Seed.Application.csproj" />
     <ProjectReference Include="..\Seed.CrossCuting\Seed.CrossCuting.csproj" />
+    <ProjectReference Include="..\seed.CrossCuting.Auth\Seed.CrossCuting.Auth.csproj" />
     <ProjectReference Include="..\Seed.Data\Seed.Data.csproj" />
     <ProjectReference Include="..\Seed.Domain.Filter\Seed.Domain.Filter.csproj" />
     <ProjectReference Include="..\Seed.Domain\Seed.Domain.csproj" />

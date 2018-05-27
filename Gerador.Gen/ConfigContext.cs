@@ -37,6 +37,7 @@ namespace Seed.Gen
                 OutputClassSummary = ConfigurationManager.AppSettings[string.Format("outputClassSummary{0}", contextName)],
                 OutputAngular = ConfigurationManager.AppSettings["OutputAngular"],
                 OutputClassSso = ConfigurationManager.AppSettings["OutputClassSso"],
+                OutputClassCrossCustingAuth = ConfigurationManager.AppSettings["OutputClassCrossCustingAuth"],
 
                 Arquiteture = ArquitetureType.DDD,
                 CamelCasing = true,

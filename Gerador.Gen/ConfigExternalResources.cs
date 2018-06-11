@@ -192,14 +192,74 @@ namespace Seed.Gen
                     "src\\app\\main\\main.component.html",
                     "src\\app\\main\\main.component.ts",
                     "src\\app\\main\\main.service.ts",
-                    "src\\assets\\css\\main.css",
-                    "src\\assets\\css\\main.css.map",
                     "src\\assets\\jquery.nestable.js",
                 }
 
             };
 
         }
+
+        private ExternalResource ConfigExternarResourcesSeedLayoutCoreUIAngular60(bool replaceLocalFilesApplication)
+        {
+
+            return new ExternalResource
+            {
+                ReplaceLocalFilesApplication = true,
+                DownloadOneTime = true,
+                DownloadOneTimeFileVerify = "package.json",
+                ResouceRepositoryName = "Seed-layout-front-coreui-angular6.0",
+                ResourceUrlRepository = "https://github.com/wilsonsantosnet/Seed-layout-front-coreui-angular6.0.git",
+                ResourceLocalPathFolderExecuteCloning = @"C:\Projetos\Outros\Repositorios",
+                ResourceLocalPathDestinationFolrderApplication = @"C:\Projetos\seed-core2.0-ddd-project-with-gerador-empty\Seed.Spa.Ui"
+            };
+
+        }
+        private ExternalResource ConfigExternarResourcesSeedLayoutCoreUIAngular60OnlyThisFiles(bool replaceLocalFilesApplication)
+        {
+
+            return new ExternalResource
+            {
+                ReplaceLocalFilesApplication = true,
+                ResouceRepositoryName = "Seed-layout-front-coreui-angular6.0",
+                ResourceUrlRepository = "https://github.com/wilsonsantosnet/Seed-layout-front-coreui-angular6.0.git",
+                ResourceLocalPathFolderExecuteCloning = @"C:\Projetos\Outros\Repositorios",
+                ResourceLocalPathDestinationFolrderApplication = @"C:\Projetos\seed-core2.0-ddd-project-with-gerador-empty\Seed.Spa.Ui",
+                OnlyThisFiles = new List<string> {
+                    "package.json",
+                    "Web.config",
+                    "angular.json",
+                    "src\\app\\app.component.css",
+                    "src\\app\\app.component.html",
+                    "src\\app\\app.component.ts",
+                    "src\\app\\app.module.ts",
+                    "src\\app\\global.service.culture.ts",
+                    "src\\app\\global.service.ts",
+                    "src\\app\\startup.service.ts",
+                    "src\\app\\util\\util-shared.module.ts",
+                    "src\\app\\main\\main.component.css",
+                    "src\\app\\main\\main.component.html",
+                    "src\\app\\main\\main.component.ts",
+                    "src\\app\\main\\main.service.ts",
+                    "src\\assets\\jquery.nestable.js",
+                }
+
+            };
+
+        }
+        private ExternalResource ConfigExternarResourcesTemplatesFrontCoreUiAngular60(bool replaceLocalFilesApplication)
+        {
+
+            return new ExternalResource
+            {
+                ReplaceLocalFilesApplication = replaceLocalFilesApplication,
+                ResouceRepositoryName = "template-gerador-front-coreui-angular6.0",
+                ResourceUrlRepository = "https://github.com/wilsonsantosnet/template-gerador-front-coreui-angular6.0.git",
+                ResourceLocalPathFolderExecuteCloning = @"C:\Projetos\Outros\Repositorios",
+                ResourceLocalPathDestinationFolrderApplication = @"C:\Projetos\seed-core2.0-ddd-project-with-gerador-empty\Gerador.Gen\Templates\Front",
+            };
+
+        }
+
         private ExternalResource ConfigExternarResourcesTemplatesFrontBs4Angular60(bool replaceLocalFilesApplication)
         {
 
@@ -234,7 +294,7 @@ namespace Seed.Gen
             if (this.Stack == "V1.0")
                 return StackV10(replaceLocalFilesApplication);
 
-            return StackV20(replaceLocalFilesApplication);
+            return StackV30(replaceLocalFilesApplication);
 
         }
 
@@ -262,6 +322,20 @@ namespace Seed.Gen
                ConfigExternarResourcesFrameworkAngula60Crud(replaceLocalFilesApplication),
                ConfigExternarResourcesSeedLayoutBs4Angular60(replaceLocalFilesApplication),
                ConfigExternarResourcesSeedLayoutBs4Angular60OnlyThisFiles(replaceLocalFilesApplication)
+            };
+        }
+
+        private IEnumerable<ExternalResource> StackV30(bool replaceLocalFilesApplication)
+        {
+            return new List<ExternalResource>
+            {
+
+               ConfigExternarResourcesTemplatesBackDDDCore20(replaceLocalFilesApplication),
+               ConfigExternarResourcesFrameworkCommon20(replaceLocalFilesApplication),
+               ConfigExternarResourcesTemplatesFrontCoreUiAngular60(replaceLocalFilesApplication),
+               ConfigExternarResourcesFrameworkAngula60Crud(replaceLocalFilesApplication),
+               ConfigExternarResourcesSeedLayoutCoreUIAngular60(replaceLocalFilesApplication),
+               ConfigExternarResourcesSeedLayoutCoreUIAngular60OnlyThisFiles(replaceLocalFilesApplication)
             };
         }
 

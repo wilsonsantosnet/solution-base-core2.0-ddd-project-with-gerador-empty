@@ -41,7 +41,6 @@ namespace Sso.Server.Api
 
             services.AddIdentityServer();
                 //.AddSigningCredential(GetRSAParameters())
-                //.AddTemporarySigningCredential()
                 //.AddInMemoryApiResources(Config.GetApiResources())
                 //.AddInMemoryIdentityResources(Config.GetIdentityResources())
                 //.AddInMemoryClients(Config.GetClients(Configuration.GetSection("ConfigSettings").Get<ConfigSettingsBase>()));

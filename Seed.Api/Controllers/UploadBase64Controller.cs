@@ -23,7 +23,7 @@ namespace Seed.Api.Controllers
 
         public UplaodBase64Controller(ILoggerFactory logger, IHostingEnvironment env)
         {
-            this._logger = logger.CreateLogger<UplaodController>();
+            this._logger = logger.CreateLogger<UplaodBase64Controller>();
             this._env = env;
             this._uploadRoot = "upload";
         }

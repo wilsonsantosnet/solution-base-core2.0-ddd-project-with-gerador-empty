@@ -48,20 +48,18 @@ namespace Seed.Gen
                 Routes = new List<RouteConfig> {
                     new RouteConfig{ Route = "{ path: 'sampledash',  canActivate: [AuthGuard], loadChildren: './main/sampledash/sampledash.module#SampleDashModule' }" }
                 },
-
+                
                 TableInfo = new UniqueListTableInfo
                 {
-
-                   new TableInfo { TableName = "Sample", MakeDomain = true, MakeApp = true, MakeDto = true, MakeCrud = true, MakeApi= true, MakeSummary = true , MakeFront= true , FieldsConfig =  new List<FieldConfig>{
+                   new TableInfo().FromTable("Sample").MakeBack().MakeFront().AndConfigureThisFields(new List<FieldConfig> {
                        new FieldConfig
                        {
                            Name = "Valor",
                            Attributes = new List<string>{ "[textMask]='{mask: vm.masks.maskMoney}'" }
                        }
-                   } },
-                   new TableInfo { TableName = "SampleType", MakeDomain = true, MakeApp = true, MakeDto = true, MakeCrud = true, MakeApi= true, MakeSummary = true , MakeFront= true},
-                   new TableInfo { ClassName = "SampleDash", MakeFront = true, MakeFrontBasic = true , Scaffold = false, UsePathStrategyOnDefine = false },
-
+                   }),
+                   new TableInfo().FromTable("SampleType").MakeBack().MakeFront(),
+                   new TableInfo().FromClass("SampleDash").MakeFrontBasic(),
                 }
             };
         }

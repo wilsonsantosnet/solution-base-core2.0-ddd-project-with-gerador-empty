@@ -1,15 +1,14 @@
+using Common.API.Extensions;
+using Common.Domain.Enums;
 using Common.Domain.Model;
-using IdentityModel;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Security.Claims;
-using System.Text;
 
 namespace Seed.CrossCuting
 {
-    public class ProfileCustom
+    public static class ProfileCustom
     {
 
         enum Role
@@ -19,27 +18,39 @@ namespace Seed.CrossCuting
             Owner = 3,
         }
 
-        public static Dictionary<string, object> Claims(Dictionary<string, object> _claims)
-        {
 
-            var role = GetRole(_claims);
+        public static IDictionary<string, object> Define(IEnumerable<Claim> _claims)
+        {
+            var user = new CurrentUser().Init(Guid.NewGuid().ToString(), _claims.ConvertToDictionary());
+            return Define(user);
+        }
+
+        public static IDictionary<string, object> Define(CurrentUser user)
+        {
+            var _claims = user.GetClaims();
+            var role = user.GetRole();
+            var typeTole = user.GetTypeRole();
 
             if (role.ToLower() == Role.Admin.ToString().ToLower())
                 _claims.AddRange(ClaimsForAdmin());
+            else
+            {
+                _claims.AddRange(ClaimsForTenant(user.GetSubjectId<int>()));
+            }
 
             return _claims;
         }
 
-        private static string GetRole(Dictionary<string, object> _claims)
-        {
-            return _claims.Where(_ => _.Key == "role").SingleOrDefault().Value.ToString();
-        }
+
 
         public static Dictionary<string, object> ClaimsForAdmin()
         {
             var tools = new List<dynamic>
             {
-                new { Icon = "fa fa-edit", Name = "Tool", Route = "#/Url" },
+                new Tool { Icon = "fa fa-edit", Name = "Sample", Route = "/sample", Key = "Sample" , Type = ETypeTools.Menu },
+                new Tool { Icon = "fa fa-edit", Name = "SampleType", Route = "/sampletype", Key = "SampleType" , Type = ETypeTools.Menu },
+                new Tool { Icon = "fa fa-edit", Name = "SampleDash", Route = "/sampledash", Key = "SampleDash" , Type = ETypeTools.Menu },
+
             };
             var _toolsForAdmin = JsonConvert.SerializeObject(tools);
             return new Dictionary<string, object>
@@ -48,12 +59,12 @@ namespace Seed.CrossCuting
             };
         }
 
-        public static Dictionary<string, object> ClaimsForTenant(int tenantId, string name, string email)
+        public static Dictionary<string, object> ClaimsForTenant(int tenantId)
         {
 
-            var tools = new List<dynamic>
+            var tools = new List<Tool>
             {
-                new { Icon = "fa fa-edit", Name = "Tool", Route = "#/Url" },
+                new Tool { Icon = "fa fa-edit", Name = "Tool", Route = "#/Url", Key="Tool" },
             };
 
             var _toolsForSubscriber = JsonConvert.SerializeObject(tools);

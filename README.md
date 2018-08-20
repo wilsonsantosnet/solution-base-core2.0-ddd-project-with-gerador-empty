@@ -11,8 +11,6 @@ Seed vazio para projetos  SPA / DDD / Gerador
 
 3-) opcional [Conemu [https://www.fosshub.com/ConEmu.html/ConEmuSetup.161206.exe]]
 
-4-) Crie um banco com o script da pasta \Projetos\seed-core-ddd-project-with-gerador-empty\Gerador.Gen\Scripts\Sample.Seed.sql
-
 5-) instalar .net core 2.0.X [https://www.microsoft.com/net/download/windows]
 
 5.1-) instalar SDK installer [https://www.microsoft.com/net/download/thank-you/dotnet-sdk-2.1.200-windows-x64-installer]
@@ -22,6 +20,8 @@ Seed vazio para projetos  SPA / DDD / Gerador
 
 
 1-) Clonar Esse Rep na pasta C:\Projetos (git clone https://github.com/wilsonsantosnet/seed-core2.0-ddd-project-with-gerador-empty.git)
+
+1.1 -) Crie um banco de dados com o script da pasta \Projetos\seed-core-ddd-project-with-gerador-empty\Gerador.Gen\Scripts\Sample.Seed.sql
 
 2-) abrir solution seed.sln
 

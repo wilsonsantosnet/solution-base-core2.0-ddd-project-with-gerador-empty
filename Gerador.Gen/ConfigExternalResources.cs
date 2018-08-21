@@ -332,12 +332,12 @@ namespace Seed.Gen
             return new List<ExternalResource>
             {
 
-               //ConfigExternarResourcesTemplatesBackDDDCore20(replaceLocalFilesApplication),
+               ConfigExternarResourcesTemplatesBackDDDCore20(replaceLocalFilesApplication),
                ConfigExternarResourcesFrameworkCommon20(replaceLocalFilesApplication),
-               //ConfigExternarResourcesTemplatesFrontCoreUiAngular60(replaceLocalFilesApplication),
-               //ConfigExternarResourcesFrameworkAngula60Crud(replaceLocalFilesApplication),
-               //ConfigExternarResourcesSeedLayoutCoreUIAngular60(replaceLocalFilesApplication),
-               //ConfigExternarResourcesSeedLayoutCoreUIAngular60OnlyThisFiles(replaceLocalFilesApplication)
+               ConfigExternarResourcesTemplatesFrontCoreUiAngular60(replaceLocalFilesApplication),
+               ConfigExternarResourcesFrameworkAngula60Crud(replaceLocalFilesApplication),
+               ConfigExternarResourcesSeedLayoutCoreUIAngular60(replaceLocalFilesApplication),
+               ConfigExternarResourcesSeedLayoutCoreUIAngular60OnlyThisFiles(replaceLocalFilesApplication)
             };
         }
 

@@ -13,7 +13,7 @@ namespace Seed.Gen
 
         public ConfigExternalResources()
         {
-            this.Stack = "V2.0";
+            this.Stack = "V3.0";
         }
 
 
@@ -293,6 +293,8 @@ namespace Seed.Gen
 
             if (this.Stack == "V1.0")
                 return StackV10(replaceLocalFilesApplication);
+            if (this.Stack == "V2.0")
+                return StackV20(replaceLocalFilesApplication);
 
             return StackV30(replaceLocalFilesApplication);
 
@@ -330,12 +332,12 @@ namespace Seed.Gen
             return new List<ExternalResource>
             {
 
-               ConfigExternarResourcesTemplatesBackDDDCore20(replaceLocalFilesApplication),
+               //ConfigExternarResourcesTemplatesBackDDDCore20(replaceLocalFilesApplication),
                ConfigExternarResourcesFrameworkCommon20(replaceLocalFilesApplication),
-               ConfigExternarResourcesTemplatesFrontCoreUiAngular60(replaceLocalFilesApplication),
-               ConfigExternarResourcesFrameworkAngula60Crud(replaceLocalFilesApplication),
-               ConfigExternarResourcesSeedLayoutCoreUIAngular60(replaceLocalFilesApplication),
-               ConfigExternarResourcesSeedLayoutCoreUIAngular60OnlyThisFiles(replaceLocalFilesApplication)
+               //ConfigExternarResourcesTemplatesFrontCoreUiAngular60(replaceLocalFilesApplication),
+               //ConfigExternarResourcesFrameworkAngula60Crud(replaceLocalFilesApplication),
+               //ConfigExternarResourcesSeedLayoutCoreUIAngular60(replaceLocalFilesApplication),
+               //ConfigExternarResourcesSeedLayoutCoreUIAngular60OnlyThisFiles(replaceLocalFilesApplication)
             };
         }
 

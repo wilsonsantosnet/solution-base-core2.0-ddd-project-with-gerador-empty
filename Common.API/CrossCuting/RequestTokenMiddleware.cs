@@ -38,19 +38,7 @@ namespace Common.API.Extensions
                         var claims = GetClaimsFromUserPrincipal(context);
                         //var claims = GetClaimsFromReadToken(tokenClear, jwt);
 
-                        var claimsDictonary = new Dictionary<string, object>();
-                        if (claims.IsAny())
-                        {
-                            foreach (var item in claims
-                                .Select(_ => new KeyValuePair<string, object>(_.Type, _.Value)))
-                                {
-                                    if (!claimsDictonary.ContainsKey(item.Key))
-                                        claimsDictonary.Add(item.Key, item.Value);
-                                }
-
-                        }
-
-                        this.ConfigClaims(currentUser, tokenClear, claimsDictonary);
+                        this.ConfigClaims(currentUser, tokenClear, claims.ConvertToDictionary());
                     }
                     catch (Exception ex)
                     {
@@ -62,7 +50,7 @@ namespace Common.API.Extensions
             await this._next.Invoke(context);
         }
 
-        protected virtual void ConfigClaims(CurrentUser currentUser, string tokenClear, Dictionary<string, object> claimsDictonary)
+        protected virtual void ConfigClaims(CurrentUser currentUser, string tokenClear, IDictionary<string, object> claimsDictonary)
         {
             currentUser.Init(tokenClear, claimsDictonary);
         }

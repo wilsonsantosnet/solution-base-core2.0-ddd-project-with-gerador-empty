@@ -127,6 +127,8 @@ namespace Common.API
             };
             return this;
         }
+
+
         public ObjectResult ReturnCustomResponse()
         {
             this.Success();
@@ -136,6 +138,7 @@ namespace Common.API
             };
 
         }
+
         public ObjectResult ReturnCustomResponse(IEnumerable<T> searchResult, FilterBase filter = null)
         {
             this.Success(searchResult);
@@ -145,7 +148,7 @@ namespace Common.API
             };
 
         }
-        public ObjectResult ReturnCustomResponse(T OneResult, FilterBase filter = null)
+        public ObjectResult ReturnCustomResponse(dynamic OneResult, FilterBase filter = null)
         {
 
             this.Success(OneResult);
@@ -155,13 +158,27 @@ namespace Common.API
             };
 
         }
+        public ObjectResult ReturnCustomResponse(SearchResult<T> searchResult, FilterBase filter = null)
+        {
+
+            this.Summary = searchResult.Summary;
+            this.Success(searchResult.DataList);
+            return new ObjectResult(this)
+            {
+                StatusCode = (int)this.StatusCode
+            };
+
+        }
+
+
         public ObjectResult ReturnCustomResponse(IApplicationServiceBase _app, SearchResult<T> searchResult, FilterBase filter)
         {
-            this.Summary = searchResult.Summary;
+            
             this.Warning = _app.GetDomainWarning(filter);
             this.Confirm = _app.GetDomainConfirm(filter);
             this.Result = _app.GetDomainValidation(filter);
 
+            this.Summary = searchResult.Summary;
             this.Success(searchResult.DataList);
             return new ObjectResult(this)
             {

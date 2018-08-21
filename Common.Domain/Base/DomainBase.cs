@@ -66,6 +66,15 @@ namespace Common.Domain.Base
         {
             this._validationWarning = value;
         }
+        public virtual void SetDomainWarning(string warning)
+        {
+            this.SetDomainWarning(new WarningSpecificationResult
+            {
+                IsValid = true,
+                Message = warning,
+                Warnings = new List<string> { warning },
+            });
+        }
 
     }
 }

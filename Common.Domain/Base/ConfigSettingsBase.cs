@@ -13,7 +13,7 @@ namespace Common.Domain.Base
 
         public IEnumerable<string> RedirectUris { get; set; }
 
-        public string PostLogoutRedirectUris { get; set; }
+        public IEnumerable<string> PostLogoutRedirectUris { get; set; }
 
         public string AutoRegister { get; set; }
 

@@ -39,6 +39,15 @@ namespace Common.Domain.Interfaces
 
         void AddDomainValidation(string error);
 
+        void AddDomainWarning(IEnumerable<string> message);
+
+        void AddDomainWarning(string message);
+
+        void AddDomainConfirm(IEnumerable<ValidationConfirm> validationConfirms);
+
+        void AddDomainConfirm(string message);
+
+        void AddDomainConfirm(string message, string behavior);
         void SetTagNameCache(string _tagNameCache);
 
         string GetTagNameCache();

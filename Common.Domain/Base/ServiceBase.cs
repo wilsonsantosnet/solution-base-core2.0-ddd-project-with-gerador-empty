@@ -136,7 +136,31 @@ namespace Common.Domain.Base
 
             this._validationResult.Errors = _erros;
         }
+        
+        public virtual void AddDomainWarning(string message)
+        {
+            var messages = new List<string> { message };
+            this.AddDomainWarning(messages);
+        }
 
+        public virtual void AddDomainWarning(IEnumerable<string> newMessages)
+        {
+            var _messages = new List<string>();
+
+            if (this._validationWarning.IsNull())
+                this._validationWarning = new WarningSpecificationResult();
+
+            if (this._validationWarning.Warnings.IsAny())
+                _messages.AddRange(this._validationWarning.Warnings);
+
+            if (newMessages.IsAny())
+            {
+                _messages.AddRange(newMessages);
+                this._validationWarning.IsValid = false;
+            }
+
+            this._validationWarning.Warnings = _messages;
+        }
 
         public virtual void AddDomainConfirm(string message)
         {

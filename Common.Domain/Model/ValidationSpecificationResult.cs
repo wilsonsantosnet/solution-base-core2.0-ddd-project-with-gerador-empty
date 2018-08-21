@@ -18,5 +18,32 @@ namespace Common.Domain.Model
         {
             this.IsValid = true;
         }
+
+        public bool IsDefaultValue()
+        {
+
+            return this.IsValid && Errors.IsNotAny();
+        }
+
+    }
+
+    public static class ValidationSpecificationResultExtensions
+    {
+
+        public static ValidationSpecificationResult Merge(this ValidationSpecificationResult source, ValidationSpecificationResult others)
+        {
+            if (source.IsNotNull())
+            {
+                source.IsValid = others.Errors.IsAny() ? false : source.IsValid;
+                var erros = new List<string>();
+                erros.AddRange(source.Errors);
+                erros.AddRange(others.Errors);
+                source.Errors = erros;
+                return source;
+            }
+            source = others;
+            return source;
+        }
+
     }
 }

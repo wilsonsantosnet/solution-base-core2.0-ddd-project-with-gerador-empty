@@ -17,7 +17,26 @@ namespace Common.Domain.Model
 
         public string Message { get; set; }
 
-        
+    }
+
+    public static class WarningSpecificationResultExtensions
+    {
+
+        public static WarningSpecificationResult Merge(this WarningSpecificationResult source, WarningSpecificationResult others)
+        {
+            if (source.IsNotNull())
+            {
+                source.IsValid = others.Warnings.IsAny() ? false : source.IsValid;
+                var warnings = new List<string>();
+                warnings.AddRange(source.Warnings);
+                warnings.AddRange(others.Warnings);
+                source.Warnings = warnings;
+                return source;
+            }
+            source = others;
+            return source;
+        }
 
     }
+
 }

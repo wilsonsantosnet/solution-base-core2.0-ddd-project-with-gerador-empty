@@ -12,12 +12,13 @@ namespace Common.Domain.Model
     {
 
         private string _token;
-        private Dictionary<string, object> _claims;
+        private IDictionary<string, object> _claims;
 
-        public void Init(string token, Dictionary<string, object> claims)
+        public CurrentUser Init(string token, IDictionary<string, object> claims)
         {
             this._token = token;
             this._claims = claims;
+            return this;
         }
         
         public string GetToken()
@@ -25,9 +26,23 @@ namespace Common.Domain.Model
             return this._token;
         }
 
-        public Dictionary<string, object> GetClaims()
+        public IDictionary<string, object> GetClaims()
         {
             return this._claims;
+        }
+
+        public string GetRole()
+        {
+            var role = this._claims.Where(_ => _.Key == "role").SingleOrDefault();
+            return role.Value.IsNotNull() ? role.Value.ToString() : string.Empty;
+        }
+
+        public string GetTypeRole()
+        {
+            var typeRole = this._claims.Where(_ => _.Key == "typerole");
+            if (typeRole.IsAny())
+                return typeRole.SingleOrDefault().Value.ToString();
+            return string.Empty;
         }
 
         public bool IsAdmin()

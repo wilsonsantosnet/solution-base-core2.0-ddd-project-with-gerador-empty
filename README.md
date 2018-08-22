@@ -61,7 +61,7 @@ Seed vazio para projetos  SPA / DDD / Gerador
 
 21-) No projeto de Sso.Server.Api da pata SSO\Auth no arquivo Startup.cs na linha AddIdentityServer , remover o ponto e virgula e descomentar as linhas baixo
 
-22-) o método AddSigningCredential desse mesmo arquivo, só deve ficar descomentado caso vc tenha um certificado digital ,nesse caso vc descomenta esse método e comenta o método AddTemporarySigningCredential. caso contrario comenta o primeiro e descomenta o segundo
+22-) o método AddSigningCredential carrega um certificadigital auto assinado contido na pasta pfx, verifique se esse aquivo existe, ou utilize um certificado  que desejar.
 
 23-) Clicar com botão direito na Solution , item propertys, startup Project , escolher Multiple Startup Project e marcar como start os projetos de Seed.Api / Sso.Server.Api
 

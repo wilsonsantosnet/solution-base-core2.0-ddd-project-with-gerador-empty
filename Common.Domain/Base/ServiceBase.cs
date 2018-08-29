@@ -99,7 +99,10 @@ namespace Common.Domain.Base
 
         protected virtual bool DataAnnotationIsValid()
         {
-            return this._validationResult.IsNotNull() && this._validationResult.IsValid;
+             if (this._validationResult.IsNull())
+                return true;
+
+            return this._validationResult.IsValid;
         }
 
         public virtual void SetTagNameCache(string tagNameCache)

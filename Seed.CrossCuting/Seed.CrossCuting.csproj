@@ -11,6 +11,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Common.API\Common.API.csproj" />
     <ProjectReference Include="..\Common.Domain\Common.Domain.csproj" />
+    <ProjectReference Include="..\Common.Orm\Common.Orm.csproj" />
   </ItemGroup>
 
 </Project>

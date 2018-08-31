@@ -49,6 +49,7 @@ namespace Sso.Server.Api
             services.AddScoped<CurrentUser>();
             services.AddTransient<IResourceOwnerPasswordValidator, ResourceOwnerPasswordValidator>();
             services.Configure<ConfigSettingsBase>(Configuration.GetSection("ConfigSettings"));
+            services.Configure<Connectionstring>(Configuration.GetSection("ConfigConnectionString"));
             services.AddSingleton<IConfiguration>(Configuration);
 
             services.AddAuthentication()

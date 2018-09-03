@@ -12,11 +12,13 @@ namespace Sso.Server.Api
     public class ResourceOwnerPasswordValidator : IResourceOwnerPasswordValidator
     {
         
-        private ConfigSettingsBase _settings;
+        private readonly ConfigSettingsBase _settings;
+        private readonly IUserServices _userServices;
 
-        public ResourceOwnerPasswordValidator(IOptions<ConfigSettingsBase> configSettingsBase)
+        public ResourceOwnerPasswordValidator(IOptions<ConfigSettingsBase> configSettingsBase, IUserServices userServices)
         {
             this._settings = configSettingsBase.Value;
+            this._userServices = userServices;
         }
 
         public async Task ValidateAsync(ResourceOwnerPasswordValidationContext context)
@@ -24,7 +26,7 @@ namespace Sso.Server.Api
             try
             {
 
-                var userServices = new UserServices();
+                var userServices = this._userServices;
                 
                 var user = await userServices.Auth(context.UserName, context.Password);
 

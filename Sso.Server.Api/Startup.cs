@@ -45,12 +45,15 @@ namespace Sso.Server.Api
                 //.AddInMemoryIdentityResources(Config.GetIdentityResources())
                 //.AddInMemoryClients(Config.GetClients(Configuration.GetSection("ConfigSettings").Get<ConfigSettingsBase>()));
 
-            //for clarity of the next piece of code
-            services.AddScoped<CurrentUser>();
-            services.AddTransient<IResourceOwnerPasswordValidator, ResourceOwnerPasswordValidator>();
+            //Configurations
             services.Configure<ConfigSettingsBase>(Configuration.GetSection("ConfigSettings"));
             services.Configure<Connectionstring>(Configuration.GetSection("ConfigConnectionString"));
+            //Container DI
+            services.AddScoped<CurrentUser>();
+            services.AddTransient<IUserServices, UserServices>();
+            services.AddTransient<IResourceOwnerPasswordValidator, ResourceOwnerPasswordValidator>();
             services.AddSingleton<IConfiguration>(Configuration);
+
 
             services.AddAuthentication()
             .AddGoogle(options =>

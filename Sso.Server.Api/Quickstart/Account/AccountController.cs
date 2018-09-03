@@ -35,7 +35,7 @@ namespace IdentityServer4.Quickstart.UI
         private readonly IClientStore _clientStore;
         private readonly IAuthenticationSchemeProvider _schemeProvider;
         private readonly IEventService _events;
-        private readonly UserServices _usersServices;
+        private readonly IUserServices _usersServices;
         private readonly IOptions<ConfigSettingsBase> _settings;
         private readonly IOptions<ConfigEmailBase> _configEmail;
 
@@ -45,13 +45,14 @@ namespace IdentityServer4.Quickstart.UI
             IClientStore clientStore,
             IAuthenticationSchemeProvider schemeProvider,
             IEventService events,
+            IUserServices usersServices,
             IOptions<ConfigSettingsBase> settings,
             IOptions<ConfigEmailBase> configEmail)
         {
             // if the TestUserStore is not in DI, then we'll just use the global users collection
             // this is where you would plug in your own custom identity management library (e.g. ASP.NET Identity)
 
-            _usersServices = new UserServices();
+            _usersServices = usersServices;
             _interaction = interaction;
             _clientStore = clientStore;
             _schemeProvider = schemeProvider;

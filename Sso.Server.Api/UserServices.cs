@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Sso.Server.Api
 {
-    public class UserServices
+    public class UserServices : IUserServices
     {
 
         public async Task<User> Auth(string userName, string password)

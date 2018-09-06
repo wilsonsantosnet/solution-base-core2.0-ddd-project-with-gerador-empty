@@ -12,7 +12,7 @@ namespace Seed.Gen
     {
         #region Config Contexts
 
-        private Context ConfigContextSeed()
+        private Context ConfigContextDefault()
         {
             var contextName = "Seed";
 
@@ -72,7 +72,7 @@ namespace Seed.Gen
             return new List<Context>
             {
 
-                ConfigContextSeed(),
+                ConfigContextDefault(),
 
             };
 

@@ -19,7 +19,7 @@ Seed vazio para projetos  SPA / DDD / Gerador
 -- SETUP
 
 
-1-) Clonar Esse Rep na pasta C:\Projetos (git clone https://github.com/wilsonsantosnet/seed-core2.0-ddd-project-with-gerador-empty.git)
+1-) Clonar Esse Rep na pasta C:\Projetos (git clone https://github.com/wilsonsantosnet/solution-base-core2.0-ddd-project-with-gerador-empty.git)
 
 1.1 -) Crie um banco de dados com o script da pasta \Projetos\seed-core-ddd-project-with-gerador-empty\Gerador.Gen\Scripts\Sample.Seed.sql
 

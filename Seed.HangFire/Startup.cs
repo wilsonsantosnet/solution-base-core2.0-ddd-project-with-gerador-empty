@@ -132,7 +132,7 @@ namespace Seed.HangFire
 
         public string GetAccessToken(string authorityEndPoint)
         {
-            var _client = new TokenClient(authorityEndPoint + "/connect/token", "hangfire-api", "hangfire-api321$");
+            var _client = new TokenClient(authorityEndPoint + "/connect/token", "hangfire-api", "segredo");
             var token = _client.RequestClientCredentialsAsync("ssosa").Result;
             return token.AccessToken;
         }

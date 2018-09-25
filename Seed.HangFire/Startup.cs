@@ -12,7 +12,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using Seed.Data.Context;
 using Seed.HangFire.Config;
 using System;
 using System.Collections.Specialized;

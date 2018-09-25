@@ -17,7 +17,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Common.API\Common.API.csproj" />
     <ProjectReference Include="..\Common.Cripto\Common.Cripto.csproj" />
-    <ProjectReference Include="..\Seed.Data\Seed.Data.csproj" />
   </ItemGroup>
 
 </Project>

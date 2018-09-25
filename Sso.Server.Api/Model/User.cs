@@ -11,6 +11,8 @@ namespace Sso.Server.Api.Model
         public string SubjectId { get; internal set; }
         public string Username { get; internal set; }
         public string Password { get; internal set; }
+        public bool ChangePassword { get; set; }
+        public bool Active { get; set; }
         public List<Claim> Claims { get; internal set; }
     }
 }

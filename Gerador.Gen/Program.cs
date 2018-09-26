@@ -1,12 +1,12 @@
-﻿using Common.Gen;
-using Seed.Gen;
+using Common.Gen;
+using Score.Platform.Account.Gen;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Seed.Gen
+namespace Score.Platform.Account.Gen
 {
     class Program
     {

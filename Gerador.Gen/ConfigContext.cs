@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Seed.Gen
+namespace Score.Platform.Account.Gen
 {
     public class ConfigContext
     {
@@ -14,14 +14,14 @@ namespace Seed.Gen
 
         private Context ConfigContextDefault()
         {
-            var contextName = "Seed";
+            var contextName = "Score.Platform.Account";
 
             return new Context
             {
 
-                ConnectionString = ConfigurationManager.ConnectionStrings["Seed"].ConnectionString,
+                ConnectionString = ConfigurationManager.ConnectionStrings["Score.Platform.Account"].ConnectionString,
 
-                Namespace = "Seed",
+                Namespace = "Score.Platform.Account",
                 ContextName = contextName,
                 ShowKeysInFront = false,
                 LengthBigField = 250,
@@ -45,21 +45,11 @@ namespace Seed.Gen
                 AlertNotFoundTable = true,
                 MakeToolsProfile = true,
 
-                Routes = new List<RouteConfig> {
-                    new RouteConfig{ Route = "{ path: 'sampledash',  canActivate: [AuthGuard], loadChildren: './main/sampledash/sampledash.module#SampleDashModule' }" }
-                },
-                
                 TableInfo = new UniqueListTableInfo
                 {
-                   new TableInfo().FromTable("Sample").MakeBack().MakeFront().AndConfigureThisFields(new List<FieldConfig> {
-                       new FieldConfig
-                       {
-                           Name = "Valor",
-                           Attributes = new List<string>{ "[textMask]='{mask: vm.masks.maskMoney}'" }
-                       }
-                   }),
-                   new TableInfo().FromTable("SampleType").MakeBack().MakeFront(),
-                   new TableInfo().FromClass("SampleDash").MakeFrontBasic(),
+                    new TableInfo().FromTable("Program").MakeBack().MakeFront(),
+                    new TableInfo().FromTable("Tenant").MakeBack().MakeFront(),
+                    new TableInfo().FromTable("Thema").MakeBack().MakeFront(),
                 }
             };
         }

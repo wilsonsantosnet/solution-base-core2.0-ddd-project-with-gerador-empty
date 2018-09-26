@@ -1,0 +1,1 @@
+CreateMap(typeof(<#className#>), typeof(<#className#>DtoSpecializedReport));

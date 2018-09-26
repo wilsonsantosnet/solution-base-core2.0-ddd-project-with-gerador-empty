@@ -1,4 +1,4 @@
-﻿//using Common.Domain;
+//using Common.Domain;
 //using Common.Domain.Base;
 //using Common.Domain.Interfaces;
 //using System;

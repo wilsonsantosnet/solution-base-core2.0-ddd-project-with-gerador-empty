@@ -1,4 +1,4 @@
-﻿using Common.Domain.Base;
+using Common.Domain.Base;
 using IdentityServer4.Models;
 using IdentityServer4.Validation;
 using Microsoft.Extensions.Options;

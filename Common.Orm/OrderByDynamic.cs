@@ -1,4 +1,4 @@
-﻿using Common.Domain.Base;
+using Common.Domain.Base;
 using Common.Domain.Enums;
 using System;
 using System.Collections.Generic;

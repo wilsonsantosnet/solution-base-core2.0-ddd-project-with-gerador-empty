@@ -1,0 +1,77 @@
+<header class="app-header navbar">
+  <a class="navbar-brand" href="#">
+    <img class="navbar-brand-full" src="assets/img/logo.png" width="89" height="25" alt="Logo">
+    <img class="navbar-brand-minimized" src="assets/img/logo.png" width="30" height="30" alt="Logo">
+  </a>
+  <ul class="nav navbar-nav mr-auto d-md-down-none">
+    <li class="nav-item">
+      <a class="nav-link navbar-toggler" href="#" appSidebarToggler>&#9776;</a>
+    </li>
+  </ul>
+  <ul class="nav navbar-nav ml-auto">
+    <li class="nav-item dropdown" dropdown placement="bottom right">
+      <app-avatar [folderAvatar]="'usuario'" [vm]='vm'></app-avatar>
+    </li>
+    <li class="nav-item d-md-down-none">
+      <a class="btn" title="Sair" (click)="onLogout($event)">
+        <span class="fa fa-sign-out" aria-hidden="true"></span> Sair
+      </a>
+    </li>
+  </ul>
+  <button class="navbar-toggler d-md-down-none" type="button" appAsidebarToggler><span class="navbar-toggler-icon"></span></button>
+</header>
+
+
+<div class="app-body">
+
+  <app-sidebar [fixed]="true" [display]="'lg'">
+    <app-sidebar-nav [navItems]="vm.menu" [perfectScrollbar]></app-sidebar-nav>
+    <app-sidebar-minimizer></app-sidebar-minimizer>
+  </app-sidebar>
+
+  <!-- Main content -->
+  <main class="main">
+    <!-- Breadcrumb -->
+    <ol class="breadcrumb">
+      <app-breadcrumb></app-breadcrumb>
+      <!-- Breadcrumb Menu-->
+      <li class="breadcrumb-menu d-md-down-none">
+        <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+        </div>
+      </li>
+    </ol>
+    <router-outlet></router-outlet>
+  </main>
+  <app-aside [fixed]="true" [display]="false">
+    <tabset>
+      <tab>
+        <ng-template tabHeading>
+          <i class="icon-list"></i>
+        </ng-template>
+
+        <div class="list-group list-group-accent">
+
+          <div class="list-group-item list-group-item-accent-secondary bg-light text-center font-weight-bold text-muted text-uppercase small">Profile</div>
+          <div class="list-group-item list-group-item-accent-warning list-group-item-divider">
+            <div class="avatar float-right">
+              <app-avatar [folderAvatar]="'usuario'" [vm]='vm'></app-avatar>
+            </div>
+            <div>
+              <strong>{{vm.userName}}</strong>
+            </div>
+            <small class="text-muted mr-3">
+              {{vm.userRole}}
+            </small>
+            <small class="text-muted">
+              <a class="nav-link" href="#" title="Sair" (click)="onLogout($event)"><span class="fa fa-sign-out" aria-hidden="true"></span> Sair</a>
+            </small>
+          </div>
+        </div>
+      </tab>
+    </tabset>
+  </app-aside>
+</div>
+
+<app-footer>
+  <span><a href="#">Target Software</a> &copy; 2018.</span>
+</app-footer>

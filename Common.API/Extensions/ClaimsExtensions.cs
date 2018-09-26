@@ -1,4 +1,4 @@
-﻿using Common.Domain.Model;
+using Common.Domain.Model;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;

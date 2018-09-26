@@ -1,4 +1,4 @@
-﻿using Common.Domain.Base;
+using Common.Domain.Base;
 using Common.Domain.Interfaces;
 using FastMember;
 using Microsoft.Extensions.Options;

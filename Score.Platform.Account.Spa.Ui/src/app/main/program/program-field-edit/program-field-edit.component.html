@@ -1,0 +1,32 @@
+<div class="row " [formGroup]="vm.form">
+  <section class="col-md-12"  >
+    <div class='form-group'>
+      <label>{{ vm.infos | traduction:'description' }}</label>
+      <input type='text' class='form-control' [(ngModel)]='vm.model.description' name='description' required formControlName='description'    maxlength=250 autocomplete='off'/>
+    </div>
+  </section>
+
+  <section class="col-md-12"  >
+    <div class='form-group'>
+      <label>{{ vm.infos | traduction:'datasource' }}</label>
+      <input type='text' class='form-control' [(ngModel)]='vm.model.datasource' name='datasource' required formControlName='datasource'    maxlength=250 autocomplete='off'/>
+    </div>
+  </section>
+
+  <section class="col-md-12"  >
+    <div class='form-group'>
+      <label>{{ vm.infos | traduction:'databaseName' }}</label>
+      <input type='text' class='form-control' [(ngModel)]='vm.model.databaseName' name='databaseName' required formControlName='databaseName'    maxlength=250 autocomplete='off'/>
+    </div>
+  </section>
+
+  <section class="col-md-12"   *ngIf="!vm.isParent || vm.ParentIdField != 'themaId'">
+    <div class='form-group'>
+      <label class='mr-1'>{{ vm.infos | traduction:'themaId' }}</label> 
+        <select class='form-control'  name='themaId' [(ngModel)]='vm.model.themaId' required formControlName='themaId' datasource [dataitem]="'Thema'" [fieldFilterName]="'Name'"  ></select>
+      </div>
+        
+  </section>
+
+</div>
+

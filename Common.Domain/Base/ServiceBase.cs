@@ -1,4 +1,4 @@
-﻿using Common.Domain.Interfaces;
+using Common.Domain.Interfaces;
 using Common.Domain.Model;
 using System.Collections.Generic;
 using System.Threading.Tasks;

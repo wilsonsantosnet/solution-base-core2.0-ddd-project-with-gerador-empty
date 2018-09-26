@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -36,8 +36,8 @@ namespace Common.Domain.Model
             {
                 source.IsValid = others.Errors.IsAny() ? false : source.IsValid;
                 var erros = new List<string>();
-                erros.AddRange(source.Errors);
-                erros.AddRange(others.Errors);
+                if (source.Errors.IsAny()) erros.AddRange(source.Errors);
+                if (others.Errors.IsAny()) erros.AddRange(others.Errors);
                 source.Errors = erros;
                 return source;
             }

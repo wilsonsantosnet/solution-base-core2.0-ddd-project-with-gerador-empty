@@ -1,0 +1,1 @@
+                <td><bind-custom [model]="item.<#propertyName#>" [format]="'<#type#>'" [tag]="'span'" <#moreattr#>></bind-custom></td>

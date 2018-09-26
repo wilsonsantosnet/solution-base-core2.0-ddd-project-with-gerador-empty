@@ -13,7 +13,7 @@ namespace Common.Cripto
     public class Cripto : ICripto
     {
 
-        public string ComputeHashMd5(string value, string salt)
+        public string TripleDESCripto(string value, string salt)
         {
             if (salt.IsNullOrEmpaty())
                 throw new InvalidOperationException("Salt not found");
@@ -24,10 +24,7 @@ namespace Common.Cripto
             using (var tripleDES = TripleDES.Create())
             {
                 byte[] Results;
-                UTF8Encoding UTF8 = new UTF8Encoding();
-                MD5 MD5 = MD5.Create();
-
-                byte[] TDESKey = MD5.ComputeHash(UTF8.GetBytes(salt));
+                byte[] TDESKey = this.MD5Hash(salt);
 
                 if (TDESKey.Length == 16)
                 {
@@ -41,7 +38,7 @@ namespace Common.Cripto
                 tripleDES.Mode = CipherMode.ECB;
                 tripleDES.Padding = PaddingMode.PKCS7;
 
-                byte[] DataToEncrypt = UTF8.GetBytes(value);
+                byte[] DataToEncrypt = UTF8Encoding.UTF8.GetBytes(value);
 
                 ICryptoTransform Encryptor = tripleDES.CreateEncryptor();
                 Results = Encryptor.TransformFinalBlock(DataToEncrypt, 0, DataToEncrypt.Length);
@@ -113,7 +110,7 @@ namespace Common.Cripto
             }
         }
 
-        private static byte[] MD5Hash(string input)
+        public byte[] MD5Hash(string input)
         {
             using (var md5 = MD5.Create())
             {

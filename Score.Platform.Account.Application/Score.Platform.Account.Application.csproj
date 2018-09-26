@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Common.Dto\Common.Dto.csproj" />
+    <ProjectReference Include="..\Score.Platform.Account.CrossCuting\Score.Platform.Account.CrossCuting.csproj" />
+    <ProjectReference Include="..\Score.Platform.Account.Domain\Score.Platform.Account.Domain.csproj" />
+    <ProjectReference Include="..\Score.Platform.Account.Dto\Score.Platform.Account.Dto.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.ComponentModel.Annotations" Version="4.4.1" />
+  </ItemGroup>
+
+</Project>

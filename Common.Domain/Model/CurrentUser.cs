@@ -1,4 +1,4 @@
-﻿using Common.Domain.Interfaces;
+using Common.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,8 +33,10 @@ namespace Common.Domain.Model
 
         public string GetRole()
         {
-            var role = this._claims.Where(_ => _.Key == "role").SingleOrDefault();
-            return role.Value.IsNotNull() ? role.Value.ToString() : string.Empty;
+            var typeRole = this._claims.Where(_ => _.Key == "role");
+            if (typeRole.IsAny())
+                return typeRole.SingleOrDefault().Value.ToString();
+            return string.Empty;
         }
 
         public string GetTypeRole()

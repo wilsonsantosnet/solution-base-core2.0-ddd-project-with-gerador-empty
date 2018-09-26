@@ -1,4 +1,4 @@
-﻿
+
 namespace Sso.Server.Api.Model
 {
     public class AccountCredencial

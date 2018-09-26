@@ -1,0 +1,38 @@
+<div class="container-fluid" *ngIf="typeLogin!='SSO'">
+  <div class="card">
+    <div class="card-header">
+      <div class="well"><img src="../../../assets/img/logo.png" /></div>
+    </div>
+    <div class="card-block">
+      <form name="vm.FormLogin">
+        <section class="col-md-12">
+          <div class="form-group">
+            <label>E-mail</label>
+            <input type="email" class="form-control" />
+          </div>
+        </section>
+        <section class="col-md-12">
+          <div class="form-group">
+            <label>Senha</label>
+            <input type="password" class="form-control" />
+          </div>
+        </section>
+      </form>
+      <div class="card-footer">
+        <button type="button" class="btn btn-primary">
+          <span class="fa fa-check"></span>
+          Entrar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid" *ngIf="typeLogin=='SSO'">
+  <div class="card">
+    <div class="card-block">
+      <div class="well"><img src="../../../assets/img/logo.png" /></div>
+      <hr>
+      <h3>Verificando Autenticação...</h3>
+    </div>
+  </div>
+</div>

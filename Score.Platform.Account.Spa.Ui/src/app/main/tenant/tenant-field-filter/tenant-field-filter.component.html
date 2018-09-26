@@ -1,0 +1,54 @@
+<div class="row">
+  <section class="col-md-6">
+    <div class='form-group'>
+      <label>{{ vm.infos | traduction:'name' }}</label>
+      <input type='text' class='form-control'  [(ngModel)]='vm.modelFilter.name' name='name' />
+    </div>
+  </section>
+  <section class="col-md-6">
+    <div class='form-group'>
+      <label>{{ vm.infos | traduction:'email' }}</label>
+      <input type='text' class='form-control'  [(ngModel)]='vm.modelFilter.email' name='email' />
+    </div>
+  </section>
+  <section class="col-md-6">
+    <div class='form-group'>
+      <label>{{ vm.infos | traduction:'password' }}</label>
+      <input type='text' class='form-control'  [(ngModel)]='vm.modelFilter.password' name='password' />
+    </div>
+  </section>
+  <section class="col-md-6">
+    <div class='form-group'>
+      <label>{{ vm.infos | traduction:'guidResetPassword' }}</label>
+      <input type='text' class='form-control'  [(ngModel)]='vm.modelFilter.guidResetPassword' name='guidResetPassword' />
+    </div>
+  </section>
+  <section class="col-md-6">
+    <div class='form-group'>
+      <label>{{ vm.infos | traduction:'dateResetPassword' }}</label>
+      <input type='text' class='form-control'  [(ngModel)]='vm.modelFilter.dateResetPassword' name='dateResetPassword'datepicker />
+    </div>
+  </section>
+  <section class="col-md-6">
+    <div class='form-group'>
+      <label>{{ vm.infos | traduction:'programId'}}</label>
+      <select class='form-control'  name='programId' [(ngModel)]='vm.modelFilter.programId' datasource [dataitem]="'Program'" [fieldFilterName]="'Description'"></select>
+    </div>
+  </section>
+  <section class="col-md-6">
+    <label>{{ vm.infos | traduction:'active' }}</label>
+<div class='form-group'>
+    <label class='radio-inline'><input type='radio' name='active' [(ngModel)]='vm.modelFilter.active'> Todos</label>
+    <label class='radio-inline'><input type='radio' name='active' [(ngModel)]='vm.modelFilter.active' value='true'> Sim</label>
+    <label class='radio-inline'><input type='radio' name='active' [(ngModel)]='vm.modelFilter.active' value='false'> Não</label>
+</div>
+  </section>
+  <section class="col-md-6">
+    <label>{{ vm.infos | traduction:'changePasswordNextLogin' }}</label>
+<div class='form-group'>
+    <label class='radio-inline'><input type='radio' name='changePasswordNextLogin' [(ngModel)]='vm.modelFilter.changePasswordNextLogin'> Todos</label>
+    <label class='radio-inline'><input type='radio' name='changePasswordNextLogin' [(ngModel)]='vm.modelFilter.changePasswordNextLogin' value='true'> Sim</label>
+    <label class='radio-inline'><input type='radio' name='changePasswordNextLogin' [(ngModel)]='vm.modelFilter.changePasswordNextLogin' value='false'> Não</label>
+</div>
+  </section>
+</div>

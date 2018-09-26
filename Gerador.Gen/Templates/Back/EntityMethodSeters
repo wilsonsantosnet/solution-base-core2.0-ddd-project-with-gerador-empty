@@ -1,0 +1,4 @@
+		public virtual void Setar<#propertyName#>(<#type#> <#propertyNameLower#>)
+		{
+			this.<#propertyName#> = <#propertyNameLower#>;
+		}

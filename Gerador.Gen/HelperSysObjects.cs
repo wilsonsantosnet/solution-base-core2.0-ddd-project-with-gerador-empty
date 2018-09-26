@@ -1,11 +1,11 @@
-﻿using Common.Gen;
+using Common.Gen;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Seed.Gen
+namespace Score.Platform.Account.Gen
 {
     public class HelperSysObjects : HelperSysObjectsDDD
     {

@@ -1,0 +1,1 @@
+public virtual <#type#> <#propertyName#> { get; protected set; }

@@ -1,0 +1,10 @@
+using Common.Domain.Base;
+
+namespace <#namespace#>.Domain.Config
+{
+    public class ConfigSettingsDomain : ConfigSettingsBase
+    {
+
+
+    }
+}

@@ -1,24 +1,6 @@
 # seed-core-ddd-project-with-gerador-empty
 Seed vazio para projetos  SPA / DDD / Gerador
 
--- PRÉ REQUISITOS;
-
-1-) git shell [https://git-for-windows.github.io/]
-
-2-) node.js [https://nodejs.org/en/])
-
-3-) npm install -g @angular/cli
-
-3-) opcional [Conemu [https://www.fosshub.com/ConEmu.html/ConEmuSetup.161206.exe]]
-
-5-) instalar .net core 2.0.X [https://www.microsoft.com/net/download/windows]
-
-5.1-) instalar SDK installer [https://www.microsoft.com/net/download/thank-you/dotnet-sdk-2.1.200-windows-x64-installer]
-
-
--- SETUP
-
-
 1-) Clonar Esse Rep na pasta C:\Projetos (git clone https://github.com/wilsonsantosnet/solution-base-core2.0-ddd-project-with-gerador-empty.git)
 
 1.1 -) Crie um banco de dados com o script da pasta \Projetos\seed-core-ddd-project-with-gerador-empty\Gerador.Gen\Scripts\Sample.Seed.sql
@@ -77,7 +59,7 @@ https://drive.google.com/file/d/1qE6RSNoJCipIbQMYFmT41_Y7GXW2WXds/view
 ## 3-) Component Basico sem back 
 
 ```
-private Context ConfigContextSeed()
+  private Context ConfigContextDefault()
         {
             var contextName = "Seed";
 
@@ -91,48 +73,58 @@ private Context ConfigContextSeed()
                 ShowKeysInFront = false,
                 LengthBigField = 250,
                 OverrideFiles = true,
-                TwoCols = true,
+                UseRouteGuardInFront = true,
 
-                OutputClassDomain = ConfigurationManager.AppSettings[string.Format("outputClassDomain{0}", contextName)],
-                OutputClassInfra = ConfigurationManager.AppSettings[string.Format("outputClassInfra{0}", contextName)],
-                OutputClassDto = ConfigurationManager.AppSettings[string.Format("outputClassDto{0}", contextName)],
-                OutputClassApp = ConfigurationManager.AppSettings[string.Format("outputClassApp{0}", contextName)],
-                OutputClassApi = ConfigurationManager.AppSettings[string.Format("outputClassApi{0}", contextName)],
-                OutputClassFilter = ConfigurationManager.AppSettings[string.Format("outputClassFilter{0}", contextName)],
-                OutputClassSummary = ConfigurationManager.AppSettings[string.Format("outputClassSummary{0}", contextName)],
+                OutputClassDomain = ConfigurationManager.AppSettings[string.Format("outputClassDomain")],
+                OutputClassInfra = ConfigurationManager.AppSettings[string.Format("outputClassInfra")],
+                OutputClassDto = ConfigurationManager.AppSettings[string.Format("outputClassDto")],
+                OutputClassApp = ConfigurationManager.AppSettings[string.Format("outputClassApp")],
+                OutputClassApi = ConfigurationManager.AppSettings[string.Format("outputClassApi")],
+                OutputClassFilter = ConfigurationManager.AppSettings[string.Format("outputClassFilter")],
+                OutputClassSummary = ConfigurationManager.AppSettings[string.Format("outputClassSummary")],
                 OutputAngular = ConfigurationManager.AppSettings["OutputAngular"],
                 OutputClassSso = ConfigurationManager.AppSettings["OutputClassSso"],
+                OutputClassCrossCustingAuth = ConfigurationManager.AppSettings["OutputClassCrossCustingAuth"],
 
                 Arquiteture = ArquitetureType.DDD,
                 CamelCasing = true,
                 MakeFront = true,
-                
-                   Routes = new List<RouteConfig> {
+                AlertNotFoundTable = true,
+                MakeToolsProfile = true,
+
+                Routes = new List<RouteConfig> {
                     new RouteConfig{ Route = "{ path: 'sampledash',  canActivate: [AuthGuard], loadChildren: './main/sampledash/sampledash.module#SampleDashModule' }" }
                 },
-
+                
                 TableInfo = new UniqueListTableInfo
                 {
-
-                   new TableInfo { TableName = "Sample", MakeDomain = true, MakeApp = true, MakeDto = true, MakeCrud = true, MakeApi= true, MakeSummary = true , MakeFront= true , FieldsConfig = new List<FieldConfig>{
-
-                       new FieldConfig {
-                           Name = "Descricao",
-                           TextEditor = true,
-                       },
-                       new FieldConfig {
-                           Name = "Tags",
-                           Tags = true
+                   new TableInfo().FromTable("Sample").MakeBack().MakeFront().AndConfigureThisFields(new List<FieldConfig> {
+                       new FieldConfig
+                       {
+                           Name = "Valor",
+                           Attributes = new List<string>{ "[textMask]='{mask: vm.masks.maskMoney}'" }
                        }
-
-                   } },
-                   new TableInfo { TableName = "SampleType", MakeDomain = true, MakeApp = true, MakeDto = true, MakeCrud = true, MakeApi= true, MakeSummary = true , MakeFront= true},
-                   new TableInfo { ClassName = "SampleDash", MakeFront = true, MakeFrontBasic = true , Scaffold = false, UsePathStrategyOnDefine = false },
-
+                   }),
+                   new TableInfo().FromTable("SampleType").MakeBack().MakeFront(),
+                   new TableInfo().FromClass("SampleDash").MakeFrontBasic(),
                 }
             };
         }
 ```
+
+-- PRÉ REQUISITOS;
+
+1-) git shell [https://git-for-windows.github.io/]
+
+2-) node.js [https://nodejs.org/en/])
+
+3-) npm install -g @angular/cli
+
+3-) opcional [Conemu [https://www.fosshub.com/ConEmu.html/ConEmuSetup.161206.exe]]
+
+5-) instalar .net core 2.0.X [https://www.microsoft.com/net/download/windows]
+
+5.1-) instalar SDK installer [https://www.microsoft.com/net/download/thank-you/dotnet-sdk-2.1.200-windows-x64-installer]
 
 
 

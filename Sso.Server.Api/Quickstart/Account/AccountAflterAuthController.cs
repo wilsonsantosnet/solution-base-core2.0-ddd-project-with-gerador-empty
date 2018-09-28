@@ -1,4 +1,4 @@
-using IdentityServer4.Events;
+﻿using IdentityServer4.Events;
 using IdentityServer4.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;

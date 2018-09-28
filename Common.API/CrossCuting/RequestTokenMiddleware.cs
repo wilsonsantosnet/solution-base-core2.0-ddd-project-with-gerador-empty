@@ -32,16 +32,20 @@ namespace Common.API.Extensions
                 var canRead = jwt.CanReadToken(tokenClear);
                 if (canRead)
                 {
-                    //var claims = await GetClaimsFromServer(configSettingsBase, tokenClear);
-                    var claims = GetClaimsFromUserPrincipal(context);
-                    //var claims = GetClaimsFromReadToken(tokenClear, jwt);
-                    this.ConfigClaims(currentUser, tokenClear, claims.ConvertToDictionary());
+                    try
+                    {
+                        //var claims = await GetClaimsFromServer(configSettingsBase, tokenClear);
+                        var claims = GetClaimsFromUserPrincipal(context);
+                        //var claims = GetClaimsFromReadToken(tokenClear, jwt);
+
+                        this.ConfigClaims(currentUser, tokenClear, claims.ConvertToDictionary());
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+
                 }
-            }
-            else
-            {
-                var claims = GetClaimsFromUserPrincipal(context);
-                ConfigClaims(currentUser, string.Empty, claims.ConvertToDictionary());
             }
             await this._next.Invoke(context);
         }

@@ -1,4 +1,4 @@
-using Common.Domain.CompositeKey;
+﻿using Common.Domain.CompositeKey;
 using Common.Domain.Interfaces;
 using Common.Domain.Model;
 using System;

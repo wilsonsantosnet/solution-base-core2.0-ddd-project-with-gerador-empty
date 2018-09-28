@@ -1,19 +1,13 @@
-using Common.API;
-using Common.Cripto;
+﻿using Common.API;
 using Common.Domain.Base;
-using Common.Domain.Interfaces;
 using Common.Domain.Model;
 using IdentityServer4.Validation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using Score.Platform.Account.Data.Context;
-using Score.Platform.Account.Data.Repository;
-using Score.Platform.Account.Domain.Interfaces.Repository;
 using System;
 using System.IO;
 using System.Security.Cryptography.X509Certificates;
@@ -44,13 +38,12 @@ namespace Sso.Server.Api
              Configuration
                 .GetSection("ConfigConnectionString:Default").Value;
 
-            services.AddDbContext<DbContextScore>(options => options.UseSqlServer(cns));
 
-            services.AddIdentityServer()
-                .AddSigningCredential(GetRSAParameters())
-                .AddInMemoryApiResources(Config.GetApiResources())
-                .AddInMemoryIdentityResources(Config.GetIdentityResources())
-                .AddInMemoryClients(Config.GetClients(Configuration.GetSection("ConfigSettings").Get<ConfigSettingsBase>()));
+            services.AddIdentityServer();
+                //.AddSigningCredential(GetRSAParameters())
+                //.AddInMemoryApiResources(Config.GetApiResources())
+                //.AddInMemoryIdentityResources(Config.GetIdentityResources())
+                //.AddInMemoryClients(Config.GetClients(Configuration.GetSection("ConfigSettings").Get<ConfigSettingsBase>()));
 
             //Configurations
             services.Configure<ConfigSettingsBase>(Configuration.GetSection("ConfigSettings"));
@@ -58,8 +51,6 @@ namespace Sso.Server.Api
             //Container DI
             services.AddScoped<CurrentUser>();
             services.AddTransient<IUserServices, UserServices>();
-            services.AddTransient<ITenantRepository, TenantRepository>();
-            services.AddTransient<ICripto, Cripto>();
             services.AddTransient<IResourceOwnerPasswordValidator, ResourceOwnerPasswordValidator>();
             services.AddSingleton<IConfiguration>(Configuration);
 

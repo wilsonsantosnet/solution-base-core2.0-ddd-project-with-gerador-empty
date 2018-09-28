@@ -1,4 +1,4 @@
-using Common.Domain.Interfaces;
+﻿using Common.Domain.Interfaces;
 using System.Collections.Generic;
 
 namespace Common.Domain.Base

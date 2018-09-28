@@ -1,7 +1,0 @@
-namespace <#namespace#>.Domain.Filter
-{
-    public class <#className#>Filter  : <#className#>FilterBase
-    {
-
-    }
-}

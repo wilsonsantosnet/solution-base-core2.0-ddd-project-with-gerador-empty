@@ -1,4 +1,4 @@
-using SendGrid;
+﻿using SendGrid;
 using SendGrid.Helpers.Mail;
 using System;
 using System.Collections.Generic;

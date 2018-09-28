@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -28,8 +28,8 @@ namespace Common.Domain.Model
             {
                 source.IsValid = others.Warnings.IsAny() ? false : source.IsValid;
                 var warnings = new List<string>();
-                if (source.Warnings.IsAny()) warnings.AddRange(source.Warnings);
-                if (others.Warnings.IsAny()) warnings.AddRange(others.Warnings);
+                warnings.AddRange(source.Warnings);
+                warnings.AddRange(others.Warnings);
                 source.Warnings = warnings;
                 return source;
             }

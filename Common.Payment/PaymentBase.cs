@@ -1,4 +1,4 @@
-using Common.Domain;
+﻿using Common.Domain;
 using Common.Domain.Base;
 using Microsoft.Extensions.Options;
 using System;

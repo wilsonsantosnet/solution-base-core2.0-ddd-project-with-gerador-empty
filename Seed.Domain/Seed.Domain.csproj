@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Common.Domain\Common.Domain.csproj" />
+    <ProjectReference Include="..\Common.Validation\Common.Validation.csproj" />
+    <ProjectReference Include="..\Seed.Domain.Filter\Seed.Domain.Filter.csproj" />
+    <ProjectReference Include="..\Seed.Enums\Seed.Enums.csproj" />
+  </ItemGroup>
+
+</Project>

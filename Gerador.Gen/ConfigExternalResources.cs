@@ -1,7 +1,7 @@
 using Common.Gen;
 using System.Collections.Generic;
 
-namespace Score.Platform.Account.Gen
+namespace Seed.Gen
 {
     public class ConfigExternalResources
     {
@@ -80,7 +80,7 @@ namespace Score.Platform.Account.Gen
                 ResouceRepositoryName = "project-base-layout-front-coreui-angular6.0",
                 ResourceUrlRepository = "https://github.com/wilsonsantosnet/project-base-layout-front-coreui-angular6.0.git",
                 ResourceLocalPathFolderExecuteCloning = @"C:\Projetos\Outros\Repositorios",
-                ResourceLocalPathDestinationFolrderApplication = @"C:\Projetos\solution-base-core2.0-ddd-project-with-gerador-empty\Score.Platform.Account.Spa.Ui"
+                ResourceLocalPathDestinationFolrderApplication = @"C:\Projetos\solution-base-core2.0-ddd-project-with-gerador-empty\Seed.Spa.Ui"
             };
 
         }
@@ -94,7 +94,7 @@ namespace Score.Platform.Account.Gen
                 ResouceRepositoryName = "project-base-layout-front-coreui-angular6.0",
                 ResourceUrlRepository = "https://github.com/wilsonsantosnet/project-base-layout-front-coreui-angular6.0.git",
                 ResourceLocalPathFolderExecuteCloning = @"C:\Projetos\Outros\Repositorios",
-                ResourceLocalPathDestinationFolrderApplication = @"C:\Projetos\solution-base-core2.0-ddd-project-with-gerador-empty\Score.Platform.Account.Spa.Ui",
+                ResourceLocalPathDestinationFolrderApplication = @"C:\Projetos\solution-base-core2.0-ddd-project-with-gerador-empty\Seed.Spa.Ui",
                 OnlyThisFiles = new List<string> {
                     "package.json",
                     "Web.config",
@@ -141,7 +141,7 @@ namespace Score.Platform.Account.Gen
                 ResouceRepositoryName = "framework-angular6.0-CRUD",
                 ResourceUrlRepository = "https://github.com/wilsonsantosnet/framework-angular6.0-CRUD.git",
                 ResourceLocalPathFolderExecuteCloning = @"C:\Projetos\Outros\Repositorios",
-                ResourceLocalPathDestinationFolrderApplication = @"C:\Projetos\solution-base-core2.0-ddd-project-with-gerador-empty\Score.Platform.Account.Spa.Ui\src\app\common"
+                ResourceLocalPathDestinationFolrderApplication = @"C:\Projetos\solution-base-core2.0-ddd-project-with-gerador-empty\Seed.Spa.Ui\src\app\common"
             };
 
         }

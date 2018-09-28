@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Score.Platform.Account.Gen
+namespace Seed.Gen
 {
     public class ConfigContext
     {
@@ -14,14 +14,14 @@ namespace Score.Platform.Account.Gen
 
         private Context ConfigContextDefault()
         {
-            var contextName = "Score.Platform.Account";
+            var contextName = "Seed";
 
             return new Context
             {
 
-                ConnectionString = ConfigurationManager.ConnectionStrings["Score.Platform.Account"].ConnectionString,
+                ConnectionString = ConfigurationManager.ConnectionStrings["Seed"].ConnectionString,
 
-                Namespace = "Score.Platform.Account",
+                Namespace = "Seed",
                 ContextName = contextName,
                 ShowKeysInFront = false,
                 LengthBigField = 250,
@@ -45,11 +45,21 @@ namespace Score.Platform.Account.Gen
                 AlertNotFoundTable = true,
                 MakeToolsProfile = true,
 
+                Routes = new List<RouteConfig> {
+                    new RouteConfig{ Route = "{ path: 'sampledash',  canActivate: [AuthGuard], loadChildren: './main/sampledash/sampledash.module#SampleDashModule' }" }
+                },
+                
                 TableInfo = new UniqueListTableInfo
                 {
-                    new TableInfo().FromTable("Program").MakeBack().MakeFront(),
-                    new TableInfo().FromTable("Tenant").MakeBack().MakeFront(),
-                    new TableInfo().FromTable("Thema").MakeBack().MakeFront(),
+                   new TableInfo().FromTable("Sample").MakeBack().MakeFront().AndConfigureThisFields(new List<FieldConfig> {
+                       new FieldConfig
+                       {
+                           Name = "Valor",
+                           Attributes = new List<string>{ "[textMask]='{mask: vm.masks.maskMoney}'" }
+                       }
+                   }),
+                   new TableInfo().FromTable("SampleType").MakeBack().MakeFront(),
+                   new TableInfo().FromClass("SampleDash").MakeFrontBasic(),
                 }
             };
         }

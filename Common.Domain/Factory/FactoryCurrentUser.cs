@@ -1,4 +1,4 @@
-using Common.Domain.Interfaces;
+﻿using Common.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;

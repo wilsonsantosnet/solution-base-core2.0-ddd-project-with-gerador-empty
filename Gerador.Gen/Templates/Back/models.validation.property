@@ -1,3 +1,0 @@
-<#RequiredValidation#>
-<#MaxLengthValidation#>
-<#tab#>public virtual <#type#> <#propertyName#> {get; set;}

@@ -3,7 +3,7 @@ using Sso.Server.Api.Model;
 
 namespace Sso.Server.Api
 {
-    public interface IUserServices
+    public interface IUserCredentialServices
     {
         Task<UserCredential> Auth(string userName, string password);
     }

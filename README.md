@@ -39,7 +39,7 @@ Seed vazio para projetos  SPA / DDD / Gerador
 
 19-) No projeto de Seed.API da pasta Services no arquivo  Program descomentar  essa linha ".UseStartup<Startup>()"
 
-20-) No projeto de Sso.Server.Api da pata SSO\Auth no arquivo UserServices descomentar código de autenticação defualt e retira o throw
+20-) No projeto de Sso.Server.Api da pata SSO\Auth no arquivo UserCredentialServices descomentar código de autenticação defualt e retira o throw
 
 21-) No projeto de Sso.Server.Api da pata SSO\Auth no arquivo Startup.cs na linha AddIdentityServer , remover o ponto e virgula e descomentar as linhas baixo
 

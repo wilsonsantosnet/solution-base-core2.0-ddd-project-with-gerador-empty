@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System.Linq;
 
-namespace Score.Platform.Features.Data.Context
+namespace Seed.Data.Context
 {
     public class DbContextMultiTenantcy : DbContext
     {
@@ -11,7 +11,7 @@ namespace Score.Platform.Features.Data.Context
         private readonly CurrentUser _user;
         private readonly IConfiguration _config;
 
-        public DbContextMultiTenantcy(DbContextOptions<DbContextScore> options, CurrentUser user, IConfiguration config)
+        public DbContextMultiTenantcy(DbContextOptions<DbContextSeed> options, CurrentUser user, IConfiguration config)
             : base(options)
         {
             this._user = user;

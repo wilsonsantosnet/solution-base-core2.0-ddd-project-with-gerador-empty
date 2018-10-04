@@ -5,6 +5,6 @@ namespace Sso.Server.Api
 {
     public interface IUserServices
     {
-        Task<User> Auth(string userName, string password);
+        Task<UserCredential> Auth(string userName, string password);
     }
 }

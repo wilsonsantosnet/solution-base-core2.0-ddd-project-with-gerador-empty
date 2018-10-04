@@ -24,7 +24,7 @@ namespace Sso.Server.Api.Controllers
         }        
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody]AccountCredencial accountCredencial)
+        public async Task<IActionResult> Post([FromBody]AccountCredential accountCredencial)
         {
             var result = new HttpResult<TokenResponse>(this._logger);
 

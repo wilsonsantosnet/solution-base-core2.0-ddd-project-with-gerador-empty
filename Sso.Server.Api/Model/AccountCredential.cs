@@ -1,7 +1,7 @@
 ﻿
 namespace Sso.Server.Api.Model
 {
-    public class AccountCredencial
+    public class AccountCredential
     {
 
         public string ClientId { get; set; }

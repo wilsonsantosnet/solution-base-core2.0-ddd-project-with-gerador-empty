@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Sso.Server.Api.Model
 {
-    public class User
+    public class UserCredential
     {
         public string SubjectId { get; internal set; }
         public string Username { get; internal set; }

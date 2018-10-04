@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace Sso.Server.Api
 {
-    public class UserServices : IUserServices
+    public class UserCredentialServices : IUserServices
     {
 
-        public async Task<User> Auth(string userName, string password)
+        public async Task<UserCredential> Auth(string userName, string password)
         {
 
             //return await Task.Run(() =>

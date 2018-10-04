@@ -7,15 +7,16 @@ using System.Threading.Tasks;
 
 namespace Sso.Server.Api
 {
-    public class UserCredentialServices : IUserServices
+    public class UserCredentialServices : IUserCredentialServices
     {
 
         public async Task<UserCredential> Auth(string userName, string password)
         {
 
+           
             //return await Task.Run(() =>
             //{
-            //    var user = default(User);
+            //    var UserCredential = default(UserCredential);
 
             //    var userAdmin = Config.GetUsers()
             //        .Where(_ => _.Username == userName)
@@ -23,9 +24,9 @@ namespace Sso.Server.Api
             //        .SingleOrDefault();
 
             //    if (userAdmin.IsNotNull())
-            //        user = userAdmin;
+            //        UserCredential = userAdmin;
 
-            //    return user;
+            //    return UserCredential;
             //});
 
 

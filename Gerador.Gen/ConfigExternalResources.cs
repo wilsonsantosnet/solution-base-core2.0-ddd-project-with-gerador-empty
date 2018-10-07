@@ -145,6 +145,26 @@ namespace Seed.Gen
             };
 
         }
+        
+        private ExternalResource ConfigExternarResourcesProjectBaseItensSolutionOnlyThisFiles(bool replaceLocalFilesApplication)
+        {
+
+            return new ExternalResource
+            {
+                ReplaceLocalFilesApplication = true,
+                ResouceRepositoryName = "solution-base-core2.0-ddd-project-with-gerador-empty",
+                ResourceUrlRepository = "https://github.com/wilsonsantosnet/solution-base-core2.0-ddd-project-with-gerador-empty.git",
+                ResourceLocalPathFolderExecuteCloning = @"C:\Projetos\Outros\Repositorios",
+                ResourceLocalPathDestinationFolrderApplication = @"C:\Projetos\solution-base-core2.0-ddd-project-with-gerador-empty",
+                OnlyThisFiles = new List<string> {
+                    "Itens Solutions\\Common.Domain.dll",
+                    "Itens Solutions\\Common.Gen.dll",
+                    "Itens Solutions\\Common.dll",
+                }
+
+            };
+
+        }
 
         public IEnumerable<ExternalResource> GetConfigExternarReources()
         {
@@ -162,7 +182,8 @@ namespace Seed.Gen
                ConfigExternarResourcesTemplatesFrontCoreUiAngular60(replaceLocalFilesApplication),
                ConfigExternarResourcesFrameworkAngula60Crud(replaceLocalFilesApplication),
                ConfigExternarResourcesProjectBaseLayoutCoreUIAngular60(replaceLocalFilesApplication),
-               ConfigExternarResourcesProjectBaseLayoutCoreUIAngular60OnlyThisFiles(replaceLocalFilesApplication)
+               ConfigExternarResourcesProjectBaseLayoutCoreUIAngular60OnlyThisFiles(replaceLocalFilesApplication),
+               ConfigExternarResourcesProjectBaseItensSolutionOnlyThisFiles(replaceLocalFilesApplication)
             };
         }
 

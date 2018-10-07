@@ -13,9 +13,9 @@ namespace Sso.Server.Api
     {
         
         private readonly ConfigSettingsBase _settings;
-        private readonly IUserServices _userServices;
+        private readonly IUserCredentialServices _userServices;
 
-        public ResourceOwnerPasswordValidator(IOptions<ConfigSettingsBase> configSettingsBase, IUserServices userServices)
+        public ResourceOwnerPasswordValidator(IOptions<ConfigSettingsBase> configSettingsBase, IUserCredentialServices userServices)
         {
             this._settings = configSettingsBase.Value;
             this._userServices = userServices;

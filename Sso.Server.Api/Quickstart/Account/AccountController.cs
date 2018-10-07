@@ -35,7 +35,7 @@ namespace IdentityServer4.Quickstart.UI
         private readonly IClientStore _clientStore;
         private readonly IAuthenticationSchemeProvider _schemeProvider;
         private readonly IEventService _events;
-        private readonly IUserServices _usersServices;
+        private readonly IUserCredentialServices _usersServices;
         private readonly IOptions<ConfigSettingsBase> _settings;
         private readonly IOptions<ConfigEmailBase> _configEmail;
 
@@ -45,7 +45,7 @@ namespace IdentityServer4.Quickstart.UI
             IClientStore clientStore,
             IAuthenticationSchemeProvider schemeProvider,
             IEventService events,
-            IUserServices usersServices,
+            IUserCredentialServices usersServices,
             IOptions<ConfigSettingsBase> settings,
             IOptions<ConfigEmailBase> configEmail)
         {

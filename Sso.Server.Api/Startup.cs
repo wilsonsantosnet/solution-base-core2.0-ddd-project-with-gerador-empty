@@ -50,7 +50,7 @@ namespace Sso.Server.Api
             services.Configure<Connectionstring>(Configuration.GetSection("ConfigConnectionString"));
             //Container DI
             services.AddScoped<CurrentUser>();
-            services.AddTransient<IUserServices, UserCredentialServices>();
+            services.AddTransient<IUserCredentialServices, UserCredentialServices>();
             services.AddTransient<IResourceOwnerPasswordValidator, ResourceOwnerPasswordValidator>();
             services.AddSingleton<IConfiguration>(Configuration);
 

@@ -112,6 +112,7 @@ namespace Seed.Gen
                     "src\\app\\main\\main.component.ts",
                     "src\\app\\main\\main.service.ts",
                     "src\\assets\\jquery.nestable.js",
+                    "src\\app\\util\\enum\\enum.service.ts"
                 }
 
             };

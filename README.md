@@ -3,7 +3,7 @@ Seed vazio para projetos  SPA / DDD / Gerador
 
 1-) Clonar Esse Rep na pasta C:\Projetos (git clone https://github.com/wilsonsantosnet/solution-base-core2.0-ddd-project-with-gerador-empty.git)
 
-1.1 -) Crie um banco de dados com o script da pasta \Projetos\seed-core-ddd-project-with-gerador-empty\Gerador.Gen\Scripts\Sample.Seed.sql
+1-) Crie um banco de dados com o script da pasta \Projetos\seed-core-ddd-project-with-gerador-empty\Gerador.Gen\Scripts\Sample.Seed.sql
 
 2-) abrir solution seed.sln
 
@@ -13,7 +13,9 @@ Seed vazio para projetos  SPA / DDD / Gerador
 
 5-) Clicar com botão direito no projeto de gerador e rodar em debug
 
-6-) escolher a opção 1 (clonar e copiar para aplicação)
+6-) Escolher a opção 1 (clonar e copiar para aplicação)
+
+6-) Escolher o aopção 8 e renomear o projeto, feche a solution e a abra novamente sem salvar a solution ao fechat
 
 7-) No projeto Greador.Gen Mostar Todos os Arquivos 
 
@@ -25,7 +27,7 @@ Seed vazio para projetos  SPA / DDD / Gerador
 
 12-) abrir prompt de comando entrar na pasta Seed.Spa.UI rodar npm install  e logo depois npm rebuild node-sass --force
 
-13-) no gerador configurar a classe ConfigContext com as tabelas que serão geradas [linha 46]
+13-) no gerador configurar a classe ConfigContext com as tabelas que serão geradas , veja o exemplo de Contexto no final das instruções
 
 14-) Configurar connection string no gerador app.config apontando para o seu banco. 
 
@@ -35,7 +37,7 @@ Seed vazio para projetos  SPA / DDD / Gerador
 
 17-) no projeto Seed.Api pasta Services configurar a connectionstring do arquivo appsettings.json
 
-18-) No projeto Seed.ui pasta Presentation, encontrar o arquivo /src/app/global.service.ts, nesse arquivo existe uma classe chamanda AuthSettings com uma propriedade chamada CLIENT_ID, essa propriedade deve conter o valor  da propriedade ClientId confirada no item do tipo implicit, no método GetClients do arquivo Config.cs do projeto de Sso.Server.Api da pata SSO\Auth 
+18-) configure o ClientID na arquivo /src/app/global.service.ts, na classe chamanda AuthSettings, essa propriedade deve conter o valor  da propriedade ClientId, do arquivo Config.cs do projeto de Sso.Server.Api da pata SSO\Auth , o cliente que deve ser usado é de fluxo implicit flow
 
 19-) No projeto de Seed.API da pasta Services no arquivo  Program descomentar  essa linha ".UseStartup<Startup>()"
 
@@ -49,7 +51,10 @@ Seed vazio para projetos  SPA / DDD / Gerador
 
 24-) entra na pasta Seed.Spa.Ui e rodar no prompt de comando ng serve --open
 
-25-) agora pode criar outros campos na Tabela Rodar o gerador que esses serão criados em cada camada do projeto, inclusive no front
+25-) agora pode criar Outras tabelas , Alterar tabelas existentes que o gerador vai atualizar toda as Stack do projeto
+
+
+Observe o Diagrama Abaixo ele demostra quais peças existem no gerador.
 
 https://drive.google.com/file/d/1qE6RSNoJCipIbQMYFmT41_Y7GXW2WXds/view
 

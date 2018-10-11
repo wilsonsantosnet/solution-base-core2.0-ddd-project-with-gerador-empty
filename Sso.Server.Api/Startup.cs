@@ -75,7 +75,7 @@ namespace Sso.Server.Api
 
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
-            loggerFactory.AddFile("Logs/sm-sso-server-api-{Date}.log");
+            loggerFactory.AddFile(Configuration.GetSection("Logging"));
 
             app.UseCors("AllowAnyOrigin");
 

@@ -30,6 +30,7 @@ namespace Common.API
             services.Configure<MvcOptions>(options =>
             {
                 options.Filters.Add(new CorsAuthorizationFilterFactory("AllowAnyOrigin"));
+                options.Filters.Add(new CorsAuthorizationFilterFactory("AllowStackOrigin"));
             });
 
         }

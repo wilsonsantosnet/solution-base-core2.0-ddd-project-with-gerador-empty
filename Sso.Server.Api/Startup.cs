@@ -62,7 +62,10 @@ namespace Sso.Server.Api
                 options.ClientSecret = "x1SWT89gyn5LLLyMNFxEx_Ss";
             });
             // Add cross-origin resource sharing services Configurations
-            Cors.Enable(services);
+            var sp = services.BuildServiceProvider();
+            var configuration = sp.GetService<IOptions<ConfigSettingsBase>>();
+            Cors.Enable(services, configuration.Value.ClientAuthorityEndPoint.ToArray());
+
             services.AddMvc();
 
 
@@ -77,7 +80,7 @@ namespace Sso.Server.Api
             loggerFactory.AddDebug();
             loggerFactory.AddFile(Configuration.GetSection("Logging"));
 
-            app.UseCors("AllowAnyOrigin");
+            app.UseCors("AllowStackOrigin");
 
             app.UseIdentityServer();
             //app.UseGoogleAuthentication(new GoogleOptions

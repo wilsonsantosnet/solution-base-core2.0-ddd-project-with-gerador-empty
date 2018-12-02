@@ -68,6 +68,7 @@ namespace IdentityServer4.Quickstart.UI
         public async Task<IActionResult> Login(string returnUrl)
         {
             // build a model so we know what to show on the login page
+            Response.Cookies.Append("returnUrl", HelperUrl.GetRedirectUrl(returnUrl));
             var vm = await BuildLoginViewModelAsync(returnUrl);
 
             if (vm.IsExternalLoginOnly)
@@ -88,6 +89,9 @@ namespace IdentityServer4.Quickstart.UI
         {
             // check if we are in the context of an authorization request
             var context = await _interaction.GetAuthorizationContextAsync(model.ReturnUrl);
+            var redirectDomain = HelperUrl.GetRedirectDomain(model.ReturnUrl);
+            var ReturnUrl = HelperUrl.GetRedirectUrl(model.ReturnUrl);
+            var clientId = HelperUrl.GetClientId(model.ReturnUrl);
 
 
             if (ModelState.IsValid)
@@ -95,8 +99,24 @@ namespace IdentityServer4.Quickstart.UI
                 model.RememberLogin = true;
                 // validate username/password against in-memory store
                 var user = await _usersServices.Auth(model.Username, model.Password);
-                if (user.IsNotNull())
+
+                if (user.IsNull())
                 {
+                    await _events.RaiseAsync(new UserLoginFailureEvent(model.Username, "invalid credentials"));
+                    ModelState.AddModelError("", AccountOptions.InvalidCredentialsErrorMessage);
+
+                }
+                else if (user.Error.IsNotNullOrEmpty())
+                {
+                    await _events.RaiseAsync(new UserLoginFailureEvent(model.Username, "invalid credentials"));
+                    ModelState.AddModelError("", user.Error);
+
+                }
+                else
+                {
+
+                    if (user.ChangePassword)
+                        model.ReturnUrl = "/ChangePassword?ReturnUrl=" + ReturnUrl;
 
                     await _events.RaiseAsync(new UserLoginSuccessEvent(user.Username, user.SubjectId, user.Username));
 
@@ -144,8 +164,6 @@ namespace IdentityServer4.Quickstart.UI
                     }
                 }
 
-                await _events.RaiseAsync(new UserLoginFailureEvent(model.Username, "invalid credentials"));
-                ModelState.AddModelError("", AccountOptions.InvalidCredentialsErrorMessage);
             }
 
             // something went wrong, show form with error

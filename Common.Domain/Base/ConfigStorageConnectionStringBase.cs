@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Common.Domain.Base
 {
-    public class Connectionstring
+    public class ConfigStorageConnectionStringBase
     {
         public string Default { get; set; }
     }

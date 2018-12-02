@@ -7,7 +7,7 @@ namespace Common.Orm
 {
     public class BookCopyCustom<T> : BookCopy<T> where T : class
     {
-        public BookCopyCustom(IOptions<Connectionstring> ConfigConnectionStringBase) : base(configSettingsBase)
+        public BookCopyCustom(IOptions<ConfigConnectionStringBase> ConfigConnectionStringBase) : base(ConfigConnectionStringBase)
         {
 
         }

@@ -44,10 +44,10 @@ namespace Common.Cache
         }
 
 
-        public object Get(string key)
+        public T Get<T>(string key) where T : class
         {
             var result = this._cache.Get(key);
-            var resultObject = result.ToObject();
+            var resultObject = result.ToType<T>();
             return resultObject;
         }
 
@@ -78,7 +78,7 @@ namespace Common.Cache
 
         public bool Enabled()
         {
-            return !this._configSettingsBase.DisabledCache;
+            return this._configSettingsBase.EnabledCache;
         }
       
     }

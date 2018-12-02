@@ -1,4 +1,4 @@
-﻿using Common.Domain.Model;
+using Common.Domain.Model;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -18,6 +18,16 @@ namespace Common.API.Extensions
                 options.AddPolicy(name: "CanRead", configurePolicy: policy => policy.RequireAssertion((AuthorizationHandlerContext e) =>
                 {
                     return e.VerifyClaimsCanRead(defineProfile(e.User.Claims).GetTools());
+                }));
+
+                options.AddPolicy(name: "CanEdit", configurePolicy: policy => policy.RequireAssertion(e =>
+                {
+                    return e.VerifyClaimsCanEdit(defineProfile(e.User.Claims).GetTools());
+                }));
+
+                options.AddPolicy(name: "CanSave", configurePolicy: policy => policy.RequireAssertion(e =>
+                {
+                    return e.VerifyClaimsCanSave(defineProfile(e.User.Claims).GetTools());
                 }));
 
                 options.AddPolicy(name: "CanWrite", configurePolicy: policy => policy.RequireAssertion(e =>

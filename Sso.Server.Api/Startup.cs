@@ -10,6 +10,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using System;
 using System.IO;
+using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 
 namespace Sso.Server.Api
@@ -47,7 +48,7 @@ namespace Sso.Server.Api
 
             //Configurations
             services.Configure<ConfigSettingsBase>(Configuration.GetSection("ConfigSettings"));
-            services.Configure<Connectionstring>(Configuration.GetSection("ConfigConnectionString"));
+            services.Configure<ConfigConnectionStringBase>(Configuration.GetSection("ConfigConnectionString"));
             //Container DI
             services.AddScoped<CurrentUser>();
             services.AddTransient<IUserCredentialServices, UserCredentialServices>();

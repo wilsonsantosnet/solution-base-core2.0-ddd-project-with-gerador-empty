@@ -32,4 +32,7 @@
     <ProjectReference Include="..\Seed.Domain.Filter\Seed.Domain.Filter.csproj" />
     <ProjectReference Include="..\Seed.Domain\Seed.Domain.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+  </ItemGroup>
 </Project>

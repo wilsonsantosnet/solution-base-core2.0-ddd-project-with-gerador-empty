@@ -1,4 +1,5 @@
-﻿using SendGrid;
+using Common.Domain.Interfaces;
+using SendGrid;
 using SendGrid.Helpers.Mail;
 using System;
 using System.Collections.Generic;
@@ -6,14 +7,14 @@ using System.Linq;
 
 namespace Common.Mail
 {
-    public class EmailSendGrid
+    public class EmailSendGrid : IEmail
     {
 
         private string smtpServer;
         private string smtpPassword;
         private string smtpUser;
-        private List<EmailAddress> addressFrom;
-        private List<EmailAddress> addressTo;
+        private readonly List<EmailAddress> addressFrom;
+        private readonly List<EmailAddress> addressTo;
 
 
         public EmailSendGrid()
@@ -41,13 +42,14 @@ namespace Common.Mail
             this.addressTo.Add(new EmailAddress(email, name));
         }
 
+
         public void Send(String subject, String content)
         {
             try
             {
                 var client = new SendGridClient(this.smtpUser);
                 var from = this.addressFrom.FirstOrDefault();
-                var to =  this.addressTo.FirstOrDefault();
+                var to = this.addressTo.FirstOrDefault();
                 var msg = MailHelper.CreateSingleEmail(from, to, subject, content, content);
                 var response = client.SendEmailAsync(msg).Result;
                 if (response.StatusCode != System.Net.HttpStatusCode.Accepted)

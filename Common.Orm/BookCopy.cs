@@ -15,7 +15,7 @@ namespace Common.Orm
     {
         private readonly string _connectionString;
 
-        public BookCopy(IOptions<Connectionstring> configSettingsBase)
+        public BookCopy(IOptions<ConfigConnectionStringBase> configSettingsBase)
         {
             this._connectionString = configSettingsBase.Value.Default;
         }

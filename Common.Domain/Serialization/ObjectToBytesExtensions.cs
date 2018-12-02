@@ -29,5 +29,16 @@ namespace Common.Domain.Serialization
 
         }
 
+        public static T ToType<T>(this byte[] value)
+        {
+            if (value.IsNull())
+                return default(T);
+
+            string resultJson = Encoding.UTF8.GetString(value);
+            var resultObject = JsonConvert.DeserializeObject<T>(resultJson);
+            return resultObject;
+
+        }
+
     }
 }

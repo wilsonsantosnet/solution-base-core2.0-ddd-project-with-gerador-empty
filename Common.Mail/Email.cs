@@ -1,4 +1,5 @@
-﻿using MailKit.Net.Smtp;
+using Common.Domain.Interfaces;
+using MailKit.Net.Smtp;
 using MimeKit;
 using MimeKit.Text;
 using System;
@@ -6,7 +7,7 @@ using System.Collections.Generic;
 
 namespace Common.Mail
 {
-    public class Email
+    public class Email : IEmail
     {
 
         private string smtpServer;
@@ -14,8 +15,8 @@ namespace Common.Mail
         private string smtpPassword;
         private string smtpUser;
         private string textFormat;
-        private List<MailboxAddress> addressFrom;
-        private List<MailboxAddress> addressTo;
+        private readonly List<MailboxAddress> addressFrom;
+        private readonly List<MailboxAddress> addressTo;
        
 
         public Email()

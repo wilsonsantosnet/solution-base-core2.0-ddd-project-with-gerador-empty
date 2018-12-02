@@ -1,4 +1,4 @@
-﻿using Common.Domain.Model;
+using Common.Domain.Model;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Controllers;
@@ -21,7 +21,23 @@ namespace Common.API.Extensions
 
             return false;
         }
-       
+
+        public static Boolean VerifyClaimsCanEdit(this AuthorizationHandlerContext source, IEnumerable<Tool> tools)
+        {
+            if (tools.IsAny())
+                return tools.VerifyClaimsCanEdit(DefineControllerName(source));
+
+            return false;
+        }
+
+        public static Boolean VerifyClaimsCanSave(this AuthorizationHandlerContext source, IEnumerable<Tool> tools)
+        {
+            if (tools.IsAny())
+                return tools.VerifyClaimsCanSave(DefineControllerName(source));
+
+            return false;
+        }
+
 
         public static Boolean VerifyClaimsCanWrite(this AuthorizationHandlerContext source, IEnumerable<Tool> tools)
         {

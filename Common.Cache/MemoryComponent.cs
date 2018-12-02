@@ -33,9 +33,9 @@ namespace Common.Cache
             return _memoryCache.ContainsKey(key);
         }
 
-        public object Get(string key)
+        public T Get<T>(string key) where T : class
         {
-            return _memoryCache[key];
+            return _memoryCache[key] as T;
         }
 
         public bool Remove(string key)
@@ -55,7 +55,7 @@ namespace Common.Cache
 
         public bool Enabled()
         {
-            return !this._configSettingsBase.DisabledCache;
+            return this._configSettingsBase.EnabledCache;
         }
 
 

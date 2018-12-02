@@ -33,8 +33,10 @@ namespace Common.Domain.Model
 
         public string GetRole()
         {
-            var role = this._claims.Where(_ => _.Key == "role").SingleOrDefault();
-            return role.Value.IsNotNull() ? role.Value.ToString() : string.Empty;
+            var typeRole = this._claims.Where(_ => _.Key == "role");
+            if (typeRole.IsAny())
+                return typeRole.SingleOrDefault().Value.ToString();
+            return string.Empty;
         }
 
         public string GetTypeRole()
@@ -169,18 +171,19 @@ namespace Common.Domain.Model
             return default(TS);
         }
         
-        public TS GetClaims<TS>(string key)
+        public TS GetClaimByName<TS>(string name)
         {
-            if (this.IsTypeFollower())
-            {
-                var clientId = this._claims
-                    .Where(_ => _.Key.ToLower() == key.ToLower())
-                    .SingleOrDefault()
-                    .Value;
 
-                return (TS)Convert.ChangeType(clientId, typeof(TS));
-            }
-            return default(TS);
+            var claim = this._claims
+                .Where(_ => _.Key.ToLower() == name.ToLower())
+                .SingleOrDefault()
+                .Value;
+
+            if (claim.IsNull())
+                return default(TS);
+
+            return (TS)Convert.ChangeType(claim, typeof(TS));
         }
+
     }
 }

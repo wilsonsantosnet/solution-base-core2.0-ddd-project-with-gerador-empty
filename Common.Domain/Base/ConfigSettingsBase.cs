@@ -5,7 +5,9 @@ namespace Common.Domain.Base
     public class ConfigSettingsBase
     {
 
-        public bool DisabledCache { get; set; }
+        public bool EnabledCache { get; set; }
+
+        public bool EnabledStorage { get; set; }
 
         public string AuthorityEndPoint { get; set; }
 

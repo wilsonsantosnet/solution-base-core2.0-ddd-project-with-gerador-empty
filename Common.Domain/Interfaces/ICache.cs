@@ -17,7 +17,7 @@ namespace Common.Domain.Interfaces
 
         bool Remove(string key);
 
-        object Get(string key);
+        T Get<T>(string key) where T : class;
 
         bool ExistsKey(string key);
 

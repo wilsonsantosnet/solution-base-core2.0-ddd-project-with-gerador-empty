@@ -11,13 +11,18 @@ namespace Seed.CrossCuting
     public static class ProfileCustom
     {
 
-        enum Role
+        enum ETypeRole
         {
             Admin = 1,
             Tenant = 2,
             Owner = 3,
         }
 
+        enum ERole
+        {
+            Contributor,
+            Reader
+        }
 
         public static IDictionary<string, object> Define(IEnumerable<Claim> _claims)
         {
@@ -28,15 +33,13 @@ namespace Seed.CrossCuting
         public static IDictionary<string, object> Define(CurrentUser user)
         {
             var _claims = user.GetClaims();
-            var role = user.GetRole();
+            var roles = JsonConvert.DeserializeObject<IEnumerable<string>>(user.GetRole());
             var typeTole = user.GetTypeRole();
 
-            if (role.ToLower() == Role.Admin.ToString().ToLower())
+            if (typeTole.ToLower() == ETypeRole.Admin.ToString().ToLower())
                 _claims.AddRange(ClaimsForAdmin());
             else
-            {
                 _claims.AddRange(ClaimsForTenant(user.GetSubjectId<int>()));
-            }
 
             return _claims;
         }

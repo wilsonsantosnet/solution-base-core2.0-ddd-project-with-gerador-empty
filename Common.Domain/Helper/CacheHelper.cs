@@ -20,7 +20,7 @@ namespace Common.Domain.Base
  
             if (this._cache.IsNotNull())
             {
-                var tag = this._cache.Get(this._tagNameCache) as List<string>;
+                var tag = this._cache.Get<List<string>>(this._tagNameCache);
                 if (tag.IsNull()) return;
                 foreach (var item in tag)
                 {

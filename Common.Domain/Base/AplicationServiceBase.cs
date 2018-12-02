@@ -38,7 +38,7 @@ namespace Common.Domain.Base
 
         protected virtual void AddTagCache(string filterKey, string group)
         {
-            var tags = this._cache.Get(group) as List<string>;
+            var tags = this._cache.Get<List<string>>(group);
             if (tags.IsNull()) tags = new List<string>();
             tags.Add(filterKey);
             this._cache.Add(group, tags);
@@ -149,7 +149,7 @@ namespace Common.Domain.Base
             var filterKey = filter.CompositeKey();
             if (filter.ByCache)
                 if (this._cache.ExistsKey(filterKey))
-                    return (SearchResult<TD>)this._cache.Get(filterKey);
+                    return this._cache.Get<SearchResult<TD>>(filterKey);
 
             var paginateResultOptimize = await this._serviceBase.GetByFiltersPaging(filter as TF);
             var result = MapperDomainToDto(filter, paginateResultOptimize);

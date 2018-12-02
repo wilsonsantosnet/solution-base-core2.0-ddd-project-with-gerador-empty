@@ -1,4 +1,4 @@
-﻿using Common.Domain.Model;
+using Common.Domain.Model;
 using System;
 using System.Collections.Generic;
 using System.Text;

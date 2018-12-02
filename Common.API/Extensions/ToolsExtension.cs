@@ -1,4 +1,4 @@
-﻿using Common.Domain.Model;
+using Common.Domain.Model;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Controllers;
@@ -22,6 +22,21 @@ namespace Common.API.Extensions
             return false;
         }
 
+        public static Boolean VerifyClaimsCanEdit(this IEnumerable<Tool> tools, string controllerName)
+        {
+            if (tools.IsAny())
+                return Verify(controllerName, tools).Where(_ => _.CanEdit).IsAny();
+
+            return false;
+        }
+
+        public static Boolean VerifyClaimsCanSave(this IEnumerable<Tool> tools, string controllerName)
+        {
+            if (tools.IsAny())
+                return Verify(controllerName, tools).Where(_ => _.CanSave).IsAny();
+
+            return false;
+        }
 
         public static Boolean VerifyClaimsCanWrite(this IEnumerable<Tool> tools, string controllerName)
         {

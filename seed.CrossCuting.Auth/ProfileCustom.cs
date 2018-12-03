@@ -33,7 +33,7 @@ namespace Seed.CrossCuting
         public static IDictionary<string, object> Define(CurrentUser user)
         {
             var _claims = user.GetClaims();
-            var roles = JsonConvert.DeserializeObject<IEnumerable<string>>(user.GetRole());
+            var roles = GetRoles(user);
             var typeTole = user.GetTypeRole();
 
             if (typeTole.ToLower() == ETypeRole.Admin.ToString().ToLower())
@@ -75,6 +75,14 @@ namespace Seed.CrossCuting
             {
                 { "tools", _toolsForSubscriber }
             };
+        }
+        
+        private static IEnumerable<string> GetRoles(CurrentUser user)
+        {
+            var role = user.GetRole();
+            if (role.Contains(","))
+                return JsonConvert.DeserializeObject<IEnumerable<string>>(user.GetRole());
+            return new List<string> { role };
         }
 
     }

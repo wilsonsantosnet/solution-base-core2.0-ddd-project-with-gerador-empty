@@ -14,6 +14,10 @@ namespace Common.API
 {
     public abstract class HttpResult
     {
+        public HttpResult()
+        {
+            StatusCode = HttpStatusCode.InternalServerError;
+        }
         public HttpStatusCode StatusCode { get; set; }
         public Summary Summary { get; set; }
         public ValidationSpecificationResult Result { get; set; }

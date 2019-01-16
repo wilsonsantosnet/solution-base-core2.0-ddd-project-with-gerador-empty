@@ -9,7 +9,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
-namespace IdentityServer4.Quickstart.UI
+namespace Sso.Server.Api.Controllers
 {
     [Authorize]
     [Route("[controller]")]

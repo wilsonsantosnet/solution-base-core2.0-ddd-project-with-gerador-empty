@@ -57,7 +57,7 @@ namespace Sso.Server.Api.Controllers
             {
                 var userServices = this._userServices;
                 var userClientId = "Platform.Features-Participant-spa";
-                var userLoged = await userServices.Auth(user, password, accountCredential["redirectUri"], userClientId, true);
+                var userLoged = await userServices.Auth(user, password);
 
                 if (userLoged.IsNotNull())
                 {

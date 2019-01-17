@@ -1,17 +1,13 @@
-using System;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Common.API;
+using Common.Domain.Base;
 using IdentityModel.Client;
-using Sso.Server.Api.Model;
+using IdentityServer4.Events;
+using IdentityServer4.Services;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using Common.Domain.Base;
-using Common.Domain;
-using Microsoft.AspNetCore.Http;
-using IdentityServer4.Services;
-using IdentityServer4.Events;
-using Score.Platform.Account.Enums;
+using System;
+using System.Threading.Tasks;
 
 namespace Sso.Server.Api.Controllers
 {

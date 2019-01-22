@@ -15,7 +15,7 @@ Seed vazio para projetos  SPA / DDD / Gerador
 
 6-) Escolher a opção 1 (clonar e copiar para aplicação)
 
-7-) Escolher o aopção 8 e renomear o projeto, feche a solution e a abra novamente sem salvar a solution ao fechar
+7-) Escolher o aopção 10 e renomear o projeto, feche a solution e a abra novamente sem salvar a solution ao fechar
 
 8-) No projeto Greador.Gen Mostar Todos os Arquivos 
 

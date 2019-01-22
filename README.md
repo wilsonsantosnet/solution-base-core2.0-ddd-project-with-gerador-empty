@@ -15,15 +15,15 @@ Seed vazio para projetos  SPA / DDD / Gerador
 
 6-) Escolher a opção 1 (clonar e copiar para aplicação)
 
-6-) Escolher o aopção 8 e renomear o projeto, feche a solution e a abra novamente sem salvar a solution ao fechat
+7-) Escolher o aopção 8 e renomear o projeto, feche a solution e a abra novamente sem salvar a solution ao fechar
 
-7-) No projeto Greador.Gen Mostar Todos os Arquivos 
+8-) No projeto Greador.Gen Mostar Todos os Arquivos 
 
-8-) Incluir a pasta template no projeto
+9-) Incluir a pasta template no projeto
 
-9-) Selecionar todos os aquivos da pasta Back e Front, clicar com botão direito , opção property e marcar para Copiar Sempre (Copy Always)
+10-) Selecionar todos os aquivos da pasta Back e Front, clicar com botão direito , opção property e marcar para Copiar Sempre (Copy Always)
 
-10-) Compilar
+11-) Compilar
 
 12-) abrir prompt de comando entrar na pasta Seed.Spa.UI rodar npm install  e logo depois npm rebuild node-sass --force
 

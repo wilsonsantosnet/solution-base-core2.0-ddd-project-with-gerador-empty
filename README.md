@@ -131,7 +131,7 @@ https://drive.google.com/file/d/1qE6RSNoJCipIbQMYFmT41_Y7GXW2WXds/view
 
 5.1-) instalar SDK installer [https://www.microsoft.com/net/download/thank-you/dotnet-sdk-2.1.200-windows-x64-installer]
 
-
+### 3-) Método novo na controller 
 ```
 .AndConfigureThisMethods(new List<MethodConfig>{
                         new MethodConfig

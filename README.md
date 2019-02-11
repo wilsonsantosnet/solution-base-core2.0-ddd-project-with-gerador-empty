@@ -132,4 +132,19 @@ https://drive.google.com/file/d/1qE6RSNoJCipIbQMYFmT41_Y7GXW2WXds/view
 5.1-) instalar SDK installer [https://www.microsoft.com/net/download/thank-you/dotnet-sdk-2.1.200-windows-x64-installer]
 
 
+```
+.AndConfigureThisMethods(new List<MethodConfig>{
+                        new MethodConfig
+                        {
+                            SignatureControllerTemplate = "ImportNew(string folder, System.Collections.Generic.ICollection<Microsoft.AspNetCore.Http.IFormFile> files)",
+                            SignatureAppTemplate = "ImportNew(string rootPath, string folder,System.Collections.Generic.ICollection<Microsoft.AspNetCore.Http.IFormFile> files)",
+                            ParameterReturn = "new System.Collections.Generic.List<ParticipantScoreDto>()",
+                            CallTemplate = "ImportNew(this._env.ContentRootPath, folder, files)",
+                            Dto = "System.Collections.Generic.List<ParticipantScoreDto>",
+                            Route = "[HttpPost(\"ImportNew\")]",
+                            Verb = "[HttpPost(\"Post\")]"
+                        },
+                    })
+```
+
 

@@ -1,23 +1,27 @@
-using Common.Domain.Model;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Security.Claims;
-using System.Text;
 
 namespace Common.API.Extensions
 {
     public static class ServiceCollectionExtensions
     {
 
-        public static IServiceCollection AddAuthorizationPolicy(this IServiceCollection services, Func<IEnumerable<Claim>, IDictionary<string, object>> defineProfile) {
+        public static IServiceCollection AddAuthorizationPolicy(this IServiceCollection services, Func<IEnumerable<Claim>, IDictionary<string, object>> defineProfile)
+        {
 
             return services.AddAuthorization(options =>
             {
-                options.AddPolicy(name: "CanRead", configurePolicy: policy => policy.RequireAssertion((AuthorizationHandlerContext e) =>
+                options.AddPolicy(name: "CanReadOne", configurePolicy: policy => policy.RequireAssertion((AuthorizationHandlerContext e) =>
                 {
-                    return e.VerifyClaimsCanRead(defineProfile(e.User.Claims).GetTools());
+                    return e.VerifyClaimsCanReadOne(defineProfile(e.User.Claims).GetTools());
+                }));
+
+                options.AddPolicy(name: "CanReadAll", configurePolicy: policy => policy.RequireAssertion((AuthorizationHandlerContext e) =>
+                {
+                    return e.VerifyClaimsCanReadAll(defineProfile(e.User.Claims).GetTools());
                 }));
 
                 options.AddPolicy(name: "CanEdit", configurePolicy: policy => policy.RequireAssertion(e =>

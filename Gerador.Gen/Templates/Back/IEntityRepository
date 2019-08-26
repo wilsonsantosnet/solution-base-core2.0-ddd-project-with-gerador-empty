@@ -1,0 +1,24 @@
+﻿using Common.Domain.Interfaces;
+using <#namespace#>.Domain.Entitys;
+using <#namespace#>.Domain.Filter;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace <#namespace#>.Domain.Interfaces.Repository
+{
+    public interface I<#className#>Repository : IRepository<<#className#>>
+    {
+        IQueryable<<#className#>> GetBySimplefilters(<#className#>Filter filters);
+
+        Task<<#className#>> GetById(<#className#>Filter <#classNameLower#>);
+		
+        Task<IEnumerable<dynamic>> GetDataItem(<#className#>Filter filters);
+
+        Task<IEnumerable<dynamic>> GetDataListCustom(<#className#>Filter filters);
+
+		Task<PaginateResult<dynamic>> GetDataListCustomPaging(<#className#>Filter filters);
+
+        Task<dynamic> GetDataCustom(<#className#>Filter filters);
+    }
+}

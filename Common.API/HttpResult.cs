@@ -27,11 +27,14 @@ namespace Common.API
     }
     public class HttpResult<T> : HttpResult
     {
-        private ILogger _logger;
-        public HttpResult(ILogger logger)
+        private readonly ILogger _logger;
+        private readonly ErrorMap _errorMap;
+
+        public HttpResult(ILogger logger, ErrorMap errorMap = null)
         {
             base.Summary = new Summary();
             this._logger = logger;
+            this._errorMap = errorMap;
         }
 
         public IEnumerable<T> DataList { get; set; }
@@ -60,31 +63,28 @@ namespace Common.API
             return this;
         }
 
-        public HttpResult<T> Error(IList<string> erros)
+        public HttpResult<T> Error(string error)
         {
-            this.StatusCode = HttpStatusCode.InternalServerError;
-            this.Result = new ValidationSpecificationResult
-            {
-                Errors = erros,
-                IsValid = false
-            };
-
-            return this;
+            return this.Error(new List<string> { error });
         }
 
-        public HttpResult<T> Error(string erro, ErrorMap errorMap)
+        public HttpResult<T> Error(IList<string> erros)
         {
-            var _errorMap = errorMap;
-            var erroTraduction = _errorMap.GetTraduction(erro);
-
-            var errorFinal = erroTraduction ?? erro;
+            var errosFinais = erros;
+            if (this._errorMap.IsNotNull())
+            {
+                var erroTraduction = erros.Select(erro => this._errorMap.GetTraduction(erro)).ToList();
+                if (erroTraduction.IsAny())
+                    errosFinais = erroTraduction;
+            }
 
             this.StatusCode = HttpStatusCode.InternalServerError;
             this.Result = new ValidationSpecificationResult
             {
-                Errors = new List<string> { errorFinal },
+                Errors = errosFinais,
                 IsValid = false
             };
+
             return this;
         }
 
@@ -177,10 +177,12 @@ namespace Common.API
 
         public ObjectResult ReturnCustomResponse(IApplicationServiceBase _app, SearchResult<T> searchResult, FilterBase filter)
         {
-            
+
             this.Warning = _app.GetDomainWarning(filter);
             this.Confirm = _app.GetDomainConfirm(filter);
             this.Result = _app.GetDomainValidation(filter);
+
+            this.ErrorMap();
 
             this.Summary = searchResult.Summary;
             this.Success(searchResult.DataList);
@@ -191,6 +193,7 @@ namespace Common.API
 
 
         }
+
         public ObjectResult ReturnCustomResponse(IApplicationServiceBase _app, IEnumerable<T> returnModel)
         {
             foreach (var item in returnModel)
@@ -217,6 +220,8 @@ namespace Common.API
             this.Confirm = _app.GetDomainConfirm();
             this.Result = _app.GetDomainValidation();
 
+            this.ErrorMap();
+
             if (this.Result.IsNotNull())
             {
                 if (!this.Result.IsValid)
@@ -236,7 +241,7 @@ namespace Common.API
 
         }
 
-        public ObjectResult ReturnCustomException(Exception ex, string appName, object model = null, ErrorMap errorMap = null)
+        public ObjectResult ReturnCustomException(Exception ex, string appName, object model = null)
         {
 
             var result = default(HttpResult<T>);
@@ -273,7 +278,7 @@ namespace Common.API
                 var modelSerialization = JsonConvert.SerializeObject(model);
                 erroMessage = string.Format("[{0}] - {1} - [{2}]", appName, ex.Message, modelSerialization);
             }
-            result = ExceptionWithInner(ex, appName, errorMap);
+            result = ExceptionWithInner(ex, appName);
 
 
             this._logger.LogCritical("{0} - [1]", erroMessage, ex);
@@ -281,18 +286,28 @@ namespace Common.API
 
         }
 
-        private HttpResult<T> ExceptionWithInner(Exception ex, string appName, ErrorMap errorMap = null)
+        private HttpResult<T> ExceptionWithInner(Exception ex, string appName)
         {
             if (ex.InnerException.IsNotNull())
             {
                 if (ex.InnerException.InnerException.IsNotNull())
-                    return this.Error(string.Format("[{0}] - InnerException: {1}", appName, ex.InnerException.InnerException.Message), errorMap);
+                    return this.Error(string.Format("[{0}] - InnerException: {1}", appName, ex.InnerException.InnerException.Message));
                 else
-                    return this.Error(string.Format("[{0}] - InnerException: {1}", appName, ex.InnerException.Message), errorMap);
+                    return this.Error(string.Format("[{0}] - InnerException: {1}", appName, ex.InnerException.Message));
             }
             else
             {
-                return this.Error(string.Format("[{0}] - Exception: {1}", appName, ex.Message), errorMap);
+                return this.Error(string.Format("[{0}] - Exception: {1}", appName, ex.Message));
+            }
+        }
+
+        private void ErrorMap()
+        {
+            if (this._errorMap.IsNotNull())
+            {
+                if (this.Warning.IsNotNull() && this.Warning.Warnings.IsAny()) this.Warning.Warnings = this.Warning.Warnings.Select(_ => this._errorMap.GetTraduction(_));
+                if (this.Confirm.IsNotNull() && this.Confirm.Confirms.IsAny()) this.Confirm.Confirms = this.Confirm.Confirms.Select(vc => new ValidationConfirm(vc.VerifyBehavior, this._errorMap.GetTraduction(vc.Message)));
+                if (this.Result.IsNotNull() && this.Result.Errors.IsAny()) this.Result.Errors = this.Result.Errors.Select(_ => this._errorMap.GetTraduction(_));
             }
         }
 

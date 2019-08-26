@@ -1,0 +1,16 @@
+﻿using Common.Validation;
+using <#namespace#>.Domain.Entitys;
+using <#namespace#>.Domain.Interfaces.Repository;
+using System;
+
+namespace <#namespace#>.Domain.Validations
+{
+    public class <#className#>IsSuitableWarning : WarningSpecification<<#className#>>
+    {
+        public <#className#>IsSuitableWarning(I<#className#>Repository rep)
+        {
+            //base.Add(Guid.NewGuid().ToString(), new Rule<<#className#>>(Instance of suitable warning specification,"message for user"));
+        }
+
+    }
+}

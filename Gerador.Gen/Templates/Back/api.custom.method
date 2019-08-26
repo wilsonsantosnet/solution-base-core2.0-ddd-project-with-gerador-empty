@@ -1,0 +1,16 @@
+﻿		<#customMethodsVerb#>
+        <#customMethodsRoute#>
+        public async Task<IActionResult> <#customMethodsSignatureControllerTemplate#>
+        {
+            var result = new HttpResult<<#customMethodsDto#>>(this._logger);
+            try
+            {
+                var returnModel = await this._app.<#customMethodsName#>;
+                return result.ReturnCustomResponse(this._app, returnModel);
+            }
+            catch (Exception ex)
+            {
+                var responseEx = result.ReturnCustomException(ex, "<#namespace#> - <#className#>", errorMap : new ErrorMapCustom());
+				<#apiRetrhow#>
+            }
+        }

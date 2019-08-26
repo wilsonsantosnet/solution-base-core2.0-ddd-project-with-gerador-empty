@@ -9,7 +9,7 @@ namespace Common.Domain.CompositeKey
     public static class CompositeKeyExtensions
     {
 
-        public static string CompositeKey(this object source)
+        public static string CompositeKey(this object source, string sufixKey = null)
         {
 
             var propertys = source.GetType().GetTypeInfo().GetProperties();
@@ -44,7 +44,7 @@ namespace Common.Domain.CompositeKey
 
             }
             keys.Add(source.GetType().Name);
-            return CompositeKey(keys.ToArray());
+            return CompositeKey(keys.ToArray()) + sufixKey;
 
 
         }

@@ -1,0 +1,13 @@
+﻿using Common.Validation;
+using <#namespace#>.Domain.Entitys;
+
+namespace <#namespace#>.Domain.Specifications
+{
+    public class <#specificationName#>IsConsistentSpecification : ISpecification<<#className#>>
+    {
+        public bool IsSatisfiedBy(<#className#> entity)
+        {
+           return true;
+        }
+    }
+}

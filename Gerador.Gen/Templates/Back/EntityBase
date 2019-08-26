@@ -1,0 +1,37 @@
+﻿using Common.Domain.Base;
+using Common.Domain.Model;
+using System;
+
+namespace <#namespace#>.Domain.Entitys
+{
+    public class <#className#>Base : <#classBaseEntity#>
+    {
+        public <#className#>Base()
+        {
+
+        }
+
+		<#ctorparametersRequiredBase#>
+
+
+		public class <#className#>FactoryBase
+        {
+            public virtual <#className#> GetDefaultInstanceBase(dynamic data, CurrentUser user)
+            {
+                var construction = new <#className#>(<#parametersRequiredConstruction#>);
+
+<#methodsSetersConstruction#>
+
+				construction.SetConfirmBehavior(data.ConfirmBehavior);
+				construction.SetAttributeBehavior(data.AttributeBehavior);
+        		return construction;
+            }
+
+        }
+
+<#property#>
+
+<#methodsSeters#>
+
+    }
+}

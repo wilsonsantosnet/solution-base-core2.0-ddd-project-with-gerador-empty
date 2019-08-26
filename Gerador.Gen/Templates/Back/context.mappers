@@ -1,0 +1,1 @@
+﻿new <#className#>Map(modelBuilder.Entity<<#className#>>());

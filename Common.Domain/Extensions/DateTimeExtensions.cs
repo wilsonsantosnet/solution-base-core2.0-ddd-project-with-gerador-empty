@@ -8,6 +8,10 @@ namespace Common.Domain
 {
     public static class DateTimeExtensions
     {
+         public static bool Intersects(this DateTime startDate, DateTime endDate, DateTime intersectingStartDate, DateTime intersectingEndDate)
+        {
+            return (intersectingEndDate >= startDate && intersectingStartDate <= endDate);
+        }
         public static double ToUnixTimeSeconds(this DateTime now)
         {
 

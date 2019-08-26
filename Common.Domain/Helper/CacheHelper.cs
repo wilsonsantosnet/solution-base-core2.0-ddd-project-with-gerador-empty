@@ -1,4 +1,5 @@
 ﻿using Common.Domain.Interfaces;
+using System;
 using System.Collections.Generic;
 
 namespace Common.Domain.Base
@@ -6,18 +7,19 @@ namespace Common.Domain.Base
     public class CacheHelper
     {
         protected readonly ICache _cache;
-        private readonly ConfigSettingsBase _configSettingsBase;
+
         protected string _tagNameCache;
 
         public CacheHelper(ICache _cache)
         {
             this._cache = _cache;
         }
+
         public virtual void ClearCache()
         {
             if (!this._cache.Enabled())
                 return;
- 
+
             if (this._cache.IsNotNull())
             {
                 var tag = this._cache.Get<List<string>>(this._tagNameCache);
@@ -39,6 +41,14 @@ namespace Common.Domain.Base
         public virtual string GetTagNameCache()
         {
             return this._tagNameCache;
+        }
+
+        public void AddTagCache(string filterKey, string group)
+        {
+            var tags = this._cache.Get<List<string>>(group);
+            if (tags.IsNull()) tags = new List<string>();
+            tags.Add(filterKey);
+            this._cache.Add(group, tags);
         }
     }
 }

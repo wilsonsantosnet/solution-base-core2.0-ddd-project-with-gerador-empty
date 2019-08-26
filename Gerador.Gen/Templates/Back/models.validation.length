@@ -1,0 +1,1 @@
+﻿[MaxLength(<#Length#>, ErrorMessage = "<#className#> - Quantidade de caracteres maior que o permitido para o campo <#propertyName#>")]

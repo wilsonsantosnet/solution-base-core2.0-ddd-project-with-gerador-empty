@@ -1,0 +1,12 @@
+﻿using Common.Domain.Base;
+using System;
+
+namespace <#namespace#>.Domain.Filter
+{
+    public class <#className#>FilterBase : FilterBase
+    {
+
+<#property#>
+
+    }
+}

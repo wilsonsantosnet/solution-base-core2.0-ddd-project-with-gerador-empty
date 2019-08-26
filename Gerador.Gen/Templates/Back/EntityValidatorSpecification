@@ -1,0 +1,15 @@
+﻿using Common.Validation;
+using <#namespace#>.Domain.Entitys;
+using System;
+
+namespace <#namespace#>.Domain.Validations
+{
+    public class <#className#>IsConsistentValidation : ValidatorSpecification<<#className#>>
+    {
+        public <#className#>IsConsistentValidation()
+        {
+            //base.Add(Guid.NewGuid().ToString(), new Rule<<#className#>>(Instance of is consistent specification,"message for user"));
+        }
+
+    }
+}

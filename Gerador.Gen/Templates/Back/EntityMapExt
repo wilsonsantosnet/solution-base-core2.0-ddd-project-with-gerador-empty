@@ -1,0 +1,20 @@
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using <#namespace#>.Domain.Entitys;
+
+namespace <#namespace#>.Data.Map
+{
+    public class <#className#>Map : <#className#>MapBase
+    {
+        public <#className#>Map(EntityTypeBuilder<<#className#>> type) : base(type)
+        {
+
+        }
+
+        protected override void CustomConfig(EntityTypeBuilder<<#className#>> type)
+        {
+
+        }
+
+    }
+}

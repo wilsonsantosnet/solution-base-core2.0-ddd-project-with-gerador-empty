@@ -1,4 +1,4 @@
-﻿using Common.Domain.Interfaces;
+using Common.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,13 +14,18 @@ namespace Common.Domain.Model
         private string _token;
         private IDictionary<string, object> _claims;
 
+        public CurrentUser()
+        {
+            this._claims = new Dictionary<string, object>();
+        }
+
         public CurrentUser Init(string token, IDictionary<string, object> claims)
         {
             this._token = token;
             this._claims = claims;
             return this;
         }
-        
+
         public string GetToken()
         {
             return this._token;
@@ -52,7 +57,7 @@ namespace Common.Domain.Model
             if (this._claims.IsNotNull())
             {
                 return this._claims
-                    .Where(_ => _.Key.ToLower() == "role")
+                    .Where(_ => _.Key.ToLower() == "typerole")
                     .Where(_ => _.Value.ToString() == "admin").IsAny();
             }
             return false;
@@ -63,7 +68,7 @@ namespace Common.Domain.Model
             if (this._claims.IsNotNull())
             {
                 return this._claims
-                    .Where(_ => _.Key.ToLower() == "role")
+                    .Where(_ => _.Key.ToLower() == "typerole")
                     .Where(_ => _.Value.ToString() == "tenant").IsAny();
             }
             return false;
@@ -119,7 +124,7 @@ namespace Common.Domain.Model
             if (this.IsTenant())
             {
                 var subjectId = this._claims
-                    .Where(_ => _.Key.ToLower() == "sub")
+                    .Where(_ => _.Key.ToLower() == "sub" || _.Key.ToLower() == "client_sub")
                     .SingleOrDefault()
                     .Value;
 
@@ -147,7 +152,7 @@ namespace Common.Domain.Model
             if (this._claims.IsAny())
             {
                 var subjectId = this._claims
-                    .Where(_ => _.Key.ToLower() == "sub")
+                    .Where(_ => _.Key.ToLower() == "sub" || _.Key.ToLower() == "client_sub")
                     .SingleOrDefault()
                     .Value;
 
@@ -170,18 +175,16 @@ namespace Common.Domain.Model
             }
             return default(TS);
         }
-        
+
         public TS GetClaimByName<TS>(string name)
         {
+            var claim_ = this._claims
+                .Where(_ => _.Key.ToLower() == name.ToLower());
 
-            var claim = this._claims
-                .Where(_ => _.Key.ToLower() == name.ToLower())
-                .SingleOrDefault()
-                .Value;
-
-            if (claim.IsNull())
+            if (claim_.IsNotAny())
                 return default(TS);
 
+            var claim = claim_.SingleOrDefault().Value;
             return (TS)Convert.ChangeType(claim, typeof(TS));
         }
 

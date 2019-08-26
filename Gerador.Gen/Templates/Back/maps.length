@@ -1,0 +1,1 @@
+﻿type.Property(t => t.<#propertyName#>).HasMaxLength(<#length#>);

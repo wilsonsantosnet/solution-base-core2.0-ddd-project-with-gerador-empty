@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore;
+using Microsoft.Extensions.Logging;
 
 namespace Seed.Api
 {
@@ -19,6 +20,13 @@ namespace Seed.Api
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 //.UseStartup<Startup>()
+                .ConfigureLogging((hostingContext, logging) =>
+                 {
+                     logging.AddConfiguration(hostingContext.Configuration.GetSection("Logging"));
+                     logging.AddConsole();
+                     logging.AddDebug();
+                     logging.AddEventSourceLogger();
+                 })
                 .Build();
     }
 }

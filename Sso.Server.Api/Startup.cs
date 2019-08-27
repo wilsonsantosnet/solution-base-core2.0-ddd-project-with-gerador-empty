@@ -77,8 +77,11 @@ namespace Sso.Server.Api
 
         }
 
-        public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory, IOptions<ConfigSettingsBase> configSettingsBase)
+        public void Configure(IApplicationBuilder app,IHostingEnvironment env, ILoggerFactory loggerFactory, IOptions<ConfigSettingsBase> configSettingsBase)
         {
+
+            if (env.IsDevelopment())
+                app.UseDeveloperExceptionPage();
 
             loggerFactory.AddFile(Configuration.GetSection("Logging"));
 

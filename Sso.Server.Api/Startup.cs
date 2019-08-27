@@ -54,7 +54,12 @@ namespace Sso.Server.Api
             services.AddTransient<IUserCredentialServices, UserCredentialServices>();
             services.AddTransient<IResourceOwnerPasswordValidator, ResourceOwnerPasswordValidator>();
             services.AddSingleton<IConfiguration>(Configuration);
-
+            services.AddLogging(loggingBuilder =>
+            {
+                loggingBuilder.AddConfiguration(Configuration.GetSection("Logging"));
+                loggingBuilder.AddConsole();
+                loggingBuilder.AddDebug();
+            });
 
             services.AddAuthentication()
             .AddGoogle(options =>
@@ -74,15 +79,10 @@ namespace Sso.Server.Api
 
         public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory, IOptions<ConfigSettingsBase> configSettingsBase)
         {
-            loggerFactory.AddConsole(LogLevel.Debug);
-            app.UseDeveloperExceptionPage();
 
-            loggerFactory.AddConsole(Configuration.GetSection("Logging"));
-            loggerFactory.AddDebug();
             loggerFactory.AddFile(Configuration.GetSection("Logging"));
 
             app.UseCors("AllowStackOrigin");
-
             app.UseIdentityServer();
             //app.UseGoogleAuthentication(new GoogleOptions
             //{

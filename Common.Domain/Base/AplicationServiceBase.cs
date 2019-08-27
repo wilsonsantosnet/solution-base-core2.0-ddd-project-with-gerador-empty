@@ -1,4 +1,5 @@
-﻿using Common.Domain.CompositeKey;
+﻿using AutoMapper;
+using Common.Domain.CompositeKey;
 using Common.Domain.Interfaces;
 using Common.Domain.Model;
 using System;
@@ -14,12 +15,15 @@ namespace Common.Domain.Base
         protected readonly IUnitOfWork _uow;
         protected readonly ICache _cache;
         protected readonly IServiceBase<T, TF> _serviceBase;
+        protected readonly IMapper _mapper;
 
-        public ApplicationServiceBase(IServiceBase<T, TF> serviceBase, IUnitOfWork uow, ICache cache)
+        public ApplicationServiceBase(IServiceBase<T, TF> serviceBase, IUnitOfWork uow, ICache cache, IMapper mapper)
         {
             this._uow = uow;
             this._cache = cache;
             this._serviceBase = serviceBase;
+            this._mapper = mapper;
+
         }
         public void BeginTransaction()
         {
@@ -175,7 +179,7 @@ namespace Common.Domain.Base
         {
             return await Task.Run(() =>
             {
-                var result = AutoMapper.Mapper.Map<TDS, T>(dto);
+                var result = this._mapper.Map<TDS, T>(dto);
                 return result;
             });
         }
@@ -184,7 +188,7 @@ namespace Common.Domain.Base
         {
             return await Task.Run(() =>
             {
-                var result = AutoMapper.Mapper.Map<TDS, T>(dto);
+                var result = this._mapper.Map<TDS, T>(dto);
                 return result;
             });
         }
@@ -194,14 +198,14 @@ namespace Common.Domain.Base
         {
             return await Task.Run(() =>
             {
-                var result = AutoMapper.Mapper.Map<IEnumerable<TDS>, IEnumerable<T>>(dtos);
+                var result = this._mapper.Map<IEnumerable<TDS>, IEnumerable<T>>(dtos);
                 return result;
             });
         }
 
         protected virtual IEnumerable<TDS> MapperDomainToResult<TDS>(FilterBase filter, PaginateResult<T> dataList)
         {
-            var result = filter.IsOnlySummary ? null : AutoMapper.Mapper.Map<IEnumerable<T>, IEnumerable<TDS>>(dataList.ResultPaginatedData);
+            var result = filter.IsOnlySummary ? null : this._mapper.Map<IEnumerable<T>, IEnumerable<TDS>>(dataList.ResultPaginatedData);
             return result;
         }
 
@@ -213,7 +217,7 @@ namespace Common.Domain.Base
         }
         protected virtual IEnumerable<TDS> MapperDomainToDto<TDS>(FilterBase filter, IEnumerable<T> models)
         {
-            var result = AutoMapper.Mapper.Map<IEnumerable<T>, IEnumerable<TDS>>(models);
+            var result = this._mapper.Map<IEnumerable<T>, IEnumerable<TDS>>(models);
             return result;
         }
 
@@ -223,7 +227,7 @@ namespace Common.Domain.Base
         }
         protected virtual TDS MapperDomainToDto<TDS>(FilterBase filter, T model) where TDS : class
         {
-            var result = AutoMapper.Mapper.Map<T, TDS>(model);
+            var result = this._mapper.Map<T, TDS>(model);
             return result;
         }
 

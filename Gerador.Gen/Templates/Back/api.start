@@ -81,6 +81,7 @@ namespace <#namespace#>.Api
             var sp = services.BuildServiceProvider();
             var configuration = sp.GetService<IOptions<ConfigSettingsBase>>();
             Cors.Enable(services, configuration.Value.ClientAuthorityEndPoint.ToArray());
+			services.AddAutoMapper(AutoMapperConfigSeed.RegisterMappings());
 
             // Add application services.
             ConfigContainer<#contextName#>.Config(services);			
@@ -165,7 +166,6 @@ namespace <#namespace#>.Api
 
             });
 	    	app.UseCors("AllowStackOrigin");
-            AutoMapperConfig<#contextName#>.RegisterMappings();
         }
 
     }

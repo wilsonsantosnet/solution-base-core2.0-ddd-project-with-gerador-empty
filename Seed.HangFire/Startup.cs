@@ -3,11 +3,8 @@ using Common.API;
 using Common.Domain.Base;
 using Hangfire;
 using IdentityModel.Client;
-using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -39,7 +36,7 @@ namespace Seed.HangFire
         public void ConfigureServices(IServiceCollection services)
         {
             services.Configure<ConfigSettingsBase>(Configuration.GetSection("ConfigSettings"));
-            services.Configure<Connectionstring>(Configuration.GetSection("ConfigConnectionString"));
+            services.Configure<ConfigConnectionStringBase>(Configuration.GetSection("ConfigConnectionString"));
             services.AddSingleton<IConfiguration>(Configuration);
 
             var authorityEndPoint = Configuration.GetSection("ConfigSettings:AuthorityEndPoint").Value;
@@ -119,9 +116,9 @@ namespace Seed.HangFire
             });
         }
 
-        private Request DefineRequest(string authorityEndPoint, string apiEndPoint)
+        private Common.Api.Request DefineRequest(string authorityEndPoint, string apiEndPoint)
         {
-            var request = new Request();
+            var request = new Common.Api.Request();
             request.SetAddress(apiEndPoint);
             request.AddHeaders("Content-Type:application/json");
             var accessToken = this.GetAccessToken(authorityEndPoint);
@@ -131,6 +128,7 @@ namespace Seed.HangFire
 
         public string GetAccessToken(string authorityEndPoint)
         {
+            //var _client = new TokenClient(authorityEndPoint + "/connect/token", "hangfire-api", "segredo");
             var _client = new TokenClient(authorityEndPoint + "/connect/token", "hangfire-api", "segredo");
             var token = _client.RequestClientCredentialsAsync("ssosa").Result;
             return token.AccessToken;

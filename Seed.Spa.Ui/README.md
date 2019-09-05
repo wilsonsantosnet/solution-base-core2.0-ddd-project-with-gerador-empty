@@ -1,2 +1,0 @@
-# Seed-layout-front
-

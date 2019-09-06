@@ -25,7 +25,7 @@ Seed vazio para projetos  SPA / DDD / Gerador
 
 11-) Compilar
 
-12-) abrir prompt de comando entrar na pasta Seed.Spa.UI rodar npm install  e logo depois npm rebuild node-sass --force
+12-) abrir prompt de comando entrar na pasta Seed.Spa.UI rodar npm install
 
 13-) no gerador configurar a classe ConfigContext com as tabelas que serão geradas , veja o exemplo de Contexto no final das instruções
 

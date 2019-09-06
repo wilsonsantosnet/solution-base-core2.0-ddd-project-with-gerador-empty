@@ -115,21 +115,7 @@ https://drive.google.com/file/d/1qE6RSNoJCipIbQMYFmT41_Y7GXW2WXds/view
         }
 ```
 
--- PRÉ REQUISITOS;
-
-1-) git shell [https://git-for-windows.github.io/]
-
-2-) node.js [https://nodejs.org/en/])
-
-3-) npm install -g @angular/cli
-
-3-) opcional [Conemu [https://www.fosshub.com/ConEmu.html/ConEmuSetup.161206.exe]]
-
-5-) instalar .net core 2.0.X [https://www.microsoft.com/net/download/windows]
-
-5.1-) instalar SDK installer [https://www.microsoft.com/net/download/thank-you/dotnet-sdk-2.1.200-windows-x64-installer]
-
-### 3-) Método novo na controller 
+### 2-) Método novo na controller 
 ```
 .AndConfigureThisMethods(new List<MethodConfig>{
                         new MethodConfig
@@ -144,5 +130,32 @@ https://drive.google.com/file/d/1qE6RSNoJCipIbQMYFmT41_Y7GXW2WXds/view
                         },
                     })
 ```
+### 2-) Configuração do Crud para exibir os Campos em Abas (Grupos)
+```
+new TableInfo().FromTable("CmsData").MakeBack().MakeFront()
+                    .AndConfigureThisFields(new List<FieldConfig>{
+                        new FieldConfig {
+                            Name = "Title",
+                            Order = 1,
+                        },
+                        new FieldConfig {
+                            Name = "BodyText",
+                            Order = 2,
+                        }}
+                    )
+```
+-- PRÉ REQUISITOS;
+
+1-) git shell [https://git-for-windows.github.io/]
+
+2-) node.js [https://nodejs.org/en/])
+
+3-) npm install -g @angular/cli
+
+3-) opcional [Conemu [https://www.fosshub.com/ConEmu.html/ConEmuSetup.161206.exe]]
+
+5-) instalar .net core 2.0.X [https://www.microsoft.com/net/download/windows]
+
+5.1-) instalar SDK installer [https://www.microsoft.com/net/download/thank-you/dotnet-sdk-2.1.200-windows-x64-installer]
 
 

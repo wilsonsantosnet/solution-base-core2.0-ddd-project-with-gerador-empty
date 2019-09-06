@@ -283,7 +283,8 @@ new TableInfo { TableName = "MeioPagamento", MakeDomain = true, MakeApp = true, 
                                 },
                             }.init(TypeCtrl.Select),
 ```
-### SQl para Obter todas as Tabelas do banco
+# DSL Gerar Back e Front
+### Sql para obter todas as tabelas do banco e gerar a configuraçõa necessária para geração de codigo do back e do front
 ```
 Select 'new TableInfo().FromTable("'+ name + '").MakeBack().MakeFront(),'   from sys.objects where type = 'u'
 and name <> 'sysdiagrams'

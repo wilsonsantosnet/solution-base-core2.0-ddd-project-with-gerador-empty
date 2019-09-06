@@ -182,7 +182,7 @@ new TableInfo().FromTable("Carteira").MakeBack().MakeFront()
 Select 'new TableInfo().FromTable("'+ name + '").MakeBack().MakeFront(),'   from sys.objects where type = 'u'
 and name <> 'sysdiagrams'
 ```
--- PRÉ REQUISITOS;
+### PRÉ REQUISITOS;
 
 1-) git shell [https://git-for-windows.github.io/]
 

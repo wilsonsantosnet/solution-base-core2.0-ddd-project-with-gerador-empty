@@ -130,7 +130,7 @@ https://drive.google.com/file/d/1qE6RSNoJCipIbQMYFmT41_Y7GXW2WXds/view
                         },
                     })
 ```
-### 2-) Configuração do Crud para exibir os Campos em Abas (Grupos)
+### 3-) Configuração do Crud para exibir os Campos em Abas (Grupos)
 ```
  new TableInfo().FromTable("CmsData").MakeBack().MakeFront()
                     .AndConfigureThisFields(new List<FieldConfig>{
@@ -146,7 +146,7 @@ https://drive.google.com/file/d/1qE6RSNoJCipIbQMYFmT41_Y7GXW2WXds/view
                         }}
                     )
 ```
-### 2-) Configuração do Crud para exibir um sub cadastro
+### 4-) Configuração do Crud para exibir um sub cadastro
 ```
  .AndConfigureThisGroups(new List<GroupComponent>() {
                         new GroupComponent("Page","fa fa-table","app-page","Page").MakeTagToGroup("CmsDataId")

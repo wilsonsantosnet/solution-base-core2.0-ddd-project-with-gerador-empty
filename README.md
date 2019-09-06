@@ -132,17 +132,25 @@ https://drive.google.com/file/d/1qE6RSNoJCipIbQMYFmT41_Y7GXW2WXds/view
 ```
 ### 2-) Configuração do Crud para exibir os Campos em Abas (Grupos)
 ```
-new TableInfo().FromTable("CmsData").MakeBack().MakeFront()
+ new TableInfo().FromTable("CmsData").MakeBack().MakeFront()
                     .AndConfigureThisFields(new List<FieldConfig>{
                         new FieldConfig {
                             Name = "Title",
                             Order = 1,
+                            Group = new Group("Geral","fa fa-table"),
                         },
                         new FieldConfig {
                             Name = "BodyText",
-                            Order = 2,
+                            Order = 1,
+                            Group = new Group("Geral","fa fa-table"),
                         }}
                     )
+```
+### 2-) Configuração do Crud para exibir um sub cadastro
+```
+ .AndConfigureThisGroups(new List<GroupComponent>() {
+                        new GroupComponent("Page","fa fa-table","app-page","Page").MakeTagToGroup("CmsDataId")
+                    }),
 ```
 -- PRÉ REQUISITOS;
 

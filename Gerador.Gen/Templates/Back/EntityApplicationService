@@ -1,4 +1,4 @@
-﻿using Common.Domain.Interfaces;
+using Common.Domain.Interfaces;
 using <#namespace#>.Application.Interfaces;
 using <#namespace#>.Domain.Entitys;
 using <#namespace#>.Domain.Filter;
@@ -8,14 +8,15 @@ using System.Linq;
 using System.Collections.Generic;
 using Common.Domain.Base;
 using Common.Domain.Model;
+using AutoMapper;
 
 namespace <#namespace#>.Application
 {
     public class <#className#>ApplicationService : <#className#>ApplicationServiceBase
     {
 
-        public <#className#>ApplicationService(I<#className#>Service service, IUnitOfWork uow, ICache cache, CurrentUser user) :
-            base(service, uow, cache, user)
+        public <#className#>ApplicationService(I<#className#>Service service, IUnitOfWork uow, ICache cache, CurrentUser user, IMapper mapper) :
+            base(service, uow, cache, user, mapper)
         {
   
         }

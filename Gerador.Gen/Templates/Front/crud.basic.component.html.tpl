@@ -12,9 +12,6 @@
             <a *ngIf="_showBtnBack" class="btn py-0 hidden-xs hidden-sm" href="javascript:history.back()" title="{{vm.generalInfo | traduction:'voltar'}}">
               <span class="fa fa-arrow-left" aria-hidden="true"></span> {{vm.generalInfo | traduction:'voltar'}}
             </a>
-            <a *ngIf="_showBtnFilter" class="btn py-0 hidden-xs" (click)="onShowFilter()" title="{{vm.generalInfo | traduction:'filtro'}}">
-              <span class="fa fa-filter" aria-hidden="true"></span> {{vm.generalInfo | traduction:'filtro'}}
-            </a>
             <a *ngIf='_showBtnNew && vm | isAuth:"CanWrite"' class="btn py-0" (click)="onCreate()" title="{{vm.generalInfo | traduction:'novoItem'}}">
               <span class="fa fa-plus" aria-hidden="true"></span> {{vm.generalInfo | traduction:'novoItem'}}
             </a>
@@ -30,37 +27,6 @@
     </section>
 </section>
 
-<div bsModal [config]="{backdrop: 'static'}" #filterModal="bs-modal" class="modal fade">
-  <div class="modal-dialog" [ngClass]="{'modal-lg': !isParent}">
-    <form #formFilter="ngForm" (ngSubmit)="onFilter(vm.modelFilter)">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">{{vm.generalInfo | traduction:'filtro'}}</h5>
-          <button type="button" class="close pull-right" aria-label="Close" (click)="onCancel()">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body pre-scrollable">
-          <app-<#classNameLowerAndSeparator#>-container-filter [(vm)]="vm" *ngIf="_showContainerFilters"></app-<#classNameLowerAndSeparator#>-container-filter>
-        </div>
-        <div class="modal-footer">
-          <button class="btn btn-default" type="button" (click)="onCancel()">
-            <i class="icon-close icons"></i>
-            {{vm.generalInfo| traduction:'cancelar'}}
-          </button>
-          <button class="btn btn-default" type="button" (click)="onClearFilter()">
-            <i class="icon-reload icons"></i>
-            {{vm.generalInfo| traduction:'limpar'}}
-          </button>
-          <button class="btn btn-success" type="submit">
-            <span class="fa fa-search"></span>
-            {{vm.generalInfo | traduction:'filtrar'}}
-          </button>
-        </div>
-      </div>
-    </form>
-  </div>
-</div>
 
 <div bsModal [config]="{backdrop: 'static'}" #saveModal="bs-modal" class="modal fade">
   <div class="modal-dialog" [ngClass]="{'modal-lg': !isParent}">
@@ -122,28 +88,6 @@
 		  </button>        
 		 </div>
       </form>
-    </div>
-  </div>
-</div>
-
-<div bsModal [config]="{backdrop: 'static'}" #detailsModal="bs-modal" class="modal fade">
-  <div class="modal-dialog" [ngClass]="{'modal-lg': !isParent}">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title pull-left">Detalhes de {{ vm.actionTitle }}</h4>
-        <button type="button" class="close pull-right" aria-label="Close" (click)="onCancel()">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body pre-scrollable">
-        <app-<#classNameLowerAndSeparator#>-container-details [(vm)]="vm" *ngIf="_showContainerDetails"></app-<#classNameLowerAndSeparator#>-container-details>
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-default " type="button" (click)="onCancel()">
-			<i class="icon-close icons"></i>
-			{{vm.generalInfo| traduction:'cancelar'}}
-		</button>
-      </div>
     </div>
   </div>
 </div>

@@ -1,4 +1,4 @@
-﻿using Common.Domain.Base;
+using Common.Domain.Base;
 using Common.Domain.Interfaces;
 using Common.Dto;
 using <#namespace#>.Application.Interfaces;
@@ -9,6 +9,7 @@ using <#namespace#>.Dto;
 using System.Threading.Tasks;
 using Common.Domain.Model;
 using System.Collections.Generic;
+using AutoMapper;
 
 namespace <#namespace#>.Application
 {
@@ -18,8 +19,8 @@ namespace <#namespace#>.Application
         protected readonly I<#className#>Service _service;
 		protected readonly CurrentUser _user;
 
-        public <#className#>ApplicationServiceBase(I<#className#>Service service, IUnitOfWork uow, ICache cache, CurrentUser user) :
-            base(service, uow, cache)
+        public <#className#>ApplicationServiceBase(I<#className#>Service service, IUnitOfWork uow, ICache cache, CurrentUser user, IMapper mapper) :
+            base(service, uow, cache, mapper)
         {
             base.SetTagNameCache("<#className#>");
             this._validatorAnnotations = new ValidatorAnnotations<<#className#>Dto>();

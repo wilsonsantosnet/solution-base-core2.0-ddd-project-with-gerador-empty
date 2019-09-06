@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+using System;
+using System.Collections.Generic;
 
 namespace <#namespace#>.Application.Config
 {
@@ -8,8 +9,8 @@ namespace <#namespace#>.Application.Config
         {
             return new List<Type>
             {
-                typeof(DominioToDtoProfileSeed),
-                typeof(DominioToDtoProfileSeedCustom)
+                typeof(DominioToDtoProfile<#contextName#>),
+                typeof(DominioToDtoProfile<#contextName#>Custom)
             }.ToArray();
         }
 	}

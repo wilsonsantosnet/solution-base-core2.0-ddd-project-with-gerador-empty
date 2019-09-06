@@ -18,6 +18,7 @@ using Swashbuckle.AspNetCore.Swagger;
 using Microsoft.Extensions.PlatformAbstractions;
 using System.IO;
 using System.Linq;
+using AutoMapper;
 
 namespace <#namespace#>.Api
 {
@@ -66,6 +67,12 @@ namespace <#namespace#>.Api
             {
                 RootPath = this._env.ContentRootPath
             });
+			services.AddLogging(loggingBuilder =>
+            {
+                loggingBuilder.AddConfiguration(Configuration.GetSection("Logging"));
+                loggingBuilder.AddConsole();
+                loggingBuilder.AddDebug();
+            });
 
 			// Config AuthorityEndPoint SSO
 			 services.AddAuthentication("Bearer")
@@ -81,7 +88,7 @@ namespace <#namespace#>.Api
             var sp = services.BuildServiceProvider();
             var configuration = sp.GetService<IOptions<ConfigSettingsBase>>();
             Cors.Enable(services, configuration.Value.ClientAuthorityEndPoint.ToArray());
-			services.AddAutoMapper(AutoMapperConfigSeed.RegisterMappings());
+			services.AddAutoMapper(AutoMapperConfig<#contextName#>.RegisterMappings());
 
             // Add application services.
             ConfigContainer<#contextName#>.Config(services);			
@@ -134,10 +141,11 @@ namespace <#namespace#>.Api
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, IOptions<ConfigSettingsBase> configSettingsBase)
         {
 
-			loggerFactory.AddConsole(Configuration.GetSection("Logging"));
-            loggerFactory.AddDebug();
+			if (env.IsDevelopment())
+                app.UseDeveloperExceptionPage();
 
-            app.UseDeveloperExceptionPage();
+            loggerFactory.AddFile(Configuration.GetSection("Logging"));
+
 
             var supportedCultures = new[]
             {

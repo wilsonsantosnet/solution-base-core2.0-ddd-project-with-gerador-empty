@@ -13,10 +13,6 @@ import { LocationHistoryService } from '../../common/services/location.history';
     selector: 'app-<#classNameLowerAndSeparator#>',
     templateUrl: './<#classNameLowerAndSeparator#>.component.html',
     styleUrls: ['./<#classNameLowerAndSeparator#>.component.css'],
-    host: {
-        '[class.className]': '_showClassName',
-        '[class]': '_classNames'
-    }
 })
 export class <#className#>Component extends ComponentBase implements OnInit, OnDestroy {
 
@@ -63,6 +59,8 @@ export class <#className#>Component extends ComponentBase implements OnInit, OnD
     
         this.vm.isParent = this.isParent;
         this.vm.ParentIdField = this.parentIdField;
+        this._showBtnPrint = false;
+        this._showBtnDetails = false;
     }
 
     configurationForParent() {
@@ -91,7 +89,6 @@ export class <#className#>Component extends ComponentBase implements OnInit, OnD
         this.<#classNameInstance#>Service.get(modelFilter).subscribe((result) => {
             this.vm.filterResult = result.dataList;
             this.vm.summary = result.summary;
-            this.filterModal.hide();
         })
     }
 
@@ -188,14 +185,11 @@ export class <#className#>Component extends ComponentBase implements OnInit, OnD
 
         this.saveModal.hide();
         this.editModal.hide();
-        this.detailsModal.hide();
-        this.filterModal.hide();
         this.hideComponents();
     }
 
     public onShowFilter() {
         this.showContainerFilters();
-        this.filterModal.show();
     }
 
     public onClearFilter() {

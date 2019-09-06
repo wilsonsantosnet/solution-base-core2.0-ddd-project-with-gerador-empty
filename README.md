@@ -59,7 +59,22 @@ Observe o Diagrama Abaixo ele demostra quais peças existem no gerador.
 https://drive.google.com/file/d/1qE6RSNoJCipIbQMYFmT41_Y7GXW2WXds/view
 
 # EXEMPLO CONFIG.CONTEXT 
-### 1-) CRUD com customização de Campos, Component Basico sem back 
+### 1-) Configuração inicial para não Sobrepor dados do Menu e raiz dos Componentes Angular
+
+```
+        private Context ConfigContextDefault()
+        {
+            var contextName = "Seed";
+
+            return new Context
+            {
+                OverrideFiles = true,
+                MakeToolsProfile = true,
+            };
+        }
+```
+
+### 2-) CRUD com customização de Campos, Rota e Component Basico sem back 
 
 ```
         private Context ConfigContextDefault()

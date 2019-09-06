@@ -152,13 +152,7 @@ https://drive.google.com/file/d/1qE6RSNoJCipIbQMYFmT41_Y7GXW2WXds/view
                         new GroupComponent("Page","fa fa-table","app-page","Page").MakeTagToGroup("CmsDataId")
   }),
 ```
-### 5-) Configuração do Crud para exibir um sub cadastro
-```
- .AndConfigureThisGroups(new List<GroupComponent>() {
-                        new GroupComponent("Page","fa fa-table","app-page","Page").MakeTagToGroup("CmsDataId")
-  }),
-```
-### 6-) Configuração de Exibição de Campos
+### 5-) Configuração de Exibição de Campos
 ```
 new TableInfo().FromTable("Carteira").MakeBack().MakeFront()
                        .AndConfigureThisFields(new List<FieldConfig>
@@ -182,8 +176,6 @@ new TableInfo().FromTable("Carteira").MakeBack().MakeFront()
                                Details = true
                            }
                        }),
-```
-### 7-) Configuração de Exibição de Campos
 ```
 ### SQl para Obter todas as Tabelas do banco
 ```

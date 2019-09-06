@@ -68,7 +68,9 @@ https://drive.google.com/file/d/1qE6RSNoJCipIbQMYFmT41_Y7GXW2WXds/view
 
             return new Context
             {
+                //Sobreescreve apenas os arquivos que tem realação com Campos 
                 OverrideFiles = false,
+                // Matem os dados Gerados na classe  ProfileCustom da camanda da infra CrossCuting.Auth
                 MakeToolsProfile = false,
             };
         }

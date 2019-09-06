@@ -150,7 +150,7 @@ https://drive.google.com/file/d/1qE6RSNoJCipIbQMYFmT41_Y7GXW2WXds/view
 ```
  .AndConfigureThisGroups(new List<GroupComponent>() {
                         new GroupComponent("Page","fa fa-table","app-page","Page").MakeTagToGroup("CmsDataId")
-                    }),
+  }),
 ```
 -- PRÉ REQUISITOS;
 

@@ -53,11 +53,6 @@ Seed vazio para projetos  SPA / DDD / Gerador
 
 25-) agora pode criar Outras tabelas , Alterar tabelas existentes que o gerador vai atualizar toda as Stack do projeto
 
-
-Observe o Diagrama Abaixo ele demostra quais peças existem no gerador.
-
-https://drive.google.com/file/d/1qE6RSNoJCipIbQMYFmT41_Y7GXW2WXds/view
-
 # EXEMPLO CONFIG.CONTEXT 
 ### 1-) Configuração inicial para não Sobrepor dados do Menu e raiz dos Componentes Angular
 
@@ -331,4 +326,8 @@ and name <> 'sysdiagrams'
 
 5.1-) instalar SDK installer [https://www.microsoft.com/net/download/thank-you/dotnet-sdk-2.1.200-windows-x64-installer]
 
+### Links;
 
+[Diagrama Gerador](https://drive.google.com/file/d/1qE6RSNoJCipIbQMYFmT41_Y7GXW2WXds/view)
+[Artigo Gerador de Codigo](https://medium.com/@wilsonsantos_66971/gerador-de-c%C3%B3digo-7e3c08981e43?source=friends_link&sk=e0b14bb1a0f656873b0ae619b4bbd4e9)
+[Gerador, Foque no Domínio]([Artigo Gerador de Codigo](https://medium.com/@wilsonsantos_66971/gerador-de-c%C3%B3digo-7e3c08981e43?source=friends_link&sk=e0b14bb1a0f656873b0ae619b4bbd4e9))

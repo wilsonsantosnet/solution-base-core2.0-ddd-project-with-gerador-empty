@@ -270,6 +270,7 @@ new TableInfo { TableName = "MeioPagamento", MakeDomain = true, MakeApp = true, 
                                     { "2050","2050"},
                                 },
                             }.init(TypeCtrl.Select),
+```
 ### SQl para Obter todas as Tabelas do banco
 ```
 Select 'new TableInfo().FromTable("'+ name + '").MakeBack().MakeFront(),'   from sys.objects where type = 'u'

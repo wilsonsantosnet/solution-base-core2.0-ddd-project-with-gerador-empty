@@ -177,7 +177,7 @@ new TableInfo().FromTable("Carteira").MakeBack().MakeFront()
                            }
                        }),
 ```
-### 5-) Configuração de Exibição de Campos
+### 6-) Configuração de Exibição de Campos
 ```
  new TableInfo { TableName = "Parceiro", MakeDomain = true, MakeApp = true, MakeDto = true, MakeCrud = true, MakeApi= true, MakeSummary = true , MakeFront = true ,
                     FieldsConfig = new List<FieldConfig>

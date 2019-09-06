@@ -177,6 +177,27 @@ new TableInfo().FromTable("Carteira").MakeBack().MakeFront()
                            }
                        }),
 ```
+### 5-) Configuração de Exibição de Campos
+```
+ new TableInfo { TableName = "Parceiro", MakeDomain = true, MakeApp = true, MakeDto = true, MakeCrud = true, MakeApi= true, MakeSummary = true , MakeFront = true ,
+                    FieldsConfig = new List<FieldConfig>
+                        {
+                            new FieldConfig()
+                            {
+                                Name ="tipoPessoaId" ,
+                                DataItem = new Dictionary<string, string> {
+                                    { "1" ,"PF"},
+                                    { "2" ,"PJ"}
+                                },
+                            }.init(TypeCtrl.Radio),
+
+                            new FieldConfig()
+                            {
+                                Name ="assinanteId", Edit = false, Create = false , Filter=  false,
+                            },
+                        }
+                    },
+```
 ### SQl para Obter todas as Tabelas do banco
 ```
 Select 'new TableInfo().FromTable("'+ name + '").MakeBack().MakeFront(),'   from sys.objects where type = 'u'

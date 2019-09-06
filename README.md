@@ -177,7 +177,7 @@ new TableInfo().FromTable("Carteira").MakeBack().MakeFront()
                            }
                        }),
 ```
-### 6-) Configuração de Exibição de Campos
+### 6-) Configuração de DataItem com RadioButtom
 ```
  new TableInfo { TableName = "Parceiro", MakeDomain = true, MakeApp = true, MakeDto = true, MakeCrud = true, MakeApi= true, MakeSummary = true , MakeFront = true ,
                     FieldsConfig = new List<FieldConfig>
@@ -198,6 +198,78 @@ new TableInfo().FromTable("Carteira").MakeBack().MakeFront()
                         }
                     },
 ```
+### 7-) Configuração de DataItem com Select
+```
+new TableInfo { TableName = "MeioPagamento", MakeDomain = true, MakeApp = true, MakeDto = true, MakeCrud = true, MakeApi= true, MakeSummary = true , MakeFront= true,
+                    FieldsConfig = new List<FieldConfig>
+                        {
+                            new FieldConfig()
+                            {
+                                Name ="Bandeira" ,
+                                DataItem = new Dictionary<string, string> {
+                                    { "'visa'" ,"visa"},
+                                    { "'mastercard'" ,"mastercard"},
+                                    { "'discover'" ,"discover"},
+                                    { "'amex'" ,"amex"},
+                                },
+                            }.init(TypeCtrl.Select),
+                            new FieldConfig()
+                            {
+                                Name ="mesExpiracao" ,
+                                DataItem = new Dictionary<string, string> {
+                                    { "1" ,"Janeiro"},
+                                    { "2" ,"Fevereioro"},
+                                    { "3" ,"Março"},
+                                    { "4" ,"Abril"},
+                                    { "5" ,"Maio"},
+                                    { "6" ,"Junho"},
+                                    { "7" ,"Julho"},
+                                    { "8" ,"Agosto"},
+                                    { "9" ,"Setembro"},
+                                    { "10" ,"Outubro"},
+                                    { "11" ,"Novembro"},
+                                    { "12" ,"Dezembro"},
+                                },
+                            }.init(TypeCtrl.Select),
+                            new FieldConfig()
+                            {
+                                Name ="anoExpiracao" ,
+                                DataItem = new Dictionary<string, string> {
+                                    { "	2018","2018	"},
+                                    { "2019","2019"},
+                                    { "2020","2020"},
+                                    { "2021","2021"},
+                                    { "2022","2022"},
+                                    { "2023","2023"},
+                                    { "2024","2024"},
+                                    { "2025","2025"},
+                                    { "2026","2026"},
+                                    { "2027","2027"},
+                                    { "2028","2028"},
+                                    { "2029","2029"},
+                                    { "2030","2030"},
+                                    { "2031","2031"},
+                                    { "2032","2032"},
+                                    { "2033","2033"},
+                                    { "2034","2034"},
+                                    { "2035","2035"},
+                                    { "2036","2036"},
+                                    { "2037","2037"},
+                                    { "2038","2038"},
+                                    { "2039","2039"},
+                                    { "2040","2040"},
+                                    { "2041","2041"},
+                                    { "2042","2042"},
+                                    { "2043","2043"},
+                                    { "2044","2044"},
+                                    { "2045","2045"},
+                                    { "2046","2046"},
+                                    { "2047","2047"},
+                                    { "2048","2048"},
+                                    { "2049","2049"},
+                                    { "2050","2050"},
+                                },
+                            }.init(TypeCtrl.Select),
 ### SQl para Obter todas as Tabelas do banco
 ```
 Select 'new TableInfo().FromTable("'+ name + '").MakeBack().MakeFront(),'   from sys.objects where type = 'u'

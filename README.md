@@ -329,5 +329,7 @@ and name <> 'sysdiagrams'
 ### Links;
 
 [Diagrama Gerador](https://drive.google.com/file/d/1qE6RSNoJCipIbQMYFmT41_Y7GXW2WXds/view)
+
 [Artigo Gerador de Codigo](https://medium.com/@wilsonsantos_66971/gerador-de-c%C3%B3digo-7e3c08981e43?source=friends_link&sk=e0b14bb1a0f656873b0ae619b4bbd4e9)
-[Gerador, Foque no Domínio]([Artigo Gerador de Codigo](https://medium.com/@wilsonsantos_66971/gerador-de-c%C3%B3digo-7e3c08981e43?source=friends_link&sk=e0b14bb1a0f656873b0ae619b4bbd4e9))
+
+[Gerador, Foque no Domínio](https://medium.com/@wilsonsantos_66971/gerador-de-c%C3%B3digo-7e3c08981e43?source=friends_link&sk=e0b14bb1a0f656873b0ae619b4bbd4e9)

@@ -293,6 +293,30 @@ new TableInfo { TableName = "MeioPagamento", MakeDomain = true, MakeApp = true, 
 Select 'new TableInfo().FromTable("'+ name + '").MakeBack().MakeFront(),'   from sys.objects where type = 'u'
 and name <> 'sysdiagrams'
 ```
+# EXEMPLO ProfileCustom (Menu)
+```
+ public static Dictionary<string, object> ClaimsForAdmin()
+        {
+            var tools = new List<dynamic>
+            {
+
+                new Tool { Icon = "fa fa-file", Name = "Account",  Key = "Account" , Type = ETypeTools.Menu },
+                new Tool { Icon = "fa fa-edit", Name = "UnityStatus", Route = "/unitystatus", Key = "UnityStatus" , Type = ETypeTools.Menu, ParentKey="Account" },
+                new Tool { Icon = "fa fa-edit", Name = "Unity", Route = "/unity", Key = "Unity" , Type = ETypeTools.Menu, ParentKey="Account" },
+
+                new Tool { Icon = "fa fa-file", Name = "Cms",  Key = "Cms" , Type = ETypeTools.Menu },
+                new Tool { Icon = "fa fa-edit", Name = "CmsData", Route = "/cmsdata", Key = "CmsData" , Type = ETypeTools.Menu, ParentKey="Cms" },
+                new Tool { Icon = "fa fa-edit", Name = "TypeCmsData", Route = "/typecmsdata", Key = "TypeCmsData" , Type = ETypeTools.Menu, ParentKey="Cms" },
+                new Tool { Icon = "fa fa-edit", Name = "StatusCmsData", Route = "/statuscmsdata", Key = "StatusCmsData" , Type = ETypeTools.Menu, ParentKey="Cms" },
+
+            };
+            var _toolsForAdmin = JsonConvert.SerializeObject(tools);
+            return new Dictionary<string, object>
+            {
+                { "tools", _toolsForAdmin }
+            };
+        }
+```
 ### PRÉ REQUISITOS;
 
 1-) git shell [https://git-for-windows.github.io/]

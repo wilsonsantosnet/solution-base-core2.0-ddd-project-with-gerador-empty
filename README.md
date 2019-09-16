@@ -54,24 +54,8 @@ Seed vazio para projetos  SPA / DDD / Gerador
 25-) agora pode criar Outras tabelas , Alterar tabelas existentes que o gerador vai atualizar toda as Stack do projeto
 
 # EXEMPLO CONFIG.CONTEXT 
-### 1-) Configuração inicial para não Sobrepor dados do Menu e raiz dos Componentes Angular
 
-```
-        private Context ConfigContextDefault()
-        {
-            var contextName = "Seed";
-
-            return new Context
-            {
-                //Sobreescreve apenas os arquivos que tem realação com Campos 
-                OverrideFiles = false,
-                // Matem os dados Gerados na classe  ProfileCustom da camanda da infra CrossCuting.Auth
-                MakeToolsProfile = false,
-            };
-        }
-```
-
-### 2-) CRUD com customização de Campos, Rota e Component Basico sem back 
+### 1-) CRUD com customização de Campos, Rota e Component Basico sem back 
 
 ```
         private Context ConfigContextDefault()
@@ -127,7 +111,24 @@ Seed vazio para projetos  SPA / DDD / Gerador
         }
 ```
 
-### 2-) Método novo na controller 
+### 2-) Configuração para não Sobrepor dados do Menu e raiz dos Componentes Angular
+
+```
+        private Context ConfigContextDefault()
+        {
+            var contextName = "Seed";
+
+            return new Context
+            {
+                //Sobreescreve apenas os arquivos que tem realação com Campos 
+                OverrideFiles = false,
+                // Matem os dados Gerados na classe  ProfileCustom da camanda da infra CrossCuting.Auth
+                MakeToolsProfile = false,
+            };
+        }
+```
+
+### 3-) Método novo na controller 
 ```
 .AndConfigureThisMethods(new List<MethodConfig>{
                         new MethodConfig
@@ -142,7 +143,7 @@ Seed vazio para projetos  SPA / DDD / Gerador
                         },
                     })
 ```
-### 3-) Configuração do Crud para exibir os Campos em Abas (Grupos)
+### 4-) Configuração do Crud para exibir os Campos em Abas (Grupos)
 ```
  new TableInfo().FromTable("CmsData").MakeBack().MakeFront()
                     .AndConfigureThisFields(new List<FieldConfig>{
@@ -158,13 +159,13 @@ Seed vazio para projetos  SPA / DDD / Gerador
                         }}
                     )
 ```
-### 4-) Configuração do Crud para exibir um sub cadastro
+### 5-) Configuração do Crud para exibir um sub cadastro
 ```
  .AndConfigureThisGroups(new List<GroupComponent>() {
                         new GroupComponent("Page","fa fa-table","app-page","Page").MakeTagToGroup("CmsDataId")
   }),
 ```
-### 5-) Configuração de Exibição de Campos
+### 6-) Configuração de Exibição de Campos
 ```
 new TableInfo().FromTable("Carteira").MakeBack().MakeFront()
                        .AndConfigureThisFields(new List<FieldConfig>
@@ -189,7 +190,7 @@ new TableInfo().FromTable("Carteira").MakeBack().MakeFront()
                            }
                        }),
 ```
-### 6-) Configuração de DataItem com RadioButtom
+### 7-) Configuração de DataItem com RadioButtom
 ```
  new TableInfo { TableName = "Parceiro", MakeDomain = true, MakeApp = true, MakeDto = true, MakeCrud = true, MakeApi= true, MakeSummary = true , MakeFront = true ,
                     FieldsConfig = new List<FieldConfig>
@@ -210,7 +211,7 @@ new TableInfo().FromTable("Carteira").MakeBack().MakeFront()
                         }
                     },
 ```
-### 7-) Configuração de DataItem com Select
+### 8-) Configuração de DataItem com Select
 ```
 new TableInfo { TableName = "MeioPagamento", MakeDomain = true, MakeApp = true, MakeDto = true, MakeCrud = true, MakeApi= true, MakeSummary = true , MakeFront= true,
                     FieldsConfig = new List<FieldConfig>

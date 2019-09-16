@@ -46,7 +46,7 @@ namespace Seed.Gen
                 MakeToolsProfile = true,
 
                 Routes = new List<RouteConfig> {
-                    new RouteConfig{ Route = "{ path: 'sampledash',  canActivate: [AuthGuard], loadChildren: './main/sampledash/sampledash.module#SampleDashModule' }" }
+                    new RouteConfig{ Route = "{ path: 'sampledash',  canActivate: [AuthGuard], loadChildren: () => import('./main/sampledash/sampledash.module').then(m => m.SampleDashModule) }" }
                 },
                 
                 TableInfo = new UniqueListTableInfo

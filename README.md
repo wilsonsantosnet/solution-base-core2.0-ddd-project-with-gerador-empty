@@ -284,6 +284,15 @@ new TableInfo { TableName = "MeioPagamento", MakeDomain = true, MakeApp = true, 
                                 },
                             }.init(TypeCtrl.Select),
 ```
+### 9 Configuração de um campo para Usar um Component 
+'''
+new FieldConfig {
+                            Name = "DocumentNumber",
+                            HTML = new HtmlCtrl() {
+                                HtmlField = "<cpf-cnpj [vm]=\"vm\" [fieldName]=\"'documentNumber'\" [isRequired]=\"true\"></cpf-cnpj>",
+                                HtmlFilter = "<input type='text' class='form-control' [(ngModel)]='vm.modelFilter.documentNumber' name=\"documentNumber\"/>"
+                            }
+'''
 # DSL Gerar Back e Front
 ### Sql para obter todas as tabelas do banco e gerar a configuraçõa necessária para geração de codigo do back e do front
 ```

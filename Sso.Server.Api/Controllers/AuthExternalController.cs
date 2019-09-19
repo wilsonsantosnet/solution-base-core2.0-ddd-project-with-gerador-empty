@@ -56,7 +56,7 @@ namespace Sso.Server.Api.Controllers
             if (!tokenResponse.IsError)
             {
                 var userServices = this._userServices;
-                var userClientId = "Platform.Features-Participant-spa";
+                var userClientId = "seed-spa";
                 var userLoged = await userServices.Auth(user, password);
 
                 if (userLoged.IsNotNull())

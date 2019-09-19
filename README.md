@@ -293,6 +293,14 @@ new FieldConfig {
         HtmlFilter = "<input type='text' class='form-control' [(ngModel)]='vm.modelFilter.documentNumber' name=\"documentNumber\"/>"
 }
 ```
+
+### 10) Configuração de tabela ManyToMany Exibir Campos no Crud
+```
+new List<FieldConfig>{
+                        new FieldConfig { Name = "UserId", ShowFieldIsKey = true },
+                        new FieldConfig { Name = "RoleId", ShowFieldIsKey  = true },
+}
+```
 # DSL Gerar Back e Front
 ### Sql para obter todas as tabelas do banco e gerar a configuraçõa necessária para geração de codigo do back e do front
 ```

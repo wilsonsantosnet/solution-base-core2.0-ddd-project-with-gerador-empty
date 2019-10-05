@@ -3,55 +3,55 @@ Seed vazio para projetos  SPA / DDD / Gerador
 
 1-) Clonar Esse Rep na pasta C:\Projetos (git clone https://github.com/wilsonsantosnet/solution-base-core2.0-ddd-project-with-gerador-empty.git)
 
-1-) Crie um banco de dados com o script da pasta \Projetos\seed-core-ddd-project-with-gerador-empty\Gerador.Gen\Scripts\Sample.Seed.sql
+2-) Crie um banco de dados com o script da pasta \Projetos\seed-core-ddd-project-with-gerador-empty\Gerador.Gen\Scripts\Sample.Seed.sql
 
-2-) abrir solution seed.sln
+3-) abrir solution seed.sln
 
-3-) compilar projeto
+4-) compilar projeto
 
-4-) Conferir arquivo ConfigExternalResources no greador para ver quais repositórios serão clonados, e em quais pastas os arquivos serão copiados
+5-) Conferir arquivo ConfigExternalResources no greador para ver quais repositórios serão clonados, e em quais pastas os arquivos serão copiados
 
-5-) Clicar com botão direito no projeto de gerador e rodar em debug
+6-) Clicar com botão direito no projeto de gerador e rodar em debug
 
-6-) Escolher a opção 1 (clonar e copiar para aplicação)
+7-) Escolher a opção 1 (clonar e copiar para aplicação)
 
-7-) Escolher o aopção 9 e renomear o projeto, feche a solution e a abra novamente sem salvar a solution ao fechar
+8-) Escolher o aopção 9 e renomear o projeto, feche a solution e a abra novamente sem salvar a solution ao fechar
 
-8-) No projeto Greador.Gen Mostar Todos os Arquivos 
+9-) No projeto Greador.Gen Mostar Todos os Arquivos 
 
-9-) Incluir a pasta template no projeto
+10-) Incluir a pasta template no projeto
 
-10-) Selecionar todos os aquivos da pasta Back e Front, clicar com botão direito , opção property e marcar para Copiar Sempre (Copy Always)
+11-) Selecionar todos os aquivos da pasta Back e Front, clicar com botão direito , opção property e marcar para Copiar Sempre (Copy Always)
 
-11-) Compilar
+12-) Compilar
 
-12-) abrir prompt de comando entrar na pasta Seed.Spa.UI rodar npm install
+13-) abrir prompt de comando entrar na pasta Seed.Spa.UI rodar npm install
 
-13-) no gerador configurar a classe ConfigContext com as tabelas que serão geradas , veja o exemplo de Contexto no final das instruções
+14-) no gerador configurar a classe ConfigContext com as tabelas que serão geradas , veja o exemplo de Contexto no final das instruções
 
-14-) Configurar connection string no gerador app.config apontando para o seu banco. 
+15-) Configurar connection string no gerador app.config apontando para o seu banco. 
 
-15-) Verifica no arquivo App.Config os caminhos onde serão gerador os arquivos de Back e front variaves de appSettings
+16-) Verifica no arquivo App.Config os caminhos onde serão gerador os arquivos de Back e front variaves de appSettings
 
-16-) Rodar gerador opção 3 (gerar código)
+17-) Rodar gerador opção 3 (gerar código)
 
-17-) no projeto Seed.Api pasta Services configurar a connectionstring do arquivo appsettings.json
+18-) no projeto Seed.Api pasta Services configurar a connectionstring do arquivo appsettings.json
 
-18-) configure o ClientID na arquivo /src/app/global.service.ts, na classe chamanda AuthSettings, essa propriedade deve conter o valor  da propriedade ClientId, do arquivo Config.cs do projeto de Sso.Server.Api da pata SSO\Auth , o cliente que deve ser usado é de fluxo implicit flow
+19-) configure o ClientID na arquivo /src/app/global.service.ts, na classe chamanda AuthSettings, essa propriedade deve conter o valor  da propriedade ClientId, do arquivo Config.cs do projeto de Sso.Server.Api da pata SSO\Auth , o cliente que deve ser usado é de fluxo implicit flow
 
-19-) No projeto de Seed.API da pasta Services no arquivo  Program descomentar  essa linha ".UseStartup<Startup>()"
+20-) No projeto de Seed.API da pasta Services no arquivo  Program descomentar  essa linha ".UseStartup<Startup>()"
 
-20-) No projeto de Sso.Server.Api da pata SSO\Auth no arquivo UserCredentialServices descomentar código de autenticação defualt e retira o throw
+21-) No projeto de Sso.Server.Api da pata SSO\Auth no arquivo UserCredentialServices descomentar código de autenticação defualt e retira o throw
 
-21-) No projeto de Sso.Server.Api da pata SSO\Auth no arquivo Startup.cs na linha AddIdentityServer , remover o ponto e virgula e descomentar as linhas baixo
+22-) No projeto de Sso.Server.Api da pata SSO\Auth no arquivo Startup.cs na linha AddIdentityServer , remover o ponto e virgula e descomentar as linhas baixo
 
-22-) o método AddSigningCredential carrega um certificadigital auto assinado contido na pasta pfx, verifique se esse aquivo existe, ou utilize um certificado  que desejar.
+23-) o método AddSigningCredential carrega um certificadigital auto assinado contido na pasta pfx, verifique se esse aquivo existe, ou utilize um certificado  que desejar.
 
-23-) Clicar com botão direito na Solution , item propertys, startup Project , escolher Multiple Startup Project e marcar como start os projetos de Seed.Api / Sso.Server.Api
+24-) Clicar com botão direito na Solution , item propertys, startup Project , escolher Multiple Startup Project e marcar como start os projetos de Seed.Api / Sso.Server.Api
 
-24-) entra na pasta Seed.Spa.Ui e rodar no prompt de comando ng serve --open
+25-) entra na pasta Seed.Spa.Ui e rodar no prompt de comando ng serve --open
 
-25-) agora pode criar Outras tabelas , Alterar tabelas existentes que o gerador vai atualizar toda as Stack do projeto
+26-) agora pode criar Outras tabelas , Alterar tabelas existentes que o gerador vai atualizar toda as Stack do projeto
 
 # EXEMPLO CONFIG.CONTEXT 
 

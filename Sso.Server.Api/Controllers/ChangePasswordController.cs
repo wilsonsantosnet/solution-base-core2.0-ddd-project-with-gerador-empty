@@ -1,8 +1,6 @@
 ﻿using Common.Domain.Base;
 using Common.Domain.Interfaces;
 using Common.Domain.Model;
-using Etreinare.CrossCuting.Auth;
-using Etreinare.Domain.Interfaces.Repository;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;

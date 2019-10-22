@@ -95,6 +95,7 @@ namespace Sso.Server.Api
             //    ClientSecret = "x1SWT89gyn5LLLyMNFxEx_Ss"
             //});
             app.UseAuthentication();
+            app.AddTokenMiddlewareCustom();
             app.UseStaticFiles();
             app.UseMvcWithDefaultRoute();
         }

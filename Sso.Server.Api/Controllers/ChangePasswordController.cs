@@ -24,13 +24,13 @@ namespace Sso.Server.Api.Controllers
         private readonly IOptions<ConfigSettingsBase> _settings;
 
         public ChangePasswordController(
-            //IPessoasRepository _repPessoas, 
+            //IPessoasRepository repPessoas, 
             ICripto cripto, 
             IOptions<ConfigSettingsBase> configSettingsBase, 
             CurrentUser user, 
             IOptions<ConfigSettingsBase> settings)
         {
-            //this._repPessoas = _repPessoas;
+            //this._repPessoas = repPessoas;
             this._user = user;
             this._cripto = cripto;
             this._configSettingsBase = configSettingsBase;

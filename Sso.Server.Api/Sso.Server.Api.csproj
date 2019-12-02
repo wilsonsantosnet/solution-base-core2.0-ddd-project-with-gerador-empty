@@ -23,6 +23,7 @@
     <ProjectReference Include="..\Common.API\Common.API.csproj" />
     <ProjectReference Include="..\Common.Domain\Common.Domain.csproj" />
     <ProjectReference Include="..\Common.Orm\Common.Orm.csproj" />
+    <ProjectReference Include="..\seed.CrossCuting.Auth\Seed.CrossCuting.Auth.csproj" />
     <ProjectReference Include="..\Seed.Data\Seed.Data.csproj" />
   </ItemGroup>
 

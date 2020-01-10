@@ -331,10 +331,11 @@ and name <> 'sysdiagrams'
             };
         }
 ```
-# MASCARAS DISPONÍVEIS;
+# MASCARAS 
+### DISPONÍVEIS COM REGEX;
 
 ```
-  maskUF: [/\D/, /\D/,],
+      maskUF: [/\D/, /\D/,],
       maskCEP: [/\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/],
       maskCPF: [/\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/, /\d/],
       maskCNPJ: [/\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/],
@@ -346,6 +347,12 @@ and name <> 'sysdiagrams'
       cartaoCredito: [/\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/],
       maskDecimal: decimalMask,
       maskLogitude: logitudeMask    
+```
+
+### Como Attributo;
+
+```
+<input type='text' class='form-control' [(ngModel)]='vm.model.serieStart' name='serieStart' required formControlName='serieStart'  maski='9999999999'  autocomplete='off'/>
 ```
 
 ### PRÉ REQUISITOS;

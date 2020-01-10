@@ -331,6 +331,23 @@ and name <> 'sysdiagrams'
             };
         }
 ```
+### MASCARAS DISPONIVEIS;
+
+```
+  maskUF: [/\D/, /\D/,],
+      maskCEP: [/\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/],
+      maskCPF: [/\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/, /\d/],
+      maskCNPJ: [/\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/],
+      maskDDD: ['(', /\d/, /\d/, ')'],
+      maskOnlyTelefone: [/\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/, /\d/],
+      maskTelefone: ['(', /\d/, /\d/, ')', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/],
+      maskCelular: ['(', /\d/, /\d/, ')', /\d/, /\d/, /\d/, /\d/, /\d/,'-', /\d/, /\d/, /\d/, /\d/],
+      maskHorario: [/\d/, /\d/, ':', /\d/, /\d/],
+      cartaoCredito: [/\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/],
+      maskDecimal: decimalMask,
+      maskLogitude: logitudeMask    
+```
+
 ### PRÉ REQUISITOS;
 
 1-) git shell [https://git-for-windows.github.io/]

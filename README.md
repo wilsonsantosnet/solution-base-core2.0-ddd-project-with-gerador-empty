@@ -331,7 +331,7 @@ and name <> 'sysdiagrams'
             };
         }
 ```
-# MASCARAS DISPONIVEIS;
+# MASCARAS DISPONÍVEIS;
 
 ```
   maskUF: [/\D/, /\D/,],

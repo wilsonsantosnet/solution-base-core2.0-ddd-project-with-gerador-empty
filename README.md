@@ -159,7 +159,7 @@ Seed vazio para projetos  SPA / DDD / Gerador
                         }}
                     )
 ```
-## 4.1-) Definir Grupo Padrão
+### 4.1-) Definir Grupo Padrão
 ```
                           .AndConfigureThisGroups(new List<GroupComponent>{
                             new GroupComponent("Meta Data", "fa fa-tags","list-value","Content")

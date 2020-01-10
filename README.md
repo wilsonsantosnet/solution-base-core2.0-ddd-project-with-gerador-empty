@@ -159,13 +159,12 @@ Seed vazio para projetos  SPA / DDD / Gerador
                         }}
                     )
 ```
-# 4.1-) Definir Grupo Padrão
+## 4.1-) Definir Grupo Padrão
 ```
-  .AndConfigureThisGroups(new List<GroupComponent>{
+                          .AndConfigureThisGroups(new List<GroupComponent>{
                             new GroupComponent("Meta Data", "fa fa-tags","list-value","Content")
-                                .SetTag("<list-metadata [(vm)]='vm' [ctrlName]=\"'collectionTaxCouponMetaData'\" [MetadataId]=\"'attributesMetaDataId'\" [MetadataDescription]=\"'attributesMetaData.name'\" [MetadataValue]=\"'value'\" *ngIf='vm.model.TaxCouponId | existsRequest:\"TaxCoupon\" | async'></list-metadata>"),
-
-                        }).DefineDefaultGroup(new Group("Incluir Cupons","fa fa-calculator")),
+                                .SetTag("<list-metadata [(vm)]='vm' [ctrlName]=\"'collectionTaxCouponMetaData'\" [MetadataId]=\"'attributesMetaDataId'\" [MetadataDescription]=\"'attributesMetaData.name'\" [MetadataValue]=\"'value'\" *ngIf='vm.model.TaxCouponId | existsRequest:\"TaxCoupon\" | async'></list-metadata>")
+                        }).DefineDefaultGroup(new Group("Incluir Cupons","fa fa-calculator"))
 ```
 ### 5-) Configuração do Crud para exibir um sub cadastro
 ```

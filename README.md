@@ -373,9 +373,7 @@ and name <> 'sysdiagrams'
 
 3-) opcional [Conemu [https://www.fosshub.com/ConEmu.html/ConEmuSetup.161206.exe]]
 
-5-) instalar .net core 2.0.X [https://www.microsoft.com/net/download/windows]
-
-5.1-) instalar SDK installer [https://www.microsoft.com/net/download/thank-you/dotnet-sdk-2.1.200-windows-x64-installer]
+4-) Instalar o dotnet (sdk) https://dotnet.microsoft.com/download/dotnet-core/2.2
 
 ### Links;
 

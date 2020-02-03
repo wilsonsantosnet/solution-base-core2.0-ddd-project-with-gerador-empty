@@ -381,4 +381,4 @@ and name <> 'sysdiagrams'
 
 [Artigo Gerador de Codigo](https://medium.com/@wilsonsantos_66971/gerador-de-c%C3%B3digo-7e3c08981e43?source=friends_link&sk=e0b14bb1a0f656873b0ae619b4bbd4e9)
 
-[Gerador, Foque no Domínio](https://medium.com/@wilsonsantos_66971/gerador-de-c%C3%B3digo-7e3c08981e43?source=friends_link&sk=e0b14bb1a0f656873b0ae619b4bbd4e9)
+[Gerador, Foque no Domínio](https://medium.com/@wilsonsantos_66971/foque-no-dom%C3%ADnio-628e284c3703)

@@ -373,7 +373,7 @@ and name <> 'sysdiagrams'
 
 3-) opcional [Conemu [https://www.fosshub.com/ConEmu.html/ConEmuSetup.161206.exe]]
 
-4-) Instalar o dotnet (sdk) https://dotnet.microsoft.com/download/dotnet-core/2.2
+4-) Instalar o dotnet (sdk / runtime) https://dotnet.microsoft.com/download/dotnet-core/2.2
 
 ### Links;
 

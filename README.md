@@ -305,9 +305,19 @@ new FieldConfig {
 ### 10) Configuração de tabela ManyToMany Exibir Campos no Crud
 ```
 new List<FieldConfig>{
-                        new FieldConfig { Name = "UserId", ShowFieldIsKey = true },
-                        new FieldConfig { Name = "RoleId", ShowFieldIsKey  = true },
+        new FieldConfig { Name = "UserId", ShowFieldIsKey = true },
+        new FieldConfig { Name = "RoleId", ShowFieldIsKey  = true },
 }
+```
+### 11) Configuração para fazer upload de arquivos
+```
+new TableInfo().FromTable("Banner").MakeBack().MakeFront()
+    .AndConfigureThisFields(new List<FieldConfig> {
+        new FieldConfig {
+            Name="imagem",
+            Upload = true,
+        },
+    }),
 ```
 # DSL Gerar Back e Front
 ### Sql para obter todas as tabelas do banco e gerar a configuraçõa necessária para geração de codigo do back e do front

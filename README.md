@@ -319,6 +319,15 @@ new TableInfo().FromTable("Banner").MakeBack().MakeFront()
         },
     }),
 ```
+### 12) Configuração para tornar uma controller publica
+```
+TableInfo = new UniqueListTableInfo
+{
+   new TableInfo().FromTable("SampleType").MakeBack().MakeFront()
+   .AndDisableAuth(),
+}
+,
+```
 # DSL Gerar Back e Front
 ### Sql para obter todas as tabelas do banco e gerar a configuraçõa necessária para geração de codigo do back e do front
 ```

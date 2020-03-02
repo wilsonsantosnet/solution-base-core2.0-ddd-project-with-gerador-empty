@@ -105,7 +105,7 @@ solution-base-core2.0-ddd-project-with-gerador-empty\Gerador.Gen\Scripts\Sample.
                            Attributes = new List<string>{ "[textMask]='{mask: vm.masks.maskMoney}'" }
                        }
                    }),
-                   new TableInfo().FromTable("SampleType").MakeBack().MakeFront(),
+                   new TableInfo().FromTable("SampleType").MakeBack().MakeCrudBasic(),
                    new TableInfo().FromClass("SampleDash").MakeFrontBasic(),
                 }
             };

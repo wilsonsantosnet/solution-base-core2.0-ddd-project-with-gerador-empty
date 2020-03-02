@@ -56,7 +56,7 @@ solution-base-core2.0-ddd-project-with-gerador-empty\Gerador.Gen\Scripts\Sample.
 
 # EXEMPLO CONFIG.CONTEXT 
 
-### 1-) CRUD com customização de Campos, Rota e Component Basico sem back 
+### 1-) CRUD Completo com customização de Campos, Rota e Component Basico sem back , e Crud mínimo
 
 ```
         private Context ConfigContextDefault()

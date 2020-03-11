@@ -1,94 +1,103 @@
 ﻿@model LoginViewModel
 
-    <div class="login-page">
-        <div class="page-header">
-            <img src="~/logo.png" class="icon-banner">
-        </div>
 
-       
-            <partial name="_ValidationSummary" />
+<main class="login">
 
-            <div class="row">
+    <div class="container">
 
-                @if (Model.EnableLocalLogin)
-                {
-                    <div class="col-sm-6">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">Local Login</h3>
-                            </div>
-                            <div class="panel-body">
+        <partial name="_ValidationSummary" />
 
-                                <form asp-route="Login">
-                                    <input type="hidden" asp-for="ReturnUrl" />
+        @if (Model.EnableLocalLogin)
+        {
 
-                                    <fieldset>
-                                        <div class="form-group">
-                                            <label asp-for="Username"></label>
-                                            <input class="form-control" placeholder="Username" asp-for="Username" autofocus>
-                                        </div>
-                                        <div class="form-group">
-                                            <label asp-for="Password"></label>
-                                            <input type="password" class="form-control" placeholder="Password" asp-for="Password" autocomplete="off">
-                                        </div>
+            <div class="card-group">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <div class="my-3">
+                            <img alt="Sample Seed" class="img-fluid" src="~/logo.png">
 
-                                        @*@if (Model.AllowRememberLogin)
-                                        {
-                                            <div class="form-group login-remember">
-                                                <label asp-for="RememberLogin">
-                                                    <input asp-for="RememberLogin">
-                                                    <strong>Remember My Login</strong>
-                                                </label>
-                                            </div>
-                                        }*@
-
-                                        <div class="help-block text-left">
-                                            <small><a asp-action="ForgottenPassword">Esqueci minha senha</a></small>
-                                        </div>
-
-
-                                        <div class="form-group">
-                                            <button class="btn btn-primary">Login</button>
-                                        </div>
-                                    </fieldset>
-                                </form>
-                            </div>
+                            <p>
+                                Bem vindo à plataforma <strong>Simply Seed</strong>. Para continuar conosco, por favor, efetue o seu login.
+                                Caso você seja novo por aqui, faça o seu cadastro.
+                            </p>
                         </div>
                     </div>
-                }
+                </div>
 
-                @if (Model.VisibleExternalProviders.Any())
-                {
-                    <div class="col-md-6 col-sm-6 external-providers">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">External Login</h3>
-                            </div>
-                            <div class="panel-body">
-                                <ul class="list-inline">
-                                    @foreach (var provider in Model.VisibleExternalProviders)
-                                    {
-                                        <li>
-                                            <a class="btn btn-default"
-                                               asp-action="ExternalLogin"
-                                               asp-route-provider="@provider.AuthenticationScheme"
-                                               asp-route-returnUrl="@Model.ReturnUrl">
-                                                @provider.DisplayName
-                                            </a>
-                                        </li>
-                                    }
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                }
 
-                @if (!Model.EnableLocalLogin && !Model.VisibleExternalProviders.Any())
-                {
-                    <div class="alert alert-warning">
-                        <strong>Invalid login request</strong>
-                        There are no login schemes configured for this client.
+                <div class="card">
+                    <div class="card-body">
+                        <h2>Login</h2>
+                        <small class="text-muted mb-2">Informe seus dados de acesso</small>
+
+                        <form asp-route="Login">
+                            <input type="hidden" asp-for="ReturnUrl" />
+
+                            <div class="form">
+
+                                <div class="input-group mb-3">
+                                    <input class="form-control" placeholder="Usuário" asp-for="Username" autofocus>
+                                </div>
+
+                                <div class="input-group mb-3">
+                                    <input type="password" class="form-control" placeholder="Senha" asp-for="Password" autocomplete="off">
+                                </div>
+
+                                <div class="row mb-3">
+                                    <div class="col text-right">
+                                        <small><a asp-action="ForgottenPassword">Esqueci minha senha</a></small>
+                                    </div>
+                                </div>
+
+
+                                <div class="row justify-content-center align-items-center">
+                                    <div class="col">
+                                        <button class="btn btn-block btn-primary">Continuar</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </form>
+
                     </div>
-                }
+                </div>
             </div>
+        }
+
+        @*@if (Model.VisibleExternalProviders.Any())
+        {
+            <div class="col-md-6 col-sm-6 external-providers">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">External Login</h3>
+                    </div>
+                    <div class="panel-body">
+                        <ul class="list-inline">
+                            @foreach (var provider in Model.VisibleExternalProviders)
+                            {
+                                <li>
+                                    <a class="btn btn-default"
+                                       asp-action="ExternalLogin"
+                                       asp-route-provider="@provider.AuthenticationScheme"
+                                       asp-route-returnUrl="@Model.ReturnUrl">
+                                        @provider.DisplayName
+                                    </a>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        }
+
+        @if (!Model.EnableLocalLogin && !Model.VisibleExternalProviders.Any())
+        {
+            <div class="alert alert-warning">
+                <strong>Invalid login request</strong>
+                There are no login schemes configured for this client.
+            </div>
+        }*@
+
+
     </div>
+</main>

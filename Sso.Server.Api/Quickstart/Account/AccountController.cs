@@ -221,6 +221,26 @@ namespace IdentityServer4.Quickstart.UI
         }
 
 
+        [HttpGet]
+        public IActionResult ComeBackApp()
+        {
+            return Redirect(HttpContext.Request.Cookies["returnUrl"]);
+        }
+
+
+        [HttpGet]
+        public async Task<IActionResult> ForgottenPassword()
+        {
+            return await Task.Run(() => { return View(); });
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> ForgottenPasswordReset(string Id, string returnUrl)
+        {
+            return View("ForgottenPasswordReset", Id);           
+        }
+
+
 
         /*****************************************/
         /* helper APIs for the AccountController */

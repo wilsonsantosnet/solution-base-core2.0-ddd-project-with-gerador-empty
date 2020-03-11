@@ -1,0 +1,49 @@
+﻿* {
+    transition: all ease 0.8s;
+}
+
+.form-control {
+    border-radius: 0;
+}
+
+.card {
+    background: rgba(255, 255, 255, .9);
+    color: #333;
+    border-radius: 0;
+}
+
+    .card a.fgt-pass {
+        color: #555;
+        text-decoration: underline;
+        font-weight: bold;
+    }
+
+@media (max-width: 992px) {
+    .card:first-child {
+        display: none;
+    }
+}
+
+.card .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 4rem 2rem;
+}
+
+@media (max-width: 992px) {
+    .card .card-body {
+        padding: 1rem;
+    }
+}
+
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url(../bg-login.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}

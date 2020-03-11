@@ -13,26 +13,21 @@ namespace Sso.Server.Api
         public async Task<UserCredential> Auth(string userName, string password)
         {
 
-           
-            //return await Task.Run(() =>
-            //{
-            //    var UserCredential = default(UserCredential);
 
-            //    var userAdmin = Config.GetUsers()
-            //        .Where(_ => _.Username == userName)
-            //        .Where(_ => _.Password == password)
-            //        .SingleOrDefault();
+            return await Task.Run(() =>
+            {
+                var UserCredential = default(UserCredential);
 
-            //    if (userAdmin.IsNotNull())
-            //        UserCredential = userAdmin;
+                var userAdmin = Config.GetUsers()
+                    .Where(_ => _.Username == userName)
+                    .Where(_ => _.Password == password)
+                    .SingleOrDefault();
 
-            //    return UserCredential;
-            //});
+                if (userAdmin.IsNotNull())
+                    UserCredential = userAdmin;
 
-
-            throw new InvalidCastException("Auth User Service not implemented, uncomment code above");
-
-
+                return UserCredential;
+            });
         }
 
      

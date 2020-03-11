@@ -1,0 +1,24 @@
+.line{
+    position: relative;
+}
+
+    .line::after {
+        content: '';
+        display: block;
+        height: 2px;
+        width: 100%;
+        background-color: #efefef;
+        position: absolute;
+        top: 50%;
+        margin-top: -1px;
+        z-index: 1;
+    }
+
+    .line span {
+        background-color: #fff;
+        position: relative;
+        z-index: 2;
+        padding: .4rem .8rem;
+    }
+
+

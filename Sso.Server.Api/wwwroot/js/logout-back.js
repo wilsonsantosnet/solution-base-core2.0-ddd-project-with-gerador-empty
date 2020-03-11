@@ -4,3 +4,4 @@
     window.location = $("input[name='ReturnUrl']").val();
 
 })
+

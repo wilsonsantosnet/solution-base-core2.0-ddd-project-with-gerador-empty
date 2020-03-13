@@ -1,5 +1,6 @@
 using Common.Domain.Interfaces;
 using MailKit.Net.Smtp;
+using MailKit.Security;
 using MimeKit;
 using MimeKit.Text;
 using System;
@@ -17,7 +18,7 @@ namespace Common.Mail
         private string textFormat;
         private readonly List<MailboxAddress> addressFrom;
         private readonly List<MailboxAddress> addressTo;
-       
+
 
         public Email()
         {
@@ -27,7 +28,8 @@ namespace Common.Mail
             this.addressTo = new List<MailboxAddress>();
         }
 
-        public void Config(string smtpServer, string smtpUser, string smtpPassword, int smtpPortNumber = 587,string textFormat = "HTML") {
+        public void Config(string smtpServer, string smtpUser, string smtpPassword, int smtpPortNumber = 587, string textFormat = "HTML")
+        {
 
             this.smtpServer = smtpServer;
             this.smtpUser = smtpUser;
@@ -36,7 +38,7 @@ namespace Common.Mail
             this.textFormat = textFormat;
         }
 
-        public void AddAddressFrom(string name,string email)
+        public void AddAddressFrom(string name, string email)
         {
             this.addressFrom.Add(new MailboxAddress(name, email));
         }
@@ -50,7 +52,7 @@ namespace Common.Mail
         {
             try
             {
-               
+
                 var mimeMessage = new MimeMessage();
                 mimeMessage.From.AddRange(this.addressFrom);
                 mimeMessage.To.AddRange(this.addressTo);
@@ -64,11 +66,13 @@ namespace Common.Mail
 
                 using (var client = new SmtpClient())
                 {
-                    client.Connect(this.smtpServer, this.smtpPortNumber, false);
+                    client.ServerCertificateValidationCallback = (s, c, h, e) => true;
+                    client.Connect(this.smtpServer, this.smtpPortNumber, SecureSocketOptions.SslOnConnect);
                     client.Authenticate(this.smtpUser, this.smtpPassword);
                     client.Send(mimeMessage);
                     client.Disconnect(true);
                 }
+
             }
             catch (Exception ex)
             {

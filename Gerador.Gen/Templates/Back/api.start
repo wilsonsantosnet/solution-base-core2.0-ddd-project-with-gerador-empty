@@ -62,6 +62,7 @@ namespace <#namespace#>.Api
             });
 
             services.Configure<ConfigSettingsBase>(Configuration.GetSection("ConfigSettings"));
+			services.Configure<ConfigStorageConnectionStringBase>(Configuration.GetSection("ConfigStorage"));
             services.AddSingleton<IConfiguration>(Configuration);
 			services.AddSingleton(new EnviromentInfo
             {

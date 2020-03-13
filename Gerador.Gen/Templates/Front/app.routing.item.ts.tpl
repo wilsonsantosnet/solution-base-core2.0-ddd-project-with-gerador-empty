@@ -1,1 +1,1 @@
-            { path: '<#classNameLower#>', <#authGuard#> loadChildren: './main/<#classNameLowerAndSeparator#>/<#classNameLowerAndSeparator#>.module#<#className#>Module' },
+			{ path: '<#classNameLower#>', <#authGuard#> loadChildren: () => import('./main/<#classNameLowerAndSeparator#>/<#classNameLowerAndSeparator#>.module').then(m => m.<#className#>Module) },

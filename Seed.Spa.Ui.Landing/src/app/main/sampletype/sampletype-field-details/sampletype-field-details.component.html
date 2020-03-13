@@ -1,0 +1,10 @@
+﻿<dl>
+    <dt>{{ vm.infos | traduction: 'name' }}:</dt>
+    <dd><bind-custom [model]="vm.details.name" [format]="'string'" [tag]="'span'" ></bind-custom></dd>
+ 
+
+    <dt>{{ vm.infos | traduction: 'sampleTypeId' }}:</dt>
+    <dd><bind-custom [model]="vm.details.sampleTypeId" [format]="'int'" [tag]="'span'" ></bind-custom></dd>
+ 
+
+</dl> 

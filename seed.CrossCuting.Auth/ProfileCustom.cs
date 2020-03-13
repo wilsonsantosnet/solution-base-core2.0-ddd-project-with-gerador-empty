@@ -1,9 +1,10 @@
-using Common.API.Extensions;
+﻿using Common.API.Extensions;
 using Common.Domain.Enums;
 using Common.Domain.Model;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Claims;
 
 namespace Seed.CrossCuting
@@ -23,8 +24,9 @@ namespace Seed.CrossCuting
             Contributor,
             Reader
         }
+		
 
-        public static IDictionary<string, object> Define(IEnumerable<Claim> _claims)
+		public static IDictionary<string, object> Define(IEnumerable<Claim> _claims)
         {
             var user = new CurrentUser().Init(Guid.NewGuid().ToString(), _claims.ConvertToDictionary());
             return Define(user);
@@ -33,7 +35,7 @@ namespace Seed.CrossCuting
         public static IDictionary<string, object> Define(CurrentUser user)
         {
             var _claims = user.GetClaims();
-            var roles = GetRoles(user);
+            var roles = JsonConvert.DeserializeObject<IEnumerable<string>>(user.GetRole());
             var typeTole = user.GetTypeRole();
 
             if (typeTole.ToLower() == ETypeRole.Admin.ToString().ToLower())
@@ -43,8 +45,6 @@ namespace Seed.CrossCuting
 
             return _claims;
         }
-
-
 
         public static Dictionary<string, object> ClaimsForAdmin()
         {
@@ -67,7 +67,10 @@ namespace Seed.CrossCuting
 
             var tools = new List<Tool>
             {
-                new Tool { Icon = "fa fa-edit", Name = "Tool", Route = "#/Url", Key="Tool" },
+                new Tool { Icon = "fa fa-edit", Name = "Sample", Route = "/sample", Key = "Sample" , Type = ETypeTools.Menu },
+                new Tool { Icon = "fa fa-edit", Name = "SampleType", Route = "/sampletype", Key = "SampleType" , Type = ETypeTools.Menu },
+                new Tool { Icon = "fa fa-edit", Name = "SampleDash", Route = "/sampledash", Key = "SampleDash" , Type = ETypeTools.Menu },
+
             };
 
             var _toolsForSubscriber = JsonConvert.SerializeObject(tools);
@@ -75,14 +78,6 @@ namespace Seed.CrossCuting
             {
                 { "tools", _toolsForSubscriber }
             };
-        }
-        
-        private static IEnumerable<string> GetRoles(CurrentUser user)
-        {
-            var role = user.GetRole();
-            if (role.Contains(","))
-                return JsonConvert.DeserializeObject<IEnumerable<string>>(user.GetRole());
-            return new List<string> { role };
         }
 
     }

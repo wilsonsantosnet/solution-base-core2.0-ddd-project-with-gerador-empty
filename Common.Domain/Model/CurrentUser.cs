@@ -52,6 +52,14 @@ namespace Common.Domain.Model
             return string.Empty;
         }
 
+        public string GetClientId()
+        {
+            var clientId = this._claims.Where(_ => _.Key == "client_id");
+            if (clientId.IsAny())
+                return clientId.SingleOrDefault().Value.ToString();
+            return string.Empty;
+        }
+
         public bool IsAdmin()
         {
             if (this._claims.IsNotNull())
@@ -124,7 +132,7 @@ namespace Common.Domain.Model
             if (this.IsTenant())
             {
                 var subjectId = this._claims
-                    .Where(_ => _.Key.ToLower() == "sub" || _.Key.ToLower() == "client_sub")
+                    .Where(_ => _.Key.ToLower() == "tenantId")
                     .SingleOrDefault()
                     .Value;
 
@@ -155,6 +163,9 @@ namespace Common.Domain.Model
                     .Where(_ => _.Key.ToLower() == "sub" || _.Key.ToLower() == "client_sub")
                     .SingleOrDefault()
                     .Value;
+                
+                if (subjectId.IsNull())
+                    return default(TS);
 
                 return (TS)Convert.ChangeType(subjectId, typeof(TS));
             }

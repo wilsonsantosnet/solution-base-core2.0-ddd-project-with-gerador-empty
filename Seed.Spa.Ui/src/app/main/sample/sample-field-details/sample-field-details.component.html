@@ -1,0 +1,38 @@
+﻿<dl>
+    <dt>{{ vm.infos | traduction: 'name' }}:</dt>
+    <dd><bind-custom [model]="vm.details.name" [format]="'string'" [tag]="'span'" ></bind-custom></dd>
+ 
+
+    <dt>{{ vm.infos | traduction: 'descricao' }}:</dt>
+    <dd><bind-custom [model]="vm.details.descricao" [format]="'string'" [tag]="'span'" ></bind-custom></dd>
+ 
+
+    <dt>{{ vm.infos | traduction: 'tags' }}:</dt>
+    <dd><bind-custom [model]="vm.details.tags" [format]="'string'" [tag]="'span'" ></bind-custom></dd>
+ 
+
+    <dt>{{ vm.infos | traduction: 'datetime' }}:</dt>
+    <dd><bind-custom [model]="vm.details.datetime" [format]="'DateTime?'" [tag]="'span'" ></bind-custom></dd>
+ 
+
+    <dt>{{ vm.infos | traduction: 'sampleId' }}:</dt>
+    <dd><bind-custom [model]="vm.details.sampleId" [format]="'int'" [tag]="'span'" ></bind-custom></dd>
+ 
+
+    <dt>{{ vm.infos | traduction: 'sampleTypeId' }}:</dt>
+    <dd><bind-custom [model]="vm.details.sampleTypeId" [format]="'instance'" [tag]="'span'"  [instance]="'SampleType'"  [key]="'SampleTypeId'"></bind-custom></dd>
+ 
+
+    <dt>{{ vm.infos | traduction: 'age' }}:</dt>
+    <dd><bind-custom [model]="vm.details.age" [format]="'int?'" [tag]="'span'" ></bind-custom></dd>
+ 
+
+    <dt>{{ vm.infos | traduction: 'category' }}:</dt>
+    <dd><bind-custom [model]="vm.details.category" [format]="'int?'" [tag]="'span'" ></bind-custom></dd>
+ 
+
+    <dt>{{ vm.infos | traduction: 'ativo' }}:</dt>
+    <dd><bind-custom [model]="vm.details.ativo" [format]="'bool?'" [tag]="'span'" ></bind-custom></dd>
+ 
+
+</dl> 

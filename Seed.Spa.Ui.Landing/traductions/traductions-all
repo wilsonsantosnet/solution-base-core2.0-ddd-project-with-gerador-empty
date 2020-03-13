@@ -1,0 +1,11 @@
+pt-BR;Sample;SampleId;Sample
+pt-BR;Sample;Name;Name
+pt-BR;Sample;Descricao;Descricao
+pt-BR;Sample;SampleTypeId;Sample Type
+pt-BR;Sample;Ativo;Ativo
+pt-BR;Sample;Age;Age
+pt-BR;Sample;Category;Category
+pt-BR;Sample;Datetime;Datetime
+pt-BR;Sample;Tags;Tags
+pt-BR;SampleType;SampleTypeId;Sample Type
+pt-BR;SampleType;Name;Name

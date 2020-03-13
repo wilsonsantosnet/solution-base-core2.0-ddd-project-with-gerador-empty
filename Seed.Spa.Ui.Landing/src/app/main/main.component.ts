@@ -8,12 +8,15 @@ import { GlobalService, NotificationParameters } from '../global.service'
 import { MainService } from './main.service';
 import { retry } from 'rxjs/operators';
 
+declare var $: any;
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss'],
   providers: [GlobalServiceCulture, MainService]
 })
+
 export class MainComponent implements OnInit {
 
   vm: any;
@@ -73,6 +76,19 @@ export class MainComponent implements OnInit {
           this.router.navigate(["/home"]);
       }
     });
+
+    this.fixedHeader();
+
+    // efeito de scroll top
+    var windowH = $(window).height() / 2;
+    $(window).on('scroll', function () {
+      if ($(this).scrollTop() > windowH) {
+        $("#myBtn").css('display', 'flex');
+      } else {
+        $("#myBtn").css('display', 'none');
+      }
+    });
+    // efeito de scroll top
   }
 
   onToggleMenu(e: any) {
@@ -91,6 +107,30 @@ export class MainComponent implements OnInit {
 
   onFilter(filter: any) {
 
+  }
+
+  scrollToTop() {
+    $('html, body').animate({ scrollTop: 0 }, 300);
+  }
+
+  fixedHeader() {
+    /*[ Fixed Header ]
+    ===========================================================*/
+    var header = $('header');
+    var logo = $(header).find('.logo img');
+    var linkLogo1 = $(logo).attr('src');
+    var linkLogo2 = $(logo).data('logofixed');
+
+    $(window).on('scroll', function () {
+      if ($(this).scrollTop() > 5 && $(this).width() > 992) {
+        $(logo).attr('src', linkLogo2);
+        $(header).addClass('header-fixed');
+      }
+      else {
+        $(header).removeClass('header-fixed');
+        $(logo).attr('src', linkLogo1);
+      }
+    });
   }
 
 }

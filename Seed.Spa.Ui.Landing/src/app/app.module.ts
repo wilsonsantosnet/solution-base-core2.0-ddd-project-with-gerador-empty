@@ -5,7 +5,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 
-
 import { AuthService } from './common/services/auth.service';
 import { ApiService } from './common/services/api.service';
 import { ServiceBase } from './common/services/service.base';
@@ -14,7 +13,6 @@ import { ConfirmModalComponent } from './common/components/confirm-modal.compone
 import { LoadingComponent } from './common/components/loading.component';
 import { LoadingTopComponent } from './common/components/loading-top.component';
 import { MenuComponent } from './common/components/menu.component';
-
 
 import { AuthGuard } from './common/services/auth.guard';
 import { LoginComponent } from './login/login.component';
@@ -50,6 +48,8 @@ import { WelcomeComponent } from './common/components/landing/welcome/welcome.co
 import { IntroComponent } from './common/components/landing/intro/intro.component';
 import { ContactComponent } from './common/components/landing/contact/contact.component';
 import { FooterComponent } from './common/components/landing/footer/footer.component';
+
+
 
 registerLocaleData(ptBr)
 

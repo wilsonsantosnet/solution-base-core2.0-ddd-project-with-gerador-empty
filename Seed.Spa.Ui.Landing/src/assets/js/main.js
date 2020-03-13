@@ -24,22 +24,7 @@
         transition: function(url){ window.location.href = url; }
     });
     
-    /*[ Back to top ]
-    ===========================================================*/
-    var windowH = $(window).height()/2;
-
-    $(window).on('scroll',function(){
-        if ($(this).scrollTop() > windowH) {
-            $("#myBtn").css('display','flex');
-        } else {
-            $("#myBtn").css('display','none');
-        }
-    });
-
-    $('.scroll-top').on("click", function(){
-        $('html, body').animate({scrollTop: 0}, 300);
-    });
-
+    
 
     /*[ Select ]
     ===========================================================*/
@@ -67,25 +52,7 @@
     });
     
 
-    /*[ Fixed Header ]
-    ===========================================================*/
-    var header = $('header');
-    var logo = $(header).find('.logo img');
-    var linkLogo1 = $(logo).attr('src');
-    var linkLogo2 = $(logo).data('logofixed');
-
-
-    $(window).on('scroll',function(){
-        if($(this).scrollTop() > 5 && $(this).width() > 992) {
-            $(logo).attr('src',linkLogo2);
-            $(header).addClass('header-fixed');
-        }
-        else {
-            $(header).removeClass('header-fixed');
-            $(logo).attr('src',linkLogo1);
-        }
-        
-    });
+    
 
     /*[ Show/hide sidebar ]
     ===========================================================*/

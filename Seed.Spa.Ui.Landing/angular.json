@@ -24,7 +24,9 @@
               "src/web.config"
             ],
             "styles": [
-              "src/assets/scss/style.scss"
+              "src/assets/scss/style.scss",
+              "src/assets/vendor/owl-carousel/dist/assets/owl.carousel.min.css",
+              "src/assets/vendor/owl-carousel/dist/assets/owl.theme.default.min.css"
             ],
             "scripts": [
               "./node_modules/jquery/dist/jquery.min.js",
@@ -37,6 +39,7 @@
               "src/assets/js/slick-custom.js",
               "src/assets/vendor/parallax100/parallax100.js",
               "src/assets/vendor/lightbox2/js/lightbox.min.js",
+              "src/assets/vendor/owl-carousel/dist/owl.carousel.min.js",
               "src/assets/js/main.js"
             ]
           },

@@ -9,4 +9,8 @@
     <PackageReference Include="Sendgrid" Version="9.9.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Common.Domain\Common.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

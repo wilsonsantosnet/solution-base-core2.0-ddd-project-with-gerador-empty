@@ -35,11 +35,21 @@ namespace Seed.CrossCuting
             var _claims = user.GetClaims();
             var roles = GetRoles(user);
             var typeTole = user.GetTypeRole();
+            var clientId = user.GetClaimByName<string>("client_id");
 
-            if (typeTole.ToLower() == ETypeRole.Admin.ToString().ToLower())
-                _claims.AddRange(ClaimsForAdmin());
-            else
-                _claims.AddRange(ClaimsForTenant(user.GetSubjectId<int>()));
+            if (clientId == "Seed-spa")
+            {
+                if (typeTole.ToLower() == ETypeRole.Admin.ToString().ToLower())
+                    _claims.AddRange(ClaimsForAdmin());
+                else
+                    _claims.AddRange(ClaimsForTenant(user.GetSubjectId<int>()));
+            }
+
+            if (clientId == "Seed-spa-custom")
+            {
+                if (typeTole.ToLower() == ETypeRole.Admin.ToString().ToLower())
+                    _claims.AddRange(ClaimsForAdmin());
+            }
 
             return _claims;
         }

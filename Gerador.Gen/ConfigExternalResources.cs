@@ -68,6 +68,22 @@ namespace Seed.Gen
             };
 
         }
+        
+        private ExternalResource ConfigExternarResourcesProjectCustomLayoutCoreUIAngular80(bool replaceLocalFilesApplication)
+        {
+
+            return new ExternalResource
+            {
+                ReplaceLocalFilesApplication = true,
+                DownloadOneTime = true,
+                DownloadOneTimeFileVerify = "package.json",
+                ResouceRepositoryName = "project-custom-layout-front-coreui-angular8.0",
+                ResourceUrlRepository = "https://github.com/wilsonsantosnet/project-custom-layout-front-coreui-angular8.0.git",
+                ResourceLocalPathFolderExecuteCloning = @"C:\Projetos\Outros\Repositorios",
+                ResourceLocalPathDestinationFolrderApplication = @"C:\Projetos\project-custom-layout-front-coreui-angular8.0\Seed.Spa.Ui.Custom"
+            };
+
+        }
 
         private ExternalResource ConfigExternarResourcesProjectBaseLayoutCoreUIAngular60(bool replaceLocalFilesApplication)
         {
@@ -184,7 +200,8 @@ namespace Seed.Gen
                ConfigExternarResourcesFrameworkAngula60Crud(replaceLocalFilesApplication),
                ConfigExternarResourcesProjectBaseLayoutCoreUIAngular60(replaceLocalFilesApplication),
                ConfigExternarResourcesProjectBaseLayoutCoreUIAngular60OnlyThisFiles(replaceLocalFilesApplication),
-               ConfigExternarResourcesProjectBaseItensSolutionOnlyThisFiles(replaceLocalFilesApplication)
+               ConfigExternarResourcesProjectBaseItensSolutionOnlyThisFiles(replaceLocalFilesApplication),
+               ConfigExternarResourcesProjectCustomLayoutCoreUIAngular80(replaceLocalFilesApplication)
             };
         }
 

@@ -68,22 +68,6 @@ namespace Seed.Gen
             };
 
         }
-        
-        private ExternalResource ConfigExternarResourcesProjectCustomLayoutCoreUIAngular80(bool replaceLocalFilesApplication)
-        {
-
-            return new ExternalResource
-            {
-                ReplaceLocalFilesApplication = true,
-                DownloadOneTime = true,
-                DownloadOneTimeFileVerify = "package.json",
-                ResouceRepositoryName = "project-custom-layout-front-coreui-angular8.0",
-                ResourceUrlRepository = "https://github.com/wilsonsantosnet/project-custom-layout-front-coreui-angular8.0.git",
-                ResourceLocalPathFolderExecuteCloning = @"C:\Projetos\Outros\Repositorios",
-                ResourceLocalPathDestinationFolrderApplication = @"C:\Projetos\project-custom-layout-front-coreui-angular8.0\Seed.Spa.Ui.Custom"
-            };
-
-        }
 
         private ExternalResource ConfigExternarResourcesProjectBaseLayoutCoreUIAngular60(bool replaceLocalFilesApplication)
         {
@@ -154,7 +138,7 @@ namespace Seed.Gen
 
             return new ExternalResource
             {
-                ReplaceLocalFilesApplication = true,
+                ReplaceLocalFilesApplication = replaceLocalFilesApplication,
                 ResouceRepositoryName = "framework-angular6.0-CRUD",
                 ResourceUrlRepository = "https://github.com/wilsonsantosnet/framework-angular6.0-CRUD.git",
                 ResourceLocalPathFolderExecuteCloning = @"C:\Projetos\Outros\Repositorios",
@@ -162,7 +146,23 @@ namespace Seed.Gen
             };
 
         }
-        
+
+        private ExternalResource ConfigExternarResourcesProjectCustomLayoutCoreUIAngular80(bool replaceLocalFilesApplication)
+        {
+
+            return new ExternalResource
+            {
+                ReplaceLocalFilesApplication = replaceLocalFilesApplication,
+                DownloadOneTime = true,
+                DownloadOneTimeFileVerify = "package.json",
+                ResouceRepositoryName = "project-custom-layout-front-coreui-angular8.0",
+                ResourceUrlRepository = "https://github.com/wilsonsantosnet/project-custom-layout-front-coreui-angular8.0.git",
+                ResourceLocalPathFolderExecuteCloning = @"C:\Projetos\Outros\Repositorios",
+                ResourceLocalPathDestinationFolrderApplication = @"C:\Projetos\solution-base-core2.0-ddd-project-with-gerador-empty\Seed.Spa.Ui.Custom"
+            };
+
+        }
+
         private ExternalResource ConfigExternarResourcesProjectBaseItensSolutionOnlyThisFiles(bool replaceLocalFilesApplication)
         {
 

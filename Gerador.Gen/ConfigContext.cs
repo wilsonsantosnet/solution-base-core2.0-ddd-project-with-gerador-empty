@@ -92,7 +92,7 @@ namespace Seed.Gen
                 CamelCasing = true,
                 MakeFront = true,
                 AlertNotFoundTable = true,
-                MakeToolsProfile = true,
+                MakeToolsProfile = false,
 
                 Routes = new List<RouteConfig> {
                     new RouteConfig{ Route = "{ path: 'sampledash',  canActivate: [AuthGuard], loadChildren: () => import('./main/sampledash/sampledash.module').then(m => m.SampleDashModule) }" }

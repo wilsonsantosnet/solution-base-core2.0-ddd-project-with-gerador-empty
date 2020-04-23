@@ -41,7 +41,7 @@ namespace Sso.Server.Api
                 .GetSection("ConfigConnectionString:Default").Value;
 
 
-            services.AddIdentityServer();
+            services.AddIdentityServer(optionsConfig())
                 //.AddSigningCredential(GetRSAParameters())
                 //.AddInMemoryApiResources(Config.GetApiResources())
                 //.AddInMemoryIdentityResources(Config.GetIdentityResources())
@@ -100,9 +100,12 @@ namespace Sso.Server.Api
             app.UseStaticFiles();
             app.UseMvcWithDefaultRoute();
         }
-
-
-
+        
+        private Action<IdentityServer4.Configuration.IdentityServerOptions> optionsConfig()
+        {
+            return options => { options.IssuerUri = Configuration.GetSection("ConfigSettings:IssuerUri").Value; };
+        }
+        
         private X509Certificate2 GetRSAParameters()
         {
             var fileCert = Path.Combine(_env.ContentRootPath, "pfx", "ids4smbasic.pfx");

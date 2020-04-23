@@ -43,6 +43,7 @@ namespace Sso.Server.Api
 
             services.AddIdentityServer(optionsConfig())
                 //.AddSigningCredential(GetRSAParameters())
+                //.AddCustomTokenRequestValidator<ClientCredentialRequestValidator>()
                 //.AddInMemoryApiResources(Config.GetApiResources())
                 //.AddInMemoryIdentityResources(Config.GetIdentityResources())
                 //.AddInMemoryClients(Config.GetClients(Configuration.GetSection("ConfigSettings").Get<ConfigSettingsBase>()));
@@ -52,8 +53,9 @@ namespace Sso.Server.Api
             services.Configure<ConfigConnectionStringBase>(Configuration.GetSection("ConfigConnectionString"));
             //Container DI
             services.AddScoped<CurrentUser>();
-            services.AddTransient<IUserCredentialServices, UserCredentialServices>();
-            services.AddTransient<IResourceOwnerPasswordValidator, ResourceOwnerPasswordValidator>();
+            services.AddScoped<IUserCredentialServices, UserCredentialServices>();
+            services.AddScoped<IResourceOwnerPasswordValidator, ResourceOwnerPasswordValidator>();
+            services.AddScoped<ICustomTokenRequestValidator, ClientCredentialRequestValidator>();
             services.AddSingleton<IConfiguration>(Configuration);
             services.AddLogging(loggingBuilder =>
             {

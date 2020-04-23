@@ -41,7 +41,7 @@ namespace Sso.Server.Api
                 .GetSection("ConfigConnectionString:Default").Value;
 
 
-            services.AddIdentityServer(optionsConfig())
+            services.AddIdentityServer(optionsConfig());
                 //.AddSigningCredential(GetRSAParameters())
                 //.AddCustomTokenRequestValidator<ClientCredentialRequestValidator>()
                 //.AddInMemoryApiResources(Config.GetApiResources())

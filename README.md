@@ -394,6 +394,11 @@ and name <> 'sysdiagrams'
 
 4-) Instalar o dotnet (sdk / runtime) https://dotnet.microsoft.com/download/dotnet-core/2.2
 
+#update
+npm uninstall -g angular-cli
+npm cache clean --force
+npm install -g @angular/cli
+
 ### Links;
 
 [Diagrama Gerador](https://drive.google.com/file/d/1qE6RSNoJCipIbQMYFmT41_Y7GXW2WXds/view)

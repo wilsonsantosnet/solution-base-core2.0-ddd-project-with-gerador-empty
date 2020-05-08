@@ -21,7 +21,7 @@ namespace Seed.Gen
                 ContextName = contextName,
                 ShowKeysInFront = false,
                 LengthBigField = 250,
-                OverrideFiles = true,
+                OverrideFiles = false,
                 UseRouteGuardInFront = true,
 
                 OutputClassDomain = ConfigurationManager.AppSettings[string.Format("outputClassDomain")],
@@ -74,7 +74,7 @@ namespace Seed.Gen
                 ContextName = contextName,
                 ShowKeysInFront = false,
                 LengthBigField = 250,
-                OverrideFiles = true,
+                OverrideFiles = false,
                 UseRouteGuardInFront = true,
 
                 OutputClassDomain = ConfigurationManager.AppSettings[string.Format("outputClassDomain")],

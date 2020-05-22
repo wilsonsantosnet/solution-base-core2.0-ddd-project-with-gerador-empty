@@ -118,6 +118,10 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Seed.Spa.Ui.Custom", "Seed.
 		SlnRelativePath = "Seed.Spa.Ui.Custom\"
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "9-Test", "9-Test", "{C2DA6F5F-AB2E-422A-875B-93EA4BE555B1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Seed.Test", "Seed.Test\Seed.Test.csproj", "{44F0478E-8714-455B-83A2-E238160666CA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -214,6 +218,10 @@ Global
 		{1CA6ACF8-430E-4391-958A-599A7669A9CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1CA6ACF8-430E-4391-958A-599A7669A9CD}.Release|Any CPU.ActiveCfg = Debug|Any CPU
 		{1CA6ACF8-430E-4391-958A-599A7669A9CD}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{44F0478E-8714-455B-83A2-E238160666CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44F0478E-8714-455B-83A2-E238160666CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44F0478E-8714-455B-83A2-E238160666CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44F0478E-8714-455B-83A2-E238160666CA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -247,6 +255,7 @@ Global
 		{9D3FC6E1-1975-4EB8-B37C-7EEB44862F28} = {738868DF-6D05-4430-B65A-C2A0739CA9D5}
 		{19C9E98E-01E7-40A6-8931-9A04E91E2E54} = {AEB1EB69-6524-478E-8703-FCE614C79684}
 		{1CA6ACF8-430E-4391-958A-599A7669A9CD} = {91C8C7A7-3DB0-421F-93AF-BC8DF5E33E82}
+		{44F0478E-8714-455B-83A2-E238160666CA} = {C2DA6F5F-AB2E-422A-875B-93EA4BE555B1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A426EE81-991C-4AE8-B928-8299F5142022}

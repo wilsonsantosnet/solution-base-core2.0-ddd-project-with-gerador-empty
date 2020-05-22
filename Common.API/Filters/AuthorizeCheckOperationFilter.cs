@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace Target.Intranet.Api
+namespace Common.API
 {
     public class AuthorizeCheckOperationFilter : IOperationFilter
     {

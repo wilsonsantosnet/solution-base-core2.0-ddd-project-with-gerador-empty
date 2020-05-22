@@ -1,10 +1,9 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using Microsoft.AspNetCore.Http;
-using Common.Domain.Base;
 using System.IO;
 using OfficeOpenXml;
 
@@ -12,12 +11,11 @@ namespace Common.API
 {
     public class ExportExcel<T>
     {
-        private FilterBase _filter;
         private string _fileName;
 
-        public ExportExcel(FilterBase filter)
+        public ExportExcel()
         {
-            this._filter = filter;
+
         }
 
 

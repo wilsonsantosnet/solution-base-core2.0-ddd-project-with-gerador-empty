@@ -1,10 +1,9 @@
-using Common.Domain;
+﻿using Common.Domain;
 using IdentityModel.Client;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -114,9 +113,37 @@ namespace Common.Api
         }
         public string GetAccessToken(string AuthorityEndPoint, string clientId, string secret, string scope = null)
         {
-            var _client = new TokenClient(AuthorityEndPoint, clientId, secret);
-            var token = _client.RequestClientCredentialsAsync(scope).Result;
+            
+            var client = new HttpClient();
+            var token = client.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
+            {
+                Address = $"{AuthorityEndPoint}/connect/token",
+                ClientId = clientId,
+                ClientSecret = secret,
+                Scope = scope
+            }).Result;
+
             return token.AccessToken;
+        }
+
+        public string GetAccessToken(string AuthorityEndPoint, string clientId, string secret,string userName, string password, string scope = null)
+        {
+            var client = new HttpClient();
+            var tokenResponse = client.RequestPasswordTokenAsync(new PasswordTokenRequest
+            {
+                Address = $"{AuthorityEndPoint}/connect/token",
+                ClientId = clientId,
+                ClientSecret = secret,
+                UserName = userName,
+                Password = password,
+                Scope = scope
+            }).Result;
+            return tokenResponse.AccessToken;
+        }
+
+        public void ClearHeaders()
+        {
+            this.customHeaders = new List<string>();
         }
         public TResult Get<TResult>(string resource, QueryStringParameter queryParameters = null)
         {

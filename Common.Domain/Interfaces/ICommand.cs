@@ -5,12 +5,12 @@ using System.Threading.Tasks;
 
 namespace Common.Domain.Interfaces
 {
-    public interface ICommand<T>
+    public interface ICommand<Input, Output, CommandClass>
     {
 
-        bool IsValid(T aggregationRoot);
+        bool IsValid(Input aggregationRoot);
 
-        Task<T> Execute(T aggregationRoot);
+        Task<Output> Execute(Input aggregationRoot);
 
     }
 }

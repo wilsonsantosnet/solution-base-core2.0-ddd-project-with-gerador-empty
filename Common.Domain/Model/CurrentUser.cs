@@ -1,9 +1,6 @@
-using Common.Domain.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Common.Domain.Model
 {
@@ -11,12 +8,42 @@ namespace Common.Domain.Model
     public class CurrentUser
     {
 
+        public class CircuitBreakerMananger
+        {
+
+            public string Process { get; set; }
+            public DateTime DateStop { get; set; }
+            public int Exception { get; set; }
+
+            public void AddErrorCount()
+            {
+                this.Exception++;
+            }
+            public void ClearErrorCount()
+            {
+                this.Exception = 0;
+            }
+
+            public void SetProcess(string process)
+            {
+                this.Process = process;
+            }
+
+            public void SetSecurityDateStop(DateTime now)
+            {
+                this.DateStop = now;
+            }
+        }
+
+
         private string _token;
         private IDictionary<string, object> _claims;
+        private readonly IList<CircuitBreakerMananger> _CircuitBreaker;
 
         public CurrentUser()
         {
             this._claims = new Dictionary<string, object>();
+            this._CircuitBreaker = new List<CircuitBreakerMananger>();
         }
 
         public CurrentUser Init(string token, IDictionary<string, object> claims)
@@ -44,11 +71,29 @@ namespace Common.Domain.Model
             return string.Empty;
         }
 
+        public IList<CircuitBreakerMananger> GetCircuitBreaker()
+        {
+            return this._CircuitBreaker;
+        }
+
+        public void AddCircuitBreaker(CircuitBreakerMananger sb)
+        {
+            this._CircuitBreaker.Add(sb);
+        }
+
         public string GetTypeRole()
         {
             var typeRole = this._claims.Where(_ => _.Key == "typerole");
             if (typeRole.IsAny())
                 return typeRole.SingleOrDefault().Value.ToString();
+            return string.Empty;
+        }
+
+        public string GetClientId()
+        {
+            var clientId = this._claims.Where(_ => _.Key == "client_id");
+            if (clientId.IsAny())
+                return clientId.SingleOrDefault().Value.ToString();
             return string.Empty;
         }
 
@@ -124,11 +169,25 @@ namespace Common.Domain.Model
             if (this.IsTenant())
             {
                 var subjectId = this._claims
-                    .Where(_ => _.Key.ToLower() == "sub" || _.Key.ToLower() == "client_sub")
+                    .Where(_ => _.Key.ToLower() == "tenantId")
                     .SingleOrDefault()
                     .Value;
 
                 return (TS)Convert.ChangeType(subjectId, typeof(TS));
+            }
+            return default(TS);
+        }
+
+        public TS GetOfficeId<TS>()
+        {
+            if (this.IsTenant())
+            {
+                var officeId = this._claims
+                    .Where(_ => _.Key.ToLower() == "officeid")
+                    .SingleOrDefault()
+                    .Value;
+
+                return (TS)Convert.ChangeType(officeId, typeof(TS));
             }
             return default(TS);
         }
@@ -155,6 +214,9 @@ namespace Common.Domain.Model
                     .Where(_ => _.Key.ToLower() == "sub" || _.Key.ToLower() == "client_sub")
                     .SingleOrDefault()
                     .Value;
+                
+                if (subjectId.IsNull())
+                    return default(TS);
 
                 return (TS)Convert.ChangeType(subjectId, typeof(TS));
             }

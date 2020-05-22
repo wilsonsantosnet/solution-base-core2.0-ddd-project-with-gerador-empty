@@ -6,9 +6,11 @@
 
   <ItemGroup>
     <PackageReference Include="MailKit" Version="1.18.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="2.2.0" />
     <PackageReference Include="Sendgrid" Version="9.9.0" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="2.2.0" />
   </ItemGroup>
-
+   
   <ItemGroup>
     <ProjectReference Include="..\Common.Domain\Common.Domain.csproj" />
   </ItemGroup>

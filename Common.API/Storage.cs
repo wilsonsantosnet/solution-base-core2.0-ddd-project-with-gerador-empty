@@ -67,6 +67,19 @@ namespace Common.Api
             };
             await _cloudBlobContainer.SetPermissionsAsync(permissions);
         }
+        public async Task<MemoryStream> GetStream(string containerName, string fileName)
+        {
+            if (CloudStorageAccount.TryParse(this._configCacheConnectionStringBase.Default, out CloudStorageAccount storageAccount))
+            {
+                await this.ConfigCloudBlobContainer(containerName, storageAccount);
+                var cloudBlockBlob = _cloudBlobContainer.GetBlockBlobReference(fileName);
+                var ms = new MemoryStream();
+                await cloudBlockBlob.DownloadToStreamAsync(ms);
+                return ms;
+            }
+
+            throw new InvalidOperationException("Storage error connect");
+        }
 
     }
 }

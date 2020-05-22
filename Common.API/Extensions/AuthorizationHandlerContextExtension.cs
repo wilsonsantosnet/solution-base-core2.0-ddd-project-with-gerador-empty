@@ -1,4 +1,4 @@
-using Common.Domain.Model;
+﻿using Common.Domain.Model;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Controllers;

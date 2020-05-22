@@ -12,5 +12,7 @@ namespace Common.Domain
         TResult Post<TResult, TModel>(string resource, TModel model);
         TResult Path<TResult, TModel>(string resource, TModel model);
         string GetAccessToken(string AuthorityEndPoint, string clientId, string secret, string scope = null);
+        string GetAccessToken(string AuthorityEndPoint, string clientId, string secret, string userName, string password, string scope = null);
+        void ClearHeaders();
     }
 }

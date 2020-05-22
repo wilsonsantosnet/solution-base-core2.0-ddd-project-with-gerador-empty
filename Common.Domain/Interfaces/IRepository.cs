@@ -7,20 +7,34 @@ using System.Threading.Tasks;
 
 namespace Common.Domain.Interfaces
 {
+    public interface IRepositoryExtensions<TEntity, TFilter>
+    {
+
+        IQueryable<TEntity> GetBySimplefilters(TFilter filters);
+
+        Task<TEntity> GetById(TFilter company);
+
+        Task<IEnumerable<dynamic>> GetDataItem(TFilter filters);
+
+        Task<IEnumerable<dynamic>> GetDataListCustom(TFilter filters);
+
+        Task<PaginateResult<dynamic>> GetDataListCustomPaging(TFilter filters);
+
+        Task<dynamic> GetDataCustom(TFilter filters);
+
+    }
     public interface IRepository<T>
     {
         IQueryable<T> GetAll();
         IQueryable<T> GetAll(params Expression<Func<T, object>>[] includes);
         IQueryable<T> GetAllAsTracking(params Expression<Func<T, object>>[] includes);
+        Task<PaginateResult<T>> PagingAndDefineFields(FilterBase filters, IQueryable<T> queryFilter);
         T Add(T entity);
         T Update(T entity);
         IEnumerable<T> Update(IEnumerable<T> entitys);
         void Remove(T entity);
         void RemoveRangeAndCommit(IEnumerable<T> entitys);
         void RemoveRange(IEnumerable<T> entitys);
-
-        Task<PaginateResult<T>> PagingAndDefineFields(FilterBase filters, IQueryable<T> queryFilter);
-
         Task<List<T2>> ToListAsync<T2>(IQueryable<T2> source);
         Task<int> CountAsync<T2>(IQueryable<T2> source);
         Task<decimal> SumAsync<T2>(IQueryable<T2> source, Expression<Func<T2, decimal>> selector);

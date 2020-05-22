@@ -1,4 +1,4 @@
-using Common.Domain.Base;
+﻿using Common.Domain.Base;
 using Common.Domain.Model;
 using IdentityModel.Client;
 using Microsoft.AspNetCore.Builder;

@@ -10,7 +10,7 @@ namespace Common.API
     {
         public override bool CanConvert(Type objectType)
         {
-            return objectType == typeof(decimal);
+             return objectType == typeof(decimal) || objectType == typeof(decimal?);
         }
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)

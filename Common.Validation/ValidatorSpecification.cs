@@ -2,11 +2,17 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Common.Validation
 {
-    public class ValidatorSpecification<T> : Dictionary<string, Rule<T>>
+
+    public interface IValidatorSpecification<T>
+    {
+        ValidatorSpecification<T> WithRules(Func<KeyValuePair<string, Rule<T>>, bool> predicate);
+        ValidationSpecificationResult Validate(T entity);
+    }
+
+    public class ValidatorSpecification<T> : Dictionary<string, Rule<T>>  , IValidatorSpecification<T>
     {
         public ValidatorSpecification<T> WithRules(Func<KeyValuePair<string, Rule<T>>, bool> predicate)
         {

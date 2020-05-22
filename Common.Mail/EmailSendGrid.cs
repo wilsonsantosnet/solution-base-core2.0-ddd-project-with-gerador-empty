@@ -1,3 +1,4 @@
+﻿using Common.Domain.Base;
 using Common.Domain.Interfaces;
 using SendGrid;
 using SendGrid.Helpers.Mail;
@@ -31,7 +32,13 @@ namespace Common.Mail
             this.smtpPassword = smtpPassword;
 
         }
+        public void Config(ConfigEmailBase config)
+        {
+            this.smtpServer = config.SmtpServer;
+            this.smtpUser = config.SmtpUser;
+            this.smtpPassword = config.SmtpPassword;
 
+        }
         public void AddAddressFrom(string name, string email)
         {
             this.addressFrom.Add(new EmailAddress(email, name));

@@ -51,10 +51,13 @@ namespace Common.API
             var resultDefault = DefaultMap(erro);
             var resultCustom = CustomMap(erro);
 
-            if (resultCustom.IsNotNull())
+           if (resultCustom.IsNotNull())
                 return resultCustom;
 
-            return resultDefault;
+            if (resultDefault.IsNotNull())
+                return resultDefault;
+
+            return erro;
         }
 
         private string CustomMap(string erro)

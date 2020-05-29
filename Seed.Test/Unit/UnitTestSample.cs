@@ -3,7 +3,7 @@ using Xunit;
 
 namespace Seed.Test.Unit
 {
-    public class IntegrationTestSample : PageObjectBase
+    public class UnitTestSample : PageObjectBase
     {
         [Fact]
         public void Test1() { 

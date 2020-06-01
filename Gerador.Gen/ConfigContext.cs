@@ -54,7 +54,7 @@ namespace Seed.Gen
                            Attributes = new List<string>{ "[textMask]='{mask: vm.masks.maskMoney}'" }
                        }
                    }),
-                   new TableInfo().FromTable("SampleType").MakeBack().MakeFront(),
+                   new TableInfo().FromTable("SampleType").MakeBack().MakeFrontCrudBasic(),
                    new TableInfo().FromClass("SampleDash").MakeFrontBasic(),
                 }
             };

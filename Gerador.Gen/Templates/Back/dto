@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using Common.Dto;
+using Common.Domain.Base;
 using System;
 
 namespace <#namespace#>.Dto

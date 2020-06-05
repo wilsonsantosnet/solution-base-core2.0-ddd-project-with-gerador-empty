@@ -17,10 +17,10 @@ namespace <#namespace#>.Application
     {
         protected readonly ValidatorAnnotations<<#className#>Dto> _validatorAnnotations;
         protected readonly I<#className#>Service _service;
-		protected readonly CurrentUser _user;
+        protected readonly CurrentUser _user;
 
         public <#className#>ApplicationServiceBase(I<#className#>Service service, IUnitOfWork uow, ICache cache, CurrentUser user, IMapper mapper) :
-            base(service, uow, cache, mapper)
+            base(service, uow, cache, mapper, user)
         {
             base.SetTagNameCache("<#className#>");
             this._validatorAnnotations = new ValidatorAnnotations<<#className#>Dto>();

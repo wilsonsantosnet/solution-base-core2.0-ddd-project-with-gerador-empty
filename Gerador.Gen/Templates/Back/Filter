@@ -8,5 +8,9 @@ namespace <#namespace#>.Domain.Filter
 
 <#property#>
 
+        public override string CompositeKey(CurrentUser user) {
+            return CompositeKeyExtensions.CompositeKey(this, $"{user.GetSubjectId<int>()}");
+        }
+
     }
 }

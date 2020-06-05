@@ -1,4 +1,6 @@
-﻿using Common.Domain.Base;
+using Common.Domain.Base;
+using Common.Domain.CompositeKey;
+using Common.Domain.Model;
 using System;
 
 namespace <#namespace#>.Domain.Filter

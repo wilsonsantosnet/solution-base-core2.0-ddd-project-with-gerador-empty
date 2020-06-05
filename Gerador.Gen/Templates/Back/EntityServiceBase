@@ -1,6 +1,7 @@
-using Common.Domain.Base;
+﻿using Common.Domain.Base;
 using Common.Domain.Interfaces;
 using Common.Domain.Model;
+using Common.Validation;
 using <#namespace#>.Domain.Entitys;
 using <#namespace#>.Domain.Filter;
 using <#namespace#>.Domain.Interfaces.Repository;
@@ -13,12 +14,17 @@ namespace <#namespace#>.Domain.Services
     public class <#className#>ServiceBase : ServiceBase<<#className#>>
     {
         protected readonly I<#className#>Repository _rep;
+        protected readonly IValidatorSpecification<<#className#>> _validation;
+        protected readonly IWarningSpecification<<#className#>> _warning;
 
-        public <#className#>ServiceBase(I<#className#>Repository rep, ICache cache, CurrentUser user)
+
+        public <#className#>ServiceBase(I<#className#>Repository rep, IValidatorSpecification<<#className#>> validation, IWarningSpecification<<#className#>> warning, ICache cache, CurrentUser user)
             : base(cache)
         {
             this._rep = rep;
-			this._user = user;
+            this._user = user;
+            this._validation = validation;
+            this._warning = warning;
         }
 
         public virtual async Task<<#className#>> GetOne(<#className#>Filter filters)
@@ -161,8 +167,8 @@ namespace <#namespace#>.Domain.Services
 
 		protected virtual void Specifications(<#className#> <#classNameLower#>)
         {
-            this._validationResult  = this._validationResult.Merge(new <#className#>IsSuitableValidation(this._rep).Validate(<#classNameLower#>));
-			this._validationWarning  = this._validationWarning.Merge(new <#className#>IsSuitableWarning(this._rep).Validate(<#classNameLower#>));
+            this._validationResult  = this._validationResult.Merge(this._validation.Validate(<#classNameLower#>));
+			this._validationWarning  = this._validationWarning.Merge(this._warning.Validate(<#classNameLower#>));
         }
 
         protected virtual <#className#> SaveDefault(<#className#> <#classNameLower#>, <#className#> <#classNameLower#>Old)

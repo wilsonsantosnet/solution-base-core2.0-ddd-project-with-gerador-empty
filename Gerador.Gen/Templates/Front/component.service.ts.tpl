@@ -79,6 +79,10 @@ export class <#className#>Service extends ServiceBase {
     getDataListCustom(filters?: any): Observable<any> {
         return this.api.setResource('<#className#>').getDataListCustom(filters);
     }
+    
+    getDataListCustomPaging(filters?: any): Observable<any> {
+        return this.api.setResource('Sample').getDataListCustomPaging(filters);
+    }
 
     save(model: any): Observable<any> {
 

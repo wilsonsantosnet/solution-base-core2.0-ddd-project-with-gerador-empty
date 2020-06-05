@@ -1,4 +1,4 @@
-using Common.Domain.Interfaces;
+﻿using Common.Domain.Interfaces;
 using <#namespace#>.Application.Interfaces;
 using <#namespace#>.Domain.Entitys;
 using <#namespace#>.Domain.Filter;

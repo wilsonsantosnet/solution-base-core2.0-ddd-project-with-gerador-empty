@@ -1,19 +1,7 @@
-﻿		[HttpGet("{id}")]
-		[Authorize(Policy = "CanReadOne")]
-		public async Task<IActionResult> Get(<#KeyType#> id, [FromQuery]<#className#>Filter filters)
-		{
-			var result = new HttpResult<<#className#>Dto>(this._logger, new ErrorMapCustom());
-            try
-            {
-				if (id.IsSent()) filters.<#KeyName#> = id;
-                var returnModel = await this._app.GetOne(filters);
-                return result.ReturnCustomResponse(this._app, returnModel);
-            }
-            catch (Exception ex)
-            {
-                var responseEx = result.ReturnCustomException(ex,"<#namespace#> - <#className#>", id);
-				<#apiRetrhow#>
-            }
-
-		}
-
+﻿        [HttpGet("{id}")]
+        [Authorize(Policy = "CanReadOne")]
+        public async Task<IActionResult> Get(<#KeyType#> id, [FromQuery] <#className#>Filter filters)
+        {
+            if (id.IsSent()) filters.<#KeyName#> = id;
+            return await base.GetOne(filters, "<#namespace#> - <#className#>");
+        }

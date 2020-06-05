@@ -1,6 +1,6 @@
 ﻿using Common.Domain.Interfaces;
-using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Common.Domain.Base
 {
@@ -47,8 +47,11 @@ namespace Common.Domain.Base
         {
             var tags = this._cache.Get<List<string>>(group);
             if (tags.IsNull()) tags = new List<string>();
-            tags.Add(filterKey);
-            this._cache.Add(group, tags);
+            if (tags.Where(_ => _ == filterKey).IsNotAny())
+            {
+                tags.Add(filterKey);
+                this._cache.Add(group, tags);
+            }
         }
     }
 }

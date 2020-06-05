@@ -1,14 +1,12 @@
-﻿using Common.Domain.CompositeKey;
-using Common.Domain.Enums;
+﻿using Common.Domain.Enums;
 using Common.Domain.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Common.Domain.Base
 {
-    public class FilterBase
+    public abstract class FilterBase
     {
 
         public FilterBase()
@@ -54,9 +52,7 @@ namespace Common.Domain.Base
             return this.Ids.Split(',').Select(_ => Convert.ToInt32(_));
         }
 
-        public virtual string CompositeKey(CurrentUser user)
-        {
-            return CompositeKeyExtensions.CompositeKey(this, $"{user.GetClaimByName<int>("programId")}{user.GetSubjectId<int>()}");
-        }
+        public abstract string CompositeKey(CurrentUser user);
+
     }
 }

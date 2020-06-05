@@ -1,17 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace Common.Domain.Model
+namespace Common.Domain.Base
 {
-    public class SearchResult<T>
+    public abstract class DtoBase
     {
-        public IEnumerable<T> DataList { get; set; }
-
-        public Summary Summary { get; set; }
-
+        public string ConfirmBehavior { get; set; }
+        public string AttributeBehavior { get; set; }
         public string Cachekey { get; set; }
         public double CacheExpirationMinutes { get; set; }
 

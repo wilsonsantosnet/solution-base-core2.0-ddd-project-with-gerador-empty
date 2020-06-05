@@ -6,7 +6,28 @@ using System.Reflection;
 
 public static class DictionaryExtensions
 {
+    public static dynamic Combine(object item1, object item2)
+    {
 
+        if (!item1.GetType().IsClass)
+            return item1;
+
+        IDictionary<string, object> result = new ExpandoObject();
+
+        foreach (var property in item1.GetType().GetProperties())
+        {
+            if (property.CanRead)
+                result[property.Name] = property.GetValue(item1);
+        }
+
+        foreach (var property in item2.GetType().GetProperties())
+        {
+            if (property.CanRead)
+                result[property.Name] = property.GetValue(item2);
+        }
+
+        return result;
+    }
     public static IEnumerable<dynamic> DictionaryToObject(this IEnumerable<Dictionary<string, object>> dict)
     {
         var result = new List<dynamic>();

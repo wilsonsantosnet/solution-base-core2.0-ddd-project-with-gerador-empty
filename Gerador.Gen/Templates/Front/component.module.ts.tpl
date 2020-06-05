@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+﻿import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 
@@ -15,6 +15,7 @@ import { <#className#>DetailsComponent } from './<#classNameLowerAndSeparator#>-
 
 import { <#className#>FieldCreateComponent } from './<#classNameLowerAndSeparator#>-field-create/<#classNameLowerAndSeparator#>-field-create.component';
 import { <#className#>FieldEditComponent } from './<#classNameLowerAndSeparator#>-field-edit/<#classNameLowerAndSeparator#>-field-edit.component';
+import { <#className#>FieldGridComponent } from './<#classNameLowerAndSeparator#>-field-grid/<#classNameLowerAndSeparator#>-field-grid.component';
 
 import { <#className#>ContainerCreateComponent } from './<#classNameLowerAndSeparator#>-container-create/<#classNameLowerAndSeparator#>-container-create.component';
 import { <#className#>ContainerEditComponent } from './<#classNameLowerAndSeparator#>-container-edit/<#classNameLowerAndSeparator#>-container-edit.component';
@@ -50,7 +51,8 @@ import { CommonSharedModule } from '../../common/common-shared.module';
         <#className#>FieldCreateComponent,
         <#className#>FieldEditComponent,
         <#className#>ContainerCreateComponent,
-        <#className#>ContainerEditComponent
+        <#className#>ContainerEditComponent,
+        <#className#>FieldGridComponent
     ],
     providers: [<#className#>Service,<#className#>ServiceFields, ApiService],
 	exports: [<#className#>Component, <#className#>EditComponent, <#className#>CreateComponent]

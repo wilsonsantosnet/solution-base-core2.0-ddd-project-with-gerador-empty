@@ -84,6 +84,14 @@ public static class CommonExtensions
     {
         return value == default(int?);
     }
+    public static bool IsDefault(this DateTime? value)
+    {
+        return value == default(DateTime?);
+    }
+    public static bool IsDefault(this DateTime value)
+    {
+        return value == default(DateTime);
+    }
     public static bool IsNotNull(this object obj)
     {
         return obj != null;

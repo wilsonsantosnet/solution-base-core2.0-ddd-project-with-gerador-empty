@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Threading.Tasks;
 
 namespace Common.Domain.CompositeKey
 {
@@ -44,10 +43,17 @@ namespace Common.Domain.CompositeKey
 
             }
             keys.Add(source.GetType().Name);
-            return CompositeKey(keys.ToArray()) + sufixKey;
+            return MakeFinalKey(sufixKey, keys);
 
 
         }
+
+        private static string MakeFinalKey(string sufixKey, List<object> keys)
+        {
+            var key = (CompositeKey(keys.ToArray()) + sufixKey).ToUpper();
+            return key;
+        }
+
         private static string CompositeKey(object[] keys)
         {
             var key = string.Empty;

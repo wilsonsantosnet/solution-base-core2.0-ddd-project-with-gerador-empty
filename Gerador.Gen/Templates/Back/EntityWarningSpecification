@@ -1,5 +1,5 @@
 ﻿using Common.Validation;
-using Seed.Domain.Entitys;
+using Target.Intranet.Domain.Entitys;
 
 namespace <#namespace#>.Domain.Specifications
 {

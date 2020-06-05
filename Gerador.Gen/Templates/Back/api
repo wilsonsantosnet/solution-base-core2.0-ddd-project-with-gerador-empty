@@ -1,114 +1,58 @@
-﻿using System;
+﻿using Common.API;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Logging;
+using System.Threading.Tasks;
 using <#namespace#>.Application.Interfaces;
 using <#namespace#>.Domain.Filter;
 using <#namespace#>.Dto;
-using Common.API;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Hosting;
 using <#namespace#>.CrossCuting;
 
 namespace <#namespace#>.Api.Controllers
 {
-	[Authorize]
+    [Authorize]
     [Route("api/[controller]")]
-    public class <#className#>Controller : Controller
+    public class <#className#>Controller : ControllerBase<<#className#>Dto>
     {
-
-        private readonly I<#className#>ApplicationService _app;
-		private readonly ILogger _logger;
-		private readonly IHostingEnvironment _env;
-      
         public <#className#>Controller(I<#className#>ApplicationService app, ILoggerFactory logger, IHostingEnvironment env)
+            : base(app, logger, env, new ErrorMapCustom())
         {
-            this._app = app;
-			this._logger = logger.CreateLogger<<#className#>Controller>();
-			this._env = env;
+
+
+
         }
 
-		[Authorize(Policy = "CanReadAll")]
+        [Authorize(Policy = "CanReadAll")]
         [HttpGet]
-        public async Task<IActionResult> Get([FromQuery]<#className#>Filter filters)
+        public async Task<IActionResult> Get([FromQuery] <#className#>Filter filters)
         {
-            var result = new HttpResult<<#className#>Dto>(this._logger, new ErrorMapCustom());
-            try
-            {
-                var searchResult = await this._app.GetByFilters(filters);
-                return result.ReturnCustomResponse(this._app, searchResult, filters);
-
-
-            }
-            catch (Exception ex)
-            {
-                var responseEx = result.ReturnCustomException(ex,"<#namespace#> - <#className#>", filters);
-				<#apiRetrhow#>
-            }
-
+            return await base.Get<<#className#>Filter>(filters, "<#namespace#> - <#className#>");
         }
-
 
 <#ApiGet#>
 
         [Authorize(Policy = "CanSave")]
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody]<#className#>DtoSpecialized dto)
+        public async Task<IActionResult> Post([FromBody] <#className#>DtoSpecialized dto)
         {
-            var result = new HttpResult<<#className#>Dto>(this._logger, new ErrorMapCustom());
-            try
-            {
-                var returnModel = await this._app.Save(dto);
-                return result.ReturnCustomResponse(this._app, returnModel);
-
-            }
-            catch (Exception ex)
-            {
-                var responseEx = result.ReturnCustomException(ex,"<#namespace#> - <#className#>", dto);
-				<#apiRetrhow#>
-            }
+            return await base.Post(dto, "<#namespace#> - <#className#>");
         }
 
-
-		[Authorize(Policy = "CanEdit")]
+        [Authorize(Policy = "CanEdit")]
         [HttpPut]
-        public async Task<IActionResult> Put([FromBody]<#className#>DtoSpecialized dto)
+        public async Task<IActionResult> Put([FromBody] <#className#>DtoSpecialized dto)
         {
-            var result = new HttpResult<<#className#>Dto>(this._logger, new ErrorMapCustom());
-            try
-            {
-                var returnModel = await this._app.SavePartial(dto);
-                return result.ReturnCustomResponse(this._app, returnModel);
-
-            }
-            catch (Exception ex)
-            {
-                var responseEx = result.ReturnCustomException(ex,"<#namespace#> - <#className#>", dto);
-				<#apiRetrhow#>
-            }
+            return await base.Put(dto, "<#namespace#> - <#className#>");
         }
-
-		[Authorize(Policy = "CanDelete")]
+        [Authorize(Policy = "CanDelete")]
         [HttpDelete]
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(<#KeyType#> id, <#className#>Dto dto)
+        public async Task<IActionResult> Delete(int id, <#className#>DtoSpecialized dto)
         {
-            var result = new HttpResult<<#className#>Dto>(this._logger, new ErrorMapCustom());
-            try
-            {
-				<#setId#>
-                await this._app.Remove(dto);
-                return result.ReturnCustomResponse(this._app, dto);
-            }
-            catch (Exception ex)
-            {
-                var responseEx = result.ReturnCustomException(ex,"<#namespace#> - <#className#>", dto);
-				<#apiRetrhow#>
-            }
+            <#setId#>
+            return await base.Delete(id, dto, "<#namespace#> - <#className#>");
         }
-
-<#customMethods#>
-
     }
 }

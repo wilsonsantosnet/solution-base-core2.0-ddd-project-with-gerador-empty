@@ -23,6 +23,8 @@ namespace Common.API
         public ValidationSpecificationResult Result { get; set; }
         public WarningSpecificationResult Warning { get; set; }
         public ConfirmEspecificationResult Confirm { get; set; }
+        public string Cachekey { get; set; }
+        public double CacheExpirationMinutes { get; set; }
 
     }
     public class HttpResult<T> : HttpResult
@@ -146,6 +148,12 @@ namespace Common.API
         public ObjectResult ReturnCustomResponse(IEnumerable<T> searchResult, FilterBase filter = null)
         {
             this.Success(searchResult);
+            if (filter.IsNotNull())
+            {
+                this.Cachekey = filter.FilterKey;
+                this.CacheExpirationMinutes = filter.CacheExpiresTime.TotalMinutes;
+            }
+
             return new ObjectResult(this)
             {
                 StatusCode = (int)this.StatusCode
@@ -185,6 +193,8 @@ namespace Common.API
             this.ErrorMap();
 
             this.Summary = searchResult.Summary;
+            this.Cachekey = searchResult.Cachekey;
+            this.CacheExpirationMinutes = searchResult.CacheExpirationMinutes;
             this.Success(searchResult.DataList);
             return new ObjectResult(this)
             {

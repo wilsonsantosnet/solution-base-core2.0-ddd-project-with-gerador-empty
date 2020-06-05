@@ -1,4 +1,4 @@
-<div class="col-2">
+﻿<div class="col-2">
 	<div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
 		<#navItemsHead#>
 	</div>

@@ -16,13 +16,15 @@ namespace Common.Domain.Base
         protected readonly ICache _cache;
         protected readonly IServiceBase<T, TF> _serviceBase;
         protected readonly IMapper _mapper;
+        private readonly CurrentUser _user;
 
-        public ApplicationServiceBase(IServiceBase<T, TF> serviceBase, IUnitOfWork uow, ICache cache, IMapper mapper)
+        public ApplicationServiceBase(IServiceBase<T, TF> serviceBase, IUnitOfWork uow, ICache cache, IMapper mapper,CurrentUser user)
         {
             this._uow = uow;
             this._cache = cache;
             this._serviceBase = serviceBase;
             this._mapper = mapper;
+            this._user = user;
 
         }
         public void BeginTransaction()
@@ -57,9 +59,9 @@ namespace Common.Domain.Base
 
         public virtual async Task<TD> GetOne(FilterBase filters)
         {
-            var resultDomain = await this._serviceBase.GetOne(filters as TF);
-            var resultDto = this.MapperDomainToDto<TD>(filters, resultDomain);
-            return resultDto;
+            var result = await this.GetOneWithCache(filters, MapperDomainToDto<TD>);
+            return result;
+
         }
 
         public virtual async Task<int> Remove(TD entity)
@@ -150,10 +152,17 @@ namespace Common.Domain.Base
 
         protected virtual async Task<SearchResult<TD>> GetByFiltersWithCache(FilterBase filter, Func<FilterBase, PaginateResult<T>, IEnumerable<TD>> MapperDomainToDto)
         {
-            var filterKey = filter.CompositeKey();
+            var filterKey = filter.CompositeKey(this._user);
             if (filter.ByCache)
-                if (this._cache.ExistsKey(filterKey))
-                    return this._cache.Get<SearchResult<TD>>(filterKey);
+            {
+                var cacheResult = this._cache.Get<SearchResult<TD>>(filterKey);
+                if (cacheResult.IsNotNull())
+                {
+                    cacheResult.Cachekey = filterKey;
+                    cacheResult.CacheExpirationMinutes = filter.CacheExpiresTime.TotalMinutes;
+                    return cacheResult;
+                }
+            }
 
             var paginateResultOptimize = await this._serviceBase.GetByFiltersPaging(filter as TF);
             var result = MapperDomainToDto(filter, paginateResultOptimize);
@@ -173,6 +182,28 @@ namespace Common.Domain.Base
             }
 
             return searchResult;
+        }
+
+        protected virtual async Task<TD> GetOneWithCache(FilterBase filter, Func<FilterBase, T, TD> MapperDomainToDto)
+        {
+            var filterKey = filter.CompositeKey();
+            if (filter.ByCache)
+            {
+                var cacheResult = this._cache.Get<TD>(filterKey);
+                if (cacheResult.IsNotNull())
+                    return cacheResult;
+            }
+
+            var resultDomain = await this._serviceBase.GetOne(filter as TF);
+            var resultDto = MapperDomainToDto<TD>(filter, resultDomain);
+
+            if (filter.ByCache)
+            {
+                if (resultDto.IsNull()) return resultDto;
+                this.AddCache(filter, filterKey, resultDto);
+            }
+
+            return resultDto;
         }
 
         protected async virtual Task<T> MapperDtoToDomain<TDS>(TDS dto) where TDS : class
@@ -213,7 +244,7 @@ namespace Common.Domain.Base
 
         protected virtual IEnumerable<TDS> MapperDomainToDto<TDS>(IEnumerable<T> models)
         {
-            return this.MapperDomainToDto<TDS>(new FilterBase(), models);
+            return this.MapperDomainToDto<TDS>(null, models);
         }
         protected virtual IEnumerable<TDS> MapperDomainToDto<TDS>(FilterBase filter, IEnumerable<T> models)
         {
@@ -223,7 +254,7 @@ namespace Common.Domain.Base
 
         protected virtual TDS MapperDomainToDto<TDS>(T model) where TDS : class
         {
-            return this.MapperDomainToDto<TDS>(new FilterBase(), model);
+            return this.MapperDomainToDto<TDS>(null, model);
         }
         protected virtual TDS MapperDomainToDto<TDS>(FilterBase filter, T model) where TDS : class
         {
@@ -252,6 +283,14 @@ namespace Common.Domain.Base
             return this._serviceBase.GetDomainValidation(filters);
         }
 
+        protected virtual void AddCache(FilterBase filter, string filterKey, TD resultDto)
+        {
+            var resultDtoCached = resultDto as DtoBase;
+            resultDtoCached.Cachekey = filterKey;
+            resultDtoCached.CacheExpirationMinutes = filter.CacheExpiresTime.TotalMinutes;
+            this._cache.Add(filterKey, resultDtoCached, filter.CacheExpiresTime);
+            this.AddTagCache(filterKey, this._serviceBase.GetTagNameCache());
+        }
 
     }
 

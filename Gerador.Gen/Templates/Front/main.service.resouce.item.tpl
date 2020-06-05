@@ -1,1 +1,1 @@
-      <#className#>: { label: '<#className#>' },
+﻿      <#className#>: { label: '<#className#>' },

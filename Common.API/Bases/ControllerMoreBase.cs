@@ -54,7 +54,22 @@ namespace Common.API
                 {
                     if (this._user.GetClaims().GetTools().VerifyClaimsCanReadDataItem(EntityName))
                     {
+                        var filterKey = filters.CompositeKey(this._user);
+                        if (filters.ByCache)
+                        {
+                            var cacheResult = this._cache.Get<object>(filterKey);
+                            if (cacheResult.IsNotNull())
+                            {
+                                return result.ReturnCustomResponse(DictionaryExtensions.Combine(cacheResult, new
+                                {
+                                    FilterKey = filterKey,
+                                    filters.CacheExpiresTime
+                                }));
+                            }
+                        }
+
                         var searchResult = await this._rep.GetDataItem(filters);
+                        this.AddCache(filters, filterKey, searchResult, EntityName);
                         return result.ReturnCustomResponse(searchResult, filters);
                     }
                     else
@@ -69,7 +84,22 @@ namespace Common.API
                 {
                     if (filters.FilterBehavior == FilterBehavior.GetDataCustom)
                     {
+                        var filterKey = filters.CompositeKey(this._user);
+                        if (filters.ByCache)
+                        {
+                            var cacheResult = this._cache.Get<object>(filterKey);
+                            if (cacheResult.IsNotNull())
+                            {
+                                return result.ReturnCustomResponse(DictionaryExtensions.Combine(cacheResult, new
+                                {
+                                    FilterKey = filterKey,
+                                    filters.CacheExpiresTime
+                                }));
+                            }
+                        }
+
                         var searchResult = await this._rep.GetDataCustom(filters);
+                        this.AddCache(filters, filterKey, searchResult, EntityName);
                         return result.ReturnCustomResponse(searchResult, filters);
                     }
 
@@ -77,8 +107,17 @@ namespace Common.API
                     {
                         var filterKey = filters.CompositeKey(this._user);
                         if (filters.ByCache)
-                            if (this._cache.ExistsKey(filterKey))
-                                return result.ReturnCustomResponse(this._cache.Get<IEnumerable<object>>(filterKey), filters);
+                        {
+                            var cacheResult = this._cache.Get<object>(filterKey);
+                            if (cacheResult.IsNotNull())
+                            {
+                                return result.ReturnCustomResponse(DictionaryExtensions.Combine(cacheResult, new
+                                {
+                                    FilterKey = filterKey,
+                                    filters.CacheExpiresTime
+                                }));
+                            }
+                        }
 
                         var searchResult = await this._rep.GetDataListCustom(filters);
                         this.AddCache(filters, filterKey, searchResult, EntityName);

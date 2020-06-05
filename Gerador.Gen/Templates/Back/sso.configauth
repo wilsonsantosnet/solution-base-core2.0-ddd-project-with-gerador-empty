@@ -1,4 +1,4 @@
-using Common.Domain.Base;
+﻿using Common.Domain.Base;
 using IdentityModel;
 using IdentityServer4.Models;
 using Newtonsoft.Json;
@@ -118,6 +118,28 @@ namespace Sso.Server.Api
 					RequireConsent = false,
                     AccessTokenLifetime = 43200
                 },
+                new Client
+                {
+                    ClientId = "<#namespace#>-spa-custom",
+                    ClientSecrets = { new Secret("segredo".Sha256()) },
+
+                    AllowedGrantTypes = GrantTypes.Implicit,
+                    AllowAccessTokensViaBrowser = true,
+
+					RedirectUris = settings.RedirectUris.ToList(),
+                    PostLogoutRedirectUris =  settings.PostLogoutRedirectUris.ToList() ,
+                    AllowedCorsOrigins =  settings.ClientAuthorityEndPoint.ToList(),
+
+                    AllowedScopes =
+                    {
+                        StandardScopes.OpenId,
+                        StandardScopes.Profile,
+                        StandardScopes.Email,
+                        "ssosa"
+                    },
+					RequireConsent = false,
+                    AccessTokenLifetime = 43200
+                },
 				new Client
                 {
                     ClientId = "hangfire-dash",
@@ -126,9 +148,7 @@ namespace Sso.Server.Api
 
                     AllowedGrantTypes = GrantTypes.Implicit,
                     AllowAccessTokensViaBrowser = true,
-                    RedirectUris = {
-                        "http://localhost:8123/signin-oidc",
-                    },
+                    RedirectUris = settings.RedirectUris.ToList(),
 
                      AllowedScopes = {
                         StandardScopes.OpenId,
@@ -165,9 +185,7 @@ namespace Sso.Server.Api
 
                     AllowedGrantTypes = GrantTypes.Implicit,
                     AllowAccessTokensViaBrowser = true,
-                    RedirectUris = {
-                        "http://localhost:8122/swagger/oauth2-redirect.html",
-                    },
+                    RedirectUris = settings.RedirectUris.ToList(),
 
                      AllowedScopes = {
                         StandardScopes.OpenId,
@@ -177,6 +195,20 @@ namespace Sso.Server.Api
                     },
                     RequireConsent = false,
                     AccessTokenLifetime = 43200
+                },
+				new Client
+                {
+                    ClientId = "Target.Intranet-spa-anonymous",
+                    AllowedGrantTypes = GrantTypes.ClientCredentials,
+                    ClientSecrets = {
+                        new Secret("4aa288ca-1603-45c2-85c3-b41a08d2bd0a".Sha256())
+                    },
+                    AllowedScopes = {
+                        StandardScopes.OpenId,
+                        StandardScopes.Profile,
+                        StandardScopes.Email,
+                        "ssosa"
+                    },
                 }
             };
         }

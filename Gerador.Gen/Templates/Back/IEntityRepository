@@ -7,18 +7,8 @@ using System.Threading.Tasks;
 
 namespace <#namespace#>.Domain.Interfaces.Repository
 {
-    public interface I<#className#>Repository : IRepository<<#className#>>
+    public interface I<#className#>Repository : IRepository<<#className#>>, IRepositoryExtensions<<#className#>, <#className#>Filter>
     {
-        IQueryable<<#className#>> GetBySimplefilters(<#className#>Filter filters);
 
-        Task<<#className#>> GetById(<#className#>Filter <#classNameLower#>);
-		
-        Task<IEnumerable<dynamic>> GetDataItem(<#className#>Filter filters);
-
-        Task<IEnumerable<dynamic>> GetDataListCustom(<#className#>Filter filters);
-
-		Task<PaginateResult<dynamic>> GetDataListCustomPaging(<#className#>Filter filters);
-
-        Task<dynamic> GetDataCustom(<#className#>Filter filters);
     }
 }

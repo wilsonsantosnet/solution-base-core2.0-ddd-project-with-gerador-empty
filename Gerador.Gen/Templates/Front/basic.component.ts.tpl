@@ -7,6 +7,7 @@ import { <#className#>Service } from './<#classNameLowerAndSeparator#>.service';
 import { ViewModel } from '../../common/model/viewmodel';
 import { GlobalService, NotificationParameters} from '../../global.service';
 import { ComponentBase } from '../../common/components/component.base';
+import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'app-<#classNameLowerAndSeparator#>',
@@ -16,7 +17,7 @@ import { ComponentBase } from '../../common/components/component.base';
 export class <#className#>Component extends ComponentBase implements OnInit, OnDestroy {
 
     vm: ViewModel<any>;
-    changeCultureEmitter: EventEmitter<string>;
+    changeCultureEmitter: Subscription;
 
     
     constructor(private <#classNameInstance#>Service: <#className#>Service, private router: Router, private ref: ChangeDetectorRef) {
@@ -28,8 +29,6 @@ export class <#className#>Component extends ComponentBase implements OnInit, OnD
     ngOnInit() {
 
         this.vm = this.<#classNameInstance#>Service.initVM();
-        this.<#classNameInstance#>Service.detectChanges(this.ref);
-
         this.updateCulture();
 
         this.changeCultureEmitter = GlobalService.getChangeCultureEmitter().subscribe((culture : any) => {

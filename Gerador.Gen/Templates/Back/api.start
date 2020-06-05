@@ -57,11 +57,12 @@ namespace <#namespace#>.Api
 
             services.AddDistributedRedisCache(options =>
             {
-                options.Configuration = Configuration.GetSection("RedisConnStrings:<#contextName#>").Value;
+                options.Configuration = Configuration.GetSection("ConfigCache:Default").Value;
                 options.InstanceName = "<#contextName#>";
             });
 
             services.Configure<ConfigSettingsBase>(Configuration.GetSection("ConfigSettings"));
+			services.Configure<ConfigStorageConnectionStringBase>(Configuration.GetSection("ConfigStorage"));
             services.AddSingleton<IConfiguration>(Configuration);
 			services.AddSingleton(new EnviromentInfo
             {
@@ -112,9 +113,9 @@ namespace <#namespace#>.Api
                 c.SwaggerDoc("v1",
                     new Info
                     {
-                        Title = "Seed",
+                        Title = "Target.Intranet",
                         Version = "v1",
-                        Description = "Seed",
+                        Description = "Target.Intranet",
 
                     });
 
@@ -168,7 +169,7 @@ namespace <#namespace#>.Api
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Seed");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Target.Intranet");
                 c.OAuthClientId("swagger-dash");
                 c.OAuthAppName("swagger Dashboard");
 

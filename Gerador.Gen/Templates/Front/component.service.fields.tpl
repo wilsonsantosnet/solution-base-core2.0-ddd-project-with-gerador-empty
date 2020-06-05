@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+﻿import { Injectable } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 
 import { ServiceBase } from '../../common/services/service.base';
@@ -7,7 +7,7 @@ import { ServiceBase } from '../../common/services/service.base';
 export class <#className#>ServiceFields extends ServiceBase {
 
 
-    constructor() {
+	constructor() {
 		super()
 	}
 
@@ -18,7 +18,7 @@ export class <#className#>ServiceFields extends ServiceBase {
 	getFormControls(moreFormControls? : any) {
 		var formControls = Object.assign({
 <#riquered#>
-        },moreFormControls || {});
+		},moreFormControls || {});
 		return formControls;
 	}
 
@@ -26,11 +26,11 @@ export class <#className#>ServiceFields extends ServiceBase {
 		return new FormGroup(this.getFormControls(moreFormControls));
 	}
 
-	getInfosFields(moreInfosFields? : any, orderByMore = false) {
+	getInfosFields(moreInfosFields? : any, useMoreInfosFields = false) {
 		var defaultInfosFields = {
 <#infos#>
-        };
-		return this.mergeInfoFields(defaultInfosFields, moreInfosFields, orderByMore);
-    }
+		};
+		return this.mergeInfoFields(defaultInfosFields, moreInfosFields, useMoreInfosFields);
+	}
 
 }

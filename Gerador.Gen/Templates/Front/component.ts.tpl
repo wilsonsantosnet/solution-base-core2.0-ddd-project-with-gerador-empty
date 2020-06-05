@@ -8,6 +8,7 @@ import { ViewModel } from '../../common/model/viewmodel';
 import { GlobalService, NotificationParameters} from '../../global.service';
 import { ComponentBase } from '../../common/components/component.base';
 import { LocationHistoryService } from '../../common/services/location.history';
+import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'app-<#classNameLowerAndSeparator#>',
@@ -27,18 +28,16 @@ export class <#className#>Component extends ComponentBase implements OnInit, OnD
     vm: ViewModel<any>;
 	
     operationConfimationYes: any;
-    changeCultureEmitter: EventEmitter<string>;
+    changeCultureEmitter: Subscription;
 
-    @ViewChild('filterModal') private filterModal: ModalDirective;
-    @ViewChild('saveModal') private saveModal: ModalDirective;
-    @ViewChild('editModal') private editModal: ModalDirective;
-    @ViewChild('detailsModal') private detailsModal: ModalDirective;
+    @ViewChild('filterModal', { static: false }) private filterModal: ModalDirective;
+    @ViewChild('saveModal', { static: false }) private saveModal: ModalDirective;
+    @ViewChild('editModal', { static: false }) private editModal: ModalDirective;
+    @ViewChild('detailsModal', { static: false }) private detailsModal: ModalDirective;
     
     constructor(private <#classNameInstance#>Service: <#className#>Service, private router: Router, private ref: ChangeDetectorRef) {
-
         super();
         this.vm = null;
-
     }
 
     ngOnInit() {
@@ -48,9 +47,6 @@ export class <#className#>Component extends ComponentBase implements OnInit, OnD
 
         if (this.parentIdValue) 
             this.vm.modelFilter[this.parentIdField] = this.parentIdValue;
-
-        this.<#classNameInstance#>Service.detectChanges(this.ref);
-        this.<#classNameInstance#>Service.OnHide(this.saveModal, this.editModal, () => { this.hideComponents() });
 
         this.onFilter(this.vm.modelFilter);
 
@@ -101,11 +97,16 @@ export class <#className#>Component extends ComponentBase implements OnInit, OnD
             document.body.appendChild(a);
             (a as HTMLElement).style.visibility = 'hidden';
 
-            var blob = new Blob([result], {
+            var blob = new Blob([result._body], {
             	type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
             });
+	    
+			//Ou
+			//var blob = new Blob([result], {
+			//  type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+			//});
 
-            var downloadUrl = window.URL.createObjectURL(blob);
+			var downloadUrl = window.URL.createObjectURL(blob);
 
             a.href = downloadUrl;
             a.download = "<#className#>.xlsx";
@@ -254,7 +255,8 @@ export class <#className#>Component extends ComponentBase implements OnInit, OnD
     }
 
     ngOnDestroy() {
-        this.changeCultureEmitter.unsubscribe();
+        if (this.changeCultureEmitter)
+            this.changeCultureEmitter.unsubscribe();
         this.<#classNameInstance#>Service.detectChangesStop();
     }
 

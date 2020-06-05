@@ -1,5 +1,6 @@
 ﻿using Common.Domain.Interfaces;
 using Common.Domain.Model;
+using Common.Validation;
 using <#namespace#>.Domain.Entitys;
 using <#namespace#>.Domain.Interfaces.Repository;
 using <#namespace#>.Domain.Interfaces.Services;
@@ -9,8 +10,8 @@ namespace <#namespace#>.Domain.Services
     public class <#className#>Service : <#className#>ServiceBase, I<#className#>Service
     {
 
-        public <#className#>Service(I<#className#>Repository rep, ICache cache, CurrentUser user) 
-            : base(rep, cache, user)
+        public <#className#>Service(I<#className#>Repository rep, IValidatorSpecification<<#className#>> validation, IWarningSpecification<<#className#>> warning, ICache cache, CurrentUser user) 
+            : base(rep, validation, warning, cache, user)
         {
 
 

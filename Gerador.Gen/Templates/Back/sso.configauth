@@ -198,7 +198,7 @@ namespace Sso.Server.Api
                 },
 				new Client
                 {
-                    ClientId = "Target.Intranet-spa-anonymous",
+                    ClientId = "<#namespace#>-spa-anonymous",
                     AllowedGrantTypes = GrantTypes.ClientCredentials,
                     ClientSecrets = {
                         new Secret("4aa288ca-1603-45c2-85c3-b41a08d2bd0a".Sha256())

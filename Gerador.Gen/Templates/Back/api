@@ -1,4 +1,4 @@
-﻿using Common.API;
+using Common.API;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -9,6 +9,7 @@ using <#namespace#>.Application.Interfaces;
 using <#namespace#>.Domain.Filter;
 using <#namespace#>.Dto;
 using <#namespace#>.CrossCuting;
+using System;
 
 namespace <#namespace#>.Api.Controllers
 {
@@ -49,10 +50,10 @@ namespace <#namespace#>.Api.Controllers
         [Authorize(Policy = "CanDelete")]
         [HttpDelete]
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id, <#className#>DtoSpecialized dto)
+        public async Task<IActionResult> Delete(<#KeyType#> id, <#className#>DtoSpecialized dto)
         {
             <#setId#>
-            return await base.Delete(id, dto, "<#namespace#> - <#className#>");
+            return await base.Delete(dto, "<#namespace#> - <#className#>");
         }
     }
 }

@@ -3,6 +3,7 @@ using Common.API;
 using Common.Domain.Base;
 using Hangfire;
 using HangFire.Model;
+using Hangfire.MemoryStorage;
 using IdentityModel.Client;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -64,7 +65,8 @@ namespace Seed.HangFire
             Cors.Enable(services);
 
             var connectionString = Configuration.GetSection("ConfigConnectionString:Default").Value;
-            services.AddHangfire(x => x.UseSqlServerStorage(connectionString));
+            //services.AddHangfire(x => x.UseSqlServerStorage(connectionString));
+            services.AddHangfire(x => x.UseMemoryStorage());
 
             // Add application services.
             ConfigContainer.Config(services);

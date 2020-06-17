@@ -101,6 +101,24 @@ namespace Seed.HangFire
             var apiEndPoint = configSettingsBase.Value.ApiEndPoint;
             var authorityEndPoint = configSettingsBase.Value.AuthorityEndPoint;
             RecurringJob.AddOrUpdate(() => ExecuteCallHttProcess(authorityEndPoint, apiEndPoint), Cron.Daily);
+            ConfigureJobs(serviceProvider, schedulesContainer, env);
+        }
+        private void ConfigureJobs(IServiceProvider serviceProvider, ISchedulesContainer schedulesContainer, IHostingEnvironment env)
+        {
+            schedulesContainer.Add(serviceProvider.GetService<ISchedules<SampleJob>>());
+
+            var minutesInDay = 1440;
+            var minutesInWeek = 7200;
+
+            foreach (var job in schedulesContainer.GetJobs())
+            {
+                if (job.GetMinutesInterval() >= minutesInWeek)
+                    RecurringJob.AddOrUpdate(() => job.Execute(), Cron.Weekly(DayOfWeek.Saturday));
+                else if (job.GetMinutesInterval() >= minutesInDay)
+                    RecurringJob.AddOrUpdate(() => job.Execute(), Cron.DayInterval(job.GetMinutesInterval() / minutesInDay));
+                else
+                    RecurringJob.AddOrUpdate(() => job.Execute(), Cron.MinuteInterval(job.GetMinutesInterval()));
+            }
         }
 
         public void ExecuteCallHttProcess(string authorityEndPoint, string apiEndPoint)

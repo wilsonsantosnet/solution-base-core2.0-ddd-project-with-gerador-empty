@@ -1,4 +1,4 @@
-﻿namespace HangFire.Interfaces
+﻿namespace Seed.HangFire.Interfaces
 {
 
     public interface ISchedules

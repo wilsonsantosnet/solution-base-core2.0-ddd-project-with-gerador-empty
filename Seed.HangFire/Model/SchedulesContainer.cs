@@ -1,4 +1,4 @@
-﻿using HangFire.Interfaces;
+﻿using Seed.HangFire.Interfaces;
 using System.Collections.Generic;
 
 namespace HangFire.Model

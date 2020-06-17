@@ -1,9 +1,9 @@
 ﻿using Hangfire;
-using HangFire.Interfaces;
 using Microsoft.Extensions.Logging;
+using Seed.HangFire.Interfaces;
 using System;
 
-namespace HangFire.Base
+namespace Seed.HangFire.Base
 {
     public abstract class SchedulesBase : ISchedules
     {

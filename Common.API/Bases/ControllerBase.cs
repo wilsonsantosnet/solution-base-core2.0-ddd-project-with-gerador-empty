@@ -97,7 +97,7 @@ namespace Common.API
         }
 
 
-        protected virtual async Task<IActionResult> Delete<T2>(int id, T2 dto, string errorMessage) where T2 : DtoBase
+        protected virtual async Task<IActionResult> Delete<T2>(T2 dto, string errorMessage) where T2 : DtoBase
         {
             var result = new HttpResult<T1>(this._logger, this._err);
             try

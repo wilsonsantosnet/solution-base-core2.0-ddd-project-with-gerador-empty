@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace HangFire.Interfaces
+namespace Seed.HangFire.Interfaces
 {
     public interface ISchedulesContainer
     {

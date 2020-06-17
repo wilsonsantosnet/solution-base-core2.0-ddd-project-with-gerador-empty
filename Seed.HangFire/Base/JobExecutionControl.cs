@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace HangFire.Base
+namespace Seed.HangFire.Base
 {
     public class JobExecutionControl
     {

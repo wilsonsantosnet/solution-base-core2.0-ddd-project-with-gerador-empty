@@ -1,10 +1,10 @@
 ﻿using Hangfire;
-using HangFire.Base;
-using HangFire.Interfaces;
 using Microsoft.Extensions.Logging;
+using Seed.HangFire.Base;
+using Seed.HangFire.Interfaces;
 using System.Threading.Tasks;
 
-namespace HangFire.Jobs
+namespace Seed.HangFire.Jobs
 {
 
     public class SampleJob : SchedulesBase, ISchedules<SampleJob>

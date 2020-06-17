@@ -2,6 +2,7 @@
 using Common.API;
 using Common.Domain.Base;
 using Hangfire;
+using HangFire.Model;
 using IdentityModel.Client;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -10,6 +11,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Seed.HangFire.Config;
+using Seed.HangFire.Interfaces;
+using Seed.HangFire.Jobs;
 using System;
 using System.Collections.Specialized;
 
@@ -75,7 +78,8 @@ namespace Seed.HangFire
             IApplicationBuilder app,
             IHostingEnvironment env,
             IServiceProvider serviceProvider, 
-            IOptions<ConfigSettingsBase> configSettingsBase)
+            IOptions<ConfigSettingsBase> configSettingsBase,
+            ISchedulesContainer schedulesContainer)
         {
             app.UseHangfireServer();
             app.UseAuthentication();

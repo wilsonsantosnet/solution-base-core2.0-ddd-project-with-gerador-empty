@@ -1,8 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Microsoft.Extensions.DependencyInjection;
+using Seed.HangFire.Interfaces;
+using Seed.HangFire.Jobs;
 
 namespace Seed.HangFire.Config
 {
@@ -11,7 +9,7 @@ namespace Seed.HangFire.Config
 
         public static void Config(IServiceCollection services)
         {
-
+            services.AddScoped<ISchedules<SampleJob>, SampleJob>();
             RegisterOtherComponents(services);
         }
     }

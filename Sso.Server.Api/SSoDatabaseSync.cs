@@ -32,29 +32,29 @@ namespace Sso.Server.Api
         public static void Update(ConfigSettingsBase settings, ICache cache, IHostingEnvironment env, ConfigurationDbContext context)
         {
             
-            foreach (var client in Config.GetClients(settings))
-            {
-                if (context.Clients.Where(_ => _.ClientId == client.ClientId).IsNotAny())
-                    context.Clients.Add(client.ToEntity());
+            //foreach (var client in Config.GetClients(settings))
+            //{
+            //    if (context.Clients.Where(_ => _.ClientId == client.ClientId).IsNotAny())
+            //        context.Clients.Add(client.ToEntity());
 
-            }
-            context.SaveChanges();
+            //}
+            //context.SaveChanges();
 
-            foreach (var ir in Config.GetIdentityResources())
-            {
-                if (context.IdentityResources.Where(_ => _.Name == ir.Name).IsNotAny())
-                    context.IdentityResources.Add(ir.ToEntity());
+            //foreach (var ir in Config.GetIdentityResources())
+            //{
+            //    if (context.IdentityResources.Where(_ => _.Name == ir.Name).IsNotAny())
+            //        context.IdentityResources.Add(ir.ToEntity());
 
-            }
-            context.SaveChanges();
+            //}
+            //context.SaveChanges();
 
-            foreach (var ar in Config.GetApiResources())
-            {
-                if (context.ApiResources.Where(_ => _.Name == ar.Name).IsNotAny())
-                    context.ApiResources.Add(ar.ToEntity());
+            //foreach (var ar in Config.GetApiResources())
+            //{
+            //    if (context.ApiResources.Where(_ => _.Name == ar.Name).IsNotAny())
+            //        context.ApiResources.Add(ar.ToEntity());
 
-            }
-            context.SaveChanges();
+            //}
+            //context.SaveChanges();
         }
 
        

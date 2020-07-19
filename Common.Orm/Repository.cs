@@ -53,6 +53,15 @@ namespace Common.Orm
 
             return entity;
         }
+        
+        public virtual void DetachLocal(Func<T,bool> predicate) 
+        {
+            var local = ctx.Set<T>().Local.Where(predicate).FirstOrDefault();
+            if (!local.IsNull())
+            {
+                ctx.Entry(local).State = EntityState.Detached;
+            }
+        }
 
         public virtual IEnumerable<T> Update(IEnumerable<T> entitys)
         {

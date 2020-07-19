@@ -23,6 +23,7 @@ namespace <#namespace#>.Api
 
         public static void RegisterOtherComponents(IServiceCollection services)
         {
+			services.AddScoped<ICache, RedisComponent>();
 			services.AddScoped<CurrentUser>();
 			services.AddScoped<IStorage, Storage>();
         }

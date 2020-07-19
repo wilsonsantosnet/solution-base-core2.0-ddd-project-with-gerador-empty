@@ -1,4 +1,4 @@
-﻿using Common.API;
+using Common.API;
 using Common.API.Extensions;
 using Common.Domain.Base;
 using Common.Domain.Enums;
@@ -57,14 +57,11 @@ namespace Common.API
                         var filterKey = filters.CompositeKey(this._user);
                         if (filters.ByCache)
                         {
-                            var cacheResult = this._cache.Get<object>(filterKey);
+                            var cacheResult = this._cache.Get<IEnumerable<object>>(filterKey);
                             if (cacheResult.IsNotNull())
                             {
-                                return result.ReturnCustomResponse(DictionaryExtensions.Combine(cacheResult, new
-                                {
-                                    FilterKey = filterKey,
-                                    filters.CacheExpiresTime
-                                }));
+                                filters.FilterKey = filterKey;
+                                return result.ReturnCustomResponse(cacheResult, filters);
                             }
                         }
 
@@ -108,14 +105,11 @@ namespace Common.API
                         var filterKey = filters.CompositeKey(this._user);
                         if (filters.ByCache)
                         {
-                            var cacheResult = this._cache.Get<object>(filterKey);
+                            var cacheResult = this._cache.Get<IEnumerable<object>>(filterKey);
                             if (cacheResult.IsNotNull())
                             {
-                                return result.ReturnCustomResponse(DictionaryExtensions.Combine(cacheResult, new
-                                {
-                                    FilterKey = filterKey,
-                                    filters.CacheExpiresTime
-                                }));
+                                filters.FilterKey = filterKey;
+                                return result.ReturnCustomResponse(cacheResult, filters);
                             }
                         }
 
@@ -128,8 +122,11 @@ namespace Common.API
                     {
                         var filterKey = filters.CompositeKey(this._user);
                         if (filters.ByCache)
-                            if (this._cache.ExistsKey(filterKey))
-                                return result.ReturnCustomResponse(this._cache.Get<IEnumerable<object>>(filterKey), filters);
+                        {
+                            var cacheResult = this._cache.Get<SearchResult<dynamic>>(filterKey);
+                            if (cacheResult.IsNotNull())
+                                return result.ReturnCustomResponse(cacheResult);
+                        }
 
                         var paginatedResult = await this._rep.GetDataListCustomPaging(filters);
                         this.AddCache(filters, filterKey, paginatedResult.ResultPaginatedData, EntityName);

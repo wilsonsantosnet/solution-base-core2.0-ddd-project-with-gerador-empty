@@ -31,6 +31,7 @@ namespace Common.Domain.Interfaces
         Task<PaginateResult<T>> PagingAndDefineFields(FilterBase filters, IQueryable<T> queryFilter);
         T Add(T entity);
         T Update(T entity);
+        void DetachLocal(Func<T,bool> predicate);
         IEnumerable<T> Update(IEnumerable<T> entitys);
         void Remove(T entity);
         void RemoveRangeAndCommit(IEnumerable<T> entitys);

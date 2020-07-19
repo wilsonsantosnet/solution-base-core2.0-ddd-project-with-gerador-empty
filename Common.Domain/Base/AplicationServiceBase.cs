@@ -186,7 +186,7 @@ namespace Common.Domain.Base
 
         protected virtual async Task<TD> GetOneWithCache(FilterBase filter, Func<FilterBase, T, TD> MapperDomainToDto)
         {
-            var filterKey = filter.CompositeKey();
+            var filterKey = filter.CompositeKey(this._user);
             if (filter.ByCache)
             {
                 var cacheResult = this._cache.Get<TD>(filterKey);

@@ -63,5 +63,36 @@ export class <#className#>Service extends ServiceBase {
     getInfosTranslated(culture: string) {
         return this.globalServiceCulture.getInfosTranslatedStrategy('<#className#>', culture, this.getInfos(), []);
     }
- 
+    get(resource : string ,filters?: any): Observable<any> {
+        return this.api.setResource(resource).get(filters);
+    }
+
+    getDataCustom(resource: string,filters?: any): Observable<any> {
+        return this.api.setResource(resource).getDataCustom(filters);
+    }
+
+    getDataListCustom(resource: string,filters?: any): Observable<any> {
+        return this.api.setResource(resource).getDataListCustom(filters);
+    }
+
+    getDataListCustomPaging(resource: string,filters?: any): Observable<any> {
+        return this.api.setResource(resource).getDataListCustomPaging(filters);
+    }
+    getDataitem(resource: string, filters?: any): Observable<any> {
+        return this.api.setResource(resource).getDataitem(filters);
+    }
+    save(resource: string,model: any): Observable<any> {
+
+        if (model.alunoId) {
+          return this.api.setResource(resource).put(model);
+        }
+
+        return this.api.setResource(resource).post(model);
+    }
+    delete(resource: string,model: any): Observable<any> {
+        return this.api.setResource(resource).delete(model);
+    }
+    export(resource: string,filters?: any): Observable<any> {
+        return this.api.setResource(resource).export(filters);
+    }
 }

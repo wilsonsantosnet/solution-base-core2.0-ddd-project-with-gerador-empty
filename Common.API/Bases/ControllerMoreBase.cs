@@ -87,11 +87,8 @@ namespace Common.API
                             var cacheResult = this._cache.Get<object>(filterKey);
                             if (cacheResult.IsNotNull())
                             {
-                                return result.ReturnCustomResponse(DictionaryExtensions.Combine(cacheResult, new
-                                {
-                                    FilterKey = filterKey,
-                                    filters.CacheExpiresTime
-                                }));
+                                filters.FilterKey = filterKey;
+                                return result.ReturnCustomResponse(cacheResult, filters);
                             }
                         }
 
@@ -125,7 +122,10 @@ namespace Common.API
                         {
                             var cacheResult = this._cache.Get<SearchResult<dynamic>>(filterKey);
                             if (cacheResult.IsNotNull())
-                                return result.ReturnCustomResponse(cacheResult);
+                            {
+                                filters.FilterKey = filterKey;
+                                return result.ReturnCustomResponse(cacheResult, filters);
+                            }
                         }
 
                         var paginatedResult = await this._rep.GetDataListCustomPaging(filters);

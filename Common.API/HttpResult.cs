@@ -148,11 +148,7 @@ namespace Common.API
         public ObjectResult ReturnCustomResponse(IEnumerable<T> searchResult, FilterBase filter = null)
         {
             this.Success(searchResult);
-            if (filter.IsNotNull())
-            {
-                this.Cachekey = filter.FilterKey;
-                this.CacheExpirationMinutes = filter.CacheExpiresTime.TotalMinutes;
-            }
+            this.AddCacheInfo(filter);
 
             return new ObjectResult(this)
             {
@@ -160,10 +156,14 @@ namespace Common.API
             };
 
         }
+
+      
+
         public ObjectResult ReturnCustomResponse(dynamic OneResult, FilterBase filter = null)
         {
 
             this.Success(OneResult);
+            this.AddCacheInfo(filter);
             return new ObjectResult(this)
             {
                 StatusCode = (int)this.StatusCode
@@ -175,6 +175,7 @@ namespace Common.API
 
             this.Summary = searchResult.Summary;
             this.Success(searchResult.DataList);
+            this.AddCacheInfo(filter);
             return new ObjectResult(this)
             {
                 StatusCode = (int)this.StatusCode
@@ -196,6 +197,7 @@ namespace Common.API
             this.Cachekey = searchResult.Cachekey;
             this.CacheExpirationMinutes = searchResult.CacheExpirationMinutes;
             this.Success(searchResult.DataList);
+            this.AddCacheInfo(filter);
             return new ObjectResult(this)
             {
                 StatusCode = (int)this.StatusCode
@@ -294,6 +296,15 @@ namespace Common.API
             this._logger.LogCritical("{0} - [1]", erroMessage, ex);
             return new ObjectResult(result) { StatusCode = (int)result.StatusCode };
 
+        }
+
+        private void AddCacheInfo(FilterBase filter)
+        {
+            if (filter.IsNotNull())
+            {
+                this.Cachekey = filter.FilterKey;
+                this.CacheExpirationMinutes = filter.CacheExpiresTime.TotalMinutes;
+            }
         }
 
         private HttpResult<T> ExceptionWithInner(Exception ex, string appName)

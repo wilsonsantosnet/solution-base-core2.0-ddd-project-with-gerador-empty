@@ -286,8 +286,6 @@ namespace Common.Domain.Base
         protected virtual void AddCache(FilterBase filter, string filterKey, TD resultDto)
         {
             var resultDtoCached = resultDto as DtoBase;
-            resultDtoCached.Cachekey = filterKey;
-            resultDtoCached.CacheExpirationMinutes = filter.CacheExpiresTime.TotalMinutes;
             this._cache.Add(filterKey, resultDtoCached, filter.CacheExpiresTime);
             this.AddTagCache(filterKey, this._serviceBase.GetTagNameCache());
         }

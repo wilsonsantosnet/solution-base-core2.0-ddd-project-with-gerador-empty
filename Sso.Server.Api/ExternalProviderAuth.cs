@@ -1,4 +1,4 @@
-﻿using IdentityModel;
+using IdentityModel;
 using IdentityServer4;
 using IdentityServer4.Events;
 using IdentityServer4.Quickstart.UI;
@@ -20,13 +20,11 @@ namespace Sso.Server.Api
         private readonly IHttpContextAccessor _htc;
         private readonly IEventService _events;
         private readonly IIdentityServerInteractionService _interaction;
-        private readonly IUrlHelper _url;
-        public ExternalProviderAuth(IHttpContextAccessor htc, IEventService events, IIdentityServerInteractionService interaction, IUrlHelper url)
+        public ExternalProviderAuth(IHttpContextAccessor htc, IEventService events, IIdentityServerInteractionService interaction)
         {
             this._htc = htc;
             this._events = events;
             this._interaction = interaction;
-            this._url = url;
         }
 
         public async Task<IActionResult> Callback(string returnUrl, Func<string, Task<UserCredential>> getUser)
@@ -75,15 +73,15 @@ namespace Sso.Server.Api
             await this._htc.HttpContext.SignOutAsync(IdentityServerConstants.ExternalCookieAuthenticationScheme);
 
             // validate return URL and redirect back to authorization endpoint or a local page
-            if (_interaction.IsValidReturnUrl(returnUrl) || this._url.IsLocalUrl(returnUrl))
+            if (_interaction.IsValidReturnUrl(returnUrl))
                 return new RedirectResult(returnUrl);
 
             return new RedirectResult("~/");
         }
 
-        public async Task<IActionResult> Login(string provider, string returnUrl)
+        public async Task<IActionResult> Login(IUrlHelper url, string provider, string returnUrl)
         {
-            var externalLoginCallback = this._url.Action("ExternalLoginCallback", new
+            var externalLoginCallback = url.Action("ExternalLoginCallback", new
             {
                 returnUrl
             });

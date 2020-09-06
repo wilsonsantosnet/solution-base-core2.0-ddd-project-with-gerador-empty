@@ -20,6 +20,5 @@ Esse Seed tem um gerenciador chamado gerador com ele após clonar o Seed podemos
 1.	[gerador Init()](https://medium.com/@wilsonsantos_66971/brain-board-b3bf5e550cd9)
 
 
-[Flow](flow.png)
 ![Flow](flow.png?raw=true "Flow")
 

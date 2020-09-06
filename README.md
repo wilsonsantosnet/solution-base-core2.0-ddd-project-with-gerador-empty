@@ -16,7 +16,7 @@ Esse Seed tem um gerenciador chamado gerador com ele após clonar o Seed podemos
 ###### Caso esteja interessado em baixar o SEED e rodar o gerador siga as instruções do artigo :
 1. [Gerador de Código](https://medium.com/@wilsonsantos_66971/gerador-de-c%C3%B3digo-7e3c08981e43)
 
-###### Se quiser saber mais consulte essa lista de artigos relacionados ao gerador e aos frameworks citados acima 
+###### Para saber mais consulte essa lista de artigos relacionados ao gerador e aos frameworks citados acima 
 1.	[gerador Init()](https://medium.com/@wilsonsantos_66971/brain-board-b3bf5e550cd9)
 
 

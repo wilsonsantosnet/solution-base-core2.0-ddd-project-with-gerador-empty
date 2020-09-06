@@ -1,7 +1,7 @@
 # seed-core-ddd-project-with-gerador-empty
 Seed vazio para projetos SPA / DDD / Gerador
 
-O objetivo desse projeto é fornecer um esqueleto básico de um projeto dotnet core com uma API Rest um FontEnd SPA Angular é um SSO com Identity serve 4, á ideia é  prover as camadas as dependências e dois frameworks de apoio um para o frontEnd em angular com uma serie de componentes uteis para uma aplicação comercial convencional tais como uploads , Grids , Calendários , Caixas de Combinação etc. Do lado do back end tempos funcionalidades como Criptografia , acesso a dados ,  Validações , WebRequest , API Responses etc.
+O objetivo desse projeto é fornecer o esqueleto básico de um projeto dotnet core com uma API Rest um FontEnd SPA Angular é um SSO com Identity serve 4, á ideia é  prover as camadas as dependências e dois frameworks de apoio um para o frontEnd em angular com uma serie de componentes uteis para uma aplicação comercial convencional tais como uploads , Grids , Calendários , Caixas de Combinação etc. Do lado do back end tempos funcionalidades como Criptografia , acesso a dados ,  Validações , WebRequest , API Responses etc.
 Esse Seed tem um gerenciador que chamei de  gerador com ele após clonar o Seed podemos baixar esses dois frameworks citados acima além de  gerar alguns arquivos para que o projeto fique plenamente funcional.
 
 Esses dois frameworks estão aqui no github segue os links Abaixo;

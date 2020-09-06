@@ -21,4 +21,5 @@ Esse Seed tem um gerenciador chamado gerador com ele após clonar o Seed podemos
 
 
 [Flow](flow.png)
+![Flow](flow.png?raw=true "Flow")
 

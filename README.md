@@ -10,8 +10,8 @@ Esse Seed tem um gerenciador chamado gerador com ele após clonar o Seed podemos
 
 ###### Os Arquivos de Templates tambem estão  aqui;
 
-3. [template-gerador-back-core2.0-DDD] (https://github.com/wilsonsantosnet/template-gerador-back-core2.0-DDD)
-4. [template-gerador-front-coreui-angular6.0] (https://github.com/wilsonsantosnet/template-gerador-front-coreui-angular6.0)
+3. [template-gerador-back-core2.0-DDD](https://github.com/wilsonsantosnet/template-gerador-back-core2.0-DDD)
+4. [template-gerador-front-coreui-angular6.0](https://github.com/wilsonsantosnet/template-gerador-front-coreui-angular6.0)
 
 ###### Caso esteja interessado em baixar o SEED e rodar o gerador siga as instruções do artigo :
 1. [Gerador de Código](https://medium.com/@wilsonsantos_66971/gerador-de-c%C3%B3digo-7e3c08981e43)

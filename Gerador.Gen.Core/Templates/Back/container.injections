@@ -1,0 +1,5 @@
+﻿			services.AddScoped<IValidatorSpecification<<#className#>>,<#className#>IsSuitableValidation>();
+			services.AddScoped<IWarningSpecification<<#className#>>, <#className#>IsSuitableWarning>();
+			services.AddScoped<I<#className#>ApplicationService, <#className#>ApplicationService>();
+			services.AddScoped<I<#className#>Service, <#className#>Service>();
+			services.AddScoped<I<#className#>Repository, <#className#>Repository>();

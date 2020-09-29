@@ -1,0 +1,1 @@
+﻿<a <#fieldItemsNavHeadShow#> class="nav-link <#NavFirtItem#>" id="v-pills-<#fieldItemsNavHeadID#>-tab" data-toggle="pill" href="#v-pills-<#fieldItemsNavHeadID#>" role="tab" aria-controls="v-pills-<#fieldItemsNavHeadID#>" aria-selected="true"><i class="<#fieldItemsNavHeadIcon#>"></i> <#fieldItemsNavHeadName#></a>

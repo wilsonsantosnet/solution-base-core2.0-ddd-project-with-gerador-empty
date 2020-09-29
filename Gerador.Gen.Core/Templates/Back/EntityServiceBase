@@ -1,0 +1,215 @@
+﻿using Common.Domain.Base;
+using Common.Domain.Interfaces;
+using Common.Domain.Model;
+using Common.Validation;
+using <#namespace#>.Domain.Entitys;
+using <#namespace#>.Domain.Filter;
+using <#namespace#>.Domain.Interfaces.Repository;
+using <#namespace#>.Domain.Validations;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+
+namespace <#namespace#>.Domain.Services
+{
+    public class <#className#>ServiceBase : ServiceBase<<#className#>>
+    {
+        protected readonly I<#className#>Repository _rep;
+        protected readonly IValidatorSpecification<<#className#>> _validation;
+        protected readonly IWarningSpecification<<#className#>> _warning;
+
+
+        public <#className#>ServiceBase(I<#className#>Repository rep, IValidatorSpecification<<#className#>> validation, IWarningSpecification<<#className#>> warning, ICache cache, CurrentUser user)
+            : base(cache)
+        {
+            this._rep = rep;
+            this._user = user;
+            this._validation = validation;
+            this._warning = warning;
+        }
+
+        public virtual async Task<<#className#>> GetOne(<#className#>Filter filters)
+        {
+            return await this._rep.GetById(filters);
+        }
+
+        public virtual async Task<IEnumerable<<#className#>>> GetByFilters(<#className#>Filter filters)
+        {
+            var queryBase = this._rep.GetBySimplefilters(filters);
+            return await this._rep.ToListAsync(queryBase);
+        }
+
+        public virtual Task<PaginateResult<<#className#>>> GetByFiltersPaging(<#className#>Filter filters)
+        {
+            var queryBase = this._rep.GetBySimplefilters(filters);
+            return this._rep.PagingAndDefineFields(filters, queryBase);
+        }
+
+        public override void Remove(<#className#> <#classNameLower#>)
+        {
+            this._rep.Remove(<#classNameLower#>);
+        }
+
+        public virtual Summary GetSummary(PaginateResult<<#className#>> paginateResult)
+        {
+            return new Summary
+            {
+                Total = paginateResult.TotalCount,
+				PageSize = paginateResult.PageSize,
+            };
+        }
+
+        public virtual ValidationSpecificationResult GetDomainValidation(FilterBase filters = null)
+        {
+            return this._validationResult;
+        }
+
+        public virtual ConfirmEspecificationResult GetDomainConfirm(FilterBase filters = null)
+        {
+            return this._validationConfirm;
+        }
+
+        public virtual WarningSpecificationResult GetDomainWarning(FilterBase filters = null)
+        {
+            return this._validationWarning;
+        }
+
+        public override async Task<<#className#>> Save(<#className#> <#classNameLower#>, bool questionToContinue = false)
+        {
+			var <#classNameLower#>Old = await this.GetOne(<#GetOneFilterKeys#>);
+			var <#classNameLower#>Orchestrated = await this.DomainOrchestration(<#classNameLower#>, <#classNameLower#>Old);
+
+            if (questionToContinue)
+            {
+                if (this.Continue(<#classNameLower#>Orchestrated, <#classNameLower#>Old) == false)
+                    return <#classNameLower#>Orchestrated;
+            }
+
+            return this.SaveWithValidation(<#classNameLower#>Orchestrated, <#classNameLower#>Old);
+        }
+
+        public override async Task<<#className#>> SavePartial(<#className#> <#classNameLower#>, bool questionToContinue = false)
+        {
+            var <#classNameLower#>Old = await this.GetOne(<#GetOneFilterKeys#>);
+			var <#classNameLower#>Orchestrated = await this.DomainOrchestration(<#classNameLower#>, <#classNameLower#>Old);
+
+            if (questionToContinue)
+            {
+                if (this.Continue(<#classNameLower#>Orchestrated, <#classNameLower#>Old) == false)
+                    return <#classNameLower#>Orchestrated;
+            }
+
+            return SaveWithOutValidation(<#classNameLower#>Orchestrated, <#classNameLower#>Old);
+        }
+
+        protected override <#className#> SaveWithOutValidation(<#className#> <#classNameLower#>, <#className#> <#classNameLower#>Old)
+        {
+            <#classNameLower#> = this.SaveDefault(<#classNameLower#>, <#classNameLower#>Old);
+			this._cacheHelper.ClearCache();
+
+			if (!<#classNameLower#>.IsValid())
+			{
+				this._validationResult = <#classNameLower#>.GetDomainValidation();
+				this._validationWarning = <#classNameLower#>.GetDomainWarning();
+				return <#classNameLower#>;
+			}
+
+            this._validationResult = new ValidationSpecificationResult
+            {
+                Errors = new List<string>(),
+                IsValid = true,
+                Message = "Alterado com sucesso."
+            };
+            
+            return <#classNameLower#>;
+        }
+
+		protected override <#className#> SaveWithValidation(<#className#> <#classNameLower#>, <#className#> <#classNameLower#>Old)
+        {
+            if (!this.IsValid(<#classNameLower#>))
+				return <#classNameLower#>;
+            
+            <#classNameLower#> = this.SaveDefault(<#classNameLower#>, <#classNameLower#>Old);
+            this._validationResult = new ValidationSpecificationResult
+            {
+                Errors = new List<string>(),
+                IsValid = true,
+                Message = "Inserido com sucesso."
+            };
+
+            this._cacheHelper.ClearCache();
+            return <#classNameLower#>;
+        }
+		
+		protected virtual bool IsValid(<#className#> entity)
+        {
+            var isValid = true;
+            if (!this.DataAnnotationIsValid() || !entity.IsValid())
+            {
+                if (this._validationResult.IsNull())
+                    this._validationResult = entity.GetDomainValidation();
+                else
+                    this._validationResult.Merge(entity.GetDomainValidation());
+
+                if (this._validationWarning.IsNull())
+                    this._validationWarning = entity.GetDomainWarning();
+                else
+                    this._validationWarning.Merge(entity.GetDomainWarning());
+
+                isValid = false;
+            }
+
+            this.Specifications(entity);
+            if (!this._validationResult.IsValid)
+                isValid = false;
+
+            return isValid;
+        }
+
+		protected virtual void Specifications(<#className#> <#classNameLower#>)
+        {
+            this._validationResult  = this._validationResult.Merge(this._validation.Validate(<#classNameLower#>));
+			this._validationWarning  = this._validationWarning.Merge(this._warning.Validate(<#classNameLower#>));
+        }
+
+        protected virtual <#className#> SaveDefault(<#className#> <#classNameLower#>, <#className#> <#classNameLower#>Old)
+        {
+			<#AuditDefault#>
+
+            var isNew = <#classNameLower#>Old.IsNull();			
+            if (isNew)
+                <#classNameLower#> = this.AddDefault(<#classNameLower#>);
+            else
+				<#classNameLower#> = this.UpdateDefault(<#classNameLower#>);
+
+            return <#classNameLower#>;
+        }
+		
+        protected virtual <#className#> AddDefault(<#className#> <#classNameLower#>)
+        {
+            <#classNameLower#> = this._rep.Add(<#classNameLower#>);
+            return <#classNameLower#>;
+        }
+
+		protected virtual <#className#> UpdateDefault(<#className#> <#classNameLower#>)
+        {
+            <#classNameLower#> = this._rep.Update(<#classNameLower#>);
+            return <#classNameLower#>;
+        }
+				
+		public virtual async Task<<#className#>> GetNewInstance(dynamic model, CurrentUser user)
+        {
+            return await Task.Run(() =>
+            {
+                return new <#className#>.<#className#>Factory().GetDefaultInstance(model, user);
+            });
+         }
+
+		public virtual async Task<<#className#>> GetUpdateInstance(dynamic model, CurrentUser user)
+        {
+            return await Task.Run(() =>
+            {
+                return new <#className#>.<#className#>Factory().GetDefaultInstance(model, user);
+            });
+         }
+    }
+}

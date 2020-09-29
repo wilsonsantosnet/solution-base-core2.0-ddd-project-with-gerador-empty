@@ -1,0 +1,25 @@
+﻿using Common.Domain.Model;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using <#namespace#>.Data.Map;
+using <#namespace#>.Domain.Entitys;
+
+namespace <#namespace#>.Data.Context
+{
+    public class DbContext<#contextName#> : DbContextMultiTenantcy
+    {
+
+        public DbContext<#contextName#>(DbContextOptions<DbContext<#contextName#>> options, CurrentUser user, IConfiguration config)
+            : base(options, user, config)
+        {
+
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+<#mappers#>
+        }
+
+
+    }
+}

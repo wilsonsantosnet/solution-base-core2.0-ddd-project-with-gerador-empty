@@ -1,0 +1,11 @@
+﻿using Common.Domain.Interfaces;
+using <#namespace#>.Dto;
+
+namespace <#namespace#>.Application.Interfaces
+{
+    public interface I<#className#>ApplicationService : I<#className#>ApplicationServiceBase
+    {
+       
+
+    }
+}

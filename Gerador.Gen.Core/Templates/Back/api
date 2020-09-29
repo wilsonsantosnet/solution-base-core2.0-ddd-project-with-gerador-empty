@@ -1,0 +1,59 @@
+using Common.API;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Routing;
+using Microsoft.Extensions.Logging;
+using System.Threading.Tasks;
+using <#namespace#>.Application.Interfaces;
+using <#namespace#>.Domain.Filter;
+using <#namespace#>.Dto;
+using <#namespace#>.CrossCuting;
+using System;
+
+namespace <#namespace#>.Api.Controllers
+{
+    [Authorize]
+    [Route("api/[controller]")]
+    public class <#className#>Controller : ControllerBase<<#className#>Dto>
+    {
+        public <#className#>Controller(I<#className#>ApplicationService app, ILoggerFactory logger, IHostingEnvironment env)
+            : base(app, logger, env, new ErrorMapCustom())
+        {
+
+
+
+        }
+
+        [Authorize(Policy = "CanReadAll")]
+        [HttpGet]
+        public async Task<IActionResult> Get([FromQuery] <#className#>Filter filters)
+        {
+            return await base.Get<<#className#>Filter>(filters, "<#namespace#> - <#className#>");
+        }
+
+<#ApiGet#>
+
+        [Authorize(Policy = "CanSave")]
+        [HttpPost]
+        public async Task<IActionResult> Post([FromBody] <#className#>DtoSpecialized dto)
+        {
+            return await base.Post(dto, "<#namespace#> - <#className#>");
+        }
+
+        [Authorize(Policy = "CanEdit")]
+        [HttpPut]
+        public async Task<IActionResult> Put([FromBody] <#className#>DtoSpecialized dto)
+        {
+            return await base.Put(dto, "<#namespace#> - <#className#>");
+        }
+        [Authorize(Policy = "CanDelete")]
+        [HttpDelete]
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(<#KeyType#> id, <#className#>DtoSpecialized dto)
+        {
+            <#setId#>
+            return await base.Delete(dto, "<#namespace#> - <#className#>");
+        }
+    }
+}

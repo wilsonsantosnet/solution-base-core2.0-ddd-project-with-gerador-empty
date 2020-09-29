@@ -1,0 +1,3 @@
+﻿	type.HasRequired(s => s.Colaborador)
+        .WithMany(s => s.CollectionSolicitacaoSuspensao)
+        .HasForeignKey(s => s.SupervisorId);

@@ -1,0 +1,7 @@
+﻿        [HttpGet("{id}")]
+        [Authorize(Policy = "CanReadOne")]
+        public async Task<IActionResult> Get(<#KeyType#> id, [FromQuery] <#className#>Filter filters)
+        {
+            if (id.IsSent()) filters.<#KeyName#> = id;
+            return await base.GetOne(filters, "<#namespace#> - <#className#>");
+        }

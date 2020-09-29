@@ -1,0 +1,23 @@
+﻿using <#namespace#>.Domain.Entitys;
+using <#namespace#>.Domain.Filter;
+using System.Linq;
+
+namespace <#namespace#>.Data.Repository
+{
+    public static class <#className#>FilterBasicExtension
+    {
+
+        public static IQueryable<<#className#>> WithBasicFilters(this IQueryable<<#className#>> queryBase, <#className#>Filter filters)
+        {
+            var queryFilter = queryBase;
+
+			<#filterIds#>
+
+<#filtersExpressions#>
+
+            return queryFilter;
+        }
+
+		
+    }
+}

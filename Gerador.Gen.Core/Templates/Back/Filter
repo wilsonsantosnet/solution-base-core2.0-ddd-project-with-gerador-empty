@@ -1,0 +1,18 @@
+using Common.Domain.Base;
+using Common.Domain.CompositeKey;
+using Common.Domain.Model;
+using System;
+
+namespace <#namespace#>.Domain.Filter
+{
+    public class <#className#>FilterBase : FilterBase
+    {
+
+<#property#>
+
+        public override string CompositeKey(CurrentUser user) {
+            return CompositeKeyExtensions.CompositeKey(this, $"{user.GetSubjectId<int>()}");
+        }
+
+    }
+}

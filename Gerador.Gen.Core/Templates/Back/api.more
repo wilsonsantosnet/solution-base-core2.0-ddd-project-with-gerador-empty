@@ -1,0 +1,52 @@
+﻿using Common.API;
+using Common.Domain.Base;
+using Common.Domain.Interfaces;
+using Common.Domain.Model;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Routing;
+using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using <#namespace#>.Application.Interfaces;
+using <#namespace#>.Domain.Entitys;
+using <#namespace#>.Domain.Filter;
+using <#namespace#>.Domain.Interfaces.Repository;
+using <#namespace#>.Dto;
+using <#namespace#>.CrossCuting;
+
+
+namespace <#namespace#>.Api.Controllers
+{
+    [Authorize]
+    [Route("api/<#className#>/more")]
+    public class <#className#>MoreController : ControllerMoreBase<<#className#>Dto, <#className#>Filter, <#className#>>
+    {
+        public <#className#>MoreController(I<#className#>Repository rep, I<#className#>ApplicationService app, ILoggerFactory logger, EnviromentInfo env, CurrentUser user, ICache cache) 
+            : base(rep, app, logger, env, user, cache, new ExportExcel<dynamic>(), new ErrorMapCustom())
+        {
+
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Get([FromQuery]<#className#>Filter filters)
+        {
+            return await base.Get(filters,typeof(<#className#>).Name, "<#namespace#> - <#className#>");
+        }
+
+        [Authorize(Policy = "CanWrite")]
+        [HttpPost]
+        public async Task<IActionResult> Post([FromBody]IEnumerable<<#className#>DtoSpecialized> dtos)
+        {
+            return await base.Post(dtos,  "<#namespace#> - <#className#>");
+        }
+
+        [Authorize(Policy = "CanWrite")]
+        [HttpPut]
+        public async Task<IActionResult> Put([FromBody]IEnumerable<<#className#>DtoSpecialized> dtos)
+        {
+            return await base.Put(dtos, "<#namespace#> - <#className#>");
+        }
+
+    }
+}

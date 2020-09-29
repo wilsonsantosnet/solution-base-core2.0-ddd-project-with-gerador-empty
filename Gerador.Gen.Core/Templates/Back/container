@@ -1,0 +1,30 @@
+﻿using Common.Cache;
+using Common.Domain.Interfaces;
+using Common.Orm;
+using Common.Validation;
+using Microsoft.Extensions.DependencyInjection;
+using <#namespace#>.Application;
+using <#namespace#>.Application.Interfaces;
+using <#namespace#>.Data.Context;
+using <#namespace#>.Data.Repository;
+using <#namespace#>.Domain.Entitys;
+using <#namespace#>.Domain.Interfaces.Repository;
+using <#namespace#>.Domain.Interfaces.Services;
+using <#namespace#>.Domain.Services;
+using <#namespace#>.Domain.Validations;
+
+namespace <#namespace#>.Api
+{
+    public static partial class ConfigContainer<#contextName#>
+    {
+
+        public static void Config(IServiceCollection services)
+        {
+            services.AddScoped<IUnitOfWork, UnitOfWork<DbContext<#contextName#>>>();
+            
+<#injections#>
+
+            RegisterOtherComponents(services);
+        }
+    }
+}

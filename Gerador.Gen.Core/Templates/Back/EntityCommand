@@ -1,0 +1,34 @@
+﻿using Common.Domain.Interfaces;
+using System.Threading.Tasks;
+using <#namespace#>.Domain.Entitys;
+using <#namespace#>.Domain.Interfaces.Repository;
+
+namespace <#namespace#>.Domain.Comands
+{
+    public class <#CommandName#>Command : ICommand<<#className#>>
+    {
+        private readonly I<#className#>Repository _<#classNameLower#>Repository;
+
+        public <#CommandName#>Command(I<#className#>Repository <#classNameLower#>Repository)
+        {
+            this._<#classNameLower#>Repository = <#classNameLower#>Repository;
+        }
+
+        public async Task<<#className#>> Execute(<#className#> aggregationRoot)
+        {
+			return await Task.Run(() =>
+            {
+                if (!this.IsValid(aggregationRoot))
+                    return aggregationRoot;
+
+                return aggregationRoot;
+
+            });
+        }
+
+        public bool IsValid(<#className#> aggregationRoot)
+        {
+            return aggregationRoot.IsValid();
+        }
+    }
+}

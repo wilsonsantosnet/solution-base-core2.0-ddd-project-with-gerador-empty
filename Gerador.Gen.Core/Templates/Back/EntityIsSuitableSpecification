@@ -1,0 +1,19 @@
+﻿using Common.Validation;
+using <#namespace#>.Domain.Entitys;
+using <#namespace#>.Domain.Interfaces.Repository;
+
+namespace <#namespace#>.Domain.Specifications
+{
+    public class <#specificationName#>IsSuitableSpecification : ISpecification<<#className#>>
+    {
+        private readonly I<#className#>Repository _rep;
+        public <#specificationName#>IsSuitableSpecification(I<#className#>Repository rep)
+        {
+            this._rep = rep;
+        }
+        public bool IsSatisfiedBy(<#className#> entity)
+        {
+            return true;
+        }
+    }
+}

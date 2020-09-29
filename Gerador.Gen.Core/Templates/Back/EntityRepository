@@ -1,0 +1,144 @@
+﻿using Common.Domain.Base;
+using Common.Orm;
+using <#namespace#>.Data.Context;
+using <#namespace#>.Domain.Entitys;
+using <#namespace#>.Domain.Filter;
+using <#namespace#>.Domain.Interfaces.Repository;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Linq.Expressions;
+using System;
+using Common.Domain.Model;
+
+namespace <#namespace#>.Data.Repository
+{
+    public class <#className#>Repository : Repository<<#className#>>, I<#className#>Repository
+    {
+        private CurrentUser _user;
+        public <#className#>Repository(DbContext<#contextName#> ctx, CurrentUser user) : base(ctx)
+        {
+			this._user = user;
+        }
+
+      
+        public IQueryable<<#className#>> GetBySimplefilters(<#className#>Filter filters)
+        {
+            var querybase = this.GetAll(this.DataAgregation(filters))
+								.WithBasicFilters(filters)
+								.WithCustomFilters(filters)
+								.OrderByDomain(filters)
+                                .OrderByProperty(filters);
+            return querybase;
+        }
+
+        public async Task<<#className#>> GetById(<#className#>Filter model)
+        {
+            var _<#classNameLower#> = await this.SingleOrDefaultAsync(this.GetAll(this.DataAgregation(model))
+               <#WhereSingle#>);
+
+            return _<#classNameLower#>;
+        }
+
+		public async Task<IEnumerable<dynamic>> GetDataItem(<#className#>Filter filters)
+        {
+            var querybase = await this.ToListAsync(this.GetBySimplefilters(filters).Select(_ => new
+            {
+                Id = _.<#DataItemFieldId#>,
+				Name = _.<#DataItemFieldName#>
+            })); 
+
+            return querybase;
+        }
+
+        public async Task<IEnumerable<dynamic>> GetDataListCustom(<#className#>Filter filters)
+        {
+            var querybase = await this.ToListAsync(this.GetBySimplefilters(filters).Select(_ => new
+            {
+                Id = _.<#DataItemFieldId#>
+
+            }));
+
+            return querybase;
+        }
+
+		
+        public async Task<PaginateResult<dynamic>> GetDataListCustomPaging(<#className#>Filter filters)
+        {
+            var querybase = await this.PagingDataListCustom<dynamic>(filters, this.GetBySimplefilters(filters).Select(_ => new
+            {
+                Id = _.<#DataItemFieldId#>
+            }));
+            return querybase;
+        }
+
+        public async Task<dynamic> GetDataCustom(<#className#>Filter filters)
+        {
+            var querybase = await this.ToListAsync(this.GetBySimplefilters(filters).Select(_ => new
+            {
+               Id = _.<#DataItemFieldId#>
+
+            }));
+
+            return querybase;
+        }
+
+        protected override dynamic DefineFieldsGetOne(IQueryable<<#className#>> source, string queryOptimizerBehavior)
+        {
+            if (queryOptimizerBehavior == "queryOptimizerBehavior")
+            {
+                return source.Select(_ => new
+                {
+
+                });
+            }
+            return source;
+        }
+
+        protected override IQueryable<dynamic> DefineFieldsGetByFilters(IQueryable<<#className#>> source, FilterBase filters)
+        {
+			if (filters.QueryOptimizerBehavior == "queryOptimizerBehavior")
+            {
+                return source.Select(_ => new
+                {
+
+                });
+            }
+            return source;
+
+        }
+
+        protected override IQueryable<<#className#>> MapperGetByFiltersToDomainFields(IQueryable<<#className#>> source, IEnumerable<dynamic> result, string queryOptimizerBehavior)
+        {
+            if (queryOptimizerBehavior == "queryOptimizerBehavior")
+            {
+                return result.Select(_ => new <#className#>
+                {
+
+                }).AsQueryable();
+            }
+
+            return result.Select(_ => (<#className#>)_).AsQueryable();
+
+        }
+
+        protected override <#className#> MapperGetOneToDomainFields(IQueryable<<#className#>> source, dynamic result, string queryOptimizerBehavior)
+        {
+            if (queryOptimizerBehavior == "queryOptimizerBehavior")
+            {
+                return new <#className#>
+                {
+
+                };
+            }
+
+            return source.SingleOrDefault();
+        }
+
+		protected override Expression<Func<<#className#>, object>>[] DataAgregation(Expression<Func<<#className#>, object>>[] includes, FilterBase filter)
+        {
+            return base.DataAgregation(includes, filter);
+        }
+
+    }
+}

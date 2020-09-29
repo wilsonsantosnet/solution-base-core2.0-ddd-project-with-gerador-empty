@@ -1,0 +1,17 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace <#namespace#>.Application.Config
+{
+	public class AutoMapperConfig<#contextName#>
+    {
+        public static Type[] RegisterMappings()
+        {
+            return new List<Type>
+            {
+                typeof(DominioToDtoProfile<#contextName#>),
+                typeof(DominioToDtoProfile<#contextName#>Custom)
+            }.ToArray();
+        }
+	}
+}

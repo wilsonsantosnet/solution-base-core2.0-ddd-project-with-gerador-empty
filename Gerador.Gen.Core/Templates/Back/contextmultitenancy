@@ -1,0 +1,46 @@
+﻿using Common.Domain.Model;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using System.Linq;
+
+namespace <#namespace#>.Data.Context
+{
+    public class DbContextMultiTenantcy : DbContext
+    {
+    
+        private readonly CurrentUser _user;
+        private readonly IConfiguration _config;
+
+        public DbContextMultiTenantcy(DbContextOptions<DbContext<#contextName#>> options, CurrentUser user, IConfiguration config)
+            : base(options)
+        {
+            this._user = user;
+            this._config = config;
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            var claimsUser = this._user.GetClaims();
+            var connectionString = ConfigureConnectionString(claimsUser);
+            if (connectionString.IsNotNullOrEmpty())
+            {
+                optionsBuilder.UseSqlServer(connectionString);
+                base.OnConfiguring(optionsBuilder);
+            }
+            else
+                base.OnConfiguring(optionsBuilder);
+        }
+
+        private string ConfigureConnectionString(System.Collections.Generic.IDictionary<string, object> claimsUser)
+        {
+            var datasource = claimsUser.Where(_ => _.Key == "datasource").SingleOrDefault();
+            var database = claimsUser.Where(_ => _.Key == "database").SingleOrDefault();
+            if (datasource.Value.IsNotNull() && database.Value.IsNotNull())
+                return $"Data Source={datasource.Value.ToString()};Initial Catalog={database.Value.ToString()};user id=Score;password=Score321$;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False;MultipleActiveResultSets=True";
+
+            return null;
+        }
+
+
+    }
+}

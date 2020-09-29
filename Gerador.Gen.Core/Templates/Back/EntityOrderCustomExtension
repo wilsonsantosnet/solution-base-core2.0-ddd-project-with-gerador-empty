@@ -1,0 +1,18 @@
+﻿using Common.Domain.Model;
+using <#namespace#>.Domain.Entitys;
+using <#namespace#>.Domain.Filter;
+using System.Linq;
+
+namespace <#namespace#>.Data.Repository
+{
+    public static class <#className#>OrderCustomExtension
+    {
+
+        public static IQueryable<<#className#>> OrderByDomain(this IQueryable<<#className#>> queryBase, <#className#>Filter filters)
+        {
+            return queryBase<#orderByKeys#>;
+        }
+
+    }
+}
+

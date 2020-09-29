@@ -353,6 +353,25 @@ public static class CommonExtensions
 
 
     }
+
+    public static string ToLowerCase(this string str, bool removeAccents = false)
+    {
+        return str.ToLowerCase(string.Empty, removeAccents);
+    }
+
+    public static string ToLowerCase(this string str, string caseNull, bool removeAccents = false)
+    {
+        if (str == null)
+            return caseNull;
+
+        if (str == string.Empty)
+            return caseNull;
+
+        if (removeAccents)
+            return str.ToLower().RemoveAccents();
+
+        return str.ToLower();
+    }
     #endregion
 
     #region Types
@@ -417,6 +436,44 @@ public static class CommonExtensions
     #endregion
 
     #region Others
+
+    public static string FirstCharToUpper(this string str)
+    {
+        if (str.IsNullOrEmpaty())
+            return str;
+
+        var firstUpper = str.FirstOrDefault().ToString().ToUpper();
+        var result = string.Format("{0}{1}", firstUpper, str.Substring(1, str.Length - 1));
+
+        return result;
+    }
+    public static string FirstCharToLower(this string str)
+    {
+        if (str.IsNullOrEmpaty())
+            return str;
+
+        var firstLower = str.FirstOrDefault().ToString().ToLower();
+        var result = string.Format("{0}{1}", firstLower, str.Substring(1, str.Length - 1));
+
+        return result;
+    }
+
+    public static string ClearText(this string str)
+    {
+        return str.RemoveAccents().Replace(" ", "");
+    }
+
+    public static string RemoveAccents(this string text)
+    {
+        StringBuilder sbReturn = new StringBuilder();
+        var arrayText = text.Normalize(NormalizationForm.FormD).ToCharArray();
+        foreach (char letter in arrayText)
+        {
+            if (CharUnicodeInfo.GetUnicodeCategory(letter) != UnicodeCategory.NonSpacingMark)
+                sbReturn.Append(letter);
+        }
+        return sbReturn.ToString();
+    }
     public static string Right(this string value, int numeroCaracteres)
     {
         return value.Substring(value.Length - numeroCaracteres, numeroCaracteres);

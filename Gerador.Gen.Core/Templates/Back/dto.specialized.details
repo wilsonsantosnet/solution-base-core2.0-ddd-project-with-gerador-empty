@@ -1,0 +1,14 @@
+﻿using System;
+using System.Linq;
+using System.Collections.Generic;
+using System.Linq.Expressions;
+
+namespace <#namespace#>.Dto
+{
+	public class <#className#>DtoSpecializedDetails : <#className#>Dto
+	{
+
+<#propertysNav#>
+		
+	}
+}

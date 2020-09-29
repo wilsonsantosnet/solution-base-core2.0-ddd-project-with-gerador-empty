@@ -1,0 +1,33 @@
+﻿using <#namespace#>.Domain.Validations;
+using System;
+using Common.Domain.Model;
+
+namespace <#namespace#>.Domain.Entitys
+{
+    public class <#className#> : <#className#>Base
+    {
+
+        public <#className#>()
+        {
+
+        }
+
+		<#ctorparametersRequired#>
+
+
+		public class <#className#>Factory : <#className#>FactoryBase
+        {
+            public <#className#> GetDefaultInstance(dynamic data, CurrentUser user)
+            {
+				return GetDefaultInstanceBase(data, user);
+            }
+        }
+
+        public bool IsValid()
+        {
+            base._validationResult = base._validationResult.Merge(new <#className#>IsConsistentValidation().Validate(this));
+            return base._validationResult.IsValid;
+        }
+        
+    }
+}

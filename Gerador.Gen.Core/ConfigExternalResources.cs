@@ -192,9 +192,9 @@ namespace Seed.Gen
                 ResourceLocalPathFolderExecuteCloning = CombineUri(this._basicPathProject, @"Outros\Repositorios"),
                 ResourceLocalPathDestinationFolrderApplication = CombineUri(this._basicPathProject, @"solution-base-core2.0-ddd-project-with-gerador-empty"),
                 OnlyThisFiles = new List<string> {
-                    "Itens Solutions\\Common.Domain.dll",
-                    "Itens Solutions\\Common.Gen.dll",
-                    "Itens Solutions\\Common.dll",
+                    CombineUri(@"Itens Solutions\Common.Domain.dll"),
+                    CombineUri(@"Itens Solutions\Common.Gen.dll"),
+                    CombineUri(@"Itens Solutions\Common.dll"),
                 }
 
             };

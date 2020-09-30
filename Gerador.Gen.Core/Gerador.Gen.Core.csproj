@@ -54,10 +54,10 @@
     <None Update="Templates\Back\api.upload.base64">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Templates\Back\apiBase">
+    <None Update="Templates\Back\apibase">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Templates\Back\apiBase.more">
+    <None Update="Templates\Back\apibase.more">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Templates\Back\appsettings.json">
@@ -66,7 +66,7 @@
     <None Update="Templates\Back\automapper">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Templates\Back\ConfigSettingsDomain">
+    <None Update="Templates\Back\configsettingsdomain">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Templates\Back\container">
@@ -78,7 +78,7 @@
     <None Update="Templates\Back\container.partial">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Templates\Back\Context">
+    <None Update="Templates\Back\context">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Templates\Back\context.mappers">
@@ -93,10 +93,10 @@
     <None Update="Templates\Back\dto">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Templates\Back\dto.nav.property.Collection">
+    <None Update="Templates\Back\dto.nav.property.collection">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Templates\Back\dto.nav.property.Instance">
+    <None Update="Templates\Back\dto.nav.property.instance">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Templates\Back\dto.specialized">
@@ -111,97 +111,97 @@
     <None Update="Templates\Back\dto.specialized.result">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Templates\Back\EntityApplicationService">
+    <None Update="Templates\Back\entityApplicationService">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Templates\Back\EntityApplicationService.custom.method">
+    <None Update="Templates\Back\entityapplicationservice.custom.method">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Templates\Back\EntityApplicationServiceBase">
+    <None Update="Templates\Back\entityapplicationservicebase">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Templates\Back\EntityBase">
+    <None Update="Templates\Back\entitybase">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Templates\Back\EntityCommand">
+    <None Update="Templates\Back\entitycommand">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Templates\Back\EntityExt">
+    <None Update="Templates\Back\entityExt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Templates\Back\EntityFilterBasicExtension">
+    <None Update="Templates\Back\entityfilterbasicextension">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Templates\Back\EntityFilterCustomExtension">
+    <None Update="Templates\Back\entityfiltercustomextension">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Templates\Back\EntityIsConsistentSpecification">
+    <None Update="Templates\Back\entityisconsistentspecification">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Templates\Back\EntityIsSuitableSpecification">
+    <None Update="Templates\Back\entityissuitablespecification">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Templates\Back\EntityMapBase">
+    <None Update="Templates\Back\entitymapbase">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Templates\Back\EntityMapExt">
+    <None Update="Templates\Back\entitymapext">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Templates\Back\EntityMethodSeters">
+    <None Update="Templates\Back\entitymethodseters">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Templates\Back\EntityOrderCustomExtension">
+    <None Update="Templates\Back\entityordercustomextension">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Templates\Back\EntityPropertys">
+    <None Update="Templates\Back\entitypropertys">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Templates\Back\EntityRepository">
+    <None Update="Templates\Back\entityrepository">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Templates\Back\EntityServiceBase">
+    <None Update="Templates\Back\entityservicebase">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Templates\Back\EntityServiceExt">
+    <None Update="Templates\Back\entityserviceext">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Templates\Back\EntityValidationWarningSpecification">
+    <None Update="Templates\Back\entityvalidationwarningspecification">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Templates\Back\EntityValidatorSpecification">
+    <None Update="Templates\Back\entityvalidatorspecification">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Templates\Back\EntityValidatorSpecificationRepository">
+    <None Update="Templates\Back\entityvalidatorspecificationrepository">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Templates\Back\EntityWarningSpecification">
+    <None Update="Templates\Back\entitywarningspecification">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Templates\Back\EnumCommand">
+    <None Update="Templates\Back\enumcommand">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Templates\Back\Filter">
+    <None Update="Templates\Back\filter">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Templates\Back\Filter.partial">
+    <None Update="Templates\Back\filter.partial">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Templates\Back\FilterBasicExtension">
+    <None Update="Templates\Back\filterbasicextension">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Templates\Back\IEntityApplicationService">
+    <None Update="Templates\Back\ientityapplicationservice">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Templates\Back\IEntityApplicationService.custom.method">
+    <None Update="Templates\Back\ientityapplicationservice.custom.method">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Templates\Back\IEntityApplicationServiceBase">
+    <None Update="Templates\Back\ientityapplicationservicebase">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Templates\Back\IEntityRepository">
+    <None Update="Templates\Back\ientityrepository">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Templates\Back\IEntityService">
+    <None Update="Templates\Back\ientityservice">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Templates\Back\maps.compositekey">
@@ -219,7 +219,7 @@
     <None Update="Templates\Back\maps.onetomany">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Templates\Back\maps.OneToOne">
+    <None Update="Templates\Back\maps.onetoone">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Templates\Back\maps.required">
@@ -255,7 +255,7 @@
     <None Update="Templates\Back\profile.registers.specilize.result">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Templates\Back\profileCustom">
+    <None Update="Templates\Back\profilecustom">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Templates\Back\sso.configauth">

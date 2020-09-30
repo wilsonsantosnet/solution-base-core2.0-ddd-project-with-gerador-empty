@@ -20,11 +20,12 @@ namespace Seed.Gen
 
         private string CombineUri(params string[] paths)
         {
-            var newPathSlices = paths.SelectMany(_ => _.Split("//")).ToArray();
-            if (newPathSlices.Count() > 1)
-                return new Uri(Path.Combine(newPathSlices)).LocalPath;
+            var newPathSlices = paths.SelectMany(_ => _.Split(@"\")).ToArray();
+            var patch = Path.Combine(newPathSlices);
+            if (Directory.Exists(patch))
+                return new Uri(patch).LocalPath;
 
-            return Path.Combine(newPathSlices);
+            return patch;
 
         }
         private ExternalResource ConfigExternarResourcesTemplatesBackDDDCore20(bool replaceLocalFilesApplication)

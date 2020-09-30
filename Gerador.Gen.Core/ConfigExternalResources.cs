@@ -102,7 +102,7 @@ namespace Seed.Gen
                 ResouceRepositoryName = "project-base-layout-front-coreui-angular6.0",
                 ResourceUrlRepository = "https://github.com/wilsonsantosnet/project-base-layout-front-coreui-angular6.0.git",
                 ResourceLocalPathFolderExecuteCloning = CombineAbsoluteUri(this._basicPathProject, @"Outros\Repositorios"),
-                ResourceLocalPathDestinationFolrderApplication = CombineAbsoluteUri(this._basicPathProject, @"solution-base-core2.0-ddd-project-with-gerador-empty\Seed.Spa.Ui"),
+                ResourceLocalPathDestinationFolrderApplication = CombineAbsoluteUri(this._basicPathProject, @"solution-base-core2.0-ddd-project-with-gerador-empty\Seed.Spa.Ui\"),
             };
 
         }
@@ -116,10 +116,10 @@ namespace Seed.Gen
                 ResouceRepositoryName = "project-base-layout-front-coreui-angular6.0",
                 ResourceUrlRepository = "https://github.com/wilsonsantosnet/project-base-layout-front-coreui-angular6.0.git",
                 ResourceLocalPathFolderExecuteCloning = CombineAbsoluteUri(this._basicPathProject, @"Outros\Repositorios"),
-                ResourceLocalPathDestinationFolrderApplication = CombineAbsoluteUri(this._basicPathProject, @"solution-base-core2.0-ddd-project-with-gerador-empty\Seed.Spa.Ui"),
+                ResourceLocalPathDestinationFolrderApplication = CombineAbsoluteUri(this._basicPathProject, @"solution-base-core2.0-ddd-project-with-gerador-empty\Seed.Spa.Ui\"),
                 OnlyThisFiles = new List<string> {
                     CombineRelativeUri(@"package.json"),
-                    CombineRelativeUri(@"Web.config"),
+                    CombineRelativeUri(@"web.config"),
                     CombineRelativeUri(@"angular.json"),
                     CombineRelativeUri(@"src\app\app.component.css"),
                     CombineRelativeUri(@"src\app\app.component.html"),
@@ -134,7 +134,7 @@ namespace Seed.Gen
                     CombineRelativeUri(@"src\app\main\main.component.ts"),
                     CombineRelativeUri(@"src\app\main\main.service.ts"),
                     CombineRelativeUri(@"src\assets\jquery.nestable.js"),
-                    CombineRelativeUri(@"src\app\util\enum\\enum.service.ts"),
+                    CombineRelativeUri(@"src\app\util\enum\enum.service.ts"),
                 }
 
             };
@@ -163,7 +163,7 @@ namespace Seed.Gen
                 ReplaceLocalFilesApplication = replaceLocalFilesApplication,
                 ResouceRepositoryName = "framework-angular6.0-CRUD",
                 ResourceUrlRepository = "https://github.com/wilsonsantosnet/framework-angular6.0-CRUD.git",
-                ResourceLocalPathFolderExecuteCloning = CombineAbsoluteUri(this._basicPathProject, @"Outros\Repositorios"),
+                ResourceLocalPathFolderExecuteCloning = CombineAbsoluteUri(this._basicPathProject, @"Outros\Repositorios\"),
                 ResourceLocalPathDestinationFolrderApplication = CombineAbsoluteUri(this._basicPathProject, @"solution-base-core2.0-ddd-project-with-gerador-empty\Seed.Spa.Ui\src\app\common"),
             };
 
@@ -179,7 +179,7 @@ namespace Seed.Gen
                 DownloadOneTimeFileVerify = "package.json",
                 ResouceRepositoryName = "project-custom-layout-front-coreui-angular8.0",
                 ResourceUrlRepository = "https://github.com/wilsonsantosnet/project-custom-layout-front-coreui-angular8.0.git",
-                ResourceLocalPathFolderExecuteCloning = CombineAbsoluteUri(this._basicPathProject, @"Outros\Repositorios"),
+                ResourceLocalPathFolderExecuteCloning = CombineAbsoluteUri(this._basicPathProject, @"Outros\Repositorios\"),
                 ResourceLocalPathDestinationFolrderApplication = CombineAbsoluteUri(this._basicPathProject, @"solution-base-core2.0-ddd-project-with-gerador-empty\Seed.Spa.Ui.Custom"),
             };
 

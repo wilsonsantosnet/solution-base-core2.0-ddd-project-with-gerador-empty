@@ -1,5 +1,0 @@
-﻿if (filters.<#propertyName#>.IsSent()) 
-			{ 
-				<#filtersRange#>
-				queryFilter = queryFilter.Where(<#condition#>);
-			}

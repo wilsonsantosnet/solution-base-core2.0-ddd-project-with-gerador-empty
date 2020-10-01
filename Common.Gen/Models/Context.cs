@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using Common.Gen.Helpers;
 
 namespace Common.Gen
 {
@@ -42,18 +43,18 @@ namespace Common.Gen
             this.UsePathProjects = true;
 
             if (this.Arquiteture == ArquitetureType.TableModel)
-                this.TemplatePathBack = "Template/Back";
+                this.TemplatePathBack = HelperUri.CombineAbsoluteUri(AppDomain.CurrentDomain.BaseDirectory, @"Template\Back");
 
             if (this.Arquiteture == ArquitetureType.DDD)
-                this.TemplatePathBack = "Template/Back";
+                this.TemplatePathBack = HelperUri.CombineAbsoluteUri(AppDomain.CurrentDomain.BaseDirectory, @"Template\Back");
 
             if (this.Arquiteture == ArquitetureType.TransactionScript)
-                this.TemplatePathBack = "Template/BackTransaction";
+                this.TemplatePathBack = HelperUri.CombineAbsoluteUri(AppDomain.CurrentDomain.BaseDirectory, @"Template\BackTransaction");
 
             if (this.Arquiteture == ArquitetureType.ReadOnly)
-                this.TemplatePathBack = "Template/ReadOnly";
+                this.TemplatePathBack = HelperUri.CombineAbsoluteUri(AppDomain.CurrentDomain.BaseDirectory, @"Template\ReadOnly");
 
-            this.TemplatePathFront = "Template/Front";
+            this.TemplatePathFront = HelperUri.CombineAbsoluteUri(AppDomain.CurrentDomain.BaseDirectory, @"Template\Front");
 
         }
 
@@ -203,7 +204,7 @@ namespace Common.Gen
 
         public string ConnectionString { get; set; }
 
-        
+
         public string OutputClassRoot { get; set; }
 
         public string OutputClassDomain { get; set; }

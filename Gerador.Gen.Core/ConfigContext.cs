@@ -48,23 +48,25 @@ namespace Seed.Gen
 
                 TableInfo = new UniqueListTableInfo
                 {
-                   new TableInfo().FromTable("Sample").MakeBack().MakeFront()
-                   .AndConfigureThisValidations(new List<SpecificationConfig>{
-                    new SpecificationConfig {
-                        Name = "SampleValidationConsistent",
-                        Type = SpecificationConfig.SpecificationType.Consistent
-                    },
-                    new SpecificationConfig {
-                        Name = "SampleValidationWarning",
-                        Type = SpecificationConfig.SpecificationType.Warning
-                    },
-                    new SpecificationConfig {
-                        Name = "SampleValidationWarning",
-                        Type = SpecificationConfig.SpecificationType.Suitable
-                    }
-                   }),
-                   new TableInfo().FromTable("SampleType").MakeBack().MakeFrontCrudBasic(),
-                   new TableInfo().FromTable("SampleItem").MakeBack().MakeFrontCrudBasic(),
+                //    new TableInfo().FromTable("Sample").MakeBack().MakeFront()
+                //    .AndConfigureThisValidations(new List<SpecificationConfig>{
+                //     new SpecificationConfig {
+                //         Name = "SampleValidationConsistent",
+                //         Type = SpecificationConfig.SpecificationType.Consistent
+                //     },
+                //     new SpecificationConfig {
+                //         Name = "SampleValidationWarning",
+                //         Type = SpecificationConfig.SpecificationType.Warning
+                //     },
+                //     new SpecificationConfig {
+                //         Name = "SampleValidationWarning",
+                //         Type = SpecificationConfig.SpecificationType.Suitable
+                //     }
+                //    }),
+                //    new TableInfo().FromTable("SampleType").MakeBack().MakeFrontCrudBasic(),
+                //    new TableInfo().FromTable("SampleItem").MakeBack().MakeFrontCrudBasic(),
+                   new TableInfo().FromTable("Ativo").MakeBack().MakeFrontCrudBasic(),
+
                    new TableInfo().FromClass("SampleDash").MakeFrontBasic(),
                 }
             };

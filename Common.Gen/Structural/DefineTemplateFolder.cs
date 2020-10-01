@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Common.Gen.Helpers;
 
 namespace Common.Gen
 {
@@ -23,14 +24,14 @@ namespace Common.Gen
 
         public void SetTemplatePathBase(string templatePathBase)
         {
-            _templatePathBase = templatePathBase;
+            _templatePathBase = HelperUri.CombineAbsoluteUri(AppDomain.CurrentDomain.BaseDirectory, templatePathBase);
         }
 
         public string Define()
         {
 
             if (!new DirectoryInfo(_templatePathBase).Exists)
-                throw new InvalidOperationException("Templates folder not Found, remember mark copy allways");
+                throw new InvalidOperationException($"Templates folder not Found, remember mark copy allways {_templatePathBase}");
 
             return _templatePathBase;
         }

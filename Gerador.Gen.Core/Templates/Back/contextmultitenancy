@@ -5,13 +5,13 @@ using System.Linq;
 
 namespace <#namespace#>.Data.Context
 {
-    public class DbContextMultiTenantcy : DbContext
+    public class DbContextMultiTenancy : DbContext
     {
     
         private readonly CurrentUser _user;
         private readonly IConfiguration _config;
 
-        public DbContextMultiTenantcy(DbContextOptions<DbContext<#contextName#>> options, CurrentUser user, IConfiguration config)
+        public DbContextMultiTenancy(DbContextOptions<DbContext<#contextName#>> options, CurrentUser user, IConfiguration config)
             : base(options)
         {
             this._user = user;

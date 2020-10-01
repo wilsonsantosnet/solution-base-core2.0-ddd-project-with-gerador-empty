@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using System.Configuration;
 using System.IO;
 using Common.Gen.Utils;
+using Common.Gen.Helpers;
 
 namespace Common.Gen
 {
@@ -26,8 +27,8 @@ namespace Common.Gen
             base.ArquitetureType = ArquitetureType.TableModel;
 
         }
-        public HelperSysObjectsTableModel(Context context) : this(context, "Templates\\Back") { }
-        public HelperSysObjectsTableModel(IEnumerable<Context> contexts) : this(contexts, "Templates\\Back") { }
+        public HelperSysObjectsTableModel(Context context) : this(context, HelperUri.CombineAbsoluteUri(AppDomain.CurrentDomain.BaseDirectory, @"Templates\Back")) { }
+        public HelperSysObjectsTableModel(IEnumerable<Context> contexts) : this(contexts, HelperUri.CombineAbsoluteUri(AppDomain.CurrentDomain.BaseDirectory, @"Templates\Back")) { }
         public HelperSysObjectsTableModel(IEnumerable<Context> contexts, string template)
         {
             this.Contexts = contexts;
@@ -37,7 +38,7 @@ namespace Common.Gen
             this._defineTemplateFolder = new DefineTemplateFolder();
             this._defineTemplateFolder.SetTemplatePathBase(template);
 
-           
+
         }
 
         public override void DefineTemplateByTableInfo(Context config, TableInfo tableInfo)
@@ -902,7 +903,7 @@ namespace Common.Gen
 
             if (File.Exists(pathOutput) && tableInfo.CodeCustomImplemented)
                 return;
-            
+
             var pathTemplateClass = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, this._defineTemplateFolder.Define(tableInfo), DefineTemplateName.ContainerPartialWeb(tableInfo));
             if (!File.Exists(pathTemplateClass))
                 return;

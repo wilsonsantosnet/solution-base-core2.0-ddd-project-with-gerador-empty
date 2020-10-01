@@ -81,7 +81,7 @@ namespace Common.Gen
                             HelperCmd.ExecuteCommand(string.Format("robocopy {0} {1}  /s /e /xd *\"bin\" *\"obj\" *\".git\" /xf *\".sln\" *\".md\" ", resource.ResourceLocalPathFolderCloningRepository, resource.ResourceLocalPathDestinationFolrderApplication), 10000);
                         else
                         {
-                            string.Format("rsync -arv --exclude='bin' --exclude='obj' --exclude='*.git' --exclude='*.sln' --exclude='*.md' {0}/ node:{1}", resource.ResourceLocalPathFolderCloningRepository, resource.ResourceLocalPathDestinationFolrderApplication).Bash();
+                            string.Format("rsync -arv --exclude='bin' --exclude='obj' --exclude='*.git' --exclude='*.sln' --exclude='*.md' {0} {1}", resource.ResourceLocalPathFolderCloningRepository, resource.ResourceLocalPathDestinationFolrderApplication).Bash();
                         }
                     }
 
@@ -175,7 +175,7 @@ namespace Common.Gen
                             HelperCmd.ExecuteCommand(string.Format("robocopy {0} {1} /s /e /xd *\"bin\" *\"obj\"", folderActual.FullName, string.Format("{0}\\{1}", resource.ResourceLocalPathFolderCloningRepository, folderActual.Name)), 10000);
                         else
                         {
-                            string.Format("rsync -arv --exclude='bin' --exclude='obj' {0}/ node:{1}", folderActual.FullName, Path.Combine(resource.ResourceLocalPathFolderCloningRepository, folderActual.Name)).Bash();
+                            string.Format("rsync -arv --exclude='bin' --exclude='obj' {0} {1}", folderActual.FullName, Path.Combine(resource.ResourceLocalPathFolderCloningRepository, folderActual.Name)).Bash();
                         }
                     }
                 }
@@ -200,7 +200,7 @@ namespace Common.Gen
                     if (isWindows)
                         HelperCmd.ExecuteCommand(string.Format("robocopy {0} {1} /s /e", resource.ResourceLocalPathDestinationFolrderApplication, resource.ResourceLocalPathFolderCloningRepository), 10000);
                     else
-                        string.Format("rsync -arv {0}/ node:{1}", resource.ResourceLocalPathDestinationFolrderApplication, resource.ResourceLocalPathFolderCloningRepository).Bash();
+                        string.Format("rsync -arv {0} {1}", resource.ResourceLocalPathDestinationFolrderApplication, resource.ResourceLocalPathFolderCloningRepository).Bash();
 
                 }
             }
@@ -251,7 +251,7 @@ namespace Common.Gen
                             HelperCmd.ExecuteCommand(string.Format("robocopy {0} {1} /s /e /xd *\"bin\" *\"obj\"", folderActual.FullName, string.Format("{0}\\{1}", bkpPathFolder, folderActual.Name)), 10000);
 
                         else
-                            string.Format("rsync -arv {0}/ node:{1}", folderActual.FullName, Path.Combine(bkpPathFolder, folderActual.Name)).Bash();
+                            string.Format("rsync -arv {0} {1}", folderActual.FullName, Path.Combine(bkpPathFolder, folderActual.Name)).Bash();
 
                     }
                 }
@@ -263,7 +263,7 @@ namespace Common.Gen
                     if (isWindows)
                         HelperCmd.ExecuteCommand(string.Format("robocopy {0} {1} /s /e", resource.ResourceLocalPathDestinationFolrderApplication, bkpPathFolder), 10000);
                     else
-                        string.Format("rsync -arv {0}/ node:{1}", resource.ResourceLocalPathDestinationFolrderApplication, bkpPathFolder).Bash();
+                        string.Format("rsync -arv {0} {1}", resource.ResourceLocalPathDestinationFolrderApplication, bkpPathFolder).Bash();
                 }
             }
         }
@@ -274,7 +274,7 @@ namespace Common.Gen
             if (resource.DownloadOneTime)
             {
                 var fileVerify = Path.Combine(resource.ResourceLocalPathDestinationFolrderApplication, resource.DownloadOneTimeFileVerify);
-
+                
                 if (File.Exists(fileVerify))
                     continueFlow = false;
             }

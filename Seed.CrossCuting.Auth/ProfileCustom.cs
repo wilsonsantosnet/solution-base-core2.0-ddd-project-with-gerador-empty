@@ -1,9 +1,10 @@
-using Common.API.Extensions;
+﻿using Common.API.Extensions;
 using Common.Domain.Enums;
 using Common.Domain.Model;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Claims;
 
 namespace Seed.CrossCuting
@@ -16,6 +17,7 @@ namespace Seed.CrossCuting
             Admin = 1,
             Tenant = 2,
             Owner = 3,
+            Anonymous = 4,
         }
 
         enum ERole
@@ -23,8 +25,9 @@ namespace Seed.CrossCuting
             Contributor,
             Reader
         }
+		
 
-        public static IDictionary<string, object> Define(IEnumerable<Claim> _claims)
+		public static IDictionary<string, object> Define(IEnumerable<Claim> _claims)
         {
             var user = new CurrentUser().Init(Guid.NewGuid().ToString(), _claims.ConvertToDictionary());
             return Define(user);
@@ -33,35 +36,24 @@ namespace Seed.CrossCuting
         public static IDictionary<string, object> Define(CurrentUser user)
         {
             var _claims = user.GetClaims();
-            var roles = GetRoles(user);
+            var roles = JsonConvert.DeserializeObject<IEnumerable<string>>(user.GetRole());
             var typeTole = user.GetTypeRole();
-            var clientId = user.GetClaimByName<string>("client_id");
 
-            if (clientId == "Seed-spa")
-            {
-                if (typeTole.ToLower() == ETypeRole.Admin.ToString().ToLower())
-                    _claims.AddRange(ClaimsForAdmin());
-                else
-                    _claims.AddRange(ClaimsForTenant(user.GetSubjectId<int>()));
-            }
-
-            if (clientId == "Seed-spa-custom")
-            {
-                if (typeTole.ToLower() == ETypeRole.Admin.ToString().ToLower())
-                    _claims.AddRange(ClaimsForAdmin());
-            }
-
+            if (typeTole.ToLower() == ETypeRole.Admin.ToString().ToLower())
+                _claims.AddRange(ClaimsForAdmin());
+            if (typeTole.ToLower() == ETypeRole.Anonymous.ToString().ToLower())
+                _claims.AddRange(ClaimsForAnonymous());
+            if (typeTole.ToLower() == ETypeRole.Tenant.ToString().ToLower())
+                _claims.AddRange(ClaimsForTenant(user.GetSubjectId<int>()));
+				
             return _claims;
         }
-
-
 
         public static Dictionary<string, object> ClaimsForAdmin()
         {
             var tools = new List<dynamic>
             {
-                new Tool { Icon = "fa fa-edit", Name = "Sample", Route = "/sample", Key = "Sample" , Type = ETypeTools.Menu },
-                new Tool { Icon = "fa fa-edit", Name = "SampleType", Route = "/sampletype", Key = "SampleType" , Type = ETypeTools.Menu },
+                new Tool { Icon = "fa fa-edit", Name = "Ativo", Route = "/ativo", Key = "Ativo" , Type = ETypeTools.Menu },
                 new Tool { Icon = "fa fa-edit", Name = "SampleDash", Route = "/sampledash", Key = "SampleDash" , Type = ETypeTools.Menu },
 
             };
@@ -77,7 +69,9 @@ namespace Seed.CrossCuting
 
             var tools = new List<Tool>
             {
-                new Tool { Icon = "fa fa-edit", Name = "Tool", Route = "#/Url", Key="Tool" },
+                new Tool { Icon = "fa fa-edit", Name = "Ativo", Route = "/ativo", Key = "Ativo" , Type = ETypeTools.Menu },
+                new Tool { Icon = "fa fa-edit", Name = "SampleDash", Route = "/sampledash", Key = "SampleDash" , Type = ETypeTools.Menu },
+
             };
 
             var _toolsForSubscriber = JsonConvert.SerializeObject(tools);
@@ -86,13 +80,22 @@ namespace Seed.CrossCuting
                 { "tools", _toolsForSubscriber }
             };
         }
-        
-        private static IEnumerable<string> GetRoles(CurrentUser user)
+		
+		public static Dictionary<string, object> ClaimsForAnonymous()
         {
-            var role = user.GetRole();
-            if (role.Contains(","))
-                return JsonConvert.DeserializeObject<IEnumerable<string>>(user.GetRole());
-            return new List<string> { role };
+
+            var tools = new List<Tool>
+            {
+                new Tool { Icon = "fa fa-edit", Name = "Ativo", Route = "/ativo", Key = "Ativo" , Type = ETypeTools.Menu },
+                new Tool { Icon = "fa fa-edit", Name = "SampleDash", Route = "/sampledash", Key = "SampleDash" , Type = ETypeTools.Menu },
+
+            };
+
+            var _toolsForSubscriber = JsonConvert.SerializeObject(tools);
+            return new Dictionary<string, object>
+            {
+                { "tools", _toolsForSubscriber }
+            };
         }
 
     }

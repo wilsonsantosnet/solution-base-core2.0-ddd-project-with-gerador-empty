@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
 using System.Linq;
+using Common.Gen.Helpers;
 
 namespace Common.Gen
 {
     public class HelperSysObjectsTransaction : HelperSysObjectsBaseBack
     {
 
-        public HelperSysObjectsTransaction(IEnumerable<Context> contexts) : this(contexts, "Templates\\Back")
+        public HelperSysObjectsTransaction(IEnumerable<Context> contexts) : this(contexts, HelperUri.CombineAbsoluteUri(AppDomain.CurrentDomain.BaseDirectory, @"Templates\Back"))
         {
 
         }

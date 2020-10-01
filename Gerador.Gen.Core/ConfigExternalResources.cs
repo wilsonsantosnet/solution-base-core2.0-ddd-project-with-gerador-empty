@@ -1,4 +1,5 @@
 using Common.Gen;
+using Common.Gen.Helpers;
 using Common.Gen.Utils;
 using System;
 using System.Collections.Generic;
@@ -18,20 +19,7 @@ namespace Seed.Gen
             this._basicPathProject = ConfigurationManager.AppSettings[string.Format("PathProject")];
         }
 
-        private string CombineRelativeUri(params string[] paths)
-        {
-            var newPathSlices = paths.SelectMany(_ => _.Split(@"\")).ToArray();
-            var patch = Path.Combine(newPathSlices);
-            return patch;
 
-        }
-
-        private string CombineAbsoluteUri(params string[] paths)
-        {
-            var newPathSlices = paths.SelectMany(_ => _.Split(@"\")).ToArray();
-            var patch = Path.Combine(newPathSlices);
-            return new Uri(patch).LocalPath;
-        }
         private ExternalResource ConfigExternarResourcesTemplatesBackDDDCore20(bool replaceLocalFilesApplication)
         {
 
@@ -41,8 +29,8 @@ namespace Seed.Gen
                 ReplaceLocalFilesApplication = true,
                 ResouceRepositoryName = "template-gerador-back-core2.0-DDD",
                 ResourceUrlRepository = "https://github.com/wilsonsantosnet/template-gerador-back-core2.0-DDD.git",
-                ResourceLocalPathFolderExecuteCloning = CombineAbsoluteUri(this._basicPathProject, @"Outros\Repositorios"),
-                ResourceLocalPathDestinationFolrderApplication = CombineAbsoluteUri(this._basicPathProject, @"solution-base-core2.0-ddd-project-with-gerador-empty\Gerador.Gen\Templates\Back"),
+                ResourceLocalPathFolderExecuteCloning = HelperUri.CombineAbsoluteUri(this._basicPathProject, @"Outros\Repositorios"),
+                ResourceLocalPathDestinationFolrderApplication = HelperUri.CombineAbsoluteUri(this._basicPathProject, @"solution-base-core2.0-ddd-project-with-gerador-empty\Gerador.Gen\Templates\Back"),
             };
 
         }
@@ -55,8 +43,8 @@ namespace Seed.Gen
                 ReplaceLocalFilesApplication = true,
                 ResouceRepositoryName = "template-gerador-back-DDD",
                 ResourceUrlRepository = "https://github.com/wilsonsantosnet/template-gerador-back-DDD.git",
-                ResourceLocalPathFolderExecuteCloning = CombineAbsoluteUri(this._basicPathProject, @"Outros\Repositorios"),
-                ResourceLocalPathDestinationFolrderApplication = CombineAbsoluteUri(this._basicPathProject, @"solution-base-core2.0-ddd-project-with-gerador-empty\Gerador.Gen\Templates\Back"),
+                ResourceLocalPathFolderExecuteCloning = HelperUri.CombineAbsoluteUri(this._basicPathProject, @"Outros\Repositorios"),
+                ResourceLocalPathDestinationFolrderApplication = HelperUri.CombineAbsoluteUri(this._basicPathProject, @"solution-base-core2.0-ddd-project-with-gerador-empty\Gerador.Gen\Templates\Back"),
             };
 
         }
@@ -70,8 +58,8 @@ namespace Seed.Gen
                 OnlyFoldersContainsThisName = "Common",
                 ResouceRepositoryName = "framework-core-common",
                 ResourceUrlRepository = "https://github.com/wilsonsantosnet/framework-core-common.git",
-                ResourceLocalPathFolderExecuteCloning = CombineAbsoluteUri(this._basicPathProject, @"Outros\Repositorios"),
-                ResourceLocalPathDestinationFolrderApplication = CombineAbsoluteUri(this._basicPathProject, @"solution-base-core2.0-ddd-project-with-gerador-empty\"),
+                ResourceLocalPathFolderExecuteCloning = HelperUri.CombineAbsoluteUri(this._basicPathProject, @"Outros\Repositorios"),
+                ResourceLocalPathDestinationFolrderApplication = HelperUri.CombineAbsoluteUri(this._basicPathProject, @"solution-base-core2.0-ddd-project-with-gerador-empty\"),
             };
 
         }
@@ -85,8 +73,8 @@ namespace Seed.Gen
                 OnlyFoldersContainsThisName = "Common",
                 ResouceRepositoryName = "framework-core2.0-common",
                 ResourceUrlRepository = "https://github.com/wilsonsantosnet/framework-core2.0-common.git",
-                ResourceLocalPathFolderExecuteCloning = CombineAbsoluteUri(this._basicPathProject, @"Outros\Repositorios"),
-                ResourceLocalPathDestinationFolrderApplication = CombineAbsoluteUri(this._basicPathProject, @"solution-base-core2.0-ddd-project-with-gerador-empty\"),
+                ResourceLocalPathFolderExecuteCloning = HelperUri.CombineAbsoluteUri(this._basicPathProject, @"Outros\Repositorios"),
+                ResourceLocalPathDestinationFolrderApplication = HelperUri.CombineAbsoluteUri(this._basicPathProject, @"solution-base-core2.0-ddd-project-with-gerador-empty\"),
             };
 
         }
@@ -101,8 +89,8 @@ namespace Seed.Gen
                 DownloadOneTimeFileVerify = "package.json",
                 ResouceRepositoryName = "project-base-layout-front-coreui-angular6.0",
                 ResourceUrlRepository = "https://github.com/wilsonsantosnet/project-base-layout-front-coreui-angular6.0.git",
-                ResourceLocalPathFolderExecuteCloning = CombineAbsoluteUri(this._basicPathProject, @"Outros\Repositorios"),
-                ResourceLocalPathDestinationFolrderApplication = CombineAbsoluteUri(this._basicPathProject, @"solution-base-core2.0-ddd-project-with-gerador-empty\Seed.Spa.Ui\"),
+                ResourceLocalPathFolderExecuteCloning = HelperUri.CombineAbsoluteUri(this._basicPathProject, @"Outros\Repositorios"),
+                ResourceLocalPathDestinationFolrderApplication = HelperUri.CombineAbsoluteUri(this._basicPathProject, @"solution-base-core2.0-ddd-project-with-gerador-empty\Seed.Spa.Ui\"),
             };
 
         }
@@ -115,26 +103,26 @@ namespace Seed.Gen
                 ReplaceLocalFilesApplication = true,
                 ResouceRepositoryName = "project-base-layout-front-coreui-angular6.0",
                 ResourceUrlRepository = "https://github.com/wilsonsantosnet/project-base-layout-front-coreui-angular6.0.git",
-                ResourceLocalPathFolderExecuteCloning = CombineAbsoluteUri(this._basicPathProject, @"Outros\Repositorios"),
-                ResourceLocalPathDestinationFolrderApplication = CombineAbsoluteUri(this._basicPathProject, @"solution-base-core2.0-ddd-project-with-gerador-empty\Seed.Spa.Ui\"),
+                ResourceLocalPathFolderExecuteCloning = HelperUri.CombineAbsoluteUri(this._basicPathProject, @"Outros\Repositorios"),
+                ResourceLocalPathDestinationFolrderApplication = HelperUri.CombineAbsoluteUri(this._basicPathProject, @"solution-base-core2.0-ddd-project-with-gerador-empty\Seed.Spa.Ui\"),
                 OnlyThisFiles = new List<string> {
-                    CombineRelativeUri(@"package.json"),
-                    CombineRelativeUri(@"web.config"),
-                    CombineRelativeUri(@"angular.json"),
-                    CombineRelativeUri(@"src\app\app.component.css"),
-                    CombineRelativeUri(@"src\app\app.component.html"),
-                    CombineRelativeUri(@"src\app\app.component.ts"),
-                    CombineRelativeUri(@"src\app\app.module.ts"),
-                    CombineRelativeUri(@"src\app\global.service.culture.ts"),
-                    CombineRelativeUri(@"src\app\global.service.ts"),
-                    CombineRelativeUri(@"src\app\startup.service.ts"),
-                    CombineRelativeUri(@"src\app\util\util-shared.module.ts"),
-                    CombineRelativeUri(@"src\app\main\main.component.css"),
-                    CombineRelativeUri(@"src\app\main\main.component.html"),
-                    CombineRelativeUri(@"src\app\main\main.component.ts"),
-                    CombineRelativeUri(@"src\app\main\main.service.ts"),
-                    CombineRelativeUri(@"src\assets\jquery.nestable.js"),
-                    CombineRelativeUri(@"src\app\util\enum\enum.service.ts"),
+                    HelperUri.CombineRelativeUri(@"package.json"),
+                    HelperUri.CombineRelativeUri(@"web.config"),
+                    HelperUri.CombineRelativeUri(@"angular.json"),
+                    HelperUri.CombineRelativeUri(@"src\app\app.component.css"),
+                    HelperUri.CombineRelativeUri(@"src\app\app.component.html"),
+                    HelperUri.CombineRelativeUri(@"src\app\app.component.ts"),
+                    HelperUri.CombineRelativeUri(@"src\app\app.module.ts"),
+                    HelperUri.CombineRelativeUri(@"src\app\global.service.culture.ts"),
+                    HelperUri.CombineRelativeUri(@"src\app\global.service.ts"),
+                    HelperUri.CombineRelativeUri(@"src\app\startup.service.ts"),
+                    HelperUri.CombineRelativeUri(@"src\app\util\util-shared.module.ts"),
+                    HelperUri.CombineRelativeUri(@"src\app\main\main.component.css"),
+                    HelperUri.CombineRelativeUri(@"src\app\main\main.component.html"),
+                    HelperUri.CombineRelativeUri(@"src\app\main\main.component.ts"),
+                    HelperUri.CombineRelativeUri(@"src\app\main\main.service.ts"),
+                    HelperUri.CombineRelativeUri(@"src\assets\jquery.nestable.js"),
+                    HelperUri.CombineRelativeUri(@"src\app\util\enum\enum.service.ts"),
                 }
 
             };
@@ -149,8 +137,8 @@ namespace Seed.Gen
                 ReplaceLocalFilesApplication = replaceLocalFilesApplication,
                 ResouceRepositoryName = "template-gerador-front-coreui-angular6.0",
                 ResourceUrlRepository = "https://github.com/wilsonsantosnet/template-gerador-front-coreui-angular6.0.git",
-                ResourceLocalPathFolderExecuteCloning = CombineAbsoluteUri(this._basicPathProject, @"Outros\Repositorios"),
-                ResourceLocalPathDestinationFolrderApplication = CombineAbsoluteUri(this._basicPathProject, @"solution-base-core2.0-ddd-project-with-gerador-empty\Gerador.Gen\Templates\Front"),
+                ResourceLocalPathFolderExecuteCloning = HelperUri.CombineAbsoluteUri(this._basicPathProject, @"Outros\Repositorios"),
+                ResourceLocalPathDestinationFolrderApplication = HelperUri.CombineAbsoluteUri(this._basicPathProject, @"solution-base-core2.0-ddd-project-with-gerador-empty\Gerador.Gen\Templates\Front"),
             };
 
         }
@@ -163,8 +151,8 @@ namespace Seed.Gen
                 ReplaceLocalFilesApplication = replaceLocalFilesApplication,
                 ResouceRepositoryName = "framework-angular6.0-CRUD",
                 ResourceUrlRepository = "https://github.com/wilsonsantosnet/framework-angular6.0-CRUD.git",
-                ResourceLocalPathFolderExecuteCloning = CombineAbsoluteUri(this._basicPathProject, @"Outros\Repositorios\"),
-                ResourceLocalPathDestinationFolrderApplication = CombineAbsoluteUri(this._basicPathProject, @"solution-base-core2.0-ddd-project-with-gerador-empty\Seed.Spa.Ui\src\app\common"),
+                ResourceLocalPathFolderExecuteCloning = HelperUri.CombineAbsoluteUri(this._basicPathProject, @"Outros\Repositorios\"),
+                ResourceLocalPathDestinationFolrderApplication = HelperUri.CombineAbsoluteUri(this._basicPathProject, @"solution-base-core2.0-ddd-project-with-gerador-empty\Seed.Spa.Ui\src\app\common"),
             };
 
         }
@@ -179,8 +167,8 @@ namespace Seed.Gen
                 DownloadOneTimeFileVerify = "package.json",
                 ResouceRepositoryName = "project-custom-layout-front-coreui-angular8.0",
                 ResourceUrlRepository = "https://github.com/wilsonsantosnet/project-custom-layout-front-coreui-angular8.0.git",
-                ResourceLocalPathFolderExecuteCloning = CombineAbsoluteUri(this._basicPathProject, @"Outros\Repositorios\"),
-                ResourceLocalPathDestinationFolrderApplication = CombineAbsoluteUri(this._basicPathProject, @"solution-base-core2.0-ddd-project-with-gerador-empty\Seed.Spa.Ui.Custom"),
+                ResourceLocalPathFolderExecuteCloning = HelperUri.CombineAbsoluteUri(this._basicPathProject, @"Outros\Repositorios\"),
+                ResourceLocalPathDestinationFolrderApplication = HelperUri.CombineAbsoluteUri(this._basicPathProject, @"solution-base-core2.0-ddd-project-with-gerador-empty\Seed.Spa.Ui.Custom"),
             };
 
         }
@@ -193,12 +181,12 @@ namespace Seed.Gen
                 ReplaceLocalFilesApplication = true,
                 ResouceRepositoryName = "solution-base-core2.0-ddd-project-with-gerador-empty",
                 ResourceUrlRepository = "https://github.com/wilsonsantosnet/solution-base-core2.0-ddd-project-with-gerador-empty.git",
-                ResourceLocalPathFolderExecuteCloning = CombineAbsoluteUri(this._basicPathProject, @"Outros\Repositorios"),
-                ResourceLocalPathDestinationFolrderApplication = CombineAbsoluteUri(this._basicPathProject, @"solution-base-core2.0-ddd-project-with-gerador-empty"),
+                ResourceLocalPathFolderExecuteCloning = HelperUri.CombineAbsoluteUri(this._basicPathProject, @"Outros\Repositorios"),
+                ResourceLocalPathDestinationFolrderApplication = HelperUri.CombineAbsoluteUri(this._basicPathProject, @"solution-base-core2.0-ddd-project-with-gerador-empty"),
                 OnlyThisFiles = new List<string> {
-                    CombineRelativeUri(@"Itens Solutions\Common.Domain.dll"),
-                    CombineRelativeUri(@"Itens Solutions\Common.Gen.dll"),
-                    CombineRelativeUri(@"Itens Solutions\Common.dll"),
+                    HelperUri.CombineRelativeUri(@"Itens Solutions\Common.Domain.dll"),
+                    HelperUri.CombineRelativeUri(@"Itens Solutions\Common.Gen.dll"),
+                    HelperUri.CombineRelativeUri(@"Itens Solutions\Common.dll"),
                 }
 
             };

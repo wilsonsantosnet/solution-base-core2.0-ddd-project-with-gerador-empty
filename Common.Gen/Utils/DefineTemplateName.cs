@@ -26,7 +26,7 @@ namespace Common.Gen
 
         public static string EntityMapBase(TableInfo tableInfo)
         {
-            return "EntityMapBase";
+            return "entitymapbase";
         }
 
         public static string MapsLength(TableInfo tableInfo)
@@ -34,7 +34,7 @@ namespace Common.Gen
             return "maps.length";
         }
 
-        public static string MapsRequired (TableInfo tableInfo)
+        public static string MapsRequired(TableInfo tableInfo)
         {
             return "maps.required";
         }
@@ -51,7 +51,7 @@ namespace Common.Gen
 
         public static string MapsCompositeKey(TableInfo tableInfo)
         {
-            return"maps.compositekey";
+            return "maps.compositekey";
         }
 
         public static string FiltersPartial(TableInfo tableInfo)
@@ -76,107 +76,107 @@ namespace Common.Gen
 
         public static string EntityFilterBasicExtension(TableInfo tableInfo)
         {
-            return "EntityFilterBasicExtension";
+            return "entityfilterbasicextension";
         }
 
         public static string EntityFilterCustomExtension(TableInfo tableInfo)
         {
-            return "EntityFilterCustomExtension";
+            return "entityfiltercustomextension";
         }
 
         public static string EntityOrderByDomainExtension(TableInfo tableInfo)
         {
-            return "EntityOrderCustomExtension";
+            return "entityordercustomextension";
         }
 
         public static string EntityValidatorSpecificationRepository(TableInfo tableInfo)
         {
-            return "EntityValidatorSpecificationRepository";
+            return "entityvalidatorspecificationrepository";
         }
 
         public static string EntityValidatorSpecification(TableInfo tableInfo)
         {
-            return "EntityValidatorSpecification";
+            return "entityvalidatorspecification";
         }
 
         public static string EntityIsConsistentSpecification(TableInfo tableInfo)
         {
-            return "EntityIsConsistentSpecification";
+            return "entityisconsistentspecification";
         }
 
         public static string EntityWarningSpecification(TableInfo tableInfo)
         {
-            return "EntityWarningSpecification";
+            return "entitywarningspecification";
         }
 
         public static string EntityCommand(TableInfo tableInfo)
         {
-            return "EntityCommand";
+            return "entitycommand";
         }
 
         public static string EnumCommand(TableInfo tableInfo)
         {
-            return "EnumCommand";
+            return "enumcommand";
         }
 
         public static string EntityIsSuitableSpecification(TableInfo tableInfo)
         {
-            return "EntityIsSuitableSpecification";
+            return "entityissuitablespecification";
         }
 
         public static string EntityValidationWarningSpecification(TableInfo tableInfo)
         {
-            return "EntityValidationWarningSpecification";
+            return "entityvalidationwarningspecification";
         }
 
         public static string EntityServiceBase(TableInfo tableInfo)
         {
-            return "EntityServiceBase";
+            return "entityservicebase";
         }
-        
+
         public static string EntityServiceExt(TableInfo tableInfo)
         {
-            return "EntityServiceExt";
+            return "entityserviceext";
         }
 
         public static string IEntityRepository(TableInfo tableInfo)
         {
-            return "IEntityRepository";
+            return "ientityrepository";
         }
 
         public static string IEntityApplicationService(TableInfo tableInfo)
         {
-            return "IEntityApplicationService";
+            return "ientityapplicationservice";
         }
 
         public static string IEntityApplicationServiceBase(TableInfo tableInfo)
         {
-            return "IEntityApplicationServiceBase";
+            return "ientityapplicationservicebase";
         }
 
         public static string IEntityService(TableInfo tableInfo)
         {
-            return "IEntityService";
+            return "ientityservice";
         }
 
         public static string EntityApplicationService(TableInfo tableInfo)
         {
-            return "EntityApplicationService";
+            return "entityapplicationservice";
         }
 
         public static string EntityApplicationServiceBase(TableInfo tableInfo)
         {
-            return "EntityApplicationServiceBase";
+            return "entityapplicationservicebase";
         }
 
         public static string EntityRepository(TableInfo tableInfo)
         {
-            return "EntityRepository";
+            return "entityrepository";
         }
 
         public static string EntityExt(TableInfo tableInfo)
         {
-            return "EntityExt";
+            return "entityext";
         }
 
         public static string ModelsNavPropertyCollection(TableInfo tableInfo)
@@ -515,12 +515,12 @@ namespace Common.Gen
 
         public static string EntityProperty(TableInfo tableInfo)
         {
-            return "EntityPropertys";
+            return "entitypropertys";
         }
 
         public static string EntityMethodSeters(TableInfo tableInfo)
         {
-            return "EntityMethodSeters";
+            return "entitymethodseters";
         }
 
         public static string ModelsAudit(TableInfo tableInfo)
@@ -570,12 +570,12 @@ namespace Common.Gen
 
         public static string IAppCustomMethod(TableInfo tableInfo)
         {
-            return "IEntityApplicationService.custom.method";
+            return "ientityapplicationservice.custom.method";
         }
 
         public static string AppCustomMethod(TableInfo tableInfo)
         {
-            return "EntityApplicationService.custom.method";
+            return "entityapplicationservice.custom.method";
         }
 
         public static string MapPartial(TableInfo tableInfo)
@@ -607,7 +607,7 @@ namespace Common.Gen
         {
             return "precompiledview.basic";
         }
- 
+
         public static string PrecompiledViewConditional()
         {
             return "precompiledView.conditional";
@@ -755,7 +755,7 @@ namespace Common.Gen
 
         public static string ContextMt(TableInfo tableInfo)
         {
-            return "ContextMultiTenancy";
+            return "contextmultitenancy";
         }
 
         public static string ContextMappers(TableInfo tableInfo)

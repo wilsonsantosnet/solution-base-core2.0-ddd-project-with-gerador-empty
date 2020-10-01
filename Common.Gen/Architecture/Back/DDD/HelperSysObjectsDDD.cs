@@ -1,4 +1,5 @@
-﻿using Common.Gen.Utils;
+﻿using Common.Gen.Helpers;
+using Common.Gen.Utils;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -25,7 +26,7 @@ namespace Common.Gen
 
         }
 
-        public HelperSysObjectsDDD(IEnumerable<Context> contexts) : this(contexts, "Templates\\Back")
+        public HelperSysObjectsDDD(IEnumerable<Context> contexts) : this(contexts, HelperUri.CombineAbsoluteUri(AppDomain.CurrentDomain.BaseDirectory, @"Templates\Back"))
         {
 
         }
@@ -1066,7 +1067,7 @@ namespace Common.Gen
             var classBuilder = GenericTagsTransformer(tableInfo, configContext, textTemplateClass);
 
             var classBuilderCustomItems = string.Empty;
-            var classBuilderPropertys = string.Empty; 
+            var classBuilderPropertys = string.Empty;
 
             if (infos.IsAny())
             {

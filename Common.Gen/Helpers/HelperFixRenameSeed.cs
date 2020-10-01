@@ -100,7 +100,7 @@ namespace Common.Gen
             foreach (var dir in dirs)
             {
 
-                if (_foldersIgnore.Contains(dir.Name.ToLower()))
+                if (_foldersIgnore.Select(_=>_.ToLower()).Contains(dir.Name.ToLower()))
                     continue;
 
                 var newPath = Path.Combine(Path.GetDirectoryName(dir.FullName), Regex.Replace(Path.GetFileName(dir.FullName), "Seed", projectName, RegexOptions.IgnoreCase));

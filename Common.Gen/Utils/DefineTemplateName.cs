@@ -71,7 +71,7 @@ namespace Common.Gen
 
         public static string EntityBase(TableInfo tableInfo)
         {
-            return "EntityBase";
+            return "entitybase";
         }
 
         public static string EntityFilterBasicExtension(TableInfo tableInfo)
@@ -450,7 +450,7 @@ namespace Common.Gen
 
         public static string FilterBasicExtension(TableInfo tableInfo)
         {
-            return "FilterBasicExtension";
+            return "filterbasicextension";
         }
 
         public static string AuditCall(TableInfo tableInfo)
@@ -465,7 +465,7 @@ namespace Common.Gen
 
         public static string ApiBase(TableInfo tableInfo)
         {
-            return "apiBase";
+            return "apibase";
         }
 
         public static string Api(TableInfo tableInfo)
@@ -480,7 +480,7 @@ namespace Common.Gen
 
         public static string ApiMoreBase(TableInfo tableInfo)
         {
-            return "apiBase.more";
+            return "apibase.more";
         }
 
         public static string DtoNavPropertyInstance(TableInfo tableInfo)
@@ -585,7 +585,7 @@ namespace Common.Gen
 
         public static string EntityMapExtension(TableInfo tableInfo)
         {
-            return "EntityMapExt";
+            return "entitymapext";
         }
 
         public static string AutoMapperProfile(TableInfo tableInfo)
@@ -595,12 +595,12 @@ namespace Common.Gen
 
         public static string AutoMapperProfileCustom(TableInfo tableInfo)
         {
-            return "profileCustom";
+            return "profilecustom";
         }
 
         public static string PrecompiledViewMain()
         {
-            return "precompiledView.main";
+            return "precompiledview.main";
         }
 
         public static string PrecompiledViewBasic()
@@ -610,12 +610,12 @@ namespace Common.Gen
 
         public static string PrecompiledViewConditional()
         {
-            return "precompiledView.conditional";
+            return "precompiledview.conditional";
         }
 
         public static string PrecompiledView()
         {
-            return "precompiledView.view";
+            return "precompiledview.view";
         }
 
         public static string Automapper(TableInfo tableInfo)

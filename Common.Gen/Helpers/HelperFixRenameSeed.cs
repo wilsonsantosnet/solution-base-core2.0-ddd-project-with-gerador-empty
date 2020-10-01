@@ -17,7 +17,7 @@ namespace Common.Gen
         {
             _foldersIgnore = new List<string>
             {
-                ".git",
+               ".git",
                 ".vs",
                 "bin",
                 "obj",
@@ -25,7 +25,18 @@ namespace Common.Gen
                 "upload",
                 "environments",
                 "assets",
-                "node_modules"
+                "node_modules",
+                "Common.API",
+                "Common.Cache",
+                "Common.Configuration",
+                "Common.Cripto",
+                "Common.Domain",
+                "Common.Dto",
+                "Common.Gen",
+                "Common.Mail",
+                "Common.Orm",
+                "Common.Payment",
+                "Common.Validation",
             };
 
             _filesIgnore = new List<string>

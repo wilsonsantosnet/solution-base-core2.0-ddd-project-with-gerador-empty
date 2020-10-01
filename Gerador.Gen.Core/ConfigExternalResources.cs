@@ -30,7 +30,7 @@ namespace Seed.Gen
                 ResouceRepositoryName = "template-gerador-back-core2.0-DDD",
                 ResourceUrlRepository = "https://github.com/wilsonsantosnet/template-gerador-back-core2.0-DDD.git",
                 ResourceLocalPathFolderExecuteCloning = HelperUri.CombineAbsoluteUri(this._basicPathProject, @"Outros\Repositorios"),
-                ResourceLocalPathDestinationFolrderApplication = HelperUri.CombineAbsoluteUri(this._basicPathProject, @"solution-base-core2.0-ddd-project-with-gerador-empty\Gerador.Gen\Templates\Back"),
+                ResourceLocalPathDestinationFolrderApplication = HelperUri.CombineAbsoluteUri(this._basicPathProject, @"solution-base-core2.0-ddd-project-with-gerador-empty\Gerador.Gen.Core\Templates\Back"),
             };
 
         }
@@ -44,7 +44,7 @@ namespace Seed.Gen
                 ResouceRepositoryName = "template-gerador-back-DDD",
                 ResourceUrlRepository = "https://github.com/wilsonsantosnet/template-gerador-back-DDD.git",
                 ResourceLocalPathFolderExecuteCloning = HelperUri.CombineAbsoluteUri(this._basicPathProject, @"Outros\Repositorios"),
-                ResourceLocalPathDestinationFolrderApplication = HelperUri.CombineAbsoluteUri(this._basicPathProject, @"solution-base-core2.0-ddd-project-with-gerador-empty\Gerador.Gen\Templates\Back"),
+                ResourceLocalPathDestinationFolrderApplication = HelperUri.CombineAbsoluteUri(this._basicPathProject, @"solution-base-core2.0-ddd-project-with-gerador-empty\Gerador.Gen.Core\Templates\Back"),
             };
 
         }
@@ -138,7 +138,7 @@ namespace Seed.Gen
                 ResouceRepositoryName = "template-gerador-front-coreui-angular6.0",
                 ResourceUrlRepository = "https://github.com/wilsonsantosnet/template-gerador-front-coreui-angular6.0.git",
                 ResourceLocalPathFolderExecuteCloning = HelperUri.CombineAbsoluteUri(this._basicPathProject, @"Outros\Repositorios"),
-                ResourceLocalPathDestinationFolrderApplication = HelperUri.CombineAbsoluteUri(this._basicPathProject, @"solution-base-core2.0-ddd-project-with-gerador-empty\Gerador.Gen\Templates\Front"),
+                ResourceLocalPathDestinationFolrderApplication = HelperUri.CombineAbsoluteUri(this._basicPathProject, @"solution-base-core2.0-ddd-project-with-gerador-empty\Gerador.Gen.Core\Templates\Front"),
             };
 
         }

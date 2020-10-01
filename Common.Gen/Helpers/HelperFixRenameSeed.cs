@@ -17,7 +17,7 @@ namespace Common.Gen
         {
             _foldersIgnore = new List<string>
             {
-               ".git",
+                ".git",
                 ".vs",
                 "bin",
                 "obj",

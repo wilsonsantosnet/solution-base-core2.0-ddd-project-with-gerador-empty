@@ -81,7 +81,9 @@ namespace Common.Gen
                             HelperCmd.ExecuteCommand(string.Format("robocopy {0} {1}  /s /e /xd *\"bin\" *\"obj\" *\".git\" /xf *\".sln\" *\".md\" ", resource.ResourceLocalPathFolderCloningRepository, resource.ResourceLocalPathDestinationFolrderApplication), 10000);
                         else
                         {
-                            string.Format("rsync -arv --exclude='bin' --exclude='obj' --exclude='*.git' --exclude='*.sln' --exclude='*.md' {0} {1}", resource.ResourceLocalPathFolderCloningRepository, resource.ResourceLocalPathDestinationFolrderApplication).Bash();
+                            if (!Directory.Exists(resource.ResourceLocalPathDestinationFolrderApplication))
+                                Directory.CreateDirectory(resource.ResourceLocalPathDestinationFolrderApplication);
+                            string.Format("rsync -arv --exclude='bin' --exclude='obj' --exclude='*.git' --exclude='*.sln' --exclude='*.md' {0}/ {1}", resource.ResourceLocalPathFolderCloningRepository, resource.ResourceLocalPathDestinationFolrderApplication).Bash();
                         }
                     }
 
@@ -175,7 +177,10 @@ namespace Common.Gen
                             HelperCmd.ExecuteCommand(string.Format("robocopy {0} {1} /s /e /xd *\"bin\" *\"obj\"", folderActual.FullName, string.Format("{0}\\{1}", resource.ResourceLocalPathFolderCloningRepository, folderActual.Name)), 10000);
                         else
                         {
-                            string.Format("rsync -arv --exclude='bin' --exclude='obj' {0} {1}", folderActual.FullName, Path.Combine(resource.ResourceLocalPathFolderCloningRepository, folderActual.Name)).Bash();
+                            if (!Directory.Exists(Path.Combine(resource.ResourceLocalPathFolderCloningRepository, folderActual.Name)))
+                                Directory.CreateDirectory(Path.Combine(resource.ResourceLocalPathFolderCloningRepository, folderActual.Name));
+
+                            string.Format("rsync -arv --exclude='bin' --exclude='obj' {0}/ {1}", folderActual.FullName, Path.Combine(resource.ResourceLocalPathFolderCloningRepository, folderActual.Name)).Bash();
                         }
                     }
                 }
@@ -200,8 +205,11 @@ namespace Common.Gen
                     if (isWindows)
                         HelperCmd.ExecuteCommand(string.Format("robocopy {0} {1} /s /e", resource.ResourceLocalPathDestinationFolrderApplication, resource.ResourceLocalPathFolderCloningRepository), 10000);
                     else
-                        string.Format("rsync -arv {0} {1}", resource.ResourceLocalPathDestinationFolrderApplication, resource.ResourceLocalPathFolderCloningRepository).Bash();
-
+                    {
+                        if (!Directory.Exists(resource.ResourceLocalPathFolderCloningRepository))
+                            Directory.CreateDirectory(resource.ResourceLocalPathFolderCloningRepository);
+                        string.Format("rsync -arv {0}/ {1}", resource.ResourceLocalPathDestinationFolrderApplication, resource.ResourceLocalPathFolderCloningRepository).Bash();
+                    }
                 }
             }
 
@@ -251,7 +259,11 @@ namespace Common.Gen
                             HelperCmd.ExecuteCommand(string.Format("robocopy {0} {1} /s /e /xd *\"bin\" *\"obj\"", folderActual.FullName, string.Format("{0}\\{1}", bkpPathFolder, folderActual.Name)), 10000);
 
                         else
-                            string.Format("rsync -arv {0} {1}", folderActual.FullName, Path.Combine(bkpPathFolder, folderActual.Name)).Bash();
+                        {
+                            if (!Directory.Exists(Path.Combine(bkpPathFolder, folderActual.Name)))
+                                Directory.CreateDirectory(Path.Combine(bkpPathFolder, folderActual.Name));
+                            string.Format("rsync -arv {0}/ {1}", folderActual.FullName, Path.Combine(bkpPathFolder, folderActual.Name)).Bash();
+                        }
 
                     }
                 }
@@ -263,7 +275,12 @@ namespace Common.Gen
                     if (isWindows)
                         HelperCmd.ExecuteCommand(string.Format("robocopy {0} {1} /s /e", resource.ResourceLocalPathDestinationFolrderApplication, bkpPathFolder), 10000);
                     else
-                        string.Format("rsync -arv {0} {1}", resource.ResourceLocalPathDestinationFolrderApplication, bkpPathFolder).Bash();
+                    {
+                        if (!Directory.Exists(bkpPathFolder))
+                            Directory.CreateDirectory(bkpPathFolder);
+
+                        string.Format("rsync -arv {0}/ {1}", resource.ResourceLocalPathDestinationFolrderApplication, bkpPathFolder).Bash();
+                    }
                 }
             }
         }
@@ -274,7 +291,7 @@ namespace Common.Gen
             if (resource.DownloadOneTime)
             {
                 var fileVerify = Path.Combine(resource.ResourceLocalPathDestinationFolrderApplication, resource.DownloadOneTimeFileVerify);
-                
+
                 if (File.Exists(fileVerify))
                     continueFlow = false;
             }

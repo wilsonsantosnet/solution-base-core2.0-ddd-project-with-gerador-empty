@@ -1,9 +1,11 @@
-﻿using Common.API;
+using Common.API;
 using Common.Domain.Base;
 using Common.Domain.Model;
 using IdentityServer4.Validation;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.CookiePolicy;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -87,7 +89,13 @@ namespace Sso.Server.Api
                 app.UseDeveloperExceptionPage();
 
             loggerFactory.AddFile(Configuration.GetSection("Logging"));
-
+            
+            app.UseCookiePolicy(new CookiePolicyOptions()
+            {
+                HttpOnly = HttpOnlyPolicy.Always,
+                Secure = CookieSecurePolicy.Always,
+                MinimumSameSitePolicy = SameSiteMode.None
+            });
             app.UseCors("AllowStackOrigin");
             app.UseIdentityServer();
             //app.UseGoogleAuthentication(new GoogleOptions

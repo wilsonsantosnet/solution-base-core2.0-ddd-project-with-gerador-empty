@@ -8,7 +8,7 @@ namespace Common.Domain
 {
     public static class DateTimeExtensions
     {
-        public static bool Intersects(this DateTime startDate, DateTime endDate, DateTime intersectingStartDate, DateTime intersectingEndDate)
+         public static bool Intersects(this DateTime startDate, DateTime endDate, DateTime intersectingStartDate, DateTime intersectingEndDate)
         {
             return (intersectingEndDate >= startDate && intersectingStartDate <= endDate);
         }
@@ -23,8 +23,7 @@ namespace Common.Domain
 
         public static DateTime ToTimeZone(this DateTime now)
         {
-            // return TimeZoneInfo.ConvertTime(now, TimeZoneInfo.FindSystemTimeZoneById("E. South America Standard Time"));
-            return now;
+            return TimeZoneInfo.ConvertTime(now, TimeZoneInfo.FindSystemTimeZoneById("E. South America Standard Time"));
         }
 
         public static DateTime TodayZeroHours(this DateTime date)

@@ -87,7 +87,13 @@ namespace Sso.Server.Api
                 app.UseDeveloperExceptionPage();
 
             loggerFactory.AddFile(Configuration.GetSection("Logging"));
-
+            
+            app.UseCookiePolicy(new CookiePolicyOptions()
+            {
+                HttpOnly = HttpOnlyPolicy.Always,
+                Secure = CookieSecurePolicy.Always,
+                MinimumSameSitePolicy = SameSiteMode.None
+            });
             app.UseCors("AllowStackOrigin");
             app.UseIdentityServer();
             //app.UseGoogleAuthentication(new GoogleOptions

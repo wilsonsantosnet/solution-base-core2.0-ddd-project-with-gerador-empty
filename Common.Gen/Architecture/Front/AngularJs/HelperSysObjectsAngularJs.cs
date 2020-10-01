@@ -1,7 +1,6 @@
 ﻿using Common.Gen.Utils;
 using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.IO;
 using System.Linq;
 
@@ -12,7 +11,7 @@ namespace Common.Gen
     {
 
 
-        public HelperSysObjectsAngularJs(Context context) : this(context, "Templates\\Front")
+        public HelperSysObjectsAngularJs(Context context) : this(context, @"Templates\Front")
         {
 
         }

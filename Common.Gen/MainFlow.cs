@@ -78,10 +78,12 @@ namespace Common.Gen
                 {
                     if (!executeFlow)
                         PrinstScn.WriteLine("Fluxo Não implementado #");
-
-                    Flow(new string[] { "?" }, GetConfigExternarReources, sysObject);
                 }
+
+                Flow(new string[] { "?" }, GetConfigExternarReources, sysObject);
             }
+
+            //MainFlow.Flow(new string[] { }, GetConfigExternarReources, sysObject);
 
         }
 
@@ -116,7 +118,10 @@ namespace Common.Gen
                 flow = Console.ReadLine();
             }
             else if (args.FirstOrDefault() == "?")
+            {
                 Options();
+                flow = Console.ReadLine();
+            }
             else
                 flow = args.FirstOrDefault();
 

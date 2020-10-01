@@ -27,8 +27,8 @@ namespace Common.Gen
             base.ArquitetureType = ArquitetureType.TableModel;
 
         }
-        public HelperSysObjectsTableModel(Context context) : this(context, HelperUri.CombineAbsoluteUri(AppDomain.CurrentDomain.BaseDirectory, @"Templates\Back")) { }
-        public HelperSysObjectsTableModel(IEnumerable<Context> contexts) : this(contexts, HelperUri.CombineAbsoluteUri(AppDomain.CurrentDomain.BaseDirectory, @"Templates\Back")) { }
+        public HelperSysObjectsTableModel(Context context) : this(context,  @"Templates\Back") { }
+        public HelperSysObjectsTableModel(IEnumerable<Context> contexts) : this(contexts, @"Templates\Back") { }
         public HelperSysObjectsTableModel(IEnumerable<Context> contexts, string template)
         {
             this.Contexts = contexts;

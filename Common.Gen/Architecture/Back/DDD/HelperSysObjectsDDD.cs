@@ -1,8 +1,6 @@
-﻿using Common.Gen.Helpers;
-using Common.Gen.Utils;
+﻿using Common.Gen.Utils;
 using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -26,7 +24,7 @@ namespace Common.Gen
 
         }
 
-        public HelperSysObjectsDDD(IEnumerable<Context> contexts) : this(contexts, HelperUri.CombineAbsoluteUri(AppDomain.CurrentDomain.BaseDirectory, @"Templates\Back"))
+        public HelperSysObjectsDDD(IEnumerable<Context> contexts) : this(contexts,  @"Templates\Back")
         {
 
         }

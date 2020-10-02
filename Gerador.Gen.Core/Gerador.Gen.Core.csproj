@@ -111,7 +111,7 @@
     <None Update="Templates\Back\dto.specialized.result">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Templates\Back\entityApplicationService">
+    <None Update="Templates\Back\entityapplicationservice">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Templates\Back\entityapplicationservice.custom.method">

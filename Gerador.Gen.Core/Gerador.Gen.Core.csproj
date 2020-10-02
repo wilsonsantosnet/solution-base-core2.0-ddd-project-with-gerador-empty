@@ -27,7 +27,7 @@
     <None Update="Templates\Back\api">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Templates\Back\api.currentUser">
+    <None Update="Templates\Back\api.currentuser">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Templates\Back\api.custom.method">
@@ -126,7 +126,7 @@
     <None Update="Templates\Back\entitycommand">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Templates\Back\entityExt">
+    <None Update="Templates\Back\entityext">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Templates\Back\entityfilterbasicextension">

@@ -300,7 +300,7 @@ namespace Common.API
 
         private void AddCacheInfo(FilterBase filter)
         {
-            if (filter.IsNotNull())
+            if (filter.IsNotNull() && filter.FilterKey.IsNotNull())
             {
                 this.Cachekey = filter.FilterKey;
                 this.CacheExpirationMinutes = filter.CacheExpiresTime.TotalMinutes;

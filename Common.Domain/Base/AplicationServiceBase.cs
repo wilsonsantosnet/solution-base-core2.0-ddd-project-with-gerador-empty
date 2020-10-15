@@ -159,6 +159,7 @@ namespace Common.Domain.Base
                 if (cacheResult.IsNotNull())
                 {
                     cacheResult.Cachekey = filterKey;
+                    filter.FilterKey = filterKey;
                     cacheResult.CacheExpirationMinutes = filter.CacheExpiresTime.TotalMinutes;
                     return cacheResult;
                 }

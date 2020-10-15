@@ -8,50 +8,63 @@ namespace Common.Domain.CompositeKey
     public static class CompositeKeyExtensions
     {
 
-        public static string CompositeKey(this object source, string sufixKey = null)
+        public static string MakeCompositeKey(this object source, string sufixKey = null, Boolean verboseKey=false)
         {
 
             var propertys = source.GetType().GetTypeInfo().GetProperties();
-            var keys = new List<object>();
+            var keys = new List<string>
+            {
+                $"{source.GetType().Name}:"
+            };
+
             foreach (var item in propertys)
             {
                 var propertyValue = item.GetValue(source);
-
+                var propertyName = verboseKey ? item.Name : string.Empty;
                 if (propertyValue != null)
                 {
+                    if (propertyName == "FilterKey")
+                        continue;
+
                     if (item.PropertyType == typeof(int) && Convert.ToInt32(propertyValue) != default(int))
-                        keys.Add(propertyValue);
+                        keys.Add($"{propertyName}:{propertyValue}");
 
                     if (item.PropertyType == typeof(int?) && (int?)propertyValue != default(int?))
-                        keys.Add(propertyValue);
+                        keys.Add($"{propertyName}:{propertyValue}");
 
                     if (item.PropertyType == typeof(decimal) && Convert.ToDecimal(propertyValue) != default(decimal))
-                        keys.Add(propertyValue);
+                        keys.Add($"{propertyName}:{propertyValue}");
 
                     if (item.PropertyType == typeof(decimal?) && (decimal?)propertyValue != default(decimal?))
-                        keys.Add(propertyValue);
+                        keys.Add($"{propertyName}:{propertyValue}");
 
                     if (item.PropertyType == typeof(string) && propertyValue.ToString().IsNotNullOrEmpty())
-                        keys.Add(propertyValue);
+                        keys.Add($"{propertyName}:{propertyValue}");
 
                     if (item.PropertyType == typeof(DateTime) && Convert.ToDateTime(propertyValue) != default(DateTime))
-                        keys.Add(propertyValue);
+                        keys.Add($"{propertyName}:{propertyValue}");
 
                     if (item.PropertyType == typeof(DateTime?) && (DateTime?)propertyValue != default(DateTime?))
-                        keys.Add(propertyValue);
+                        keys.Add($"{propertyName}:{propertyValue}");
+
+                    if (item.PropertyType.IsEnum)
+                        keys.Add($"{propertyName}:{propertyValue}");
                 }
 
             }
-            keys.Add(source.GetType().Name);
+
+            var uniqueKeys = keys.GroupBy(_ => _).Select(_ => _.Key);
             return MakeFinalKey(sufixKey, keys);
 
 
         }
 
-        private static string MakeFinalKey(string sufixKey, List<object> keys)
+        private static string MakeFinalKey(string sufixKey, IEnumerable<string> keys)
         {
-            var key = (CompositeKey(keys.ToArray()) + sufixKey).ToUpper();
-            return key;
+            if (!string.IsNullOrEmpty(sufixKey))
+                return ($"{CompositeKey(keys.ToArray())}Sufix:{sufixKey}").ToUpper();
+
+            return ($"{CompositeKey(keys.ToArray())}").ToUpper();
         }
 
         private static string CompositeKey(object[] keys)
@@ -62,9 +75,6 @@ namespace Common.Domain.CompositeKey
                 if (_ != null)
                     key += _.ToString();
             });
-
-            if (key.Length > 250)
-                return key.Substring(0, 249);
 
             return key;
         }

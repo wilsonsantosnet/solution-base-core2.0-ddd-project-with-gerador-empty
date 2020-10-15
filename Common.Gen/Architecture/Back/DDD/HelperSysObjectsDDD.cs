@@ -912,7 +912,13 @@ namespace Common.Gen
         private void ExecuteTemplateFilter(TableInfo tableInfo, Context configContext, IEnumerable<Info> infos)
         {
 
+            if (tableInfo.CodeCustomImplemented)
+                return;
+
             if (tableInfo.MovedBaseClassToShared)
+                return;
+
+            if (!tableInfo.MakeDomain)
                 return;
 
 
@@ -955,6 +961,12 @@ namespace Common.Gen
         }
         private void ExecuteTemplateFilterPartial(TableInfo tableInfo, Context configContext, IEnumerable<Info> infos)
         {
+            if (tableInfo.CodeCustomImplemented)
+                return;
+
+            if (!tableInfo.MakeDomain)
+                return;
+
             var pathOutput = PathOutput.PathOutputFilterPartialWithFolder(tableInfo, configContext);
 
             if (File.Exists(pathOutput) && Convert.ToBoolean(ConfigurationManager.AppSettings["GerarFiltersPartialExistentes"]) == false)

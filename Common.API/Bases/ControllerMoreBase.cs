@@ -120,7 +120,7 @@ namespace Common.API
                         var filterKey = filters.CompositeKey(this._user);
                         if (filters.ByCache)
                         {
-                            var cacheResult = this._cache.Get<SearchResult<dynamic>>(filterKey);
+                            var cacheResult = this._cache.Get<IEnumerable<object>>(filterKey);
                             if (cacheResult.IsNotNull())
                             {
                                 filters.FilterKey = filterKey;
@@ -194,11 +194,11 @@ namespace Common.API
 
         }
 
-        private void AddCache(FilterBase filters, string filterKey, IEnumerable<dynamic> searchResult, string group)
+        private void AddCache(FilterBase filters, string filterKey, dynamic result, string group)
         {
             if (filters.ByCache)
             {
-                this._cache.Add(filterKey, searchResult, filters.CacheExpiresTime);
+                this._cache.Add(filterKey, result, filters.CacheExpiresTime);
                 this._cacheHelper.AddTagCache(filterKey, group);
             }
         }

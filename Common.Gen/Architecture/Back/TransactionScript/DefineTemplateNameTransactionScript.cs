@@ -89,19 +89,19 @@ namespace Common.Gen
 
         public static string TransactionScriptApiCurrentUser(TableInfo tableInfo)
         {
-            return "api.currentUser";
+            return "api.currentuser";
         }
 
-        
+
 
         public static string TransactionScriptEntityRepository(TableInfo tableInfo)
         {
-            return "EntityRepository";
+            return "entityrepository";
         }
 
         public static string TransactionScriptIEntityRepository(TableInfo tableInfo)
         {
-            return "IEntityRepository";
+            return "ientityrepository";
         }
     }
 }

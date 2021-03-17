@@ -630,7 +630,7 @@ namespace Common.Gen
 
         public static string ApiCurrentUser(TableInfo tableInfo)
         {
-            return "api.currentUser";
+            return "api.currentuser";
         }
 
         public static string ApiUpload(TableInfo tableInfo)

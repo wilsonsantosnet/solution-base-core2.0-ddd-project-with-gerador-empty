@@ -4,7 +4,6 @@ using Common.Domain.Base;
 using Common.Domain.Enums;
 using Common.Domain.Interfaces;
 using Common.Domain.Model;
-using Common.Dto;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;

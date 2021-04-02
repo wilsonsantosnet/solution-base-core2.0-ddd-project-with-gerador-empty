@@ -23,3 +23,6 @@ Esse Seed tem um gerenciador chamado gerador com ele após clonar o Seed podemos
 ###### Digrama macro
 ![Diagrama 1](flow.png?raw=true "Flow")
 
+###### Migração
+1.	[Migração SEED 2.2 para 3.1](https://wilsonsantosnet.medium.com/migra%C3%A7%C3%A3o-net-core-2-2-3-1-d92f67d71d73)
+

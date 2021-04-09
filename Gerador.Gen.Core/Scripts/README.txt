@@ -1,2 +1,2 @@
-sqlcmd -s (localdb)\mssqllocaldb - i createdb-sample-seed.sql
-sqlcmd -s (localdb)\mssqllocaldb - i Sample.Seed.sql
+sqlcmd -S "(localdb)\mssqllocaldb" -i createdb-sample-seed.sql
+sqlcmd -S "(localdb)\mssqllocaldb" -i Sample.Seed.sql
